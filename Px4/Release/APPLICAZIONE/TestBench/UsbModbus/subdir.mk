@@ -1,0 +1,20 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/TestBench/UsbModbus/usbDevice.c 
+
+C_DEPS += \
+./APPLICAZIONE/TestBench/UsbModbus/usbDevice.d 
+
+OBJS += \
+./APPLICAZIONE/TestBench/UsbModbus/usbDevice.o 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+APPLICAZIONE/TestBench/UsbModbus/usbDevice.o: C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/TestBench/UsbModbus/usbDevice.c APPLICAZIONE/TestBench/UsbModbus/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m7 -std=gnu11 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../TouchGFX/App -I../TouchGFX/target/generated -I../TouchGFX/target -I../TouchGFX/generated/fonts/include -I../TouchGFX/generated/gui_generated/include -I../TouchGFX/generated/images/include -I../TouchGFX/generated/texts/include -I../TouchGFX/gui/include -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -I../Middlewares/ST/touchgfx/framework/include -I"C:/ATProgetti/Px4/Middlewares/ST/touchgfx/framework/include" -I"C:/ATProgetti/PG064/PG/SRC/OS/Source/include" -I"C:/ATProgetti/PG064/PG/SRC/OS/Source/CMSIS_RTOS" -I"C:/ATProgetti/PG064/PG/SRC/OS/Source/portable/GCC/ARM_CM7/r0p1" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/GFX" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Drivers/CMSIS/Include" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Libraries/USB/STM32_USB_Device_Library/Core/Inc" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Libraries/USB/STM32_USB_Host_Library/Core/Inc" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Libraries/USB" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Libraries/USB/STM32_USB_Host_Library/Class/MSC/Inc" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Libraries/USB/STM32_USB_Device_Library/Class/CDC/Inc" -I"C:/ATProgetti/PG064/PG/SRC/STARTUP" -I"C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Libraries/LwIP" -I"C:/ATProgetti/PG0XX/PG/SRC/ADDITIONAL" -I"C:/ATProgetti/PG0XX/PG/SRC/ADDITIONAL/GFX" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"APPLICAZIONE/TestBench/UsbModbus/usbDevice.d" -MT"$@" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+

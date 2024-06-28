@@ -1,0 +1,57 @@
+# Ignore arquivos e pastas gerados pelo compilador e IDE
+*.o
+*.out
+*.d
+*.i
+*.su
+*.su.c
+*.suo
+*.ncb
+*.aps
+*.apsx
+*.vshost.*
+*.pdb
+*.exp
+*.lib
+*.obj
+*.ilk
+*.res
+*.sbr
+*.bsc
+*.sln.docstates
+[Tt]humbs.db
+*.vcproj.*
+*.vcxproj.*
+*.vcxproj.filters
+
+# Ignore a pasta "generated" gerada pelo TouchGFX
+Px4/TouchGFX/generated/
+
+# Ignore arquivos de log
+log.txt
+log*.txt
+
+# Ignore arquivos temporários
+*~
+.#*
+.DS_Store
+*.swp
+*.bak
+*.tmp
+*.log
+*.orig
+*.rej
+
+# Ignore arquivos de build gerados por ferramentas de build
+Px4/TouchGFX/build/
+Px4/Release/
+
+# eclipse specific git ignore
+.metadata/
+RemoteSystemsTempFiles/
+.settings/
+Debug/
+*.launch
+
+# STM32 git ignore
+*.mxproject
