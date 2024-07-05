@@ -74,6 +74,8 @@
 #include <gui/alarme_externo_screen/Alarme_externoPresenter.hpp>
 #include <gui/receita_temperatura_screen/Receita_TemperaturaView.hpp>
 #include <gui/receita_temperatura_screen/Receita_TemperaturaPresenter.hpp>
+#include <gui/tela_preta_screen/TELA_PRETAView.hpp>
+#include <gui/tela_preta_screen/TELA_PRETAPresenter.hpp>
 
 
 /**
@@ -127,7 +129,8 @@ public:
             touchgfx::meta::TypeList< refine_senha_secretoView,
             touchgfx::meta::TypeList< Alarme_externoView,
             touchgfx::meta::TypeList< Receita_TemperaturaView,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+            touchgfx::meta::TypeList< TELA_PRETAView,
+            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -170,7 +173,8 @@ public:
             touchgfx::meta::TypeList< refine_senha_secretoPresenter,
             touchgfx::meta::TypeList< Alarme_externoPresenter,
             touchgfx::meta::TypeList< Receita_TemperaturaPresenter,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+            touchgfx::meta::TypeList< TELA_PRETAPresenter,
+            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**

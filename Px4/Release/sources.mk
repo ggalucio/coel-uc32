@@ -155,6 +155,7 @@ TouchGFX/generated/gui_generated/src/resfriar_select_tempo_screen \
 TouchGFX/generated/gui_generated/src/resfriar_sonda_screen \
 TouchGFX/generated/gui_generated/src/resfriar_tempo_screen \
 TouchGFX/generated/gui_generated/src/tela_inicial_screen \
+TouchGFX/generated/gui_generated/src/tela_preta_screen \
 TouchGFX/generated/images/src \
 TouchGFX/generated/images/src/__designer \
 TouchGFX/generated/texts/src \
@@ -193,6 +194,7 @@ TouchGFX/gui/src/resfriar_select_tempo_screen \
 TouchGFX/gui/src/resfriar_sonda_screen \
 TouchGFX/gui/src/resfriar_tempo_screen \
 TouchGFX/gui/src/tela_inicial_screen \
+TouchGFX/gui/src/tela_preta_screen \
 TouchGFX/target \
 TouchGFX/target/generated \
 

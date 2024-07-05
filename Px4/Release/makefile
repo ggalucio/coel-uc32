@@ -11,6 +11,7 @@ RM := rm -rf
 -include sources.mk
 -include TouchGFX/target/generated/subdir.mk
 -include TouchGFX/target/subdir.mk
+-include TouchGFX/gui/src/tela_preta_screen/subdir.mk
 -include TouchGFX/gui/src/tela_inicial_screen/subdir.mk
 -include TouchGFX/gui/src/resfriar_tempo_screen/subdir.mk
 -include TouchGFX/gui/src/resfriar_sonda_screen/subdir.mk
@@ -49,6 +50,7 @@ RM := rm -rf
 -include TouchGFX/generated/texts/src/subdir.mk
 -include TouchGFX/generated/images/src/__designer/subdir.mk
 -include TouchGFX/generated/images/src/subdir.mk
+-include TouchGFX/generated/gui_generated/src/tela_preta_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/tela_inicial_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/resfriar_tempo_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/resfriar_sonda_screen/subdir.mk

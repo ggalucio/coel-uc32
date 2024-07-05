@@ -71,6 +71,8 @@
 #include <gui/alarme_externo_screen/Alarme_externoPresenter.hpp>
 #include <gui/receita_temperatura_screen/Receita_TemperaturaView.hpp>
 #include <gui/receita_temperatura_screen/Receita_TemperaturaPresenter.hpp>
+#include <gui/tela_preta_screen/TELA_PRETAView.hpp>
+#include <gui/tela_preta_screen/TELA_PRETAPresenter.hpp>
 
 using namespace touchgfx;
 

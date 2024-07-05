@@ -16151,6 +16151,204 @@ Discarded input sections
                 0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_inicial_screen/Tela_InicialViewBase.o
  .ARM.exidx.text._ZN8touchgfx3BoxC2Ev
                 0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_inicial_screen/Tela_InicialViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x28 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x28 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .group         0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text          0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .data          0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .bss           0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable13getFirstChildEv
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable13getFirstChildEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable13getFirstChildEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable4setXEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable4setXEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable4setXEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable4setYEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable4setYEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable4setYEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable8setWidthEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable8setWidthEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable8setWidthEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable9setHeightEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable9setHeightEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable9setHeightEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable20childGeometryChangedEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable20childGeometryChangedEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable20childGeometryChangedEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable16handleClickEventERKNS_10ClickEventE
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable16handleClickEventERKNS_10ClickEventE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable16handleClickEventERKNS_10ClickEventE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable18handleGestureEventERKNS_12GestureEventE
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable18handleGestureEventERKNS_12GestureEventE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable18handleGestureEventERKNS_12GestureEventE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable15handleDragEventERKNS_9DragEventE
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable15handleDragEventERKNS_9DragEventE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable15handleDragEventERKNS_9DragEventE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable15handleTickEventEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable15handleTickEventEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable15handleTickEventEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable6moveToEss
+                0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable6moveToEss
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable6moveToEss
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable14setupDrawChainERKNS_4RectEPPS0_
+                0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable14setupDrawChainERKNS_4RectEPPS0_
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable14setupDrawChainERKNS_4RectEPPS0_
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx6Screen11setupScreenEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen11setupScreenEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen11setupScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx6Screen15afterTransitionEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen15afterTransitionEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen15afterTransitionEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx6Screen14tearDownScreenEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen14tearDownScreenEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen14tearDownScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx6Screen15handleTickEventEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen15handleTickEventEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen15handleTickEventEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx6Widget12getLastChildEssPPNS_8DrawableE
+                0x0000000000000000       0x10 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Widget12getLastChildEssPPNS_8DrawableE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Widget12getLastChildEssPPNS_8DrawableE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx4ViewI19TELA_PRETAPresenterED2Ev
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx4ViewI19TELA_PRETAPresenterED2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx4ViewI19TELA_PRETAPresenterED2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN18TELA_PRETAViewBaseD2Ev
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN18TELA_PRETAViewBaseD2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN18TELA_PRETAViewBaseD2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN18TELA_PRETAViewBase11setupScreenEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN18TELA_PRETAViewBase11setupScreenEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN18TELA_PRETAViewBase11setupScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx4ViewI19TELA_PRETAPresenterED0Ev
+                0x0000000000000000        0xe TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx4ViewI19TELA_PRETAPresenterED0Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx4ViewI19TELA_PRETAPresenterED0Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN18TELA_PRETAViewBaseD0Ev
+                0x0000000000000000        0xe TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN18TELA_PRETAViewBaseD0Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN18TELA_PRETAViewBaseD0Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN18TELA_PRETAViewBase15afterTransitionEv
+                0x0000000000000000        0x6 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN18TELA_PRETAViewBase15afterTransitionEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN18TELA_PRETAViewBase15afterTransitionEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN18TELA_PRETAViewBase14tearDownScreenEv
+                0x0000000000000000        0xe TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN18TELA_PRETAViewBase14tearDownScreenEv
+                0x0000000000000000        0xc TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN18TELA_PRETAViewBase14tearDownScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx8Drawable14setWidthHeightEss
+                0x0000000000000000       0x1a TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable14setWidthHeightEss
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable14setWidthHeightEss
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN8touchgfx3BoxC2Ev
+                0x0000000000000000       0x2c TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN8touchgfx3BoxC2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN8touchgfx3BoxC2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .text._ZN18TELA_PRETAViewBaseC2Ev
+                0x0000000000000000       0x80 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.extab.text._ZN18TELA_PRETAViewBaseC2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.exidx.text._ZN18TELA_PRETAViewBaseC2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .rodata._ZTV18TELA_PRETAViewBase
+                0x0000000000000000       0x34 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .comment       0x0000000000000000       0x54 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
+ .ARM.attributes
+                0x0000000000000000       0x34 TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
  .text          0x0000000000000000        0x0 TouchGFX/generated/images/src/BitmapDatabase.o
  .data          0x0000000000000000        0x0 TouchGFX/generated/images/src/BitmapDatabase.o
  .bss           0x0000000000000000        0x0 TouchGFX/generated/images/src/BitmapDatabase.o
@@ -20257,6 +20455,92 @@ Discarded input sections
                 0x0000000000000000        0x0 TouchGFX/gui/src/tela_inicial_screen/Tela_InicialView.o
  .ARM.extab.text._ZN16Tela_InicialViewC2Ev
                 0x0000000000000000        0x0 TouchGFX/gui/src/tela_inicial_screen/Tela_InicialView.o
+ .group         0x0000000000000000       0x14 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .group         0x0000000000000000       0x28 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .text          0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .data          0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .bss           0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .text._ZN13ModelListener12changeScreenEi
+                0x0000000000000000        0x2 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.extab.text._ZN13ModelListener12changeScreenEi
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.exidx.text._ZN13ModelListener12changeScreenEi
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .text._ZN19TELA_PRETAPresenterD2Ev
+                0x0000000000000000        0x6 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.extab.text._ZN19TELA_PRETAPresenterD2Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.exidx.text._ZN19TELA_PRETAPresenterD2Ev
+                0x0000000000000000       0x10 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .text._ZN19TELA_PRETAPresenter8activateEv
+                0x0000000000000000        0x2 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.extab.text._ZN19TELA_PRETAPresenter8activateEv
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.exidx.text._ZN19TELA_PRETAPresenter8activateEv
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .text._ZN19TELA_PRETAPresenterD0Ev
+                0x0000000000000000       0x14 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.extab.text._ZN19TELA_PRETAPresenterD0Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.exidx.text._ZN19TELA_PRETAPresenterD0Ev
+                0x0000000000000000       0x10 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .text._ZN19TELA_PRETAPresenterC2ER14TELA_PRETAView
+                0x0000000000000000       0x1c TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.extab.text._ZN19TELA_PRETAPresenterC2ER14TELA_PRETAView
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.exidx.text._ZN19TELA_PRETAPresenterC2ER14TELA_PRETAView
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .rodata._ZTV19TELA_PRETAPresenter
+                0x0000000000000000       0x2c TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .comment       0x0000000000000000       0x54 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .ARM.attributes
+                0x0000000000000000       0x34 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+ .group         0x0000000000000000       0x14 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .group         0x0000000000000000       0x28 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .text          0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .data          0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .bss           0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x2 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.extab.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.exidx.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .text._ZN14TELA_PRETAViewD2Ev
+                0x0000000000000000        0x2 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.extab.text._ZN14TELA_PRETAViewD2Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.exidx.text._ZN14TELA_PRETAViewD2Ev
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .text._ZN14TELA_PRETAView11setupScreenEv
+                0x0000000000000000        0x4 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.extab.text._ZN14TELA_PRETAView11setupScreenEv
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.exidx.text._ZN14TELA_PRETAView11setupScreenEv
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .text._ZN14TELA_PRETAView14tearDownScreenEv
+                0x0000000000000000        0x4 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.extab.text._ZN14TELA_PRETAView14tearDownScreenEv
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.exidx.text._ZN14TELA_PRETAView14tearDownScreenEv
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .text._ZN14TELA_PRETAViewD0Ev
+                0x0000000000000000        0xe TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.extab.text._ZN14TELA_PRETAViewD0Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.exidx.text._ZN14TELA_PRETAViewD0Ev
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .text._ZN14TELA_PRETAViewC2Ev
+                0x0000000000000000       0x14 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.extab.text._ZN14TELA_PRETAViewC2Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.exidx.text._ZN14TELA_PRETAViewC2Ev
+                0x0000000000000000        0x8 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .rodata._ZTV14TELA_PRETAView
+                0x0000000000000000       0x34 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .comment       0x0000000000000000       0x54 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
+ .ARM.attributes
+                0x0000000000000000       0x34 TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
  .group         0x0000000000000000       0x28 TouchGFX/target/STM32TouchController.o
  .text          0x0000000000000000        0x0 TouchGFX/target/STM32TouchController.o
  .data          0x0000000000000000        0x0 TouchGFX/target/STM32TouchController.o
@@ -23329,6 +23613,7 @@ LOAD TouchGFX/generated/gui_generated/src/resfriar_select_tempo_screen/Resfriar_
 LOAD TouchGFX/generated/gui_generated/src/resfriar_sonda_screen/Resfriar_SONDAViewBase.o
 LOAD TouchGFX/generated/gui_generated/src/resfriar_tempo_screen/Resfriar_TEMPOViewBase.o
 LOAD TouchGFX/generated/gui_generated/src/tela_inicial_screen/Tela_InicialViewBase.o
+LOAD TouchGFX/generated/gui_generated/src/tela_preta_screen/TELA_PRETAViewBase.o
 LOAD TouchGFX/generated/images/src/BitmapDatabase.o
 LOAD TouchGFX/generated/images/src/image_AT_Coel_Main_1.o
 LOAD TouchGFX/generated/images/src/image_AT_splash.o
@@ -23535,6 +23820,8 @@ LOAD TouchGFX/gui/src/resfriar_tempo_screen/Resfriar_TEMPOPresenter.o
 LOAD TouchGFX/gui/src/resfriar_tempo_screen/Resfriar_TEMPOView.o
 LOAD TouchGFX/gui/src/tela_inicial_screen/Tela_InicialPresenter.o
 LOAD TouchGFX/gui/src/tela_inicial_screen/Tela_InicialView.o
+LOAD TouchGFX/gui/src/tela_preta_screen/TELA_PRETAPresenter.o
+LOAD TouchGFX/gui/src/tela_preta_screen/TELA_PRETAView.o
 LOAD TouchGFX/target/STM32TouchController.o
 LOAD TouchGFX/target/TouchGFXGPIO.o
 LOAD TouchGFX/target/TouchGFXHAL.o
@@ -28263,18 +28550,18 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008060da2        0xc TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060da2                touchgfx::Partition<touchgfx::meta::TypeList<Resfriar_SONDAView, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short) const
- .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
+ .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
                 0x0000000008060dae        0x4 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060dae                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::capacity() const
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
+                0x0000000008060dae                touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::capacity() const
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
                 0x0000000008060db2        0x4 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060db2                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element_size()
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+                0x0000000008060db2                touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element_size()
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008060db6        0x8 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060db6                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short)
- .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+                0x0000000008060db6                touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short)
+ .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008060dbe        0x8 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060dbe                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short) const
+                0x0000000008060dbe                touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short) const
  .text._ZN16FrontendHeapBase15gotoStartScreenER19FrontendApplication
                 0x0000000008060dc6        0x6 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060dc6                FrontendHeapBase::gotoStartScreen(FrontendApplication&)
@@ -28293,13 +28580,13 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008060e08       0x16 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060e08                touchgfx::Partition<touchgfx::meta::TypeList<Resfriar_SONDAView, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
  *fill*         0x0000000008060e1e        0x2 
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
                 0x0000000008060e20       0x14 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
-                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
+                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
+                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x0000000008060e34       0x14 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060e34                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
+                0x0000000008060e34                touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
  .text._ZN12FrontendHeapD2Ev
                 0x0000000008060e48       0x28 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060e48                FrontendHeap::~FrontendHeap()
@@ -30594,9 +30881,9 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .rodata._ZTV10STM32F7DMA
                 0x000000000807c2a4       0x50 TouchGFX/target/generated/STM32DMA.o
                 0x000000000807c2a4                vtable for STM32F7DMA
- .rodata._ZTVN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EEE
+ .rodata._ZTVN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EEE
                 0x000000000807c2f4       0x34 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x000000000807c2f4                vtable for touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>
+                0x000000000807c2f4                vtable for touchgfx::Partition<touchgfx::meta::TypeList<TELA_PRETAPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>
  .rodata._ZTVN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EEE
                 0x000000000807c328       0x34 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x000000000807c328                vtable for touchgfx::Partition<touchgfx::meta::TypeList<Resfriar_SONDAView, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>
@@ -31377,13 +31664,13 @@ FontSearchFlashSection
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
+ .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZN16FrontendHeapBase15gotoStartScreenER19FrontendApplication
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
@@ -31395,9 +31682,9 @@ FontSearchFlashSection
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZN12FrontendHeapD2Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
@@ -32352,16 +32639,16 @@ FontSearchFlashSection
  .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
+ .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN16FrontendHeapBase15gotoStartScreenER19FrontendApplication
@@ -32379,10 +32666,10 @@ FontSearchFlashSection
  .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI19TELA_PRETAPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN12FrontendHeapD2Ev
@@ -35969,9 +36256,8 @@ TextFlashSection
                 0x0000000090331354      0x980 TouchGFX/generated/texts/src/LanguageIt.o
                 0x0000000090331354                indicesIt
  TextFlashSection
-                0x0000000090331cd4     0x1446 TouchGFX/generated/texts/src/Texts.o
+                0x0000000090331cd4     0x1448 TouchGFX/generated/texts/src/Texts.o
                 0x0000000090331cd4                texts_all_languages
- *fill*         0x000000009033311a        0x2 
  TextFlashSection
                 0x000000009033311c      0x4d0 TouchGFX/generated/texts/src/TypedTextDatabase.o
                 0x000000009033311c                typedTextDatabaseArray
