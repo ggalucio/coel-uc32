@@ -24,9 +24,6 @@
 *.vcxproj.*
 *.vcxproj.filters
 
-# Ignore a pasta "generated" gerada pelo TouchGFX
-Px4/TouchGFX/generated/
-
 # Ignore arquivos de log
 log.txt
 log*.txt
