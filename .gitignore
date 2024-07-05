@@ -52,3 +52,5 @@ Debug/
 
 # STM32 git ignore
 *.mxproject
+
+#Scripty test
