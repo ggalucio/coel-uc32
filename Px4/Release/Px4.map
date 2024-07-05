@@ -12776,6 +12776,257 @@ Discarded input sections
  .comment       0x0000000000000000       0x54 TouchGFX/generated/gui_generated/src/receita_confirm_screen/Receita_confirmViewBase.o
  .ARM.attributes
                 0x0000000000000000       0x34 TouchGFX/generated/gui_generated/src/receita_confirm_screen/Receita_confirmViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x28 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x28 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x28 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .group         0x0000000000000000        0xc TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text          0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .data          0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .bss           0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable13getFirstChildEv
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable13getFirstChildEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable13getFirstChildEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable4setXEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable4setXEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable4setXEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable4setYEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable4setYEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable4setYEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable8setWidthEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable8setWidthEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable8setWidthEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable9setHeightEs
+                0x0000000000000000        0x4 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable9setHeightEs
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable9setHeightEs
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable20childGeometryChangedEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable20childGeometryChangedEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable20childGeometryChangedEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable16handleClickEventERKNS_10ClickEventE
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable16handleClickEventERKNS_10ClickEventE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable16handleClickEventERKNS_10ClickEventE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable18handleGestureEventERKNS_12GestureEventE
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable18handleGestureEventERKNS_12GestureEventE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable18handleGestureEventERKNS_12GestureEventE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable15handleDragEventERKNS_9DragEventE
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable15handleDragEventERKNS_9DragEventE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable15handleDragEventERKNS_9DragEventE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable15handleTickEventEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable15handleTickEventEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable15handleTickEventEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable6moveToEss
+                0x0000000000000000       0x18 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable6moveToEss
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable6moveToEss
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable14setupDrawChainERKNS_4RectEPPS0_
+                0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable14setupDrawChainERKNS_4RectEPPS0_
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable14setupDrawChainERKNS_4RectEPPS0_
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx6Screen11setupScreenEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen11setupScreenEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen11setupScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx6Screen15afterTransitionEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen15afterTransitionEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen15afterTransitionEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx6Screen14tearDownScreenEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen14tearDownScreenEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen14tearDownScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx6Screen15handleTickEventEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen15handleTickEventEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen15handleTickEventEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx9TypedTextD2Ev
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx9TypedTextD2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx9TypedTextD2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx6Widget12getLastChildEssPPNS_8DrawableE
+                0x0000000000000000       0x10 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx6Widget12getLastChildEssPPNS_8DrawableE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx6Widget12getLastChildEssPPNS_8DrawableE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx4ViewI28Receita_TemperaturaPresenterED2Ev
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx4ViewI28Receita_TemperaturaPresenterED2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx4ViewI28Receita_TemperaturaPresenterED2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN27Receita_TemperaturaViewBaseD2Ev
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN27Receita_TemperaturaViewBaseD2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN27Receita_TemperaturaViewBaseD2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN27Receita_TemperaturaViewBase11setupScreenEv
+                0x0000000000000000        0x2 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN27Receita_TemperaturaViewBase11setupScreenEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN27Receita_TemperaturaViewBase11setupScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx9TypedTextD0Ev
+                0x0000000000000000        0xe TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx9TypedTextD0Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx9TypedTextD0Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx4ViewI28Receita_TemperaturaPresenterED0Ev
+                0x0000000000000000        0xe TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx4ViewI28Receita_TemperaturaPresenterED0Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx4ViewI28Receita_TemperaturaPresenterED0Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN27Receita_TemperaturaViewBaseD0Ev
+                0x0000000000000000       0x10 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN27Receita_TemperaturaViewBaseD0Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN27Receita_TemperaturaViewBaseD0Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN27Receita_TemperaturaViewBase15afterTransitionEv
+                0x0000000000000000        0x6 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN27Receita_TemperaturaViewBase15afterTransitionEv
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN27Receita_TemperaturaViewBase15afterTransitionEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN27Receita_TemperaturaViewBase14tearDownScreenEv
+                0x0000000000000000        0xe TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN27Receita_TemperaturaViewBase14tearDownScreenEv
+                0x0000000000000000        0xc TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN27Receita_TemperaturaViewBase14tearDownScreenEv
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8DrawableC2Ev
+                0x0000000000000000       0x24 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8DrawableC2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8DrawableC2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable5setXYEss
+                0x0000000000000000       0x1a TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable5setXYEss
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable5setXYEss
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8Drawable11setPositionEssss
+                0x0000000000000000       0x26 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8Drawable11setPositionEssss
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8Drawable11setPositionEssss
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx8TextAreaC2Ev
+                0x0000000000000000       0x38 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx8TextAreaC2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx8TextAreaC2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx14AbstractButtonC2Ev
+                0x0000000000000000       0x2c TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx14AbstractButtonC2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx14AbstractButtonC2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx5ImageC2ERKNS_6BitmapE
+                0x0000000000000000       0x34 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx5ImageC2ERKNS_6BitmapE
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx5ImageC2ERKNS_6BitmapE
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN8touchgfx3BoxC2Ev
+                0x0000000000000000       0x28 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN8touchgfx3BoxC2Ev
+                0x0000000000000000        0x0 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN8touchgfx3BoxC2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .rodata._ZN27Receita_TemperaturaViewBaseC2Ev.str1.1
+                0x0000000000000000      0x109 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .text._ZN27Receita_TemperaturaViewBaseC2Ev
+                0x0000000000000000      0x8cc TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.extab.text._ZN27Receita_TemperaturaViewBaseC2Ev
+                0x0000000000000000        0xc TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.exidx.text._ZN27Receita_TemperaturaViewBaseC2Ev
+                0x0000000000000000        0x8 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .rodata._ZTVN8touchgfx9TypedTextE
+                0x0000000000000000       0x10 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .rodata._ZTV27Receita_TemperaturaViewBase
+                0x0000000000000000       0x34 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .comment       0x0000000000000000       0x54 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
+ .ARM.attributes
+                0x0000000000000000       0x34 TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
  .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receitas_1_edit_screen/Receitas_1_EDITViewBase.o
  .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receitas_1_edit_screen/Receitas_1_EDITViewBase.o
  .group         0x0000000000000000       0x14 TouchGFX/generated/gui_generated/src/receitas_1_edit_screen/Receitas_1_EDITViewBase.o
@@ -19021,6 +19272,92 @@ Discarded input sections
  .comment       0x0000000000000000       0x54 TouchGFX/gui/src/receita_confirm_screen/Receita_confirmView.o
  .ARM.attributes
                 0x0000000000000000       0x34 TouchGFX/gui/src/receita_confirm_screen/Receita_confirmView.o
+ .group         0x0000000000000000       0x14 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .group         0x0000000000000000       0x28 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .text          0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .data          0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .bss           0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .text._ZN13ModelListener12changeScreenEi
+                0x0000000000000000        0x2 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.extab.text._ZN13ModelListener12changeScreenEi
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.exidx.text._ZN13ModelListener12changeScreenEi
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .text._ZN28Receita_TemperaturaPresenterD2Ev
+                0x0000000000000000        0x6 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.extab.text._ZN28Receita_TemperaturaPresenterD2Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.exidx.text._ZN28Receita_TemperaturaPresenterD2Ev
+                0x0000000000000000       0x10 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .text._ZN28Receita_TemperaturaPresenter8activateEv
+                0x0000000000000000        0x2 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.extab.text._ZN28Receita_TemperaturaPresenter8activateEv
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.exidx.text._ZN28Receita_TemperaturaPresenter8activateEv
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .text._ZN28Receita_TemperaturaPresenterD0Ev
+                0x0000000000000000       0x14 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.extab.text._ZN28Receita_TemperaturaPresenterD0Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.exidx.text._ZN28Receita_TemperaturaPresenterD0Ev
+                0x0000000000000000       0x10 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .text._ZN28Receita_TemperaturaPresenterC2ER23Receita_TemperaturaView
+                0x0000000000000000       0x1c TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.extab.text._ZN28Receita_TemperaturaPresenterC2ER23Receita_TemperaturaView
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.exidx.text._ZN28Receita_TemperaturaPresenterC2ER23Receita_TemperaturaView
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .rodata._ZTV28Receita_TemperaturaPresenter
+                0x0000000000000000       0x2c TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .comment       0x0000000000000000       0x54 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .ARM.attributes
+                0x0000000000000000       0x34 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+ .group         0x0000000000000000       0x14 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .group         0x0000000000000000       0x28 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .text          0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .data          0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .bss           0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x2 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.extab.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.exidx.text._ZN8touchgfx6Screen14handleKeyEventEh
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .text._ZN23Receita_TemperaturaViewD2Ev
+                0x0000000000000000        0x2 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.extab.text._ZN23Receita_TemperaturaViewD2Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.exidx.text._ZN23Receita_TemperaturaViewD2Ev
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .text._ZN23Receita_TemperaturaView11setupScreenEv
+                0x0000000000000000        0x4 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.extab.text._ZN23Receita_TemperaturaView11setupScreenEv
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.exidx.text._ZN23Receita_TemperaturaView11setupScreenEv
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .text._ZN23Receita_TemperaturaView14tearDownScreenEv
+                0x0000000000000000        0x4 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.extab.text._ZN23Receita_TemperaturaView14tearDownScreenEv
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.exidx.text._ZN23Receita_TemperaturaView14tearDownScreenEv
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .text._ZN23Receita_TemperaturaViewD0Ev
+                0x0000000000000000       0x10 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.extab.text._ZN23Receita_TemperaturaViewD0Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.exidx.text._ZN23Receita_TemperaturaViewD0Ev
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .text._ZN23Receita_TemperaturaViewC2Ev
+                0x0000000000000000       0x14 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.extab.text._ZN23Receita_TemperaturaViewC2Ev
+                0x0000000000000000        0x0 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.exidx.text._ZN23Receita_TemperaturaViewC2Ev
+                0x0000000000000000        0x8 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .rodata._ZTV23Receita_TemperaturaView
+                0x0000000000000000       0x34 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .comment       0x0000000000000000       0x54 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
+ .ARM.attributes
+                0x0000000000000000       0x34 TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
  .group         0x0000000000000000       0x14 TouchGFX/gui/src/receitas_1_edit_screen/Receitas_1_EDITPresenter.o
  .group         0x0000000000000000       0x28 TouchGFX/gui/src/receitas_1_edit_screen/Receitas_1_EDITPresenter.o
  .text          0x0000000000000000        0x0 TouchGFX/gui/src/receitas_1_edit_screen/Receitas_1_EDITPresenter.o
@@ -22980,6 +23317,7 @@ LOAD TouchGFX/generated/gui_generated/src/degelo_confirmar_screen/Degelo_Confirm
 LOAD TouchGFX/generated/gui_generated/src/degelo_screen/DegeloViewBase.o
 LOAD TouchGFX/generated/gui_generated/src/inicializacao_screen/InicializacaoViewBase.o
 LOAD TouchGFX/generated/gui_generated/src/receita_confirm_screen/Receita_confirmViewBase.o
+LOAD TouchGFX/generated/gui_generated/src/receita_temperatura_screen/Receita_TemperaturaViewBase.o
 LOAD TouchGFX/generated/gui_generated/src/receitas_1_edit_screen/Receitas_1_EDITViewBase.o
 LOAD TouchGFX/generated/gui_generated/src/receitas_1_screen/Receitas_1ViewBase.o
 LOAD TouchGFX/generated/gui_generated/src/receitas_2_screen/Receitas_2ViewBase.o
@@ -23173,6 +23511,8 @@ LOAD TouchGFX/gui/src/inicializacao_screen/InicializacaoView.o
 LOAD TouchGFX/gui/src/model/Model.o
 LOAD TouchGFX/gui/src/receita_confirm_screen/Receita_confirmPresenter.o
 LOAD TouchGFX/gui/src/receita_confirm_screen/Receita_confirmView.o
+LOAD TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaPresenter.o
+LOAD TouchGFX/gui/src/receita_temperatura_screen/Receita_TemperaturaView.o
 LOAD TouchGFX/gui/src/receitas_1_edit_screen/Receitas_1_EDITPresenter.o
 LOAD TouchGFX/gui/src/receitas_1_edit_screen/Receitas_1_EDITView.o
 LOAD TouchGFX/gui/src/receitas_1_screen/Receitas_1Presenter.o
@@ -27923,18 +28263,18 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008060da2        0xc TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060da2                touchgfx::Partition<touchgfx::meta::TypeList<Resfriar_SONDAView, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short) const
- .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
+ .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
                 0x0000000008060dae        0x4 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060dae                touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::capacity() const
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
+                0x0000000008060dae                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::capacity() const
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
                 0x0000000008060db2        0x4 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060db2                touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element_size()
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+                0x0000000008060db2                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element_size()
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008060db6        0x8 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060db6                touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short)
- .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+                0x0000000008060db6                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short)
+ .text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008060dbe        0x8 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060dbe                touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short) const
+                0x0000000008060dbe                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::element(unsigned short) const
  .text._ZN16FrontendHeapBase15gotoStartScreenER19FrontendApplication
                 0x0000000008060dc6        0x6 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060dc6                FrontendHeapBase::gotoStartScreen(FrontendApplication&)
@@ -27953,13 +28293,13 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008060e08       0x16 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060e08                touchgfx::Partition<touchgfx::meta::TypeList<Resfriar_SONDAView, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
  *fill*         0x0000000008060e1e        0x2 
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
                 0x0000000008060e20       0x14 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
-                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
- .text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
+                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
+                0x0000000008060e20                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
+ .text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x0000000008060e34       0x14 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x0000000008060e34                touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
+                0x0000000008060e34                touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>::~Partition()
  .text._ZN12FrontendHeapD2Ev
                 0x0000000008060e48       0x28 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x0000000008060e48                FrontendHeap::~FrontendHeap()
@@ -30254,9 +30594,9 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .rodata._ZTV10STM32F7DMA
                 0x000000000807c2a4       0x50 TouchGFX/target/generated/STM32DMA.o
                 0x000000000807c2a4                vtable for STM32F7DMA
- .rodata._ZTVN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EEE
+ .rodata._ZTVN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EEE
                 0x000000000807c2f4       0x34 TouchGFX/target/generated/TouchGFXConfiguration.o
-                0x000000000807c2f4                vtable for touchgfx::Partition<touchgfx::meta::TypeList<Alarme_externoPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>
+                0x000000000807c2f4                vtable for touchgfx::Partition<touchgfx::meta::TypeList<Receita_TemperaturaPresenter, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>
  .rodata._ZTVN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EEE
                 0x000000000807c328       0x34 TouchGFX/target/generated/TouchGFXConfiguration.o
                 0x000000000807c328                vtable for touchgfx::Partition<touchgfx::meta::TypeList<Resfriar_SONDAView, touchgfx::meta::TypeList<touchgfx::meta::Nil, touchgfx::meta::Nil> >, (unsigned short)1>
@@ -31037,13 +31377,13 @@ FontSearchFlashSection
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
+ .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.extab.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZN16FrontendHeapBase15gotoStartScreenER19FrontendApplication
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
@@ -31055,9 +31395,9 @@ FontSearchFlashSection
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
- .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
+ .ARM.extab.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
  .ARM.extab.text._ZN12FrontendHeapD2Ev
                 0x00000000080802e8        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
@@ -32012,16 +32352,16 @@ FontSearchFlashSection
  .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
+ .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
+ .ARM.exidx.text._ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN16FrontendHeapBase15gotoStartScreenER19FrontendApplication
@@ -32039,10 +32379,10 @@ FontSearchFlashSection
  .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED2Ev
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
- .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
+ .ARM.exidx.text._ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev
                 0x0000000008080974        0x0 TouchGFX/target/generated/TouchGFXConfiguration.o
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN12FrontendHeapD2Ev
@@ -35614,37 +35954,38 @@ FontFlashSection
                 0x000000009032f6d4                . = ALIGN (0x4)
 
 TextFlashSection
-                0x000000009032f6d4     0x3d98
+                0x000000009032f6d4     0x3f18
  *(TextFlashSection TextFlashSection.*)
  TextFlashSection
-                0x000000009032f6d4      0x930 TouchGFX/generated/texts/src/LanguageEs.o
+                0x000000009032f6d4      0x980 TouchGFX/generated/texts/src/LanguageEs.o
                 0x000000009032f6d4                indicesEs
  TextFlashSection
-                0x0000000090330004      0x930 TouchGFX/generated/texts/src/LanguageFr.o
-                0x0000000090330004                indicesFr
+                0x0000000090330054      0x980 TouchGFX/generated/texts/src/LanguageFr.o
+                0x0000000090330054                indicesFr
  TextFlashSection
-                0x0000000090330934      0x930 TouchGFX/generated/texts/src/LanguageGb.o
-                0x0000000090330934                indicesGb
+                0x00000000903309d4      0x980 TouchGFX/generated/texts/src/LanguageGb.o
+                0x00000000903309d4                indicesGb
  TextFlashSection
-                0x0000000090331264      0x930 TouchGFX/generated/texts/src/LanguageIt.o
-                0x0000000090331264                indicesIt
+                0x0000000090331354      0x980 TouchGFX/generated/texts/src/LanguageIt.o
+                0x0000000090331354                indicesIt
  TextFlashSection
-                0x0000000090331b94     0x1430 TouchGFX/generated/texts/src/Texts.o
-                0x0000000090331b94                texts_all_languages
+                0x0000000090331cd4     0x1446 TouchGFX/generated/texts/src/Texts.o
+                0x0000000090331cd4                texts_all_languages
+ *fill*         0x000000009033311a        0x2 
  TextFlashSection
-                0x0000000090332fc4      0x4a8 TouchGFX/generated/texts/src/TypedTextDatabase.o
-                0x0000000090332fc4                typedTextDatabaseArray
-                0x0000000090332fd4                typedText_database_DEFAULT
+                0x000000009033311c      0x4d0 TouchGFX/generated/texts/src/TypedTextDatabase.o
+                0x000000009033311c                typedTextDatabaseArray
+                0x000000009033312c                typedText_database_DEFAULT
  *(.gnu.linkonce.r.*)
-                0x000000009033346c                . = ALIGN (0x4)
+                0x00000000903335ec                . = ALIGN (0x4)
 OUTPUT(Px4.elf elf32-littlearm)
 LOAD linker stubs
 LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a
 LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.rel.dyn        0x000000009033346c        0x0
- .rel.iplt      0x000000009033346c        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x00000000903335ec        0x0
+ .rel.iplt      0x00000000903335ec        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
 .comment        0x0000000000000000       0xd2
  .comment       0x0000000000000000       0x53 ADDITIONAL/GFX/AT_module_ext.o

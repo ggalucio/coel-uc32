@@ -143,6 +143,7 @@ TouchGFX/generated/gui_generated/src/degelo_confirmar_screen \
 TouchGFX/generated/gui_generated/src/degelo_screen \
 TouchGFX/generated/gui_generated/src/inicializacao_screen \
 TouchGFX/generated/gui_generated/src/receita_confirm_screen \
+TouchGFX/generated/gui_generated/src/receita_temperatura_screen \
 TouchGFX/generated/gui_generated/src/receitas_1_edit_screen \
 TouchGFX/generated/gui_generated/src/receitas_1_screen \
 TouchGFX/generated/gui_generated/src/receitas_2_screen \
@@ -180,6 +181,7 @@ TouchGFX/gui/src/degelo_screen \
 TouchGFX/gui/src/inicializacao_screen \
 TouchGFX/gui/src/model \
 TouchGFX/gui/src/receita_confirm_screen \
+TouchGFX/gui/src/receita_temperatura_screen \
 TouchGFX/gui/src/receitas_1_edit_screen \
 TouchGFX/gui/src/receitas_1_screen \
 TouchGFX/gui/src/receitas_2_screen \

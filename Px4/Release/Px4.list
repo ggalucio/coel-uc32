@@ -15,7 +15,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   5 .ARM          00000688  08080334  08080334  00050334  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  6 .preinit_array 00000000  080809bc  080809bc  003a346c  2**0
+  6 .preinit_array 00000000  080809bc  080809bc  003a35ec  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   7 .init_array   00000018  080809bc  080809bc  000509bc  2**2
                   CONTENTS, ALLOC, LOAD, DATA
@@ -35,17 +35,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  15 ._user_heap_stack 00000604  2002748c  080849bc  0006748c  2**0
                   ALLOC
- 16 .ARM.attributes 00000030  00000000  00000000  003a346c  2**0
+ 16 .ARM.attributes 00000030  00000000  00000000  003a35ec  2**0
                   CONTENTS, READONLY
  17 ExtFlashSection 002dc688  90000000  90000000  00070000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
  18 FontFlashSection 0005304c  902dc688  902dc688  0034c688  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 19 TextFlashSection 00003d98  9032f6d4  9032f6d4  0039f6d4  2**2
+ 19 TextFlashSection 00003f18  9032f6d4  9032f6d4  0039f6d4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 20 .comment      000000d2  00000000  00000000  003a349c  2**0
+ 20 .comment      000000d2  00000000  00000000  003a361c  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  000024c0  00000000  00000000  003a3570  2**2
+ 21 .debug_frame  000024c0  00000000  00000000  003a36f0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -53706,12 +53706,12 @@ Disassembly of section .text:
  8060608:	2001b6bc 	.word	0x2001b6bc
  806060c:	2001b6c4 	.word	0x2001b6c4
  8060610:	2001b6c0 	.word	0x2001b6c0
- 8060614:	90331b94 	.word	0x90331b94
+ 8060614:	90331cd4 	.word	0x90331cd4
  8060618:	0807bdb8 	.word	0x0807bdb8
- 806061c:	90332fc4 	.word	0x90332fc4
+ 806061c:	9033311c 	.word	0x9033311c
 
 08060620 <_ZN17TypedTextDatabase15getInstanceSizeEv>:
- 8060620:	f44f 7013 	mov.w	r0, #588	; 0x24c
+ 8060620:	f44f 7018 	mov.w	r0, #608	; 0x260
  8060624:	4770      	bx	lr
 	...
 
@@ -54645,20 +54645,20 @@ Disassembly of section .text:
  8060daa:	3008      	adds	r0, #8
  8060dac:	4770      	bx	lr
 
-08060dae <_ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv>:
+08060dae <_ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE8capacityEv>:
  8060dae:	2001      	movs	r0, #1
  8060db0:	4770      	bx	lr
 
-08060db2 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv>:
+08060db2 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE12element_sizeEv>:
  8060db2:	2010      	movs	r0, #16
  8060db4:	4770      	bx	lr
 
-08060db6 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt>:
+08060db6 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt>:
  8060db6:	eb00 1001 	add.w	r0, r0, r1, lsl #4
  8060dba:	3008      	adds	r0, #8
  8060dbc:	4770      	bx	lr
 
-08060dbe <_ZNK8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt>:
+08060dbe <_ZNK8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EE7elementEt>:
  8060dbe:	eb00 1001 	add.w	r0, r0, r1, lsl #4
  8060dc2:	3008      	adds	r0, #8
  8060dc4:	4770      	bx	lr
@@ -54708,8 +54708,8 @@ Disassembly of section .text:
  8060e1c:	bd10      	pop	{r4, pc}
 	...
 
-08060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>:
- 8060e20:	4b03      	ldr	r3, [pc, #12]	; (8060e30 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev+0x10>)
+08060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>:
+ 8060e20:	4b03      	ldr	r3, [pc, #12]	; (8060e30 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev+0x10>)
  8060e22:	b510      	push	{r4, lr}
  8060e24:	4604      	mov	r4, r0
  8060e26:	6003      	str	r3, [r0, #0]
@@ -54718,10 +54718,10 @@ Disassembly of section .text:
  8060e2e:	bd10      	pop	{r4, pc}
  8060e30:	0807c2fc 	.word	0x0807c2fc
 
-08060e34 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev>:
+08060e34 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED0Ev>:
  8060e34:	b510      	push	{r4, lr}
  8060e36:	4604      	mov	r4, r0
- 8060e38:	f7ff fff2 	bl	8060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>
+ 8060e38:	f7ff fff2 	bl	8060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>
  8060e3c:	2118      	movs	r1, #24
  8060e3e:	4620      	mov	r0, r4
  8060e40:	f012 f93d 	bl	80730be <_ZdlPvj>
@@ -54738,7 +54738,7 @@ Disassembly of section .text:
  8060e58:	f104 002c 	add.w	r0, r4, #44	; 0x2c
  8060e5c:	f7ff ffca 	bl	8060df4 <_ZN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EED1Ev>
  8060e60:	f104 0014 	add.w	r0, r4, #20
- 8060e64:	f7ff ffdc 	bl	8060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>
+ 8060e64:	f7ff ffdc 	bl	8060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>
  8060e68:	4620      	mov	r0, r4
  8060e6a:	bd10      	pop	{r4, pc}
  8060e6c:	0807c398 	.word	0x0807c398
@@ -54813,7 +54813,7 @@ Disassembly of section .text:
  8060f24:	480e      	ldr	r0, [pc, #56]	; (8060f60 <_ZN12FrontendHeap11getInstanceEv+0xc8>)
  8060f26:	f7ff ff65 	bl	8060df4 <_ZN8touchgfx9PartitionINS_4meta8TypeListI18Resfriar_SONDAViewNS2_INS1_3NilES4_EEEELt1EED1Ev>
  8060f2a:	480e      	ldr	r0, [pc, #56]	; (8060f64 <_ZN12FrontendHeap11getInstanceEv+0xcc>)
- 8060f2c:	f7ff ff78 	bl	8060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI23Alarme_externoPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>
+ 8060f2c:	f7ff ff78 	bl	8060e20 <_ZN8touchgfx9PartitionINS_4meta8TypeListI28Receita_TemperaturaPresenterNS2_INS1_3NilES4_EEEELt1EED1Ev>
  8060f30:	4803      	ldr	r0, [pc, #12]	; (8060f40 <_ZN12FrontendHeap11getInstanceEv+0xa8>)
  8060f32:	f012 fc32 	bl	807379a <__cxa_guard_abort>
  8060f36:	f012 f8c4 	bl	80730c2 <__cxa_end_cleanup>

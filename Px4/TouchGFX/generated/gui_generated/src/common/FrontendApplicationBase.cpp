@@ -69,6 +69,8 @@
 #include <gui/refine_senha_secreto_screen/refine_senha_secretoPresenter.hpp>
 #include <gui/alarme_externo_screen/Alarme_externoView.hpp>
 #include <gui/alarme_externo_screen/Alarme_externoPresenter.hpp>
+#include <gui/receita_temperatura_screen/Receita_TemperaturaView.hpp>
+#include <gui/receita_temperatura_screen/Receita_TemperaturaPresenter.hpp>
 
 using namespace touchgfx;
 

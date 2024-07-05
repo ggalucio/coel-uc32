@@ -125,6 +125,9 @@
     <ClCompile Include="..\..\gui\src\alarme_externo_screen\Alarme_externoPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\alarme_externo_screen\Alarme_externoView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\alarme_externo_screen\Alarme_externoViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\receita_temperatura_screen\Receita_TemperaturaPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\receita_temperatura_screen\Receita_TemperaturaView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\receita_temperatura_screen\Receita_TemperaturaViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -379,6 +382,9 @@
     <ClInclude Include="..\..\gui\include\gui\alarme_externo_screen\Alarme_externoPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\alarme_externo_screen\Alarme_externoView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\alarme_externo_screen\Alarme_externoViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\receita_temperatura_screen\Receita_TemperaturaPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\receita_temperatura_screen\Receita_TemperaturaView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\receita_temperatura_screen\Receita_TemperaturaViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

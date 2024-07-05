@@ -12554,6 +12554,692 @@
         "Name": "Alarme_externo",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "Name": "boxFundo",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 241,
+              "Green": 241,
+              "Blue": 242
+            },
+            "Alpha": 255,
+            "Name": "boxProcessOff",
+            "X": 5,
+            "Y": 64,
+            "Width": 392,
+            "Height": 196,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "Name": "boxFundoAzul",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 53,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "boxWithBorderBox3",
+            "X": 66,
+            "Y": 133,
+            "Width": 324,
+            "Height": 57,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "boxWithBorderBox2",
+            "X": 66,
+            "Y": 197,
+            "Width": 324,
+            "Height": 57,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderColor": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "BorderSize": 1,
+            "Alpha": 255,
+            "Name": "boxWithBorderBox1",
+            "X": 66,
+            "Y": 70,
+            "Width": 324,
+            "Height": 57,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "Name": "boxFundoAzul2",
+            "X": 181,
+            "Y": 105,
+            "Width": 105,
+            "Height": 19,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3940",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaUnidade2",
+            "X": 337,
+            "Y": 134,
+            "Width": 47,
+            "Height": 31,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3941",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaUnidade3",
+            "X": 337,
+            "Y": 199,
+            "Width": 47,
+            "Height": 31,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3942",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaUnidade1",
+            "X": 353,
+            "Y": 71,
+            "Width": 31,
+            "Height": 31,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3943",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaTitle",
+            "X": 5,
+            "Y": 8,
+            "Width": 161,
+            "Height": 37,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Button",
+            "Pressed": "voltar.png",
+            "Released": "voltar.png",
+            "Alpha": 255,
+            "Name": "buttonCancelarProcesso",
+            "X": 406,
+            "Y": 64,
+            "Width": 67,
+            "Height": 52,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ToggleButton",
+            "InitialStatePressed": false,
+            "Pressed": "csvOn.png",
+            "Released": "csvOff.png",
+            "Alpha": 255,
+            "Name": "toggleButtonFlagConservarSN",
+            "X": 405,
+            "Y": 208,
+            "Width": 68,
+            "Height": 52,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "vazio.png",
+            "Alpha": 255,
+            "Name": "imageVazio",
+            "X": 406,
+            "Y": 136,
+            "Width": 67,
+            "Height": 52,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "thermom.png",
+            "Alpha": 255,
+            "Name": "image1",
+            "X": 25,
+            "Y": 79,
+            "Width": 14,
+            "Height": 39,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "ampulheta.png",
+            "Alpha": 255,
+            "Name": "image2",
+            "X": 18,
+            "Y": 209,
+            "Width": 28,
+            "Height": 33,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "ampulheta.png",
+            "Alpha": 255,
+            "Name": "image3",
+            "X": 18,
+            "Y": 146,
+            "Width": 28,
+            "Height": 33,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3944",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaLabel1",
+            "X": 73,
+            "Y": 71,
+            "Width": 75,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3945",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaLabel2",
+            "X": 73,
+            "Y": 136,
+            "Width": 94,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3946",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaLabel3",
+            "X": 73,
+            "Y": 199,
+            "Width": 82,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3947",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId3948",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaTimerCountMinutos",
+            "X": 172,
+            "Y": 134,
+            "Width": 121,
+            "Height": 56,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3949",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId3950",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaTempoEstimadoReceitaTemprat",
+            "X": 172,
+            "Y": 199,
+            "Width": 121,
+            "Height": 55,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3951",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaFlagProcessoAndamento",
+            "X": 360,
+            "Y": 14,
+            "Width": 108,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3952",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId3953",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaTimerCongelarDecorridoCount",
+            "X": 328,
+            "Y": 165,
+            "Width": 56,
+            "Height": 18,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3954",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId3955",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textArea14515",
+            "X": 172,
+            "Y": 69,
+            "Width": 121,
+            "Height": 56,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3956",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId3957",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaTemperaturaReceitaAtual",
+            "X": 181,
+            "Y": 105,
+            "Width": 105,
+            "Height": 18,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId3958",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 243,
+              "Green": 120,
+              "Blue": 54
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId3959",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textArea14512",
+            "X": 328,
+            "Y": 102,
+            "Width": 56,
+            "Height": 18,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ScreenTransitionBegins",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerScreenTransitionBegins"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "ScreenTransitionEnds",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerScreenEntered"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "HandleTickEvent",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receita_Temperatura handleTickEvent"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "TearDownScreen",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receita_Temperatura tearDownScreen"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\nClearOthers();"
+            }
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "handleTickEvent",
+            "HasValue": false
+          },
+          {
+            "Name": "tearDownScreen",
+            "HasValue": false
+          }
+        ],
+        "Name": "Receita_Temperatura",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
       }
     ],
     "CustomContainerDefinitions": [
@@ -18540,6 +19226,86 @@
       },
       {
         "TextEntryId": "SingleUseId3939",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3940",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3941",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3942",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3943",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3944",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3945",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3946",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3947",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3948",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3949",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3950",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3951",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3952",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3953",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3954",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3955",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3956",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3957",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3958",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3959",
         "IsResource": false
       }
     ],
