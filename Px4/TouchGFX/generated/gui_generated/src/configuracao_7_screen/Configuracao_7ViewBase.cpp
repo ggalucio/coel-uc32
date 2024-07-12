@@ -64,6 +64,7 @@ Configuracao_7ViewBase::Configuracao_7ViewBase()
     textAreaLabel6.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3772));
 
     buttonTelaInicial.setXY(433, 220);
+    buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
 
     buttonConfiguracao6.setXY(8, 102);
     buttonConfiguracao6.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR2_ID), touchgfx::Bitmap(BITMAP_VOLTAR2_ID));

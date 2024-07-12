@@ -21,6 +21,9 @@ public:
     // Tela_Inicial
     void gotoTela_InicialScreenNoTransition();
 
+    // Configuracao
+    void gotoConfiguracaoScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -31,6 +34,9 @@ protected:
 
     // Tela_Inicial
     void gotoTela_InicialScreenNoTransitionImpl();
+
+    // Configuracao
+    void gotoConfiguracaoScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

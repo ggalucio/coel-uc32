@@ -11,6 +11,8 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/numpadContainer.hpp>
 
 class ConfiguracaoViewBase : public touchgfx::View<ConfiguracaoPresenter>
 {
@@ -24,6 +26,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -51,6 +54,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaSpCongelarTempo;
     touchgfx::TextAreaWithOneWildcard textAreaSpSondaCongelarCamara;
     touchgfx::TextAreaWithOneWildcard textAreaCongelarSondaSp;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonCongelarSondaSp;
+    numpadContainer numpadContainer1;
 
     /*
      * Wildcard Buffers
@@ -65,6 +70,22 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaCongelarSondaSpBuffer[TEXTAREACONGELARSONDASP_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<ConfiguracaoViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<ConfiguracaoViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<ConfiguracaoViewBase> numpadContainer1HandleCancelEventCallback;
+    touchgfx::Callback<ConfiguracaoViewBase, double> numpadContainer1HandleEnterEventCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numpadContainer1HandleCancelEventCallbackHandler();
+    void numpadContainer1HandleEnterEventCallbackHandler(double value);
 
 };
 

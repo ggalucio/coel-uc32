@@ -141,6 +141,8 @@ TouchGFX/generated/gui_generated/src/conservar_resfriar_screen \
 TouchGFX/generated/gui_generated/src/containers \
 TouchGFX/generated/gui_generated/src/degelo_confirmar_screen \
 TouchGFX/generated/gui_generated/src/degelo_screen \
+TouchGFX/generated/gui_generated/src/higiene_confirmar_screen \
+TouchGFX/generated/gui_generated/src/higiene_screen \
 TouchGFX/generated/gui_generated/src/inicializacao_screen \
 TouchGFX/generated/gui_generated/src/receita_confirm_screen \
 TouchGFX/generated/gui_generated/src/receita_temperatura_screen \
@@ -179,6 +181,8 @@ TouchGFX/gui/src/conservar_resfriar_screen \
 TouchGFX/gui/src/containers \
 TouchGFX/gui/src/degelo_confirmar_screen \
 TouchGFX/gui/src/degelo_screen \
+TouchGFX/gui/src/higiene_confirmar_screen \
+TouchGFX/gui/src/higiene_screen \
 TouchGFX/gui/src/inicializacao_screen \
 TouchGFX/gui/src/model \
 TouchGFX/gui/src/receita_confirm_screen \

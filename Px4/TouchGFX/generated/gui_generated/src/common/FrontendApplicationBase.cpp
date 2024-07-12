@@ -53,24 +53,28 @@
 #include <gui/receitas_3_screen/Receitas_3Presenter.hpp>
 #include <gui/receitas_1_edit_screen/Receitas_1_EDITView.hpp>
 #include <gui/receitas_1_edit_screen/Receitas_1_EDITPresenter.hpp>
-#include <gui/configuracao_4_screen/Configuracao_4View.hpp>
-#include <gui/configuracao_4_screen/Configuracao_4Presenter.hpp>
-#include <gui/configuracao_5_screen/Configuracao_5View.hpp>
-#include <gui/configuracao_5_screen/Configuracao_5Presenter.hpp>
-#include <gui/configuracao_6_screen/Configuracao_6View.hpp>
-#include <gui/configuracao_6_screen/Configuracao_6Presenter.hpp>
-#include <gui/configuracao_7_screen/Configuracao_7View.hpp>
-#include <gui/configuracao_7_screen/Configuracao_7Presenter.hpp>
-#include <gui/reset_fabrica_screen/RESET_FABRICAView.hpp>
-#include <gui/reset_fabrica_screen/RESET_FABRICAPresenter.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmView.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmPresenter.hpp>
+#include <gui/configuracao_4_screen/Configuracao_4View.hpp>
+#include <gui/configuracao_4_screen/Configuracao_4Presenter.hpp>
 #include <gui/refine_senha_secreto_screen/refine_senha_secretoView.hpp>
 #include <gui/refine_senha_secreto_screen/refine_senha_secretoPresenter.hpp>
 #include <gui/alarme_externo_screen/Alarme_externoView.hpp>
 #include <gui/alarme_externo_screen/Alarme_externoPresenter.hpp>
+#include <gui/configuracao_5_screen/Configuracao_5View.hpp>
+#include <gui/configuracao_5_screen/Configuracao_5Presenter.hpp>
 #include <gui/receita_temperatura_screen/Receita_TemperaturaView.hpp>
 #include <gui/receita_temperatura_screen/Receita_TemperaturaPresenter.hpp>
+#include <gui/configuracao_6_screen/Configuracao_6View.hpp>
+#include <gui/configuracao_6_screen/Configuracao_6Presenter.hpp>
+#include <gui/reset_fabrica_screen/RESET_FABRICAView.hpp>
+#include <gui/reset_fabrica_screen/RESET_FABRICAPresenter.hpp>
+#include <gui/higiene_confirmar_screen/HIGIENE_CONFIRMARView.hpp>
+#include <gui/higiene_confirmar_screen/HIGIENE_CONFIRMARPresenter.hpp>
+#include <gui/higiene_screen/HIGIENEView.hpp>
+#include <gui/higiene_screen/HIGIENEPresenter.hpp>
+#include <gui/configuracao_7_screen/Configuracao_7View.hpp>
+#include <gui/configuracao_7_screen/Configuracao_7Presenter.hpp>
 #include <gui/tela_preta_screen/TELA_PRETAView.hpp>
 #include <gui/tela_preta_screen/TELA_PRETAPresenter.hpp>
 
@@ -115,4 +119,17 @@ void FrontendApplicationBase::gotoTela_InicialScreenNoTransition()
 void FrontendApplicationBase::gotoTela_InicialScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Tela_InicialView, Tela_InicialPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Configuracao
+
+void FrontendApplicationBase::gotoConfiguracaoScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoConfiguracaoScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoConfiguracaoScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<ConfiguracaoView, ConfiguracaoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

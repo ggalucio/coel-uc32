@@ -27,6 +27,8 @@ RM := rm -rf
 -include TouchGFX/gui/src/receita_confirm_screen/subdir.mk
 -include TouchGFX/gui/src/model/subdir.mk
 -include TouchGFX/gui/src/inicializacao_screen/subdir.mk
+-include TouchGFX/gui/src/higiene_screen/subdir.mk
+-include TouchGFX/gui/src/higiene_confirmar_screen/subdir.mk
 -include TouchGFX/gui/src/degelo_screen/subdir.mk
 -include TouchGFX/gui/src/degelo_confirmar_screen/subdir.mk
 -include TouchGFX/gui/src/containers/subdir.mk
@@ -65,6 +67,8 @@ RM := rm -rf
 -include TouchGFX/generated/gui_generated/src/receita_temperatura_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/receita_confirm_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/inicializacao_screen/subdir.mk
+-include TouchGFX/generated/gui_generated/src/higiene_screen/subdir.mk
+-include TouchGFX/generated/gui_generated/src/higiene_confirmar_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/degelo_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/degelo_confirmar_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/containers/subdir.mk

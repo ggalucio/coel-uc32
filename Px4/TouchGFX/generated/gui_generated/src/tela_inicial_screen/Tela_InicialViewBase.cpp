@@ -5,7 +5,8 @@
 #include <touchgfx/Color.hpp>
 #include "BitmapDatabase.hpp"
 
-Tela_InicialViewBase::Tela_InicialViewBase()
+Tela_InicialViewBase::Tela_InicialViewBase() :
+    buttonCallback(this, &Tela_InicialViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -37,6 +38,7 @@ Tela_InicialViewBase::Tela_InicialViewBase()
 
     buttonSolicitacaoSenah.setXY(418, 15);
     buttonSolicitacaoSenah.setBitmaps(touchgfx::Bitmap(BITMAP_ENGREN_ID), touchgfx::Bitmap(BITMAP_ENGREN_ID));
+    buttonSolicitacaoSenah.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -76,4 +78,15 @@ void Tela_InicialViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Tela_InicialViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonSolicitacaoSenah)
+    {
+        //SolicitacaoSenha
+        //When buttonSolicitacaoSenah clicked change screen to Configuracao
+        //Go to Configuracao with no screen transition
+        application().gotoConfiguracaoScreenNoTransition();
+    }
 }

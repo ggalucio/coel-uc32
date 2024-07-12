@@ -63,6 +63,7 @@ Configuracao_3ViewBase::Configuracao_3ViewBase()
     textAreaLabel7.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3731));
 
     buttonTelaInicial.setXY(433, 220);
+    buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
 
     buttonConfiguracao4.setXY(443, 102);
     buttonConfiguracao4.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE2_ID), touchgfx::Bitmap(BITMAP_AVANCE2_ID));

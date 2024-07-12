@@ -6,7 +6,11 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-ConfiguracaoViewBase::ConfiguracaoViewBase()
+ConfiguracaoViewBase::ConfiguracaoViewBase() :
+    buttonCallback(this, &ConfiguracaoViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &ConfiguracaoViewBase::flexButtonCallbackHandler),
+    numpadContainer1HandleCancelEventCallback(this, &ConfiguracaoViewBase::numpadContainer1HandleCancelEventCallbackHandler),
+    numpadContainer1HandleEnterEventCallback(this, &ConfiguracaoViewBase::numpadContainer1HandleEnterEventCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -53,6 +57,8 @@ ConfiguracaoViewBase::ConfiguracaoViewBase()
     textAreaLabel5.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3689));
 
     buttonTelaInicial.setXY(433, 220);
+    buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     buttonConfiguracao2.setXY(443, 102);
     buttonConfiguracao2.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE2_ID), touchgfx::Bitmap(BITMAP_AVANCE2_ID));
@@ -88,6 +94,18 @@ ConfiguracaoViewBase::ConfiguracaoViewBase()
     textAreaCongelarSondaSp.setWildcard(textAreaCongelarSondaSpBuffer);
     textAreaCongelarSondaSp.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3677));
 
+    flexButtonCongelarSondaSp.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonCongelarSondaSp.setBorderSize(5);
+    flexButtonCongelarSondaSp.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonCongelarSondaSp.setPosition(26, 41, 78, 29);
+    flexButtonCongelarSondaSp.setAlpha(0);
+    flexButtonCongelarSondaSp.setAction(flexButtonCallback);
+
+    numpadContainer1.setXY(0, 0);
+    numpadContainer1.setVisible(false);
+    numpadContainer1.setHandleCancelEventCallback(numpadContainer1HandleCancelEventCallback);
+    numpadContainer1.setHandleEnterEventCallback(numpadContainer1HandleEnterEventCallback);
+
     add(__background);
     add(boxFundo);
     add(boxAzul4);
@@ -106,11 +124,40 @@ ConfiguracaoViewBase::ConfiguracaoViewBase()
     add(textAreaSpCongelarTempo);
     add(textAreaSpSondaCongelarCamara);
     add(textAreaCongelarSondaSp);
+    add(flexButtonCongelarSondaSp);
+    add(numpadContainer1);
 }
 
 void ConfiguracaoViewBase::setupScreen()
 {
+    numpadContainer1.initialize();
+}
 
+//Called when the screen transition ends
+void ConfiguracaoViewBase::afterTransition()
+{
+    //ScreenTransitionEnds
+    //When screen transition ends execute C++ code
+    //Execute C++ code
+    SoundBuzzerOn(25);
+    ContainerVisibility(&numpadContainer1, false);
+}
+
+void ConfiguracaoViewBase::numpadContainer1HandleCancelEventCallbackHandler()
+{
+    //CancelNumpad
+    //When numpadContainer1 handleCancelEvent execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&numpadContainer1, false);
+}
+
+void ConfiguracaoViewBase::numpadContainer1HandleEnterEventCallbackHandler(double value)
+{
+    //EnterNumpad
+    //When numpadContainer1 handleEnterEvent execute C++ code
+    //Execute C++ code
+    Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, value, _DOUBLE_, 1);
+    ContainerVisibility(&numpadContainer1, false);
 }
 
 void ConfiguracaoViewBase::handleTickEvent()
@@ -120,5 +167,35 @@ void ConfiguracaoViewBase::handleTickEvent()
 
 void ConfiguracaoViewBase::tearDownScreen()
 {
+    //TearDownScreen
+    //When tearDownScreen is called execute C++ code
+    //Execute C++ code
+    Clear();
+    ContainerClear(&numpadContainer1);
+    
+    RemoveAllNumpad();
+}
 
+void ConfiguracaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+}
+
+void ConfiguracaoViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButtonCongelarSondaSp)
+    {
+        //CongelarSondaSp
+        //When flexButtonCongelarSondaSp clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, 200, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
 }

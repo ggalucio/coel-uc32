@@ -33,7 +33,8 @@ void RefreshLineProgress(touchgfx::LineProgress* lineProgress);
 void VisibilityLineProgress(touchgfx::LineProgress* lineProgress, bool visibility);
 
 // TEXT AREA
-double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer,  uint16_t dstSize);
+void Update(touchgfx::Unicode::UnicodeChar* buffer, char* src, uint16_t dstSize);
+double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer, uint16_t dstSize);
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer);
 
 // COUNTER
