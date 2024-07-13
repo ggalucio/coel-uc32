@@ -54,6 +54,9 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaSpCongelarTempo;
     touchgfx::TextAreaWithOneWildcard textAreaSpSondaCongelarCamara;
     touchgfx::TextAreaWithOneWildcard textAreaCongelarSondaSp;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialCongelarTempo;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpCongelarTempo;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpSondaCongelarCamara;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonCongelarSondaSp;
     numpadContainer numpadContainer1;
 

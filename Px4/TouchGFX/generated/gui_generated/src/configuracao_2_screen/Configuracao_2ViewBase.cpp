@@ -6,7 +6,11 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Configuracao_2ViewBase::Configuracao_2ViewBase()
+Configuracao_2ViewBase::Configuracao_2ViewBase() :
+    buttonCallback(this, &Configuracao_2ViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Configuracao_2ViewBase::flexButtonCallbackHandler),
+    numpadContainer1HandleCancelEventCallback(this, &Configuracao_2ViewBase::numpadContainer1HandleCancelEventCallbackHandler),
+    numpadContainer1HandleEnterEventCallback(this, &Configuracao_2ViewBase::numpadContainer1HandleEnterEventCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -73,12 +77,15 @@ Configuracao_2ViewBase::Configuracao_2ViewBase()
 
     buttonTelaInicial.setXY(433, 220);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     buttonConfiguracao3.setXY(443, 102);
     buttonConfiguracao3.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE2_ID), touchgfx::Bitmap(BITMAP_AVANCE2_ID));
+    buttonConfiguracao3.setAction(buttonCallback);
 
     buttonConfiguracao.setXY(8, 102);
     buttonConfiguracao.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR2_ID), touchgfx::Bitmap(BITMAP_VOLTAR2_ID));
+    buttonConfiguracao.setAction(buttonCallback);
 
     textAreaDiferencialConservarResfriar.setPosition(66, 117, 78, 29);
     textAreaDiferencialConservarResfriar.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -129,6 +136,60 @@ Configuracao_2ViewBase::Configuracao_2ViewBase()
     textArea1410272.setWildcard(textArea1410272Buffer);
     textArea1410272.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3710));
 
+    flexButton1410270.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButton1410270.setBorderSize(5);
+    flexButton1410270.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1410270.setPosition(66, 226, 78, 29);
+    flexButton1410270.setAlpha(0);
+    flexButton1410270.setAction(flexButtonCallback);
+
+    flexButton1410275.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButton1410275.setBorderSize(5);
+    flexButton1410275.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1410275.setPosition(66, 192, 78, 29);
+    flexButton1410275.setAlpha(0);
+    flexButton1410275.setAction(flexButtonCallback);
+
+    flexButton1410272.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButton1410272.setBorderSize(5);
+    flexButton1410272.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1410272.setPosition(66, 158, 78, 29);
+    flexButton1410272.setAlpha(0);
+    flexButton1410272.setAction(flexButtonCallback);
+
+    flexButtonDiferencialConservarResfriar.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonDiferencialConservarResfriar.setBorderSize(5);
+    flexButtonDiferencialConservarResfriar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonDiferencialConservarResfriar.setPosition(66, 117, 78, 29);
+    flexButtonDiferencialConservarResfriar.setAlpha(0);
+    flexButtonDiferencialConservarResfriar.setAction(flexButtonCallback);
+
+    flexButtonSpConservarResfriar.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonSpConservarResfriar.setBorderSize(5);
+    flexButtonSpConservarResfriar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpConservarResfriar.setPosition(66, 83, 78, 29);
+    flexButtonSpConservarResfriar.setAlpha(0);
+    flexButtonSpConservarResfriar.setAction(flexButtonCallback);
+
+    flexButtonDiferencialConservarCongelar.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonDiferencialConservarCongelar.setBorderSize(5);
+    flexButtonDiferencialConservarCongelar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonDiferencialConservarCongelar.setPosition(66, 49, 78, 29);
+    flexButtonDiferencialConservarCongelar.setAlpha(0);
+    flexButtonDiferencialConservarCongelar.setAction(flexButtonCallback);
+
+    flexButtonSpConservarCongelar.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonSpConservarCongelar.setBorderSize(5);
+    flexButtonSpConservarCongelar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpConservarCongelar.setPosition(66, 15, 78, 29);
+    flexButtonSpConservarCongelar.setAlpha(0);
+    flexButtonSpConservarCongelar.setAction(flexButtonCallback);
+
+    numpadContainer1.setXY(0, 0);
+    numpadContainer1.setVisible(false);
+    numpadContainer1.setHandleCancelEventCallback(numpadContainer1HandleCancelEventCallback);
+    numpadContainer1.setHandleEnterEventCallback(numpadContainer1HandleEnterEventCallback);
+
     add(__background);
     add(boxFundo);
     add(boxVermelho3);
@@ -155,11 +216,45 @@ Configuracao_2ViewBase::Configuracao_2ViewBase()
     add(textArea1410270);
     add(textArea1410275);
     add(textArea1410272);
+    add(flexButton1410270);
+    add(flexButton1410275);
+    add(flexButton1410272);
+    add(flexButtonDiferencialConservarResfriar);
+    add(flexButtonSpConservarResfriar);
+    add(flexButtonDiferencialConservarCongelar);
+    add(flexButtonSpConservarCongelar);
+    add(numpadContainer1);
 }
 
 void Configuracao_2ViewBase::setupScreen()
 {
+    numpadContainer1.initialize();
+}
 
+//Called when the screen transition ends
+void Configuracao_2ViewBase::afterTransition()
+{
+    //ScreenTransitionEnds
+    //When screen transition ends execute C++ code
+    //Execute C++ code
+    SoundBuzzerOn(25);
+}
+
+void Configuracao_2ViewBase::numpadContainer1HandleCancelEventCallbackHandler()
+{
+    //CancelNumpad
+    //When numpadContainer1 handleCancelEvent execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&numpadContainer1, false);
+}
+
+void Configuracao_2ViewBase::numpadContainer1HandleEnterEventCallbackHandler(double value)
+{
+    //EnterNumpad
+    //When numpadContainer1 handleEnterEvent execute C++ code
+    //Execute C++ code
+    UpdateOutNumpad();
+    ContainerVisibility(&numpadContainer1, false);
 }
 
 void Configuracao_2ViewBase::handleTickEvent()
@@ -169,5 +264,102 @@ void Configuracao_2ViewBase::handleTickEvent()
 
 void Configuracao_2ViewBase::tearDownScreen()
 {
+    //TearDownScreen
+    //When tearDownScreen is called execute C++ code
+    //Execute C++ code
+    Clear();
+    ContainerClear(&numpadContainer1);
+    RemoveAllNumpad();
+}
 
+void Configuracao_2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao3)
+    {
+        //Configuracao3
+        //When buttonConfiguracao3 clicked change screen to Configuracao_3
+        //Go to Configuracao_3 with no screen transition
+        application().gotoConfiguracao_3ScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao)
+    {
+        //Configuracao
+        //When buttonConfiguracao clicked change screen to Configuracao
+        //Go to Configuracao with no screen transition
+        application().gotoConfiguracaoScreenNoTransition();
+    }
+}
+
+void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButton1410270)
+    {
+        //ADDR1410270
+        //When flexButton1410270 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButton1410275)
+    {
+        //ADDR1410275
+        //When flexButton1410275 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButton1410272)
+    {
+        //ADDR1410272
+        //When flexButton1410272 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonDiferencialConservarResfriar)
+    {
+        //DiferencialConservarResfriar
+        //When flexButtonDiferencialConservarResfriar clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonSpConservarResfriar)
+    {
+        //SpConservarResfriar
+        //When flexButtonSpConservarResfriar clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonDiferencialConservarCongelar)
+    {
+        //DiferencialConservarCongelar
+        //When flexButtonDiferencialConservarCongelar clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonSpConservarCongelar)
+    {
+        //SpConservarCongelar
+        //When flexButtonSpConservarCongelar clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
 }

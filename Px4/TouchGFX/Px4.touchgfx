@@ -2593,6 +2593,153 @@
                 "X": 0,
                 "Y": 0,
                 "Width": 78,
+                "Height": 28,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonDiferencialCongelarTempo",
+            "X": 26,
+            "Y": 160,
+            "Width": 78,
+            "Height": 28,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonSpCongelarTempo",
+            "X": 26,
+            "Y": 120,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 28,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonSpSondaCongelarCamara",
+            "X": 26,
+            "Y": 82,
+            "Width": 78,
+            "Height": 28,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
                 "Height": 29,
                 "LockToFlexButtonSize": true,
                 "BorderSize": 5,
@@ -2624,7 +2771,7 @@
             "Width": 78,
             "Height": 29,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -2639,7 +2786,7 @@
             "Width": 480,
             "Height": 272,
             "Visible": false,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -2689,7 +2836,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nContainerClear(&numpadContainer1);\r\n\r\nRemoveAllNumpad();"
+              "Code": "Clear();\r\nContainerClear(&numpadContainer1);\r\nRemoveAllNumpad();"
             }
           },
           {
@@ -2713,7 +2860,9 @@
               "TriggerComponent": "buttonConfiguracao2"
             },
             "Action": {
-              "Type": "ActionNone"
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Configuracao_2"
             }
           },
           {
@@ -2725,7 +2874,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumpadReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, 200, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumpadReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -2751,7 +2900,43 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, value, _DOUBLE_, 1);\r\nContainerVisibility(&numpadContainer1, false);"
+              "Code": "UpdateOutNumpad();\r\nContainerVisibility(&numpadContainer1, false);"
+            }
+          },
+          {
+            "InteractionName": "SpSondaCongelarCamara",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonSpSondaCongelarCamara"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "SpCongelarTempo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonSpCongelarTempo"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DiferencialCongelarTempo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonDiferencialCongelarTempo"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -7260,6 +7445,364 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButton1410270",
+            "X": 66,
+            "Y": 226,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButton1410275",
+            "X": 66,
+            "Y": 192,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButton1410272",
+            "X": 66,
+            "Y": 158,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonDiferencialConservarResfriar",
+            "X": 66,
+            "Y": 117,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonSpConservarResfriar",
+            "X": 66,
+            "Y": 83,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonDiferencialConservarCongelar",
+            "X": 66,
+            "Y": 49,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 78,
+                "Height": 29,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonSpConservarCongelar",
+            "X": 66,
+            "Y": 15,
+            "Width": 78,
+            "Height": 29,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "numpadContainer",
+            "Type": "CustomContainerInstance",
+            "Name": "numpadContainer1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -7280,7 +7823,8 @@
               "Type": "TriggerScreenEntered"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           },
           {
@@ -7302,7 +7846,157 @@
               "ActionCustomTypeName": "Call Configuracao_2 tearDownScreen"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\nContainerClear(&numpadContainer1);\r\nRemoveAllNumpad();"
+            }
+          },
+          {
+            "InteractionName": "TelaInicial",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "Configuracao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonConfiguracao"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Configuracao"
+            }
+          },
+          {
+            "InteractionName": "Configuracao3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonConfiguracao3"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Configuracao_3"
+            }
+          },
+          {
+            "InteractionName": "CancelNumpad",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "numpadContainer handleCancelEvent happens",
+              "TriggerComponent": "numpadContainer1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&numpadContainer1, false);"
+            }
+          },
+          {
+            "InteractionName": "EnterNumpad",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "numpadContainer handleEnterEvent happens",
+              "TriggerComponent": "numpadContainer1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "UpdateOutNumpad();\r\nContainerVisibility(&numpadContainer1, false);"
+            }
+          },
+          {
+            "InteractionName": "SpConservarCongelar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonSpConservarCongelar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DiferencialConservarCongelar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonDiferencialConservarCongelar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "SpConservarResfriar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonSpConservarResfriar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DiferencialConservarResfriar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonDiferencialConservarResfriar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ADDR1410272",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1410272"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ADDR1410275",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1410275"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ADDR1410270",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1410270"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "AddNumpadReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numpadContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           }
         ],

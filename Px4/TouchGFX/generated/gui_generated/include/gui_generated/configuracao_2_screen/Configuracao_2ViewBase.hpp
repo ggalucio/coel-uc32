@@ -11,6 +11,8 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/numpadContainer.hpp>
 
 class Configuracao_2ViewBase : public touchgfx::View<Configuracao_2Presenter>
 {
@@ -24,6 +26,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -59,6 +62,14 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea1410270;
     touchgfx::TextAreaWithOneWildcard textArea1410275;
     touchgfx::TextAreaWithOneWildcard textArea1410272;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410270;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410275;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410272;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialConservarResfriar;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpConservarResfriar;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialConservarCongelar;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpConservarCongelar;
+    numpadContainer numpadContainer1;
 
     /*
      * Wildcard Buffers
@@ -79,6 +90,22 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1410272Buffer[TEXTAREA1410272_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Configuracao_2ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Configuracao_2ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Configuracao_2ViewBase> numpadContainer1HandleCancelEventCallback;
+    touchgfx::Callback<Configuracao_2ViewBase, double> numpadContainer1HandleEnterEventCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numpadContainer1HandleCancelEventCallbackHandler();
+    void numpadContainer1HandleEnterEventCallbackHandler(double value);
 
 };
 

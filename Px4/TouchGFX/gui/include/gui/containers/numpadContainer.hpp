@@ -4,6 +4,7 @@
 #include <gui_generated/containers/numpadContainerBase.hpp>
 
 void AddNumpadReference(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* textBuffer, double min, double max, DataType dataType, uint8_t decimal, uint8_t id);
+void UpdateOutNumpad(void);
 void RemoveAllNumpad(void);
 
 class numpadContainer : public numpadContainerBase
@@ -13,18 +14,19 @@ public:
     virtual ~numpadContainer() {}
     virtual void initialize();
 
-    bool setRange(double min, double max);
-    void setInput(touchgfx::Unicode::UnicodeChar* inBuffer, DataType dataType, uint8_t decimal);
-    void loadInput(void);
+    friend void SetRangeNumpadContainer(numpadContainer &numpad, double min, double max);
+    friend void SetValueNumpadContainer(numpadContainer &numpad, double value, DataType dataType, uint8_t decimal);
+    friend void UpdateOutNumpad(void);
 
 protected:
-    touchgfx::Unicode::UnicodeChar* outBuffer;
-	DataType dataType;
-    uint8_t decimal;
 };
 
 typedef struct{
 	numpadContainer *numpad;
+	touchgfx::TextArea *textArea;
+	touchgfx::Unicode::UnicodeChar *buffer;
+	DataType dataType;
+	uint8_t decimal;
 }NumpadContainerItem;
 
 #endif // NUMPADCONTAINER_HPP

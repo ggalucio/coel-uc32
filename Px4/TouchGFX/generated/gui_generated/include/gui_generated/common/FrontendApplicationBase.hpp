@@ -24,6 +24,12 @@ public:
     // Configuracao
     void gotoConfiguracaoScreenNoTransition();
 
+    // Configuracao_2
+    void gotoConfiguracao_2ScreenNoTransition();
+
+    // Configuracao_3
+    void gotoConfiguracao_3ScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -37,6 +43,12 @@ protected:
 
     // Configuracao
     void gotoConfiguracaoScreenNoTransitionImpl();
+
+    // Configuracao_2
+    void gotoConfiguracao_2ScreenNoTransitionImpl();
+
+    // Configuracao_3
+    void gotoConfiguracao_3ScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP
