@@ -52,3 +52,4 @@ Debug/
 
 # STM32 git ignore
 *.mxproject
+!Px4/Middlewares/ST/touchgfx/framework/tools/**/*.out
