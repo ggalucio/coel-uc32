@@ -158,6 +158,13 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
 void Configuracao_6ViewBase::setupScreen()
 {
     numpadContainer1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textArea1410279, textArea1410279Buffer, 10.0, _DOUBLE_, 2);
+    Update(&textArea1410295, textArea1410295Buffer, 10.03, _DOUBLE_, 2);
+    Update(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);
+
 }
 
 //Called when the screen transition ends

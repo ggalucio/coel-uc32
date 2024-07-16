@@ -7,6 +7,9 @@
 C_SRCS += \
 C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/Resistive/resistiveTs.c 
 
+O_SRCS += \
+C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/Resistive/resistiveTs.o 
+
 C_DEPS += \
 ./APPLICAZIONE/Components/TouchDrivers/Resistive/resistiveTs.d 
 

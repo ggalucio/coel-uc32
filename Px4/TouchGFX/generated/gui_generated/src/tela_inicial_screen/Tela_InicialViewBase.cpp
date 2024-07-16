@@ -26,6 +26,7 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
 
     buttonReceitas.setXY(28, 204);
     buttonReceitas.setBitmaps(touchgfx::Bitmap(BITMAP_RECEITAS_ID), touchgfx::Bitmap(BITMAP_RECEITAS_ID));
+    buttonReceitas.setAction(buttonCallback);
 
     buttonResfriar.setXY(177, 63);
     buttonResfriar.setBitmaps(touchgfx::Bitmap(BITMAP_RESFRIAR_ID), touchgfx::Bitmap(BITMAP_RESFRIAR_ID));
@@ -82,7 +83,14 @@ void Tela_InicialViewBase::tearDownScreen()
 
 void Tela_InicialViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonSolicitacaoSenah)
+    if (&src == &buttonReceitas)
+    {
+        //Receitas
+        //When buttonReceitas clicked change screen to Receitas_1
+        //Go to Receitas_1 with no screen transition
+        application().gotoReceitas_1ScreenNoTransition();
+    }
+    else if (&src == &buttonSolicitacaoSenah)
     {
         //SolicitacaoSenha
         //When buttonSolicitacaoSenah clicked change screen to Configuracao

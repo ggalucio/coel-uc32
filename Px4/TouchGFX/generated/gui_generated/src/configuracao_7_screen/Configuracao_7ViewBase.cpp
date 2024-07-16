@@ -198,6 +198,16 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
 void Configuracao_7ViewBase::setupScreen()
 {
     numpadContainer1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _DOUBLE_, 1);
+    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _DOUBLE_, 1);
+    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _DOUBLE_, 1);
+    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _DOUBLE_, 1);
+    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _DOUBLE_, 1);
+    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _DOUBLE_, 0);
+
 }
 
 //Called when the screen transition ends

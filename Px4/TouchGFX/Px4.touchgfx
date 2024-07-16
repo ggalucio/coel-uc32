@@ -336,6 +336,19 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Configuracao"
             }
+          },
+          {
+            "InteractionName": "Receitas",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonReceitas"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_1"
+            }
           }
         ],
         "CustomActions": [
@@ -8770,7 +8783,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea1410291, textArea1410291Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
             }
           },
           {
@@ -9316,7 +9330,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3885",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita1Desc",
             "X": 69,
@@ -9345,7 +9359,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3887",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita2Desc",
             "X": 69,
@@ -9374,7 +9388,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3889",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita3Desc",
             "X": 69,
@@ -9403,7 +9417,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3891",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita4Desc",
             "X": 69,
@@ -9426,7 +9440,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(1);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\n\r\nSelectJob(4);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);"
             }
           },
           {
@@ -9462,6 +9477,116 @@
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
             }
+          },
+          {
+            "InteractionName": "TelaInicial",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "Receita2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonReceita2"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_2"
+            }
+          },
+          {
+            "InteractionName": "FlagEditReceita",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagEditReceita"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (\tradioButtonMuneroReceita1.getSelected() || \r\n\tradioButtonMuneroReceita2.getSelected() || \r\n\tradioButtonMuneroReceita3.getSelected() || \r\n\tradioButtonMuneroReceita4.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 1;"
+            }
+          },
+          {
+            "InteractionName": "FlagReceita1Interm",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagReceita1Interm"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "R1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(1);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita2"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(2);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita3"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(3);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R4",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita4"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(4);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ReceitaXEDIT",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_1 Receita_X_EDIT"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_X_EDIT"
+            }
           }
         ],
         "CustomActions": [
@@ -9471,6 +9596,10 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Receita_X_EDIT",
             "HasValue": false
           }
         ],
@@ -9852,7 +9981,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3894",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita5Desc",
             "X": 69,
@@ -9881,7 +10010,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3896",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita6Desc",
             "X": 69,
@@ -9910,7 +10039,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3898",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita7Desc",
             "X": 69,
@@ -9939,7 +10068,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3900",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita8Desc",
             "X": 69,
@@ -9962,7 +10091,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(5);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\n\r\nSelectJob(8);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);"
             }
           },
           {
@@ -9998,6 +10128,129 @@
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
             }
+          },
+          {
+            "InteractionName": "TelaInicial",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "Receita1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonReceita1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_1"
+            }
+          },
+          {
+            "InteractionName": "Receita3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonReceita3"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_3"
+            }
+          },
+          {
+            "InteractionName": "FlagEditReceita",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagEditReceita"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (\tradioButtonMuneroReceita5.getSelected() || \r\n\tradioButtonMuneroReceita6.getSelected() || \r\n\tradioButtonMuneroReceita7.getSelected() || \r\n\tradioButtonMuneroReceita8.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 2;"
+            }
+          },
+          {
+            "InteractionName": "FlagReceita1Interm",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagReceita1Interm"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "R5",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita5"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(5);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R6",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita6"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(6);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R7",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita7"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(7);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R8",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita8"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(8);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ReceitaXEDIT",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_2 Receita_X_EDIT"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_X_EDIT"
+            }
           }
         ],
         "CustomActions": [
@@ -10007,6 +10260,10 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Receita_X_EDIT",
             "HasValue": false
           }
         ],
@@ -10371,7 +10628,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3903",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita9Desc",
             "X": 69,
@@ -10400,7 +10657,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3905",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita10Desc",
             "X": 69,
@@ -10429,7 +10686,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3907",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita11Desc",
             "X": 69,
@@ -10458,7 +10715,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId3909",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textAreaReceita12Desc",
             "X": 69,
@@ -10481,7 +10738,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(9);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\n\r\nSelectJob(12);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);"
             }
           },
           {
@@ -10517,6 +10775,116 @@
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
             }
+          },
+          {
+            "InteractionName": "TelaInicial",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "Receita2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonReceita2"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_2"
+            }
+          },
+          {
+            "InteractionName": "FlagEditReceita",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagEditReceita"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (\tradioButtonMuneroReceita9.getSelected() || \r\n\tradioButtonMuneroReceita10.getSelected() || \r\n\tradioButtonMuneroReceita11.getSelected() || \r\n\tradioButtonMuneroReceita12.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 3;"
+            }
+          },
+          {
+            "InteractionName": "FlagReceita1Interm",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagReceita1Interm"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "R9",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita9"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(9);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R10",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita10"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(10);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R11",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita11"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(11);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "R12",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonMuneroReceita12"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SelectJob(12);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ReceitaXEDIT",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_3 Receita_X_EDIT"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_X_EDIT"
+            }
           }
         ],
         "CustomActions": [
@@ -10526,6 +10894,10 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Receita_X_EDIT",
             "HasValue": false
           }
         ],
@@ -10925,7 +11297,7 @@
             "Pressed": "salvar.png",
             "Released": "salvar.png",
             "Alpha": 255,
-            "Name": "button1",
+            "Name": "buttonSalvar",
             "X": 427,
             "Y": 222,
             "Width": 34,
@@ -11028,7 +11400,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "ReadJobName(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 20);"
             }
           },
           {
@@ -11047,7 +11420,7 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerWhen",
-              "ActionCustomTypeName": "Call Receitas_1_EDIT handleTickEvent"
+              "ActionCustomTypeName": "Call Receitas_X_EDIT handleTickEvent"
             },
             "Action": {
               "Type": "ActionExecuteCode"
@@ -11058,11 +11431,62 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerWhen",
-              "ActionCustomTypeName": "Call Receitas_1_EDIT tearDownScreen"
+              "ActionCustomTypeName": "Call Receitas_X_EDIT tearDownScreen"
             },
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Receita1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_X_EDIT Receitas_1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_1"
+            }
+          },
+          {
+            "InteractionName": "Receita2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_X_EDIT Receitas_2"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_2"
+            }
+          },
+          {
+            "InteractionName": "Receita3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_X_EDIT Receitas_3"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_3"
+            }
+          },
+          {
+            "InteractionName": "Salvar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonSalvar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (selectedRecipeListPage == 1)\r\n\tReceitas_1();\r\nelse if (selectedRecipeListPage == 2)\r\n\tReceitas_2();\r\nelse if (selectedRecipeListPage == 3)\r\n\tReceitas_3();"
             }
           }
         ],
@@ -11074,9 +11498,21 @@
           {
             "Name": "tearDownScreen",
             "HasValue": false
+          },
+          {
+            "Name": "Receitas_1",
+            "HasValue": false
+          },
+          {
+            "Name": "Receitas_2",
+            "HasValue": false
+          },
+          {
+            "Name": "Receitas_3",
+            "HasValue": false
           }
         ],
-        "Name": "Receitas_1_EDIT",
+        "Name": "Receitas_X_EDIT",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
       },
@@ -11699,7 +12135,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);"
             }
           },
           {
@@ -12774,7 +13211,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _DOUBLE_, 2);"
             }
           },
           {
@@ -14202,7 +14640,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea1410279, textArea1410279Buffer, 10.0, _DOUBLE_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _DOUBLE_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
             }
           },
           {
@@ -15855,7 +16294,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _DOUBLE_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _DOUBLE_, 0);"
             }
           },
           {

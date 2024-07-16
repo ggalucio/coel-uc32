@@ -148,6 +148,12 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
 void Configuracao_5ViewBase::setupScreen()
 {
     numpadContainer1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);
+    Update(&textArea1410299, textArea1410299Buffer, 0.0, _DOUBLE_, 2);
+
 }
 
 //Called when the screen transition ends

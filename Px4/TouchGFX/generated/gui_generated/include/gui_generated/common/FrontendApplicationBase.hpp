@@ -30,6 +30,18 @@ public:
     // Configuracao_3
     void gotoConfiguracao_3ScreenNoTransition();
 
+    // Receitas_1
+    void gotoReceitas_1ScreenNoTransition();
+
+    // Receitas_2
+    void gotoReceitas_2ScreenNoTransition();
+
+    // Receitas_3
+    void gotoReceitas_3ScreenNoTransition();
+
+    // Receitas_X_EDIT
+    void gotoReceitas_X_EDITScreenNoTransition();
+
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransition();
 
@@ -61,6 +73,18 @@ protected:
 
     // Configuracao_3
     void gotoConfiguracao_3ScreenNoTransitionImpl();
+
+    // Receitas_1
+    void gotoReceitas_1ScreenNoTransitionImpl();
+
+    // Receitas_2
+    void gotoReceitas_2ScreenNoTransitionImpl();
+
+    // Receitas_3
+    void gotoReceitas_3ScreenNoTransitionImpl();
+
+    // Receitas_X_EDIT
+    void gotoReceitas_X_EDITScreenNoTransitionImpl();
 
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransitionImpl();

@@ -118,6 +118,12 @@ Configuracao_4ViewBase::Configuracao_4ViewBase() :
 void Configuracao_4ViewBase::setupScreen()
 {
 
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);
+    Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);
+
 }
 
 //Called when the screen transition ends

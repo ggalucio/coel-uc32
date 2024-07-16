@@ -190,6 +190,15 @@ Configuracao_3ViewBase::Configuracao_3ViewBase() :
 void Configuracao_3ViewBase::setupScreen()
 {
     numpadContainer1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textArea1410291, textArea1410291Buffer, 0.0, _DOUBLE_, 1);
+    Update(&textArea1410248, textArea1410248Buffer, 0.0, _DOUBLE_, 1);
+    Update(&textArea1410249, textArea1410249Buffer, 0.0, _DOUBLE_, 1);
+    Update(&textArea1410250, textArea1410250Buffer, 0.0, _DOUBLE_, 1);
+    Update(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);
+
 }
 
 //Called when the screen transition ends
