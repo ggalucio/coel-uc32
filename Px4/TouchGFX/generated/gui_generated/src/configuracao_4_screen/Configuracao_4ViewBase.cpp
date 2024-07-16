@@ -6,7 +6,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Configuracao_4ViewBase::Configuracao_4ViewBase()
+Configuracao_4ViewBase::Configuracao_4ViewBase() :
+    buttonCallback(this, &Configuracao_4ViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -36,42 +37,51 @@ Configuracao_4ViewBase::Configuracao_4ViewBase()
     textAreaLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3737));
 
     buttonTelaInicial.setXY(433, 220);
+    buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     buttonConfiguracao5.setXY(443, 102);
     buttonConfiguracao5.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE2_ID), touchgfx::Bitmap(BITMAP_AVANCE2_ID));
+    buttonConfiguracao5.setAction(buttonCallback);
 
     buttonConfiguracao3.setXY(8, 102);
     buttonConfiguracao3.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR2_ID), touchgfx::Bitmap(BITMAP_VOLTAR2_ID));
+    buttonConfiguracao3.setAction(buttonCallback);
 
-    buttonWithLabelLogicaEntradaDigita2_2.setXY(168, 178);
-    buttonWithLabelLogicaEntradaDigita2_2.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
-    buttonWithLabelLogicaEntradaDigita2_2.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3736));
-    buttonWithLabelLogicaEntradaDigita2_2.setLabelColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
-    buttonWithLabelLogicaEntradaDigita2_2.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    buttonWithLabelLogicaEntradaDigita2Inverter.setXY(168, 178);
+    buttonWithLabelLogicaEntradaDigita2Inverter.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
+    buttonWithLabelLogicaEntradaDigita2Inverter.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3736));
+    buttonWithLabelLogicaEntradaDigita2Inverter.setLabelColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    buttonWithLabelLogicaEntradaDigita2Inverter.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    buttonWithLabelLogicaEntradaDigita2Inverter.setAction(buttonCallback);
 
-    buttonWithLabelLogicaEntradaDigita2_1.setXY(168, 142);
-    buttonWithLabelLogicaEntradaDigita2_1.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
-    buttonWithLabelLogicaEntradaDigita2_1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3735));
-    buttonWithLabelLogicaEntradaDigita2_1.setLabelColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
-    buttonWithLabelLogicaEntradaDigita2_1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital2Normal.setXY(168, 142);
+    buttonWithLabelLogicaEntradaDigital2Normal.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
+    buttonWithLabelLogicaEntradaDigital2Normal.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3735));
+    buttonWithLabelLogicaEntradaDigital2Normal.setLabelColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    buttonWithLabelLogicaEntradaDigital2Normal.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital2Normal.setAction(buttonCallback);
 
-    buttonWithLabelLogicaEntradaDigita2_0.setXY(168, 106);
-    buttonWithLabelLogicaEntradaDigita2_0.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
-    buttonWithLabelLogicaEntradaDigita2_0.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3734));
-    buttonWithLabelLogicaEntradaDigita2_0.setLabelColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
-    buttonWithLabelLogicaEntradaDigita2_0.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    buttonWithLabelLogicaEntradaDigital2Desabilitar.setXY(168, 106);
+    buttonWithLabelLogicaEntradaDigital2Desabilitar.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
+    buttonWithLabelLogicaEntradaDigital2Desabilitar.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3734));
+    buttonWithLabelLogicaEntradaDigital2Desabilitar.setLabelColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    buttonWithLabelLogicaEntradaDigital2Desabilitar.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    buttonWithLabelLogicaEntradaDigital2Desabilitar.setAction(buttonCallback);
 
-    buttonWithLabelLogicaEntradaDigita1_1.setXY(274, 31);
-    buttonWithLabelLogicaEntradaDigita1_1.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
-    buttonWithLabelLogicaEntradaDigita1_1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3733));
-    buttonWithLabelLogicaEntradaDigita1_1.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
-    buttonWithLabelLogicaEntradaDigita1_1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital1Inverter.setXY(274, 31);
+    buttonWithLabelLogicaEntradaDigital1Inverter.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
+    buttonWithLabelLogicaEntradaDigital1Inverter.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3733));
+    buttonWithLabelLogicaEntradaDigital1Inverter.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital1Inverter.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital1Inverter.setAction(buttonCallback);
 
-    buttonWithLabelLogicaEntradaDigita1_0.setXY(168, 31);
-    buttonWithLabelLogicaEntradaDigita1_0.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
-    buttonWithLabelLogicaEntradaDigita1_0.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3732));
-    buttonWithLabelLogicaEntradaDigita1_0.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
-    buttonWithLabelLogicaEntradaDigita1_0.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital1Normal.setXY(168, 31);
+    buttonWithLabelLogicaEntradaDigital1Normal.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2_ID), touchgfx::Bitmap(BITMAP_SETON2_ID));
+    buttonWithLabelLogicaEntradaDigital1Normal.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3732));
+    buttonWithLabelLogicaEntradaDigital1Normal.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital1Normal.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    buttonWithLabelLogicaEntradaDigital1Normal.setAction(buttonCallback);
 
     textAreaLogicaEntradaDigital2.setPosition(99, 106, 52, 33);
     textAreaLogicaEntradaDigital2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -96,11 +106,11 @@ Configuracao_4ViewBase::Configuracao_4ViewBase()
     add(buttonTelaInicial);
     add(buttonConfiguracao5);
     add(buttonConfiguracao3);
-    add(buttonWithLabelLogicaEntradaDigita2_2);
-    add(buttonWithLabelLogicaEntradaDigita2_1);
-    add(buttonWithLabelLogicaEntradaDigita2_0);
-    add(buttonWithLabelLogicaEntradaDigita1_1);
-    add(buttonWithLabelLogicaEntradaDigita1_0);
+    add(buttonWithLabelLogicaEntradaDigita2Inverter);
+    add(buttonWithLabelLogicaEntradaDigital2Normal);
+    add(buttonWithLabelLogicaEntradaDigital2Desabilitar);
+    add(buttonWithLabelLogicaEntradaDigital1Inverter);
+    add(buttonWithLabelLogicaEntradaDigital1Normal);
     add(textAreaLogicaEntradaDigital2);
     add(textAreaLogicaEntradaDigital1);
 }
@@ -110,6 +120,15 @@ void Configuracao_4ViewBase::setupScreen()
 
 }
 
+//Called when the screen transition ends
+void Configuracao_4ViewBase::afterTransition()
+{
+    //ScreenTransitionEnds
+    //When screen transition ends execute C++ code
+    //Execute C++ code
+    SoundBuzzerOn(25);
+}
+
 void Configuracao_4ViewBase::handleTickEvent()
 {
 
@@ -117,5 +136,73 @@ void Configuracao_4ViewBase::handleTickEvent()
 
 void Configuracao_4ViewBase::tearDownScreen()
 {
+    //TearDownScreen
+    //When tearDownScreen is called execute C++ code
+    //Execute C++ code
+    Clear();
+}
 
+void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao5)
+    {
+        //Configuracao5
+        //When buttonConfiguracao5 clicked change screen to Configuracao_5
+        //Go to Configuracao_5 with no screen transition
+        application().gotoConfiguracao_5ScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao3)
+    {
+        //Configuracao3
+        //When buttonConfiguracao3 clicked change screen to Configuracao_3
+        //Go to Configuracao_3 with no screen transition
+        application().gotoConfiguracao_3ScreenNoTransition();
+    }
+    else if (&src == &buttonWithLabelLogicaEntradaDigita2Inverter)
+    {
+        //LogicaEntradaDigital2Inverter
+        //When buttonWithLabelLogicaEntradaDigita2Inverter clicked execute C++ code
+        //Execute C++ code
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, -1, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonWithLabelLogicaEntradaDigital2Normal)
+    {
+        //LogicaEntradaDigital2Normal
+        //When buttonWithLabelLogicaEntradaDigital2Normal clicked execute C++ code
+        //Execute C++ code
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonWithLabelLogicaEntradaDigital2Desabilitar)
+    {
+        //LogicaEntradaDigital2Desabilitar
+        //When buttonWithLabelLogicaEntradaDigital2Desabilitar clicked execute C++ code
+        //Execute C++ code
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 0, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonWithLabelLogicaEntradaDigital1Inverter)
+    {
+        //LogicaEntradaDigital1Inverter
+        //When buttonWithLabelLogicaEntradaDigital1Inverter clicked execute C++ code
+        //Execute C++ code
+        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, -1, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonWithLabelLogicaEntradaDigital1Normal)
+    {
+        //LogicaEntradaDigital1Normal
+        //When buttonWithLabelLogicaEntradaDigital1Normal clicked execute C++ code
+        //Execute C++ code
+        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
 }

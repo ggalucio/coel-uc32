@@ -125,6 +125,30 @@
     <ClCompile Include="..\..\gui\src\alarme_externo_screen\Alarme_externoPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\alarme_externo_screen\Alarme_externoView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\alarme_externo_screen\Alarme_externoViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\receita_temperatura_screen\Receita_TemperaturaPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\receita_temperatura_screen\Receita_TemperaturaView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\receita_temperatura_screen\Receita_TemperaturaViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\tela_preta_screen\TELA_PRETAPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\tela_preta_screen\TELA_PRETAView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\tela_preta_screen\TELA_PRETAViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\higiene_confirmar_screen\HIGIENE_CONFIRMARPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\higiene_confirmar_screen\HIGIENE_CONFIRMARView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\higiene_confirmar_screen\HIGIENE_CONFIRMARViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\higiene_screen\HIGIENEPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\higiene_screen\HIGIENEView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\higiene_screen\HIGIENEViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\CANCELAR_PROCESSO.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\CANCELAR_PROCESSOBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Finalizar_Degelo.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\Finalizar_DegeloBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Finalizar_higiene.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\Finalizar_higieneBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Solicitar_senha.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\Solicitar_senhaBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\Receita_Info_resumo.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\Receita_Info_resumoBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\numpadContainer.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\numpadContainerBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -379,6 +403,30 @@
     <ClInclude Include="..\..\gui\include\gui\alarme_externo_screen\Alarme_externoPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\alarme_externo_screen\Alarme_externoView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\alarme_externo_screen\Alarme_externoViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\receita_temperatura_screen\Receita_TemperaturaPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\receita_temperatura_screen\Receita_TemperaturaView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\receita_temperatura_screen\Receita_TemperaturaViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\tela_preta_screen\TELA_PRETAPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\tela_preta_screen\TELA_PRETAView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\tela_preta_screen\TELA_PRETAViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\higiene_confirmar_screen\HIGIENE_CONFIRMARPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\higiene_confirmar_screen\HIGIENE_CONFIRMARView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\higiene_confirmar_screen\HIGIENE_CONFIRMARViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\higiene_screen\HIGIENEPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\higiene_screen\HIGIENEView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\higiene_screen\HIGIENEViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\CANCELAR_PROCESSO.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CANCELAR_PROCESSOBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Finalizar_Degelo.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Finalizar_DegeloBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Finalizar_higiene.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Finalizar_higieneBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Solicitar_senha.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Solicitar_senhaBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\Receita_Info_resumo.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Receita_Info_resumoBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\numpadContainer.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\numpadContainerBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

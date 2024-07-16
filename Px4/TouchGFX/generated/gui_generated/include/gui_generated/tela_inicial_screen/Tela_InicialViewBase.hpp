@@ -46,6 +46,16 @@ protected:
 
 private:
 
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Tela_InicialViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+
 };
 
 #endif // TELA_INICIALVIEWBASE_HPP

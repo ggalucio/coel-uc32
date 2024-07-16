@@ -113,8 +113,11 @@ TouchGFX/generated/gui_generated/src/conservar_resfriar_screen \
 TouchGFX/generated/gui_generated/src/containers \
 TouchGFX/generated/gui_generated/src/degelo_confirmar_screen \
 TouchGFX/generated/gui_generated/src/degelo_screen \
+TouchGFX/generated/gui_generated/src/higiene_confirmar_screen \
+TouchGFX/generated/gui_generated/src/higiene_screen \
 TouchGFX/generated/gui_generated/src/inicializacao_screen \
 TouchGFX/generated/gui_generated/src/receita_confirm_screen \
+TouchGFX/generated/gui_generated/src/receita_temperatura_screen \
 TouchGFX/generated/gui_generated/src/receitas_1_edit_screen \
 TouchGFX/generated/gui_generated/src/receitas_1_screen \
 TouchGFX/generated/gui_generated/src/receitas_2_screen \
@@ -126,6 +129,7 @@ TouchGFX/generated/gui_generated/src/resfriar_select_tempo_screen \
 TouchGFX/generated/gui_generated/src/resfriar_sonda_screen \
 TouchGFX/generated/gui_generated/src/resfriar_tempo_screen \
 TouchGFX/generated/gui_generated/src/tela_inicial_screen \
+TouchGFX/generated/gui_generated/src/tela_preta_screen \
 TouchGFX/generated/images/src \
 TouchGFX/generated/images/src/__designer \
 TouchGFX/generated/texts/src \
@@ -149,9 +153,12 @@ TouchGFX/gui/src/conservar_resfriar_screen \
 TouchGFX/gui/src/containers \
 TouchGFX/gui/src/degelo_confirmar_screen \
 TouchGFX/gui/src/degelo_screen \
+TouchGFX/gui/src/higiene_confirmar_screen \
+TouchGFX/gui/src/higiene_screen \
 TouchGFX/gui/src/inicializacao_screen \
 TouchGFX/gui/src/model \
 TouchGFX/gui/src/receita_confirm_screen \
+TouchGFX/gui/src/receita_temperatura_screen \
 TouchGFX/gui/src/receitas_1_edit_screen \
 TouchGFX/gui/src/receitas_1_screen \
 TouchGFX/gui/src/receitas_2_screen \
@@ -163,6 +170,7 @@ TouchGFX/gui/src/resfriar_select_tempo_screen \
 TouchGFX/gui/src/resfriar_sonda_screen \
 TouchGFX/gui/src/resfriar_tempo_screen \
 TouchGFX/gui/src/tela_inicial_screen \
+TouchGFX/gui/src/tela_preta_screen \
 TouchGFX/target \
 TouchGFX/target/generated \
 

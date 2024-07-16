@@ -11,6 +11,7 @@ RM := rm -rf
 -include sources.mk
 -include TouchGFX/target/generated/subdir.mk
 -include TouchGFX/target/subdir.mk
+-include TouchGFX/gui/src/tela_preta_screen/subdir.mk
 -include TouchGFX/gui/src/tela_inicial_screen/subdir.mk
 -include TouchGFX/gui/src/resfriar_tempo_screen/subdir.mk
 -include TouchGFX/gui/src/resfriar_sonda_screen/subdir.mk
@@ -22,9 +23,12 @@ RM := rm -rf
 -include TouchGFX/gui/src/receitas_2_screen/subdir.mk
 -include TouchGFX/gui/src/receitas_1_screen/subdir.mk
 -include TouchGFX/gui/src/receitas_1_edit_screen/subdir.mk
+-include TouchGFX/gui/src/receita_temperatura_screen/subdir.mk
 -include TouchGFX/gui/src/receita_confirm_screen/subdir.mk
 -include TouchGFX/gui/src/model/subdir.mk
 -include TouchGFX/gui/src/inicializacao_screen/subdir.mk
+-include TouchGFX/gui/src/higiene_screen/subdir.mk
+-include TouchGFX/gui/src/higiene_confirmar_screen/subdir.mk
 -include TouchGFX/gui/src/degelo_screen/subdir.mk
 -include TouchGFX/gui/src/degelo_confirmar_screen/subdir.mk
 -include TouchGFX/gui/src/containers/subdir.mk
@@ -48,6 +52,7 @@ RM := rm -rf
 -include TouchGFX/generated/texts/src/subdir.mk
 -include TouchGFX/generated/images/src/__designer/subdir.mk
 -include TouchGFX/generated/images/src/subdir.mk
+-include TouchGFX/generated/gui_generated/src/tela_preta_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/tela_inicial_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/resfriar_tempo_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/resfriar_sonda_screen/subdir.mk
@@ -59,8 +64,11 @@ RM := rm -rf
 -include TouchGFX/generated/gui_generated/src/receitas_2_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/receitas_1_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/receitas_1_edit_screen/subdir.mk
+-include TouchGFX/generated/gui_generated/src/receita_temperatura_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/receita_confirm_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/inicializacao_screen/subdir.mk
+-include TouchGFX/generated/gui_generated/src/higiene_screen/subdir.mk
+-include TouchGFX/generated/gui_generated/src/higiene_confirmar_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/degelo_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/degelo_confirmar_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/containers/subdir.mk

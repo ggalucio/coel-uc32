@@ -6,7 +6,11 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Configuracao_6ViewBase::Configuracao_6ViewBase()
+Configuracao_6ViewBase::Configuracao_6ViewBase() :
+    buttonCallback(this, &Configuracao_6ViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Configuracao_6ViewBase::flexButtonCallbackHandler),
+    numpadContainer1HandleCancelEventCallback(this, &Configuracao_6ViewBase::numpadContainer1HandleCancelEventCallbackHandler),
+    numpadContainer1HandleEnterEventCallback(this, &Configuracao_6ViewBase::numpadContainer1HandleEnterEventCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -55,21 +59,28 @@ Configuracao_6ViewBase::Configuracao_6ViewBase()
     textAreaLabel7.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3760));
 
     buttonTelaInicial.setXY(433, 220);
+    buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     buttonConfiguracao7.setXY(443, 102);
     buttonConfiguracao7.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE2_ID), touchgfx::Bitmap(BITMAP_AVANCE2_ID));
+    buttonConfiguracao7.setAction(buttonCallback);
 
     buttonConfiguracao5.setXY(8, 102);
     buttonConfiguracao5.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR2_ID), touchgfx::Bitmap(BITMAP_VOLTAR2_ID));
-
-    toggleButtonDegeloPortaAberta.setXY(70, 11);
-    toggleButtonDegeloPortaAberta.setBitmaps(touchgfx::Bitmap(BITMAP_B3_ID), touchgfx::Bitmap(BITMAP_B4_ID));
-
-    toggleButton14102650.setXY(72, 156);
-    toggleButton14102650.setBitmaps(touchgfx::Bitmap(BITMAP_A5_ID), touchgfx::Bitmap(BITMAP_A6_ID));
+    buttonConfiguracao5.setAction(buttonCallback);
 
     toggleButtonDegeloProcessoAutomatico.setXY(72, 193);
     toggleButtonDegeloProcessoAutomatico.setBitmaps(touchgfx::Bitmap(BITMAP_A3_ID), touchgfx::Bitmap(BITMAP_A4_ID));
+    toggleButtonDegeloProcessoAutomatico.setAction(buttonCallback);
+
+    toggleButton14102650.setXY(72, 156);
+    toggleButton14102650.setBitmaps(touchgfx::Bitmap(BITMAP_A5_ID), touchgfx::Bitmap(BITMAP_A6_ID));
+    toggleButton14102650.setAction(buttonCallback);
+
+    toggleButtonDegeloPortaAberta.setXY(70, 11);
+    toggleButtonDegeloPortaAberta.setBitmaps(touchgfx::Bitmap(BITMAP_B3_ID), touchgfx::Bitmap(BITMAP_B4_ID));
+    toggleButtonDegeloPortaAberta.setAction(buttonCallback);
 
     textArea1410294.setPosition(66, 117, 78, 29);
     textArea1410294.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -92,6 +103,32 @@ Configuracao_6ViewBase::Configuracao_6ViewBase()
     textArea1410279.setWildcard(textArea1410279Buffer);
     textArea1410279.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3765));
 
+    flexButton1410294.setBoxWithBorderPosition(0, 0, 66, 29);
+    flexButton1410294.setBorderSize(5);
+    flexButton1410294.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1410294.setPosition(72, 117, 66, 29);
+    flexButton1410294.setAlpha(0);
+    flexButton1410294.setAction(flexButtonCallback);
+
+    flexButton1410295.setBoxWithBorderPosition(0, 0, 66, 28);
+    flexButton1410295.setBorderSize(5);
+    flexButton1410295.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1410295.setPosition(72, 84, 66, 28);
+    flexButton1410295.setAlpha(0);
+    flexButton1410295.setAction(flexButtonCallback);
+
+    flexButton1410279.setBoxWithBorderPosition(0, 0, 66, 28);
+    flexButton1410279.setBorderSize(5);
+    flexButton1410279.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1410279.setPosition(72, 50, 66, 28);
+    flexButton1410279.setAlpha(0);
+    flexButton1410279.setAction(flexButtonCallback);
+
+    numpadContainer1.setXY(0, 0);
+    numpadContainer1.setVisible(false);
+    numpadContainer1.setHandleCancelEventCallback(numpadContainer1HandleCancelEventCallback);
+    numpadContainer1.setHandleEnterEventCallback(numpadContainer1HandleEnterEventCallback);
+
     add(__background);
     add(boxFundo);
     add(boxVerde4);
@@ -106,17 +143,47 @@ Configuracao_6ViewBase::Configuracao_6ViewBase()
     add(buttonTelaInicial);
     add(buttonConfiguracao7);
     add(buttonConfiguracao5);
-    add(toggleButtonDegeloPortaAberta);
-    add(toggleButton14102650);
     add(toggleButtonDegeloProcessoAutomatico);
+    add(toggleButton14102650);
+    add(toggleButtonDegeloPortaAberta);
     add(textArea1410294);
     add(textArea1410295);
     add(textArea1410279);
+    add(flexButton1410294);
+    add(flexButton1410295);
+    add(flexButton1410279);
+    add(numpadContainer1);
 }
 
 void Configuracao_6ViewBase::setupScreen()
 {
+    numpadContainer1.initialize();
+}
 
+//Called when the screen transition ends
+void Configuracao_6ViewBase::afterTransition()
+{
+    //ScreenTransitionEnds
+    //When screen transition ends execute C++ code
+    //Execute C++ code
+    SoundBuzzerOn(25);
+}
+
+void Configuracao_6ViewBase::numpadContainer1HandleCancelEventCallbackHandler()
+{
+    //CancelNumpad
+    //When numpadContainer1 handleCancelEvent execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&numpadContainer1, false);
+}
+
+void Configuracao_6ViewBase::numpadContainer1HandleEnterEventCallbackHandler(double value)
+{
+    //EnterNumpad
+    //When numpadContainer1 handleEnterEvent execute C++ code
+    //Execute C++ code
+    UpdateOutNumpad();
+    ContainerVisibility(&numpadContainer1, false);
 }
 
 void Configuracao_6ViewBase::handleTickEvent()
@@ -126,5 +193,87 @@ void Configuracao_6ViewBase::handleTickEvent()
 
 void Configuracao_6ViewBase::tearDownScreen()
 {
+    //TearDownScreen
+    //When tearDownScreen is called execute C++ code
+    //Execute C++ code
+    Clear();
+    ContainerClear(&numpadContainer1);
+    RemoveAllNumpad();
+}
 
+void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //Telainicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao7)
+    {
+        //Configuracao7
+        //When buttonConfiguracao7 clicked change screen to Configuracao_7
+        //Go to Configuracao_7 with no screen transition
+        application().gotoConfiguracao_7ScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao5)
+    {
+        //Configuracao5
+        //When buttonConfiguracao5 clicked change screen to Configuracao_5
+        //Go to Configuracao_5 with no screen transition
+        application().gotoConfiguracao_5ScreenNoTransition();
+    }
+    else if (&src == &toggleButtonDegeloProcessoAutomatico)
+    {
+        //DegeloProcessoAutomatico
+        //When toggleButtonDegeloProcessoAutomatico clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButton14102650)
+    {
+        //ADDR14102650
+        //When toggleButton14102650 clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonDegeloPortaAberta)
+    {
+        //DegeloPortaAberta
+        //When toggleButtonDegeloPortaAberta clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+}
+
+void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButton1410294)
+    {
+        //ADDR1410294
+        //When flexButton1410294 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButton1410295)
+    {
+        //ADDR1410295
+        //When flexButton1410295 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButton1410279)
+    {
+        //ADDR1410279
+        //When flexButton1410279 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
 }

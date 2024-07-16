@@ -120,6 +120,11 @@ void VisibilityLineProgress(touchgfx::LineProgress* lineProgress, bool visibilit
 
 /****************************************** TEXT AREA ************************************************************************/
 
+void Update(touchgfx::Unicode::UnicodeChar* buffer, char* src, uint16_t dstSize){
+	if (buffer)
+		touchgfx::Unicode::strncpy(buffer, src, dstSize);
+}
+
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer,  uint16_t dstSize){
 	if (pUnicodeCharToArrayChar){
 		if (pArrayCharToDouble){

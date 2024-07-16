@@ -21,6 +21,27 @@ public:
     // Tela_Inicial
     void gotoTela_InicialScreenNoTransition();
 
+    // Configuracao
+    void gotoConfiguracaoScreenNoTransition();
+
+    // Configuracao_2
+    void gotoConfiguracao_2ScreenNoTransition();
+
+    // Configuracao_3
+    void gotoConfiguracao_3ScreenNoTransition();
+
+    // Configuracao_4
+    void gotoConfiguracao_4ScreenNoTransition();
+
+    // Configuracao_5
+    void gotoConfiguracao_5ScreenNoTransition();
+
+    // Configuracao_6
+    void gotoConfiguracao_6ScreenNoTransition();
+
+    // Configuracao_7
+    void gotoConfiguracao_7ScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -31,6 +52,27 @@ protected:
 
     // Tela_Inicial
     void gotoTela_InicialScreenNoTransitionImpl();
+
+    // Configuracao
+    void gotoConfiguracaoScreenNoTransitionImpl();
+
+    // Configuracao_2
+    void gotoConfiguracao_2ScreenNoTransitionImpl();
+
+    // Configuracao_3
+    void gotoConfiguracao_3ScreenNoTransitionImpl();
+
+    // Configuracao_4
+    void gotoConfiguracao_4ScreenNoTransitionImpl();
+
+    // Configuracao_5
+    void gotoConfiguracao_5ScreenNoTransitionImpl();
+
+    // Configuracao_6
+    void gotoConfiguracao_6ScreenNoTransitionImpl();
+
+    // Configuracao_7
+    void gotoConfiguracao_7ScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP
