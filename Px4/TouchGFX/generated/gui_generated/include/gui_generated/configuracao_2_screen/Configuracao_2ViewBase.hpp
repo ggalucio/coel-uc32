@@ -55,13 +55,13 @@ protected:
     touchgfx::Button buttonTelaInicial;
     touchgfx::Button buttonConfiguracao3;
     touchgfx::Button buttonConfiguracao;
+    touchgfx::TextAreaWithOneWildcard textArea1410270;
+    touchgfx::TextAreaWithOneWildcard textArea1410275;
+    touchgfx::TextAreaWithOneWildcard textArea1410272;
     touchgfx::TextAreaWithOneWildcard textAreaDiferencialConservarResfriar;
     touchgfx::TextAreaWithOneWildcard textAreaSpConservarResfriar;
     touchgfx::TextAreaWithOneWildcard textAreaDiferencialConservarCongelar;
     touchgfx::TextAreaWithOneWildcard textAreaSpConservarCongelar;
-    touchgfx::TextAreaWithOneWildcard textArea1410270;
-    touchgfx::TextAreaWithOneWildcard textArea1410275;
-    touchgfx::TextAreaWithOneWildcard textArea1410272;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410270;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410275;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410272;
@@ -74,6 +74,12 @@ protected:
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREA1410270_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1410270Buffer[TEXTAREA1410270_SIZE];
+    static const uint16_t TEXTAREA1410275_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
+    static const uint16_t TEXTAREA1410272_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1410272Buffer[TEXTAREA1410272_SIZE];
     static const uint16_t TEXTAREADIFERENCIALCONSERVARRESFRIAR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaDiferencialConservarResfriarBuffer[TEXTAREADIFERENCIALCONSERVARRESFRIAR_SIZE];
     static const uint16_t TEXTAREASPCONSERVARRESFRIAR_SIZE = 10;
@@ -82,12 +88,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaDiferencialConservarCongelarBuffer[TEXTAREADIFERENCIALCONSERVARCONGELAR_SIZE];
     static const uint16_t TEXTAREASPCONSERVARCONGELAR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpConservarCongelarBuffer[TEXTAREASPCONSERVARCONGELAR_SIZE];
-    static const uint16_t TEXTAREA1410270_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410270Buffer[TEXTAREA1410270_SIZE];
-    static const uint16_t TEXTAREA1410275_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
-    static const uint16_t TEXTAREA1410272_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410272Buffer[TEXTAREA1410272_SIZE];
 
 private:
 

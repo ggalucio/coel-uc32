@@ -13,6 +13,8 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/numpadContainer.hpp>
 
 class Configuracao_3ViewBase : public touchgfx::View<Configuracao_3Presenter>
 {
@@ -26,6 +28,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -52,15 +55,23 @@ protected:
     touchgfx::Button buttonConfiguracao4;
     touchgfx::Button buttonConfiguracao2;
     touchgfx::ToggleButton toggleButtonHSW4;
+    touchgfx::TextAreaWithOneWildcard textArea1410275;
     touchgfx::TextAreaWithOneWildcard textArea1410250;
     touchgfx::TextAreaWithOneWildcard textArea1410249;
     touchgfx::TextAreaWithOneWildcard textArea1410248;
     touchgfx::TextAreaWithOneWildcard textArea1410291;
-    touchgfx::TextAreaWithOneWildcard textArea1410275;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410275;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410250;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410249;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410248;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410291;
+    numpadContainer numpadContainer1;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREA1410275_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
     static const uint16_t TEXTAREA1410250_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410250Buffer[TEXTAREA1410250_SIZE];
     static const uint16_t TEXTAREA1410249_SIZE = 10;
@@ -69,10 +80,24 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1410248Buffer[TEXTAREA1410248_SIZE];
     static const uint16_t TEXTAREA1410291_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410291Buffer[TEXTAREA1410291_SIZE];
-    static const uint16_t TEXTAREA1410275_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Configuracao_3ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Configuracao_3ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Configuracao_3ViewBase> numpadContainer1HandleCancelEventCallback;
+    touchgfx::Callback<Configuracao_3ViewBase, double> numpadContainer1HandleEnterEventCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numpadContainer1HandleCancelEventCallbackHandler();
+    void numpadContainer1HandleEnterEventCallbackHandler(double value);
 
 };
 

@@ -159,3 +159,55 @@ void FrontendApplicationBase::gotoConfiguracao_3ScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Configuracao_3View, Configuracao_3Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
+
+// Configuracao_4
+
+void FrontendApplicationBase::gotoConfiguracao_4ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoConfiguracao_4ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoConfiguracao_4ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Configuracao_4View, Configuracao_4Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Configuracao_5
+
+void FrontendApplicationBase::gotoConfiguracao_5ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoConfiguracao_5ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoConfiguracao_5ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Configuracao_5View, Configuracao_5Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Configuracao_6
+
+void FrontendApplicationBase::gotoConfiguracao_6ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoConfiguracao_6ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoConfiguracao_6ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Configuracao_6View, Configuracao_6Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Configuracao_7
+
+void FrontendApplicationBase::gotoConfiguracao_7ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoConfiguracao_7ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoConfiguracao_7ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Configuracao_7View, Configuracao_7Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}

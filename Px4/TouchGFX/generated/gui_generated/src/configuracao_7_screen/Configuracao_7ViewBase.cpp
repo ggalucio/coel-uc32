@@ -6,7 +6,11 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Configuracao_7ViewBase::Configuracao_7ViewBase()
+Configuracao_7ViewBase::Configuracao_7ViewBase() :
+    buttonCallback(this, &Configuracao_7ViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Configuracao_7ViewBase::flexButtonCallbackHandler),
+    numpadContainer1HandleCancelEventCallback(this, &Configuracao_7ViewBase::numpadContainer1HandleCancelEventCallbackHandler),
+    numpadContainer1HandleEnterEventCallback(this, &Configuracao_7ViewBase::numpadContainer1HandleEnterEventCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -65,9 +69,25 @@ Configuracao_7ViewBase::Configuracao_7ViewBase()
 
     buttonTelaInicial.setXY(433, 220);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     buttonConfiguracao6.setXY(8, 102);
     buttonConfiguracao6.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR2_ID), touchgfx::Bitmap(BITMAP_VOLTAR2_ID));
+    buttonConfiguracao6.setAction(buttonCallback);
+
+    textAreaPorcResfPresetTempoF1F2.setPosition(66, 192, 78, 29);
+    textAreaPorcResfPresetTempoF1F2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaPorcResfPresetTempoF1F2.setLinespacing(0);
+    Unicode::snprintf(textAreaPorcResfPresetTempoF1F2Buffer, TEXTAREAPORCRESFPRESETTEMPOF1F2_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3785).getText());
+    textAreaPorcResfPresetTempoF1F2.setWildcard(textAreaPorcResfPresetTempoF1F2Buffer);
+    textAreaPorcResfPresetTempoF1F2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3784));
+
+    textAreaDiferencialResfriarTempo.setPosition(66, 158, 78, 29);
+    textAreaDiferencialResfriarTempo.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaDiferencialResfriarTempo.setLinespacing(0);
+    Unicode::snprintf(textAreaDiferencialResfriarTempoBuffer, TEXTAREADIFERENCIALRESFRIARTEMPO_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3787).getText());
+    textAreaDiferencialResfriarTempo.setWildcard(textAreaDiferencialResfriarTempoBuffer);
+    textAreaDiferencialResfriarTempo.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3786));
 
     textAreaSpSondaResfCamara.setPosition(66, 117, 78, 29);
     textAreaSpSondaResfCamara.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -97,19 +117,52 @@ Configuracao_7ViewBase::Configuracao_7ViewBase()
     textAreaSpResfEspetoF1.setWildcard(textAreaSpResfEspetoF1Buffer);
     textAreaSpResfEspetoF1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3780));
 
-    textAreaPorcResfPresetTempoF1F2.setPosition(66, 192, 78, 29);
-    textAreaPorcResfPresetTempoF1F2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaPorcResfPresetTempoF1F2.setLinespacing(0);
-    Unicode::snprintf(textAreaPorcResfPresetTempoF1F2Buffer, TEXTAREAPORCRESFPRESETTEMPOF1F2_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3785).getText());
-    textAreaPorcResfPresetTempoF1F2.setWildcard(textAreaPorcResfPresetTempoF1F2Buffer);
-    textAreaPorcResfPresetTempoF1F2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3784));
+    flexButtonPorcResfPresetTempoF1F2.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonPorcResfPresetTempoF1F2.setBorderSize(5);
+    flexButtonPorcResfPresetTempoF1F2.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonPorcResfPresetTempoF1F2.setPosition(66, 192, 78, 29);
+    flexButtonPorcResfPresetTempoF1F2.setAlpha(0);
+    flexButtonPorcResfPresetTempoF1F2.setAction(flexButtonCallback);
 
-    textAreaDiferencialResfriarTempo.setPosition(66, 158, 78, 29);
-    textAreaDiferencialResfriarTempo.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaDiferencialResfriarTempo.setLinespacing(0);
-    Unicode::snprintf(textAreaDiferencialResfriarTempoBuffer, TEXTAREADIFERENCIALRESFRIARTEMPO_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3787).getText());
-    textAreaDiferencialResfriarTempo.setWildcard(textAreaDiferencialResfriarTempoBuffer);
-    textAreaDiferencialResfriarTempo.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3786));
+    flexButtonDiferencialResfriarTempo.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonDiferencialResfriarTempo.setBorderSize(5);
+    flexButtonDiferencialResfriarTempo.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonDiferencialResfriarTempo.setPosition(66, 158, 78, 29);
+    flexButtonDiferencialResfriarTempo.setAlpha(0);
+    flexButtonDiferencialResfriarTempo.setAction(flexButtonCallback);
+
+    flexButtonSpSondaResfCamara.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonSpSondaResfCamara.setBorderSize(5);
+    flexButtonSpSondaResfCamara.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpSondaResfCamara.setPosition(66, 117, 78, 29);
+    flexButtonSpSondaResfCamara.setAlpha(0);
+    flexButtonSpSondaResfCamara.setAction(flexButtonCallback);
+
+    flexButtonSpResfriarSonda.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonSpResfriarSonda.setBorderSize(5);
+    flexButtonSpResfriarSonda.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpResfriarSonda.setPosition(66, 83, 78, 29);
+    flexButtonSpResfriarSonda.setAlpha(0);
+    flexButtonSpResfriarSonda.setAction(flexButtonCallback);
+
+    flexButtonSpResfInternoF1.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonSpResfInternoF1.setBorderSize(5);
+    flexButtonSpResfInternoF1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpResfInternoF1.setPosition(66, 49, 78, 29);
+    flexButtonSpResfInternoF1.setAlpha(0);
+    flexButtonSpResfInternoF1.setAction(flexButtonCallback);
+
+    flexButtonSpResfEspetoF1.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonSpResfEspetoF1.setBorderSize(5);
+    flexButtonSpResfEspetoF1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpResfEspetoF1.setPosition(66, 15, 78, 29);
+    flexButtonSpResfEspetoF1.setAlpha(0);
+    flexButtonSpResfEspetoF1.setAction(flexButtonCallback);
+
+    numpadContainer1.setXY(0, 0);
+    numpadContainer1.setVisible(false);
+    numpadContainer1.setHandleCancelEventCallback(numpadContainer1HandleCancelEventCallback);
+    numpadContainer1.setHandleEnterEventCallback(numpadContainer1HandleEnterEventCallback);
 
     add(__background);
     add(boxFundo);
@@ -127,17 +180,50 @@ Configuracao_7ViewBase::Configuracao_7ViewBase()
     add(textAreaLabel6);
     add(buttonTelaInicial);
     add(buttonConfiguracao6);
+    add(textAreaPorcResfPresetTempoF1F2);
+    add(textAreaDiferencialResfriarTempo);
     add(textAreaSpSondaResfCamara);
     add(textAreaSpResfriarSonda);
     add(textAreaSpResfInternoF1);
     add(textAreaSpResfEspetoF1);
-    add(textAreaPorcResfPresetTempoF1F2);
-    add(textAreaDiferencialResfriarTempo);
+    add(flexButtonPorcResfPresetTempoF1F2);
+    add(flexButtonDiferencialResfriarTempo);
+    add(flexButtonSpSondaResfCamara);
+    add(flexButtonSpResfriarSonda);
+    add(flexButtonSpResfInternoF1);
+    add(flexButtonSpResfEspetoF1);
+    add(numpadContainer1);
 }
 
 void Configuracao_7ViewBase::setupScreen()
 {
+    numpadContainer1.initialize();
+}
 
+//Called when the screen transition ends
+void Configuracao_7ViewBase::afterTransition()
+{
+    //ScreenTransitionEnds
+    //When screen transition ends execute C++ code
+    //Execute C++ code
+    SoundBuzzerOn(25);
+}
+
+void Configuracao_7ViewBase::numpadContainer1HandleCancelEventCallbackHandler()
+{
+    //CancelNumpad
+    //When numpadContainer1 handleCancelEvent execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&numpadContainer1, false);
+}
+
+void Configuracao_7ViewBase::numpadContainer1HandleEnterEventCallbackHandler(double value)
+{
+    //EnterNumpad
+    //When numpadContainer1 handleEnterEvent execute C++ code
+    //Execute C++ code
+    UpdateOutNumpad();
+    ContainerVisibility(&numpadContainer1, false);
 }
 
 void Configuracao_7ViewBase::handleTickEvent()
@@ -147,5 +233,86 @@ void Configuracao_7ViewBase::handleTickEvent()
 
 void Configuracao_7ViewBase::tearDownScreen()
 {
+    //TearDownScreen
+    //When tearDownScreen is called execute C++ code
+    //Execute C++ code
+    Clear();
+    ContainerClear(&numpadContainer1);
+    RemoveAllNumpad();
+}
 
+void Configuracao_7ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao6)
+    {
+        //Configuracao6
+        //When buttonConfiguracao6 clicked change screen to Configuracao_6
+        //Go to Configuracao_6 with no screen transition
+        application().gotoConfiguracao_6ScreenNoTransition();
+    }
+}
+
+void Configuracao_7ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButtonPorcResfPresetTempoF1F2)
+    {
+        //PorcResfPresetTempoF1F2
+        //When flexButtonPorcResfPresetTempoF1F2 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 0.0, 10.0, _INT_, 0, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonDiferencialResfriarTempo)
+    {
+        //DiferencialResfriarTempo
+        //When flexButtonDiferencialResfriarTempo clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonSpSondaResfCamara)
+    {
+        //SpSondaResfCamara
+        //When flexButtonSpSondaResfCamara clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonSpResfriarSonda)
+    {
+        //SpResfriarSonda
+        //When flexButtonSpResfriarSonda clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonSpResfInternoF1)
+    {
+        //SpResfInternoF1
+        //When flexButtonSpResfInternoF1 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &flexButtonSpResfEspetoF1)
+    {
+        //SpResfEspetoF1
+        //When flexButtonSpResfEspetoF1 clicked execute C++ code
+        //Execute C++ code
+        AddNumpadReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numpadContainer1, true);
+        SoundBuzzerOn(25);
+    }
 }

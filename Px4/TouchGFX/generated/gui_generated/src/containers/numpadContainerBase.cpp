@@ -350,7 +350,10 @@ void numpadContainerBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
         	VisibilityTextArea(&valTxt, false);
         }
         else
+        {
         	emitHandleEnterEventCallback(val);
+        	AddNumKeyboard('<');
+        }
     }
     else if (&src == &signBtn)
     {
