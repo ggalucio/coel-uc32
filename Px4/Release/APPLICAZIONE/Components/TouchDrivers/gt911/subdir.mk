@@ -7,9 +7,6 @@
 C_SRCS += \
 C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/gt911/gt911.c 
 
-O_SRCS += \
-C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/gt911/gt911.o 
-
 C_DEPS += \
 ./APPLICAZIONE/Components/TouchDrivers/gt911/gt911.d 
 

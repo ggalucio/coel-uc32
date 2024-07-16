@@ -53,4 +53,8 @@ Debug/
 # STM32 git ignore
 *.mxproject
 
-#Scripty test
+# Ignore arquivos de build gerados por ferramentas de build
+!Px4/Middlewares/ST/touchgfx/framework/tools/**/*.out
+
+# Local script to update branch
+UpdateBranch.sh
