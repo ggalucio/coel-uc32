@@ -12,7 +12,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
-#include <gui/containers/numpadContainer.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
 
 class Configuracao_2ViewBase : public touchgfx::View<Configuracao_2Presenter>
 {
@@ -69,7 +69,7 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpConservarResfriar;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialConservarCongelar;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpConservarCongelar;
-    numpadContainer numpadContainer1;
+    numKeyboardContainer numKeyboardContainer1;
 
     /*
      * Wildcard Buffers
@@ -96,16 +96,18 @@ private:
      */
     touchgfx::Callback<Configuracao_2ViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Configuracao_2ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-    touchgfx::Callback<Configuracao_2ViewBase> numpadContainer1HandleCancelEventCallback;
-    touchgfx::Callback<Configuracao_2ViewBase, double> numpadContainer1HandleEnterEventCallback;
+    touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1ValidRangeCallback;
+    touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
-    void numpadContainer1HandleCancelEventCallbackHandler();
-    void numpadContainer1HandleEnterEventCallbackHandler(double value);
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
 
 };
 

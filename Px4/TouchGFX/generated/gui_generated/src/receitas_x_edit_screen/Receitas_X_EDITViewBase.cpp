@@ -7,7 +7,12 @@
 #include "BitmapDatabase.hpp"
 
 Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
-    buttonCallback(this, &Receitas_X_EDITViewBase::buttonCallbackHandler)
+    buttonCallback(this, &Receitas_X_EDITViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Receitas_X_EDITViewBase::flexButtonCallbackHandler),
+    keyboardContainer1HideKeyboardCallback(this, &Receitas_X_EDITViewBase::keyboardContainer1HideKeyboardCallbackHandler),
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &Receitas_X_EDITViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler),
+    numKeyboardContainer1OutOfRangeCallback(this, &Receitas_X_EDITViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
+    numKeyboardContainer1ValidRangeCallback(this, &Receitas_X_EDITViewBase::numKeyboardContainer1ValidRangeCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -22,6 +27,9 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     textAreaTitle.setXY(48, 4);
     textAreaTitle.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textAreaTitle.setLinespacing(0);
+    Unicode::snprintf(textAreaTitleBuffer, TEXTAREATITLE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4018).getText());
+    textAreaTitle.setWildcard(textAreaTitleBuffer);
+    textAreaTitle.resizeToCurrentText();
     textAreaTitle.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3910));
 
     image1.setXY(8, 4);
@@ -34,13 +42,6 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
 
     box1.setPosition(75, 52, 262, 31);
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 191));
-
-    textAreaReceitaXDesc.setPosition(75, 52, 262, 31);
-    textAreaReceitaXDesc.setColor(touchgfx::Color::getColorFromRGB(48, 72, 167));
-    textAreaReceitaXDesc.setLinespacing(0);
-    Unicode::snprintf(textAreaReceitaXDescBuffer, TEXTAREARECEITAXDESC_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3913).getText());
-    textAreaReceitaXDesc.setWildcard(textAreaReceitaXDescBuffer);
-    textAreaReceitaXDesc.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3912));
 
     toggleButtonRXCongResf.setXY(75, 174);
     toggleButtonRXCongResf.setBitmaps(touchgfx::Bitmap(BITMAP_CONGELARAA_ID), touchgfx::Bitmap(BITMAP_REFRIARAA_ID));
@@ -85,21 +86,17 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     textArea1_2_1.setLinespacing(0);
     textArea1_2_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3918));
 
-    buttonSalvar.setXY(427, 222);
-    buttonSalvar.setBitmaps(touchgfx::Bitmap(BITMAP_SALVAR_ID), touchgfx::Bitmap(BITMAP_SALVAR_ID));
-    buttonSalvar.setAction(buttonCallback);
+    textAreaReceitaXDesc.setPosition(75, 52, 262, 31);
+    textAreaReceitaXDesc.setColor(touchgfx::Color::getColorFromRGB(48, 72, 167));
+    textAreaReceitaXDesc.setLinespacing(0);
+    Unicode::snprintf(textAreaReceitaXDescBuffer, TEXTAREARECEITAXDESC_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3913).getText());
+    textAreaReceitaXDesc.setWildcard(textAreaReceitaXDescBuffer);
+    textAreaReceitaXDesc.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3912));
 
     textArea2.setXY(422, 204);
     textArea2.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     textArea2.setLinespacing(0);
     textArea2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3919));
-
-    textAreaTempoReceitaX.setPosition(76, 130, 91, 34);
-    textAreaTempoReceitaX.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
-    textAreaTempoReceitaX.setLinespacing(0);
-    Unicode::snprintf(textAreaTempoReceitaXBuffer, TEXTAREATEMPORECEITAX_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3921).getText());
-    textAreaTempoReceitaX.setWildcard(textAreaTempoReceitaXBuffer);
-    textAreaTempoReceitaX.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3920));
 
     textAreaTemperaturaReceita.setPosition(244, 130, 91, 34);
     textAreaTemperaturaReceita.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
@@ -108,6 +105,48 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     textAreaTemperaturaReceita.setWildcard(textAreaTemperaturaReceitaBuffer);
     textAreaTemperaturaReceita.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3922));
 
+    textAreaTempoReceitaX.setPosition(76, 130, 91, 34);
+    textAreaTempoReceitaX.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
+    textAreaTempoReceitaX.setLinespacing(0);
+    Unicode::snprintf(textAreaTempoReceitaXBuffer, TEXTAREATEMPORECEITAX_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3921).getText());
+    textAreaTempoReceitaX.setWildcard(textAreaTempoReceitaXBuffer);
+    textAreaTempoReceitaX.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3920));
+
+    buttonSalvar.setXY(427, 222);
+    buttonSalvar.setBitmaps(touchgfx::Bitmap(BITMAP_SALVAR_ID), touchgfx::Bitmap(BITMAP_SALVAR_ID));
+    buttonSalvar.setAction(buttonCallback);
+
+    flexButtonTemperaturaReceita.setBoxWithBorderPosition(0, 0, 91, 34);
+    flexButtonTemperaturaReceita.setBorderSize(5);
+    flexButtonTemperaturaReceita.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonTemperaturaReceita.setPosition(244, 130, 91, 34);
+    flexButtonTemperaturaReceita.setAlpha(0);
+    flexButtonTemperaturaReceita.setAction(flexButtonCallback);
+
+    flexButtonTempoReceitaX.setBoxWithBorderPosition(0, 0, 91, 34);
+    flexButtonTempoReceitaX.setBorderSize(5);
+    flexButtonTempoReceitaX.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonTempoReceitaX.setPosition(76, 130, 91, 34);
+    flexButtonTempoReceitaX.setAlpha(0);
+    flexButtonTempoReceitaX.setAction(flexButtonCallback);
+
+    flexButtonReceitaXDesc.setBoxWithBorderPosition(0, 0, 259, 31);
+    flexButtonReceitaXDesc.setBorderSize(5);
+    flexButtonReceitaXDesc.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonReceitaXDesc.setPosition(76, 52, 259, 31);
+    flexButtonReceitaXDesc.setAlpha(0);
+    flexButtonReceitaXDesc.setAction(flexButtonCallback);
+
+    keyboardContainer1.setXY(0, 0);
+    keyboardContainer1.setVisible(false);
+    keyboardContainer1.setHideKeyboardCallback(keyboardContainer1HideKeyboardCallback);
+
+    numKeyboardContainer1.setXY(0, 0);
+    numKeyboardContainer1.setVisible(false);
+    numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
+    numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
+    numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -115,7 +154,6 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     add(image1);
     add(textArea1);
     add(box1);
-    add(textAreaReceitaXDesc);
     add(toggleButtonRXCongResf);
     add(toggleButtonRXhardSoft);
     add(toggleButtonRXConservYn);
@@ -127,19 +165,34 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     add(textArea1_3);
     add(textArea1_4);
     add(textArea1_2_1);
-    add(buttonSalvar);
+    add(textAreaReceitaXDesc);
     add(textArea2);
-    add(textAreaTempoReceitaX);
     add(textAreaTemperaturaReceita);
+    add(textAreaTempoReceitaX);
+    add(buttonSalvar);
+    add(flexButtonTemperaturaReceita);
+    add(flexButtonTempoReceitaX);
+    add(flexButtonReceitaXDesc);
+    add(keyboardContainer1);
+    add(numKeyboardContainer1);
 }
 
 void Receitas_X_EDITViewBase::setupScreen()
 {
-
+    keyboardContainer1.initialize();
+    numKeyboardContainer1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    ReadJobName(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 20);
+    Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);
+    Update(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);
+    
+    //ReadJobName(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 20);
+    
+    AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0x01, _INT_, 0);
+    AddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0x02, _DOUBLE_, 1);
+    AddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 0x05, _STRING_, 0);
+    AddJob(&textAreaTitle, textAreaTitleBuffer, 0xff, _INT_, 0);
 
 }
 
@@ -150,6 +203,40 @@ void Receitas_X_EDITViewBase::afterTransition()
     //When screen transition ends execute C++ code
     //Execute C++ code
     SoundBuzzerOn(25);
+}
+
+void Receitas_X_EDITViewBase::keyboardContainer1HideKeyboardCallbackHandler()
+{
+    //HideNameKeyboard
+    //When keyboardContainer1 HideKeyboard execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&keyboardContainer1, false);
+    SoundBuzzerOn(25);
+}
+
+void Receitas_X_EDITViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler()
+{
+    //HideNumKeyboard
+    //When numKeyboardContainer1 HideKeypadTrigger execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&numKeyboardContainer1, false);
+    SoundBuzzerOn(25);
+}
+
+void Receitas_X_EDITViewBase::numKeyboardContainer1OutOfRangeCallbackHandler()
+{
+    //OutOfRangeFIred
+    //When numKeyboardContainer1 OutOfRange call OutOfRangeMsg on numKeyboardContainer1
+    //Call OutOfRangeMsg
+    numKeyboardContainer1.OutOfRangeMsg();
+}
+
+void Receitas_X_EDITViewBase::numKeyboardContainer1ValidRangeCallbackHandler()
+{
+    //InsideRangeFired
+    //When numKeyboardContainer1 ValidRange call InputValidRange on numKeyboardContainer1
+    //Call InputValidRange
+    numKeyboardContainer1.InputValidRange();
 }
 
 void Receitas_X_EDITViewBase::handleTickEvent()
@@ -164,6 +251,8 @@ void Receitas_X_EDITViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+    ContainerClear(&numKeyboardContainer1);
+    ContainerClear(&keyboardContainer1);
 }
 
 void Receitas_X_EDITViewBase::Receitas_1()
@@ -203,5 +292,51 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         	Receitas_2();
         else if (selectedRecipeListPage == 3)
         	Receitas_3();
+    }
+}
+
+void Receitas_X_EDITViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButtonTemperaturaReceita)
+    {
+        //TemperaturaReceita
+        //When flexButtonTemperaturaReceita clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, -40.0, 10.0, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchTemperaturaReceitaKeyboard
+        //When TemperaturaReceita completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
+    }
+    else if (&src == &flexButtonTempoReceitaX)
+    {
+        //TempoReceita
+        //When flexButtonTempoReceitaX clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, 9999, _INT_, 0, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchTempoReceitaKeyboard
+        //When TempoReceita completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
+    }
+    else if (&src == &flexButtonReceitaXDesc)
+    {
+        //ReceitaDescricao
+        //When flexButtonReceitaXDesc clicked execute C++ code
+        //Execute C++ code
+        AddKeyboardReference(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer);
+        ContainerVisibility(&keyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchNameKeyboard
+        //When ReceitaDescricao completed call LaunchKeyboard on keyboardContainer1
+        //Call LaunchKeyboard
+        keyboardContainer1.LaunchKeyboard();
     }
 }

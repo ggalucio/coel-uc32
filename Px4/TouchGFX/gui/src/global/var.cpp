@@ -7,4 +7,4 @@
 
 #include "gui/global/var.hpp"
 
-int selectedRecipeListPage = 0;
+uint8_t selectedRecipeListPage = 0;

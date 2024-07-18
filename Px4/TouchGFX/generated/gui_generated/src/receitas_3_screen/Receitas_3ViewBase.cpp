@@ -145,16 +145,16 @@ void Receitas_3ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    SelectJob(9);
+    SelectJob(8);
     ReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);
     
-    SelectJob(10);
+    SelectJob(9);
     ReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);
     
-    SelectJob(11);
+    SelectJob(10);
     ReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);
     
-    SelectJob(12);
+    SelectJob(11);
     ReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);
 
 }
@@ -230,7 +230,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R9
         //When radioButtonMuneroReceita9 selected execute C++ code
         //Execute C++ code
-        SelectJob(9);
+        SelectJob(0x08);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita10)
@@ -238,7 +238,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R10
         //When radioButtonMuneroReceita10 selected execute C++ code
         //Execute C++ code
-        SelectJob(10);
+        SelectJob(0x09);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita11)
@@ -246,7 +246,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R11
         //When radioButtonMuneroReceita11 selected execute C++ code
         //Execute C++ code
-        SelectJob(11);
+        SelectJob(0x0A);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita12)
@@ -254,7 +254,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R12
         //When radioButtonMuneroReceita12 selected execute C++ code
         //Execute C++ code
-        SelectJob(12);
+        SelectJob(0x0B);
         SoundBuzzerOn(25);
     }
 }

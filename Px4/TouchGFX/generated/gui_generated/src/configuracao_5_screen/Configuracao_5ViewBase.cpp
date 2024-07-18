@@ -9,8 +9,10 @@
 Configuracao_5ViewBase::Configuracao_5ViewBase() :
     buttonCallback(this, &Configuracao_5ViewBase::buttonCallbackHandler),
     flexButtonCallback(this, &Configuracao_5ViewBase::flexButtonCallbackHandler),
-    numpadContainer1HandleCancelEventCallback(this, &Configuracao_5ViewBase::numpadContainer1HandleCancelEventCallbackHandler),
-    numpadContainer1HandleEnterEventCallback(this, &Configuracao_5ViewBase::numpadContainer1HandleEnterEventCallbackHandler)
+    numKeyboardContainer1OutOfRangeCallback(this, &Configuracao_5ViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
+    numKeyboardContainer1ValidRangeCallback(this, &Configuracao_5ViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_5ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler),
+    keyboardContainer1HideKeyboardCallback(this, &Configuracao_5ViewBase::keyboardContainer1HideKeyboardCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -103,6 +105,20 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     textAreaTimerAlarmeExternoSpMinutos.setWildcard(textAreaTimerAlarmeExternoSpMinutosBuffer);
     textAreaTimerAlarmeExternoSpMinutos.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3743));
 
+    flexButtonHAW8235.setBoxWithBorderPosition(0, 0, 204, 27);
+    flexButtonHAW8235.setBorderSize(5);
+    flexButtonHAW8235.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonHAW8235.setPosition(138, 144, 204, 27);
+    flexButtonHAW8235.setAlpha(0);
+    flexButtonHAW8235.setAction(flexButtonCallback);
+
+    flexButtonHAW8214.setBoxWithBorderPosition(0, 0, 204, 27);
+    flexButtonHAW8214.setBorderSize(5);
+    flexButtonHAW8214.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonHAW8214.setPosition(138, 109, 204, 27);
+    flexButtonHAW8214.setAlpha(0);
+    flexButtonHAW8214.setAction(flexButtonCallback);
+
     flexButton1410299.setBoxWithBorderPosition(0, 0, 63, 33);
     flexButton1410299.setBorderSize(5);
     flexButton1410299.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
@@ -117,10 +133,15 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     flexButtonTimerAlarmeExternoSpMinutos.setAlpha(0);
     flexButtonTimerAlarmeExternoSpMinutos.setAction(flexButtonCallback);
 
-    numpadContainer1.setXY(0, 0);
-    numpadContainer1.setVisible(false);
-    numpadContainer1.setHandleCancelEventCallback(numpadContainer1HandleCancelEventCallback);
-    numpadContainer1.setHandleEnterEventCallback(numpadContainer1HandleEnterEventCallback);
+    keyboardContainer1.setXY(0, 0);
+    keyboardContainer1.setVisible(false);
+    keyboardContainer1.setHideKeyboardCallback(keyboardContainer1HideKeyboardCallback);
+
+    numKeyboardContainer1.setXY(0, 0);
+    numKeyboardContainer1.setVisible(false);
+    numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
+    numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
+    numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
     add(__background);
     add(boxFundo);
@@ -140,19 +161,26 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     add(textAreaHAW8235);
     add(textAreaHAW8214);
     add(textAreaTimerAlarmeExternoSpMinutos);
+    add(flexButtonHAW8235);
+    add(flexButtonHAW8214);
     add(flexButton1410299);
     add(flexButtonTimerAlarmeExternoSpMinutos);
-    add(numpadContainer1);
+    add(keyboardContainer1);
+    add(numKeyboardContainer1);
 }
 
 void Configuracao_5ViewBase::setupScreen()
 {
-    numpadContainer1.initialize();
+    keyboardContainer1.initialize();
+    numKeyboardContainer1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
     Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);
     Update(&textArea1410299, textArea1410299Buffer, 0.0, _DOUBLE_, 2);
+    
+    Update(&textAreaHAW8214, textAreaHAW8214Buffer, "Alarme de Tensao", 20);
+    Update(&textAreaHAW8235, textAreaHAW8235Buffer, "Consultar manual", 20);
 
 }
 
@@ -165,21 +193,38 @@ void Configuracao_5ViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
-void Configuracao_5ViewBase::numpadContainer1HandleCancelEventCallbackHandler()
+void Configuracao_5ViewBase::numKeyboardContainer1OutOfRangeCallbackHandler()
 {
-    //CancelNumpad
-    //When numpadContainer1 handleCancelEvent execute C++ code
-    //Execute C++ code
-    ContainerVisibility(&numpadContainer1, false);
+    //OutOfRangeFIred
+    //When numKeyboardContainer1 OutOfRange call OutOfRangeMsg on numKeyboardContainer1
+    //Call OutOfRangeMsg
+    numKeyboardContainer1.OutOfRangeMsg();
 }
 
-void Configuracao_5ViewBase::numpadContainer1HandleEnterEventCallbackHandler(double value)
+void Configuracao_5ViewBase::numKeyboardContainer1ValidRangeCallbackHandler()
 {
-    //EnterNumpad
-    //When numpadContainer1 handleEnterEvent execute C++ code
+    //InsideRangeFired
+    //When numKeyboardContainer1 ValidRange call InputValidRange on numKeyboardContainer1
+    //Call InputValidRange
+    numKeyboardContainer1.InputValidRange();
+}
+
+void Configuracao_5ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler()
+{
+    //HideNumKeyboard
+    //When numKeyboardContainer1 HideKeypadTrigger execute C++ code
     //Execute C++ code
-    UpdateOutNumpad();
-    ContainerVisibility(&numpadContainer1, false);
+    ContainerVisibility(&numKeyboardContainer1, false);
+    SoundBuzzerOn(25);
+}
+
+void Configuracao_5ViewBase::keyboardContainer1HideKeyboardCallbackHandler()
+{
+    //HideKeyboard
+    //When keyboardContainer1 HideKeyboard execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&keyboardContainer1, false);
+    SoundBuzzerOn(25);
 }
 
 void Configuracao_5ViewBase::handleTickEvent()
@@ -193,8 +238,8 @@ void Configuracao_5ViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ContainerClear(&numpadContainer1);
-    RemoveAllNumpad();
+    ContainerClear(&numKeyboardContainer1);
+    ContainerClear(&keyboardContainer1);
 }
 
 void Configuracao_5ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -231,22 +276,60 @@ void Configuracao_5ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
 
 void Configuracao_5ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-    if (&src == &flexButton1410299)
+    if (&src == &flexButtonHAW8235)
+    {
+        //HAW8235
+        //When flexButtonHAW8235 clicked execute C++ code
+        //Execute C++ code
+        AddKeyboardReference(&textAreaHAW8235, textAreaHAW8235Buffer);
+        ContainerVisibility(&keyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchHAW8235Keyboard
+        //When HAW8235 completed call LaunchKeyboard on keyboardContainer1
+        //Call LaunchKeyboard
+        keyboardContainer1.LaunchKeyboard();
+    }
+    else if (&src == &flexButtonHAW8214)
+    {
+        //HAW8214
+        //When flexButtonHAW8214 clicked execute C++ code
+        //Execute C++ code
+        AddKeyboardReference(&textAreaHAW8214, textAreaHAW8214Buffer);
+        ContainerVisibility(&keyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchHAW8214Keyboard
+        //When HAW8214 completed call LaunchKeyboard on keyboardContainer1
+        //Call LaunchKeyboard
+        keyboardContainer1.LaunchKeyboard();
+    }
+    else if (&src == &flexButton1410299)
     {
         //ADDR1410299
         //When flexButton1410299 clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _DOUBLE_, 2, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _DOUBLE_, 2, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchADDR1410299Keyboard
+        //When ADDR1410299 completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
     else if (&src == &flexButtonTimerAlarmeExternoSpMinutos)
     {
         //TimerAlarmeExternoSpMinutos
         //When flexButtonTimerAlarmeExternoSpMinutos clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 0.0, 30.0, _INT_, 0, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 0.0, 30.0, _INT_, 0, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchTimerAlarmeExternoSpMinutosKeyboard
+        //When TimerAlarmeExternoSpMinutos completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
 }

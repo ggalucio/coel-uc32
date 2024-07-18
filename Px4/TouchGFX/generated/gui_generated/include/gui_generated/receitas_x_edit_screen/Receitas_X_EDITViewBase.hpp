@@ -8,11 +8,14 @@
 #include <mvp/View.hpp>
 #include <gui/receitas_x_edit_screen/Receitas_X_EDITPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/keyboardContainer.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
 
 class Receitas_X_EDITViewBase : public touchgfx::View<Receitas_X_EDITPresenter>
 {
@@ -42,11 +45,10 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box boxFundo;
     touchgfx::Box boxFundoAzul;
-    touchgfx::TextArea textAreaTitle;
+    touchgfx::TextAreaWithOneWildcard textAreaTitle;
     touchgfx::Image image1;
     touchgfx::TextArea textArea1;
     touchgfx::Box box1;
-    touchgfx::TextAreaWithOneWildcard textAreaReceitaXDesc;
     touchgfx::ToggleButton toggleButtonRXCongResf;
     touchgfx::ToggleButton toggleButtonRXhardSoft;
     touchgfx::ToggleButton toggleButtonRXConservYn;
@@ -58,20 +60,28 @@ protected:
     touchgfx::TextArea textArea1_3;
     touchgfx::TextArea textArea1_4;
     touchgfx::TextArea textArea1_2_1;
-    touchgfx::Button buttonSalvar;
+    touchgfx::TextAreaWithOneWildcard textAreaReceitaXDesc;
     touchgfx::TextArea textArea2;
-    touchgfx::TextAreaWithOneWildcard textAreaTempoReceitaX;
     touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceita;
+    touchgfx::TextAreaWithOneWildcard textAreaTempoReceitaX;
+    touchgfx::Button buttonSalvar;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTemperaturaReceita;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTempoReceitaX;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonReceitaXDesc;
+    keyboardContainer keyboardContainer1;
+    numKeyboardContainer numKeyboardContainer1;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREATITLE_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaTitleBuffer[TEXTAREATITLE_SIZE];
     static const uint16_t TEXTAREARECEITAXDESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceitaXDescBuffer[TEXTAREARECEITAXDESC_SIZE];
-    static const uint16_t TEXTAREATEMPORECEITAX_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaTempoReceitaXBuffer[TEXTAREATEMPORECEITAX_SIZE];
     static const uint16_t TEXTAREATEMPERATURARECEITA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTemperaturaReceitaBuffer[TEXTAREATEMPERATURARECEITA_SIZE];
+    static const uint16_t TEXTAREATEMPORECEITAX_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaTempoReceitaXBuffer[TEXTAREATEMPORECEITAX_SIZE];
 
 private:
 
@@ -79,11 +89,21 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Receitas_X_EDITViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Receitas_X_EDITViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Receitas_X_EDITViewBase> keyboardContainer1HideKeyboardCallback;
+    touchgfx::Callback<Receitas_X_EDITViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+    touchgfx::Callback<Receitas_X_EDITViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Receitas_X_EDITViewBase> numKeyboardContainer1ValidRangeCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void keyboardContainer1HideKeyboardCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
 
 };
 

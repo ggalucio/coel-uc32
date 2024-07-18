@@ -8,8 +8,9 @@
 #ifndef GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_
 #define GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_
 
+#include <stdint.h>
 
-extern int selectedRecipeListPage;
+extern uint8_t selectedRecipeListPage;
 
 
 #endif /* GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_ */
