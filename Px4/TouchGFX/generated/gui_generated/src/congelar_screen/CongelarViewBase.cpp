@@ -28,7 +28,7 @@ CongelarViewBase::CongelarViewBase()
     radioButtonStatusTeclaCongela0.setSelected(true);
     radioButtonStatusTeclaCongela0.setDeselectionEnabled(false);
 
-    radioButtonStatusTeclaCongela1.setXY(116, 64);
+    radioButtonStatusTeclaCongela1.setXY(140, 64);
     radioButtonStatusTeclaCongela1.setBitmaps(touchgfx::Bitmap(BITMAP_MCONGTEMPOOFF_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID));
     radioButtonStatusTeclaCongela1.setSelected(false);
     radioButtonStatusTeclaCongela1.setDeselectionEnabled(false);

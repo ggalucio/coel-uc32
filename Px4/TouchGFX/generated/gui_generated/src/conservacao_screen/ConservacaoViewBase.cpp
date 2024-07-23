@@ -31,7 +31,7 @@ ConservacaoViewBase::ConservacaoViewBase()
     radioButtonStatusConservar0.setSelected(true);
     radioButtonStatusConservar0.setDeselectionEnabled(false);
 
-    radioButtonStatusConservar1.setXY(116, 64);
+    radioButtonStatusConservar1.setXY(140, 64);
     radioButtonStatusConservar1.setBitmaps(touchgfx::Bitmap(BITMAP_CONSERVRESFOFF_ID), touchgfx::Bitmap(BITMAP_CONSERVRESFON_ID), touchgfx::Bitmap(BITMAP_CONSERVRESFON_ID), touchgfx::Bitmap(BITMAP_CONSERVRESFON_ID));
     radioButtonStatusConservar1.setSelected(false);
     radioButtonStatusConservar1.setDeselectionEnabled(false);

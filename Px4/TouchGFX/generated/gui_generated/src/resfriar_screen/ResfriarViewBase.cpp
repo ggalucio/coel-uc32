@@ -28,7 +28,7 @@ ResfriarViewBase::ResfriarViewBase()
     radioButtonStatusTeclaCongela0.setSelected(true);
     radioButtonStatusTeclaCongela0.setDeselectionEnabled(false);
 
-    radioButtonStatusTeclaCongela1.setXY(116, 64);
+    radioButtonStatusTeclaCongela1.setXY(140, 64);
     radioButtonStatusTeclaCongela1.setBitmaps(touchgfx::Bitmap(BITMAP_RESFRIARTEMPOOFF_ID), touchgfx::Bitmap(BITMAP_RESFRIARTEMPOON_ID), touchgfx::Bitmap(BITMAP_RESFRIARTEMPOON_ID), touchgfx::Bitmap(BITMAP_RESFRIARTEMPOON_ID));
     radioButtonStatusTeclaCongela1.setSelected(false);
     radioButtonStatusTeclaCongela1.setDeselectionEnabled(false);
