@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-ConservacaoViewBase::ConservacaoViewBase()
+ConservacaoViewBase::ConservacaoViewBase() :
+    buttonCallback(this, &ConservacaoViewBase::buttonCallbackHandler),
+    radioButtonSelectedCallback(this, &ConservacaoViewBase::radioButtonSelectedCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -28,10 +30,10 @@ ConservacaoViewBase::ConservacaoViewBase()
 
     radioButtonStatusConservar0.setXY(14, 64);
     radioButtonStatusConservar0.setBitmaps(touchgfx::Bitmap(BITMAP_CONSERVCONGOFF_ID), touchgfx::Bitmap(BITMAP_CONSERVCONGON_ID), touchgfx::Bitmap(BITMAP_CONSERVCONGON_ID), touchgfx::Bitmap(BITMAP_CONSERVCONGON_ID));
-    radioButtonStatusConservar0.setSelected(true);
+    radioButtonStatusConservar0.setSelected(false);
     radioButtonStatusConservar0.setDeselectionEnabled(false);
 
-    radioButtonStatusConservar1.setXY(116, 64);
+    radioButtonStatusConservar1.setXY(140, 64);
     radioButtonStatusConservar1.setBitmaps(touchgfx::Bitmap(BITMAP_CONSERVRESFOFF_ID), touchgfx::Bitmap(BITMAP_CONSERVRESFON_ID), touchgfx::Bitmap(BITMAP_CONSERVRESFON_ID), touchgfx::Bitmap(BITMAP_CONSERVRESFON_ID));
     radioButtonStatusConservar1.setSelected(false);
     radioButtonStatusConservar1.setDeselectionEnabled(false);
@@ -41,6 +43,7 @@ ConservacaoViewBase::ConservacaoViewBase()
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -53,6 +56,7 @@ ConservacaoViewBase::ConservacaoViewBase()
     add(buttonTelaInicial);
     radioButtonGroup1.add(radioButtonStatusConservar0);
     radioButtonGroup1.add(radioButtonStatusConservar1);
+    radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void ConservacaoViewBase::setupScreen()
@@ -81,4 +85,33 @@ void ConservacaoViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void ConservacaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+}
+
+void ConservacaoViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &radioButtonStatusConservar0)
+    {
+        //Congelar
+        //When radioButtonStatusConservar0 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &radioButtonStatusConservar1)
+    {
+        //Resfriar
+        //When radioButtonStatusConservar1 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
 }

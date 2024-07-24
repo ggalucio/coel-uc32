@@ -6,7 +6,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase()
+Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase() :
+    buttonCallback(this, &Degelo_ConfirmarViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -36,6 +37,7 @@ Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase()
     buttonWithLabelTelaInicial.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3797));
     buttonWithLabelTelaInicial.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelTelaInicial.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelTelaInicial.setAction(buttonCallback);
 
     buttonWithLabelFlagInicioDegelo.setXY(257, 174);
     buttonWithLabelFlagInicioDegelo.setBitmaps(touchgfx::Bitmap(BITMAP_BTN2_ID), touchgfx::Bitmap(BITMAP_BTN2_ID));
@@ -79,4 +81,15 @@ void Degelo_ConfirmarViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Degelo_ConfirmarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelTelaInicial)
+    {
+        //Cancelar
+        //When buttonWithLabelTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
 }

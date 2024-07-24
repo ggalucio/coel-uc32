@@ -21,14 +21,44 @@ public:
     // Tela_Inicial
     void gotoTela_InicialScreenNoTransition();
 
+    // Congelar
+    void gotoCongelarScreenNoTransition();
+
+    // Congelar_SONDA
+    void gotoCongelar_SONDAScreenNoTransition();
+
+    // Congelar_select_TEMPO
+    void gotoCongelar_select_TEMPOScreenNoTransition();
+
     // Configuracao
     void gotoConfiguracaoScreenNoTransition();
+
+    // Conservacao
+    void gotoConservacaoScreenNoTransition();
+
+    // Resfriar
+    void gotoResfriarScreenNoTransition();
+
+    // Degelo_Confirmar
+    void gotoDegelo_ConfirmarScreenNoTransition();
 
     // Configuracao_2
     void gotoConfiguracao_2ScreenNoTransition();
 
     // Configuracao_3
     void gotoConfiguracao_3ScreenNoTransition();
+
+    // Receitas_1
+    void gotoReceitas_1ScreenNoTransition();
+
+    // Receitas_2
+    void gotoReceitas_2ScreenNoTransition();
+
+    // Receitas_3
+    void gotoReceitas_3ScreenNoTransition();
+
+    // Receitas_X_EDIT
+    void gotoReceitas_X_EDITScreenNoTransition();
 
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransition();
@@ -38,6 +68,9 @@ public:
 
     // Configuracao_6
     void gotoConfiguracao_6ScreenNoTransition();
+
+    // HIGIENE_CONFIRMAR
+    void gotoHIGIENE_CONFIRMARScreenNoTransition();
 
     // Configuracao_7
     void gotoConfiguracao_7ScreenNoTransition();
@@ -53,14 +86,44 @@ protected:
     // Tela_Inicial
     void gotoTela_InicialScreenNoTransitionImpl();
 
+    // Congelar
+    void gotoCongelarScreenNoTransitionImpl();
+
+    // Congelar_SONDA
+    void gotoCongelar_SONDAScreenNoTransitionImpl();
+
+    // Congelar_select_TEMPO
+    void gotoCongelar_select_TEMPOScreenNoTransitionImpl();
+
     // Configuracao
     void gotoConfiguracaoScreenNoTransitionImpl();
+
+    // Conservacao
+    void gotoConservacaoScreenNoTransitionImpl();
+
+    // Resfriar
+    void gotoResfriarScreenNoTransitionImpl();
+
+    // Degelo_Confirmar
+    void gotoDegelo_ConfirmarScreenNoTransitionImpl();
 
     // Configuracao_2
     void gotoConfiguracao_2ScreenNoTransitionImpl();
 
     // Configuracao_3
     void gotoConfiguracao_3ScreenNoTransitionImpl();
+
+    // Receitas_1
+    void gotoReceitas_1ScreenNoTransitionImpl();
+
+    // Receitas_2
+    void gotoReceitas_2ScreenNoTransitionImpl();
+
+    // Receitas_3
+    void gotoReceitas_3ScreenNoTransitionImpl();
+
+    // Receitas_X_EDIT
+    void gotoReceitas_X_EDITScreenNoTransitionImpl();
 
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransitionImpl();
@@ -70,6 +133,9 @@ protected:
 
     // Configuracao_6
     void gotoConfiguracao_6ScreenNoTransitionImpl();
+
+    // HIGIENE_CONFIRMAR
+    void gotoHIGIENE_CONFIRMARScreenNoTransitionImpl();
 
     // Configuracao_7
     void gotoConfiguracao_7ScreenNoTransitionImpl();

@@ -9,8 +9,9 @@
 Configuracao_7ViewBase::Configuracao_7ViewBase() :
     buttonCallback(this, &Configuracao_7ViewBase::buttonCallbackHandler),
     flexButtonCallback(this, &Configuracao_7ViewBase::flexButtonCallbackHandler),
-    numpadContainer1HandleCancelEventCallback(this, &Configuracao_7ViewBase::numpadContainer1HandleCancelEventCallbackHandler),
-    numpadContainer1HandleEnterEventCallback(this, &Configuracao_7ViewBase::numpadContainer1HandleEnterEventCallbackHandler)
+    numKeyboardContainer1OutOfRangeCallback(this, &Configuracao_7ViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
+    numKeyboardContainer1ValidRangeCallback(this, &Configuracao_7ViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_7ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -159,10 +160,11 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
     flexButtonSpResfEspetoF1.setAlpha(0);
     flexButtonSpResfEspetoF1.setAction(flexButtonCallback);
 
-    numpadContainer1.setXY(0, 0);
-    numpadContainer1.setVisible(false);
-    numpadContainer1.setHandleCancelEventCallback(numpadContainer1HandleCancelEventCallback);
-    numpadContainer1.setHandleEnterEventCallback(numpadContainer1HandleEnterEventCallback);
+    numKeyboardContainer1.setXY(0, 0);
+    numKeyboardContainer1.setVisible(false);
+    numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
+    numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
+    numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
     add(__background);
     add(boxFundo);
@@ -192,12 +194,22 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
     add(flexButtonSpResfriarSonda);
     add(flexButtonSpResfInternoF1);
     add(flexButtonSpResfEspetoF1);
-    add(numpadContainer1);
+    add(numKeyboardContainer1);
 }
 
 void Configuracao_7ViewBase::setupScreen()
 {
-    numpadContainer1.initialize();
+    numKeyboardContainer1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _DOUBLE_, 1);
+    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _DOUBLE_, 1);
+    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _DOUBLE_, 1);
+    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _DOUBLE_, 1);
+    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _DOUBLE_, 1);
+    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _DOUBLE_, 0);
+
 }
 
 //Called when the screen transition ends
@@ -209,21 +221,29 @@ void Configuracao_7ViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
-void Configuracao_7ViewBase::numpadContainer1HandleCancelEventCallbackHandler()
+void Configuracao_7ViewBase::numKeyboardContainer1OutOfRangeCallbackHandler()
 {
-    //CancelNumpad
-    //When numpadContainer1 handleCancelEvent execute C++ code
-    //Execute C++ code
-    ContainerVisibility(&numpadContainer1, false);
+    //OutOfRangeFIred
+    //When numKeyboardContainer1 OutOfRange call OutOfRangeMsg on numKeyboardContainer1
+    //Call OutOfRangeMsg
+    numKeyboardContainer1.OutOfRangeMsg();
 }
 
-void Configuracao_7ViewBase::numpadContainer1HandleEnterEventCallbackHandler(double value)
+void Configuracao_7ViewBase::numKeyboardContainer1ValidRangeCallbackHandler()
 {
-    //EnterNumpad
-    //When numpadContainer1 handleEnterEvent execute C++ code
+    //InsideRangeFired
+    //When numKeyboardContainer1 ValidRange call InputValidRange on numKeyboardContainer1
+    //Call InputValidRange
+    numKeyboardContainer1.InputValidRange();
+}
+
+void Configuracao_7ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler()
+{
+    //HideNumKeyboard
+    //When numKeyboardContainer1 HideKeypadTrigger execute C++ code
     //Execute C++ code
-    UpdateOutNumpad();
-    ContainerVisibility(&numpadContainer1, false);
+    ContainerVisibility(&numKeyboardContainer1, false);
+    SoundBuzzerOn(25);
 }
 
 void Configuracao_7ViewBase::handleTickEvent()
@@ -237,8 +257,7 @@ void Configuracao_7ViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ContainerClear(&numpadContainer1);
-    RemoveAllNumpad();
+    ContainerClear(&numKeyboardContainer1);
 }
 
 void Configuracao_7ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -266,53 +285,83 @@ void Configuracao_7ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //PorcResfPresetTempoF1F2
         //When flexButtonPorcResfPresetTempoF1F2 clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 0.0, 10.0, _INT_, 0, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 0.0, 10.0, _INT_, 0, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchPorcResfPresetTempoF1F2Keyboard
+        //When PorcResfPresetTempoF1F2 completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
     else if (&src == &flexButtonDiferencialResfriarTempo)
     {
         //DiferencialResfriarTempo
         //When flexButtonDiferencialResfriarTempo clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchDiferencialResfriarTempoKeyboard
+        //When DiferencialResfriarTempo completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
     else if (&src == &flexButtonSpSondaResfCamara)
     {
         //SpSondaResfCamara
         //When flexButtonSpSondaResfCamara clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchSpSondaResfCamaraKeyboard
+        //When SpSondaResfCamara completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
     else if (&src == &flexButtonSpResfriarSonda)
     {
         //SpResfriarSonda
         //When flexButtonSpResfriarSonda clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchSpResfriarSondaKeyboard
+        //When SpResfriarSonda completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
     else if (&src == &flexButtonSpResfInternoF1)
     {
         //SpResfInternoF1
         //When flexButtonSpResfInternoF1 clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _DOUBLE_, 1, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchSpResfInternoF1Keyboard
+        //When SpResfInternoF1 completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
     else if (&src == &flexButtonSpResfEspetoF1)
     {
         //SpResfEspetoF1
         //When flexButtonSpResfEspetoF1 clicked execute C++ code
         //Execute C++ code
-        AddNumpadReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
-        ContainerVisibility(&numpadContainer1, true);
+        AddNumKeyboardReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
+
+        //LaunchSpResfEspetoF1Keyboard
+        //When SpResfEspetoF1 completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
 }

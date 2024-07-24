@@ -54,8 +54,8 @@
 #include <gui/receitas_2_screen/Receitas_2Presenter.hpp>
 #include <gui/receitas_3_screen/Receitas_3View.hpp>
 #include <gui/receitas_3_screen/Receitas_3Presenter.hpp>
-#include <gui/receitas_1_edit_screen/Receitas_1_EDITView.hpp>
-#include <gui/receitas_1_edit_screen/Receitas_1_EDITPresenter.hpp>
+#include <gui/receitas_x_edit_screen/Receitas_X_EDITView.hpp>
+#include <gui/receitas_x_edit_screen/Receitas_X_EDITPresenter.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmView.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmPresenter.hpp>
 #include <gui/configuracao_4_screen/Configuracao_4View.hpp>
@@ -123,7 +123,7 @@ public:
             touchgfx::meta::TypeList< Receitas_1View,
             touchgfx::meta::TypeList< Receitas_2View,
             touchgfx::meta::TypeList< Receitas_3View,
-            touchgfx::meta::TypeList< Receitas_1_EDITView,
+            touchgfx::meta::TypeList< Receitas_X_EDITView,
             touchgfx::meta::TypeList< Receita_confirmView,
             touchgfx::meta::TypeList< Configuracao_4View,
             touchgfx::meta::TypeList< refine_senha_secretoView,
@@ -169,7 +169,7 @@ public:
             touchgfx::meta::TypeList< Receitas_1Presenter,
             touchgfx::meta::TypeList< Receitas_2Presenter,
             touchgfx::meta::TypeList< Receitas_3Presenter,
-            touchgfx::meta::TypeList< Receitas_1_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_X_EDITPresenter,
             touchgfx::meta::TypeList< Receita_confirmPresenter,
             touchgfx::meta::TypeList< Configuracao_4Presenter,
             touchgfx::meta::TypeList< refine_senha_secretoPresenter,

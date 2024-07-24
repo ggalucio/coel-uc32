@@ -6,7 +6,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase()
+HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
+    buttonCallback(this, &HIGIENE_CONFIRMARViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -33,6 +34,7 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase()
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -69,4 +71,15 @@ void HIGIENE_CONFIRMARViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void HIGIENE_CONFIRMARViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
 }

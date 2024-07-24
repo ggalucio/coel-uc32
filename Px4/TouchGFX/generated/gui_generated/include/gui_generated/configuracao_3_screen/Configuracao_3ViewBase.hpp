@@ -14,7 +14,7 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
-#include <gui/containers/numpadContainer.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
 
 class Configuracao_3ViewBase : public touchgfx::View<Configuracao_3Presenter>
 {
@@ -65,7 +65,7 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410249;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410248;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410291;
-    numpadContainer numpadContainer1;
+    numKeyboardContainer numKeyboardContainer1;
 
     /*
      * Wildcard Buffers
@@ -88,16 +88,18 @@ private:
      */
     touchgfx::Callback<Configuracao_3ViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Configuracao_3ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-    touchgfx::Callback<Configuracao_3ViewBase> numpadContainer1HandleCancelEventCallback;
-    touchgfx::Callback<Configuracao_3ViewBase, double> numpadContainer1HandleEnterEventCallback;
+    touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1ValidRangeCallback;
+    touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
-    void numpadContainer1HandleCancelEventCallbackHandler();
-    void numpadContainer1HandleEnterEventCallbackHandler(double value);
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
 
 };
 

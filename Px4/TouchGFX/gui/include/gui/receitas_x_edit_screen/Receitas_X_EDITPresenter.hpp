@@ -1,17 +1,17 @@
-#ifndef RECEITAS_1_EDITPRESENTER_HPP
-#define RECEITAS_1_EDITPRESENTER_HPP
+#ifndef RECEITAS_X_EDITPRESENTER_HPP
+#define RECEITAS_X_EDITPRESENTER_HPP
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
 
 using namespace touchgfx;
 
-class Receitas_1_EDITView;
+class Receitas_X_EDITView;
 
-class Receitas_1_EDITPresenter : public touchgfx::Presenter, public ModelListener
+class Receitas_X_EDITPresenter : public touchgfx::Presenter, public ModelListener
 {
 public:
-    Receitas_1_EDITPresenter(Receitas_1_EDITView& v);
+    Receitas_X_EDITPresenter(Receitas_X_EDITView& v);
 
     /**
      * The activate function is called automatically when this screen is "switched in"
@@ -25,12 +25,12 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~Receitas_1_EDITPresenter() {};
+    virtual ~Receitas_X_EDITPresenter() {};
 
 private:
-    Receitas_1_EDITPresenter();
+    Receitas_X_EDITPresenter();
 
-    Receitas_1_EDITView& view;
+    Receitas_X_EDITView& view;
 };
 
-#endif // RECEITAS_1_EDITPRESENTER_HPP
+#endif // RECEITAS_X_EDITPRESENTER_HPP

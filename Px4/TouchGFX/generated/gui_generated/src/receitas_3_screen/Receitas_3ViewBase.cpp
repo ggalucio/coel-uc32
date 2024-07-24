@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Receitas_3ViewBase::Receitas_3ViewBase()
+Receitas_3ViewBase::Receitas_3ViewBase() :
+    buttonCallback(this, &Receitas_3ViewBase::buttonCallbackHandler),
+    radioButtonSelectedCallback(this, &Receitas_3ViewBase::radioButtonSelectedCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -71,12 +73,15 @@ Receitas_3ViewBase::Receitas_3ViewBase()
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     buttonFlagEditReceita.setXY(406, 136);
     buttonFlagEditReceita.setBitmaps(touchgfx::Bitmap(BITMAP_RECIPE_ID), touchgfx::Bitmap(BITMAP_RECIPE_ID));
+    buttonFlagEditReceita.setAction(buttonCallback);
 
     buttonReceita2.setXY(194, 37);
     buttonReceita2.setBitmaps(touchgfx::Bitmap(BITMAP_SETACIMA_ID), touchgfx::Bitmap(BITMAP_SETACIMA_ID));
+    buttonReceita2.setAction(buttonCallback);
 
     textAreaReceita9Desc.setPosition(69, 75, 329, 41);
     textAreaReceita9Desc.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -131,10 +136,26 @@ Receitas_3ViewBase::Receitas_3ViewBase()
     radioButtonGroup1.add(radioButtonMuneroReceita10);
     radioButtonGroup1.add(radioButtonMuneroReceita11);
     radioButtonGroup1.add(radioButtonMuneroReceita12);
+    radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void Receitas_3ViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    SelectJob(8);
+    ReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);
+    
+    SelectJob(9);
+    ReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);
+    
+    SelectJob(10);
+    ReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);
+    
+    SelectJob(11);
+    ReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);
 
 }
 
@@ -159,4 +180,81 @@ void Receitas_3ViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Receitas_3ViewBase::Receita_X_EDIT()
+{
+    //ReceitaXEDIT
+    //When Receita_X_EDIT is called change screen to Receitas_X_EDIT
+    //Go to Receitas_X_EDIT with no screen transition
+    application().gotoReceitas_X_EDITScreenNoTransition();
+}
+
+void Receitas_3ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &buttonFlagEditReceita)
+    {
+        //FlagEditReceita
+        //When buttonFlagEditReceita clicked execute C++ code
+        //Execute C++ code
+        if (	radioButtonMuneroReceita9.getSelected() || 
+        	radioButtonMuneroReceita10.getSelected() || 
+        	radioButtonMuneroReceita11.getSelected() || 
+        	radioButtonMuneroReceita12.getSelected())
+        	Receita_X_EDIT();
+        else
+        	SoundBuzzerOn(25);
+        
+        selectedRecipeListPage = 3;
+    }
+    else if (&src == &buttonReceita2)
+    {
+        //Receita2
+        //When buttonReceita2 clicked change screen to Receitas_2
+        //Go to Receitas_2 with no screen transition
+        application().gotoReceitas_2ScreenNoTransition();
+    }
+}
+
+void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &radioButtonMuneroReceita9)
+    {
+        //R9
+        //When radioButtonMuneroReceita9 selected execute C++ code
+        //Execute C++ code
+        SelectJob(0x08);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &radioButtonMuneroReceita10)
+    {
+        //R10
+        //When radioButtonMuneroReceita10 selected execute C++ code
+        //Execute C++ code
+        SelectJob(0x09);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &radioButtonMuneroReceita11)
+    {
+        //R11
+        //When radioButtonMuneroReceita11 selected execute C++ code
+        //Execute C++ code
+        SelectJob(0x0A);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &radioButtonMuneroReceita12)
+    {
+        //R12
+        //When radioButtonMuneroReceita12 selected execute C++ code
+        //Execute C++ code
+        SelectJob(0x0B);
+        SoundBuzzerOn(25);
+    }
 }

@@ -125,6 +125,13 @@ void Update(touchgfx::Unicode::UnicodeChar* buffer, char* src, uint16_t dstSize)
 		touchgfx::Unicode::strncpy(buffer, src, dstSize);
 }
 
+void Update(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, char* src, uint16_t dstSize){
+	if (textArea){
+		Update(buffer, src, dstSize);
+		textArea->invalidate();
+	}
+}
+
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer,  uint16_t dstSize){
 	if (pUnicodeCharToArrayChar){
 		if (pArrayCharToDouble){

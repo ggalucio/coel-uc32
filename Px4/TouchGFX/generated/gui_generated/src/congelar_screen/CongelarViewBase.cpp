@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-CongelarViewBase::CongelarViewBase()
+CongelarViewBase::CongelarViewBase() :
+    buttonCallback(this, &CongelarViewBase::buttonCallbackHandler),
+    radioButtonSelectedCallback(this, &CongelarViewBase::radioButtonSelectedCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -25,19 +27,21 @@ CongelarViewBase::CongelarViewBase()
 
     radioButtonStatusTeclaCongela0.setXY(14, 64);
     radioButtonStatusTeclaCongela0.setBitmaps(touchgfx::Bitmap(BITMAP_MSONDAOFF_ID), touchgfx::Bitmap(BITMAP_MSONDAON_ID), touchgfx::Bitmap(BITMAP_MSONDAON_ID), touchgfx::Bitmap(BITMAP_MSONDAON_ID));
-    radioButtonStatusTeclaCongela0.setSelected(true);
+    radioButtonStatusTeclaCongela0.setSelected(false);
     radioButtonStatusTeclaCongela0.setDeselectionEnabled(false);
 
-    radioButtonStatusTeclaCongela1.setXY(116, 64);
+    radioButtonStatusTeclaCongela1.setXY(140, 64);
     radioButtonStatusTeclaCongela1.setBitmaps(touchgfx::Bitmap(BITMAP_MCONGTEMPOOFF_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID));
     radioButtonStatusTeclaCongela1.setSelected(false);
     radioButtonStatusTeclaCongela1.setDeselectionEnabled(false);
 
     buttonFlagCongelarSonda.setXY(406, 208);
     buttonFlagCongelarSonda.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagCongelarSonda.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -49,6 +53,7 @@ CongelarViewBase::CongelarViewBase()
     add(buttonTelaInicial);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
+    radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void CongelarViewBase::setupScreen()
@@ -77,4 +82,63 @@ void CongelarViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void CongelarViewBase::Congelar_SONDA()
+{
+    //CongelarSONDA
+    //When Congelar_SONDA is called change screen to Congelar_SONDA
+    //Go to Congelar_SONDA with no screen transition
+    application().gotoCongelar_SONDAScreenNoTransition();
+}
+
+void CongelarViewBase::Congelar_select_TEMPO()
+{
+    //CongelarSelectTEMPO
+    //When Congelar_select_TEMPO is called change screen to Congelar_select_TEMPO
+    //Go to Congelar_select_TEMPO with no screen transition
+    application().gotoCongelar_select_TEMPOScreenNoTransition();
+}
+
+void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonFlagCongelarSonda)
+    {
+        //Avancar
+        //When buttonFlagCongelarSonda clicked execute C++ code
+        //Execute C++ code
+        if (radioButtonStatusTeclaCongela0.getSelected())
+        {
+        	Congelar_SONDA();
+        }
+        else if (radioButtonStatusTeclaCongela1.getSelected())
+        {
+        	Congelar_select_TEMPO();
+        }
+    }
+    else if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+}
+
+void CongelarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &radioButtonStatusTeclaCongela0)
+    {
+        //ModoSonda
+        //When radioButtonStatusTeclaCongela0 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &radioButtonStatusTeclaCongela1)
+    {
+        //ModoTempo
+        //When radioButtonStatusTeclaCongela1 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
 }

@@ -113,9 +113,6 @@
     <ClCompile Include="..\..\gui\src\receitas_3_screen\Receitas_3Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\receitas_3_screen\Receitas_3View.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\receitas_3_screen\Receitas_3ViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\receitas_1_edit_screen\Receitas_1_EDITPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\receitas_1_edit_screen\Receitas_1_EDITView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\receitas_1_edit_screen\Receitas_1_EDITViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\receita_confirm_screen\Receita_confirmPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\receita_confirm_screen\Receita_confirmView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\receita_confirm_screen\Receita_confirmViewBase.cpp"/>
@@ -147,8 +144,10 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\Solicitar_senhaBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\Receita_Info_resumo.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\Receita_Info_resumoBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\numpadContainer.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\numpadContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\receitas_x_edit_screen\Receitas_X_EDITPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\receitas_x_edit_screen\Receitas_X_EDITView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\receitas_x_edit_screen\Receitas_X_EDITViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\global\var.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -391,9 +390,6 @@
     <ClInclude Include="..\..\gui\include\gui\receitas_3_screen\Receitas_3Presenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\receitas_3_screen\Receitas_3View.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\receitas_3_screen\Receitas_3ViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\receitas_1_edit_screen\Receitas_1_EDITPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\receitas_1_edit_screen\Receitas_1_EDITView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\receitas_1_edit_screen\Receitas_1_EDITViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\receita_confirm_screen\Receita_confirmPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\receita_confirm_screen\Receita_confirmView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\receita_confirm_screen\Receita_confirmViewBase.hpp"/>
@@ -425,8 +421,10 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Solicitar_senhaBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\Receita_Info_resumo.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Receita_Info_resumoBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\numpadContainer.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\numpadContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\receitas_x_edit_screen\Receitas_X_EDITPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\receitas_x_edit_screen\Receitas_X_EDITView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\receitas_x_edit_screen\Receitas_X_EDITViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\global\var.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

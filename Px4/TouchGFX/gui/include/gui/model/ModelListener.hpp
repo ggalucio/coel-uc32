@@ -3,9 +3,9 @@
 
 #include <gui/model/Model.hpp>
 
+#include <gui/global/var.hpp>
 #include <AT_module.hpp>
 #include <AT_module_ext.hpp>
-#include <Module/Inc/ObjectData.hpp>
 
 class ModelListener
 {
