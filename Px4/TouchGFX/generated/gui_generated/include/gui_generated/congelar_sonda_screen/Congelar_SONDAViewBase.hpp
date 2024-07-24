@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/CANCELAR_PROCESSO.hpp>
 
 class Congelar_SONDAViewBase : public touchgfx::View<Congelar_SONDAPresenter>
 {
@@ -60,11 +61,12 @@ protected:
     touchgfx::TextArea textAreaLabel3;
     touchgfx::TextAreaWithOneWildcard textArea14515;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCountMinutos;
-    touchgfx::TextArea textAreaFlagProcessoAndamento;
+    touchgfx::TextAreaWithOneWildcard textAreaFlagProcessoAndamento;
     touchgfx::TextAreaWithOneWildcard textAreaTempoEstimadoCongelarSonda;
     touchgfx::TextAreaWithOneWildcard textArea14512;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::TextAreaWithOneWildcard textAreaCongelarSondaSp;
+    CANCELAR_PROCESSO cANCELAR_PROCESSO1;
 
     /*
      * Wildcard Buffers
@@ -73,6 +75,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea14515Buffer[TEXTAREA14515_SIZE];
     static const uint16_t TEXTAREATIMERCOUNTMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerCountMinutosBuffer[TEXTAREATIMERCOUNTMINUTOS_SIZE];
+    static const uint16_t TEXTAREAFLAGPROCESSOANDAMENTO_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaFlagProcessoAndamentoBuffer[TEXTAREAFLAGPROCESSOANDAMENTO_SIZE];
     static const uint16_t TEXTAREATEMPOESTIMADOCONGELARSONDA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTempoEstimadoCongelarSondaBuffer[TEXTAREATEMPOESTIMADOCONGELARSONDA_SIZE];
     static const uint16_t TEXTAREA14512_SIZE = 10;
@@ -83,6 +87,20 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaCongelarSondaSpBuffer[TEXTAREACONGELARSONDASP_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Congelar_SONDAViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Congelar_SONDAViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
+    touchgfx::Callback<Congelar_SONDAViewBase> cANCELAR_PROCESSO1NaoCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
+    void cANCELAR_PROCESSO1NaoCallbackHandler();
 
 };
 

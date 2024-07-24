@@ -26,6 +26,11 @@ InicializacaoViewBase::InicializacaoViewBase()
 void InicializacaoViewBase::setupScreen()
 {
 
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    SetModbus485As(0, 9600);
+
 }
 
 //Called when the screen transition ends

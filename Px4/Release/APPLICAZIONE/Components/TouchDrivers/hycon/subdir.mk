@@ -7,6 +7,9 @@
 C_SRCS += \
 C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/hycon/hycon.c 
 
+O_SRCS += \
+C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/hycon/hycon.o 
+
 C_DEPS += \
 ./APPLICAZIONE/Components/TouchDrivers/hycon/hycon.d 
 

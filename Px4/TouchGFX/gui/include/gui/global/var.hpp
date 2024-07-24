@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 extern uint8_t selectedRecipeListPage;
-
+extern int countCycleBlink;
+extern bool isZeroValue;
 
 #endif /* GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_ */

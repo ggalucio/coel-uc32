@@ -6,7 +6,10 @@
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
 
-CANCELAR_PROCESSOBase::CANCELAR_PROCESSOBase()
+CANCELAR_PROCESSOBase::CANCELAR_PROCESSOBase() :
+    buttonCallback(this, &CANCELAR_PROCESSOBase::buttonCallbackHandler),
+    cancelarProcessoCallback(0),
+    naoCallback(0)
 {
     setWidth(480);
     setHeight(272);
@@ -22,12 +25,14 @@ CANCELAR_PROCESSOBase::CANCELAR_PROCESSOBase()
     buttonWithLabelNao.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3977));
     buttonWithLabelNao.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelNao.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelNao.setAction(buttonCallback);
 
     buttonWithLabelCancelarProcessoSim.setXY(86, 184);
     buttonWithLabelCancelarProcessoSim.setBitmaps(touchgfx::Bitmap(BITMAP_R3_ID), touchgfx::Bitmap(BITMAP_R4_ID));
     buttonWithLabelCancelarProcessoSim.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3976));
     buttonWithLabelCancelarProcessoSim.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelCancelarProcessoSim.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelCancelarProcessoSim.setAction(buttonCallback);
 
     textAreaMensagem.setXY(120, 62);
     textAreaMensagem.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -49,5 +54,23 @@ void CANCELAR_PROCESSOBase::initialize()
 void CANCELAR_PROCESSOBase::init()
 {
 
+}
+
+void CANCELAR_PROCESSOBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelNao)
+    {
+        //Nao
+        //When buttonWithLabelNao clicked emit nao callback
+        //Emit callback
+        emitNaoCallback();
+    }
+    else if (&src == &buttonWithLabelCancelarProcessoSim)
+    {
+        //CancelarProcesso
+        //When buttonWithLabelCancelarProcessoSim clicked emit cancelarProcesso callback
+        //Emit callback
+        emitCancelarProcessoCallback();
+    }
 }
 

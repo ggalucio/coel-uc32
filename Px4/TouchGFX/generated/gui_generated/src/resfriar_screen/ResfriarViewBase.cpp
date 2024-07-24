@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-ResfriarViewBase::ResfriarViewBase()
+ResfriarViewBase::ResfriarViewBase() :
+    buttonCallback(this, &ResfriarViewBase::buttonCallbackHandler),
+    radioButtonSelectedCallback(this, &ResfriarViewBase::radioButtonSelectedCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -25,7 +27,7 @@ ResfriarViewBase::ResfriarViewBase()
 
     radioButtonStatusTeclaCongela0.setXY(14, 64);
     radioButtonStatusTeclaCongela0.setBitmaps(touchgfx::Bitmap(BITMAP_RESFRIARSONDAOFF_ID), touchgfx::Bitmap(BITMAP_RESFRIARSONDAON_ID), touchgfx::Bitmap(BITMAP_RESFRIARSONDAON_ID), touchgfx::Bitmap(BITMAP_RESFRIARSONDAON_ID));
-    radioButtonStatusTeclaCongela0.setSelected(true);
+    radioButtonStatusTeclaCongela0.setSelected(false);
     radioButtonStatusTeclaCongela0.setDeselectionEnabled(false);
 
     radioButtonStatusTeclaCongela1.setXY(140, 64);
@@ -38,9 +40,11 @@ ResfriarViewBase::ResfriarViewBase()
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     toggleButtonFlagResfriarHardSoft.setXY(406, 136);
     toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
+    toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -53,6 +57,7 @@ ResfriarViewBase::ResfriarViewBase()
     add(toggleButtonFlagResfriarHardSoft);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
+    radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void ResfriarViewBase::setupScreen()
@@ -81,4 +86,40 @@ void ResfriarViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void ResfriarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &toggleButtonFlagResfriarHardSoft)
+    {
+        //SoftHard
+        //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+}
+
+void ResfriarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &radioButtonStatusTeclaCongela0)
+    {
+        //ModoSonda
+        //When radioButtonStatusTeclaCongela0 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &radioButtonStatusTeclaCongela1)
+    {
+        //ModoTempo
+        //When radioButtonStatusTeclaCongela1 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
 }

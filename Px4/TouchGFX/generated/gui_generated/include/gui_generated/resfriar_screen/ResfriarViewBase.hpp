@@ -49,6 +49,18 @@ protected:
 
 private:
 
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<ResfriarViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<ResfriarViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
+
 };
 
 #endif // RESFRIARVIEWBASE_HPP

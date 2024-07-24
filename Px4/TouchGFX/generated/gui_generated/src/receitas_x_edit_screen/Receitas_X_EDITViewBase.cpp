@@ -286,6 +286,7 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //Salvar
         //When buttonSalvar clicked execute C++ code
         //Execute C++ code
+        UpdateJobs();
         if (selectedRecipeListPage == 1)
         	Receitas_1();
         else if (selectedRecipeListPage == 2)

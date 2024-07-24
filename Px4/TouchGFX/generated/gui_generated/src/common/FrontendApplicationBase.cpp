@@ -121,6 +121,45 @@ void FrontendApplicationBase::gotoTela_InicialScreenNoTransitionImpl()
     touchgfx::makeTransition<Tela_InicialView, Tela_InicialPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// Congelar
+
+void FrontendApplicationBase::gotoCongelarScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoCongelarScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoCongelarScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<CongelarView, CongelarPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Congelar_SONDA
+
+void FrontendApplicationBase::gotoCongelar_SONDAScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoCongelar_SONDAScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoCongelar_SONDAScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Congelar_SONDAView, Congelar_SONDAPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Congelar_select_TEMPO
+
+void FrontendApplicationBase::gotoCongelar_select_TEMPOScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoCongelar_select_TEMPOScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoCongelar_select_TEMPOScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Congelar_select_TEMPOView, Congelar_select_TEMPOPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // Configuracao
 
 void FrontendApplicationBase::gotoConfiguracaoScreenNoTransition()
@@ -132,6 +171,45 @@ void FrontendApplicationBase::gotoConfiguracaoScreenNoTransition()
 void FrontendApplicationBase::gotoConfiguracaoScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<ConfiguracaoView, ConfiguracaoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Conservacao
+
+void FrontendApplicationBase::gotoConservacaoScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoConservacaoScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoConservacaoScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<ConservacaoView, ConservacaoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Resfriar
+
+void FrontendApplicationBase::gotoResfriarScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoResfriarScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoResfriarScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<ResfriarView, ResfriarPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Degelo_Confirmar
+
+void FrontendApplicationBase::gotoDegelo_ConfirmarScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoDegelo_ConfirmarScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoDegelo_ConfirmarScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Degelo_ConfirmarView, Degelo_ConfirmarPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Configuracao_2
@@ -249,6 +327,19 @@ void FrontendApplicationBase::gotoConfiguracao_6ScreenNoTransition()
 void FrontendApplicationBase::gotoConfiguracao_6ScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Configuracao_6View, Configuracao_6Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// HIGIENE_CONFIRMAR
+
+void FrontendApplicationBase::gotoHIGIENE_CONFIRMARScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoHIGIENE_CONFIRMARScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoHIGIENE_CONFIRMARScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<HIGIENE_CONFIRMARView, HIGIENE_CONFIRMARPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Configuracao_7

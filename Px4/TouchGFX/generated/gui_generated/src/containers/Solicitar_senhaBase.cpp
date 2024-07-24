@@ -6,7 +6,12 @@
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
 
-Solicitar_senhaBase::Solicitar_senhaBase()
+Solicitar_senhaBase::Solicitar_senhaBase() :
+    buttonCallback(this, &Solicitar_senhaBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Solicitar_senhaBase::flexButtonCallbackHandler),
+    cancelarCallback(0),
+    confirmarCallback(0),
+    digitarCallback(0)
 {
     setWidth(480);
     setHeight(272);
@@ -27,6 +32,7 @@ Solicitar_senhaBase::Solicitar_senhaBase()
     buttonWithLabelCancelar.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3982));
     buttonWithLabelCancelar.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelCancelar.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelCancelar.setAction(buttonCallback);
 
     buttonWithLabelConfereSenha.setXY(249, 184);
     buttonWithLabelConfereSenha.setBitmaps(touchgfx::Bitmap(BITMAP_R3_ID), touchgfx::Bitmap(BITMAP_R4_ID));
@@ -46,6 +52,13 @@ Solicitar_senhaBase::Solicitar_senhaBase()
     textAreaSenhaUsuario.setWildcard(textAreaSenhaUsuarioBuffer);
     textAreaSenhaUsuario.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3985));
 
+    flexButtonSenhaUsuario.setBoxWithBorderPosition(0, 0, 130, 47);
+    flexButtonSenhaUsuario.setBorderSize(5);
+    flexButtonSenhaUsuario.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSenhaUsuario.setPosition(175, 89, 130, 47);
+    flexButtonSenhaUsuario.setAlpha(0);
+    flexButtonSenhaUsuario.setAction(flexButtonCallback);
+
     add(box1);
     add(box2);
     add(boxWithBorder1);
@@ -53,6 +66,7 @@ Solicitar_senhaBase::Solicitar_senhaBase()
     add(buttonWithLabelConfereSenha);
     add(textAreaMensagem);
     add(textAreaSenhaUsuario);
+    add(flexButtonSenhaUsuario);
 }
 
 void Solicitar_senhaBase::initialize()
@@ -63,5 +77,27 @@ void Solicitar_senhaBase::initialize()
 void Solicitar_senhaBase::init()
 {
 
+}
+
+void Solicitar_senhaBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelCancelar)
+    {
+        //Cancelar
+        //When buttonWithLabelCancelar clicked emit cancelar callback
+        //Emit callback
+        emitCancelarCallback();
+    }
+}
+
+void Solicitar_senhaBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButtonSenhaUsuario)
+    {
+        //Digitar
+        //When flexButtonSenhaUsuario clicked emit digitar callback
+        //Emit callback
+        emitDigitarCallback();
+    }
 }
 

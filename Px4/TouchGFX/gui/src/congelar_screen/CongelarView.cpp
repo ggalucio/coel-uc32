@@ -14,13 +14,3 @@ void CongelarView::tearDownScreen()
 {
     CongelarViewBase::tearDownScreen();
 }
-
-int CongelarView::getModeValue()
-{
-	return radioButtonGroup1.getSelectedRadioButtonIndex();
-}
-
-void CongelarView::setModeValue(int index)
-{
-	Update(radioButtonGroup1.getRadioButton(index), true);
-}

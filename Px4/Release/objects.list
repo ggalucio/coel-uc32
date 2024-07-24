@@ -1,6 +1,5 @@
 "ADDITIONAL/GFX/AT_module_ext.o"
 "ADDITIONAL/GFX/Module/Src/GraphicItemsExt.o"
-"ADDITIONAL/GFX/Module/Src/ObjectData.o"
 "ADDITIONAL/GFX/Module/Src/graphic_ext.o"
 "ADDITIONAL/GFX/Module/Src/taskManagerOthers.o"
 "APPLICAZIONE/Components/FatFs/fatFileSystem.o"

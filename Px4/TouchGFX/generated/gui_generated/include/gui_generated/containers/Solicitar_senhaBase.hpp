@@ -11,6 +11,9 @@
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <AT_module.hpp>
+#include <AT_module_ext.hpp>
 
 class Solicitar_senhaBase : public touchgfx::Container
 {
@@ -18,6 +21,22 @@ public:
     Solicitar_senhaBase();
     virtual ~Solicitar_senhaBase() {}
     virtual void initialize();
+
+    /*
+     * Custom Trigger Callback Setters
+     */
+    void setCancelarCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->cancelarCallback = &callback;
+    }
+    void setConfirmarCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->confirmarCallback = &callback;
+    }
+    void setDigitarCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->digitarCallback = &callback;
+    }
 
     /*
      * Custom Actions
@@ -30,6 +49,31 @@ protected:
     }
 
     /*
+     * Custom Trigger Emitters
+     */
+    virtual void emitCancelarCallback()
+    {
+        if (cancelarCallback && cancelarCallback->isValid())
+        {
+            this->cancelarCallback->execute();
+        }
+    }
+    virtual void emitConfirmarCallback()
+    {
+        if (confirmarCallback && confirmarCallback->isValid())
+        {
+            this->confirmarCallback->execute();
+        }
+    }
+    virtual void emitDigitarCallback()
+    {
+        if (digitarCallback && digitarCallback->isValid())
+        {
+            this->digitarCallback->execute();
+        }
+    }
+
+    /*
      * Member Declarations
      */
     touchgfx::Box box1;
@@ -39,6 +83,7 @@ protected:
     touchgfx::ButtonWithLabel buttonWithLabelConfereSenha;
     touchgfx::TextArea textAreaMensagem;
     touchgfx::TextAreaWithOneWildcard textAreaSenhaUsuario;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSenhaUsuario;
 
     /*
      * Wildcard Buffers
@@ -47,6 +92,25 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaSenhaUsuarioBuffer[TEXTAREASENHAUSUARIO_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Solicitar_senhaBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Solicitar_senhaBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+
+    /*
+     * Custom Trigger Callback Declarations
+     */
+    touchgfx::GenericCallback<>* cancelarCallback;
+    touchgfx::GenericCallback<>* confirmarCallback;
+    touchgfx::GenericCallback<>* digitarCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

@@ -50,7 +50,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": ""
+              "Code": "SetModbus485As(0, 9600);"
             }
           },
           {
@@ -277,6 +277,36 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "Solicitar_senha",
+            "Type": "CustomContainerInstance",
+            "Name": "solicitar_senha1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "numKeyboardContainerPwd",
+            "Type": "CustomContainerInstance",
+            "Name": "numKeyboardContainerPwd1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -321,7 +351,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nClearOthers();"
+              "Code": "Clear();\r\nClearOthers();\r\nContainerClear(&numKeyboardContainerPwd1);"
             }
           },
           {
@@ -349,6 +379,150 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Receitas_1"
             }
+          },
+          {
+            "InteractionName": "CancelarAcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "Solicitar_senha cancelar happens",
+              "TriggerComponent": "solicitar_senha1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&solicitar_senha1, false);\r\nLogoutUser();\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DigitarSenha",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "Solicitar_senha digitar happens",
+              "TriggerComponent": "solicitar_senha1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&numKeyboardContainerPwd1, !UserIsLogged());\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "LaunchPasswordKeyboard",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Tela_Inicial launchPasswordKeyboard"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call numKeyboardContainerPwd LaunchNumericalKeyboard",
+              "ActionComponent": "numKeyboardContainerPwd1"
+            }
+          },
+          {
+            "InteractionName": "CredentialSuccess",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "numKeyboardContainerPwd CredentialSuccess happens",
+              "TriggerComponent": "numKeyboardContainerPwd1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&numKeyboardContainerPwd1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CredentialFailed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "numKeyboardContainerPwd CredentialFailed happens",
+              "TriggerComponent": "numKeyboardContainerPwd1"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call numKeyboardContainerPwd ViewErrorMsg",
+              "ActionComponent": "numKeyboardContainerPwd1"
+            }
+          },
+          {
+            "InteractionName": "HideNumKeyboardPwd",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "numKeyboardContainerPwd CancelTrigger happens",
+              "TriggerComponent": "numKeyboardContainerPwd1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&numKeyboardContainerPwd1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Congelar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonCongelar"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar"
+            }
+          },
+          {
+            "InteractionName": "Resfriar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonResfriar"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar"
+            }
+          },
+          {
+            "InteractionName": "Conservar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonConcervar"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Conservacao"
+            }
+          },
+          {
+            "InteractionName": "Degelo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonDegelo"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Degelo_Confirmar"
+            }
+          },
+          {
+            "InteractionName": "Higienizacao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonHigiene"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HIGIENE_CONFIRMAR"
+            }
           }
         ],
         "CustomActions": [
@@ -358,6 +532,10 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "launchPasswordKeyboard",
             "HasValue": false
           }
         ],
@@ -434,7 +612,7 @@
           {
             "Type": "RadioButton",
             "Alpha": 255,
-            "Selected": true,
+            "Selected": false,
             "Deselectable": false,
             "FileNameSelected": "msondaon.png",
             "FileNameSelectedPressed": "msondaon.png",
@@ -556,13 +734,78 @@
             }
           },
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "TelaInicial",
             "HasCompletedTrigger": false,
             "Trigger": {
-              "Type": "TriggerNone"
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
             },
             "Action": {
-              "Type": "ActionNone"
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "ModoSonda",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonStatusTeclaCongela0"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ModoTempo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonStatusTeclaCongela1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagCongelarSonda"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (radioButtonStatusTeclaCongela0.getSelected())\r\n{\r\n\tCongelar_SONDA();\r\n}\r\nelse if (radioButtonStatusTeclaCongela1.getSelected())\r\n{\r\n\tCongelar_select_TEMPO();\r\n}"
+            }
+          },
+          {
+            "InteractionName": "CongelarSONDA",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Congelar Congelar_SONDA"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar_SONDA"
+            }
+          },
+          {
+            "InteractionName": "CongelarSelectTEMPO",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Congelar Congelar_select_TEMPO"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar_select_TEMPO"
             }
           }
         ],
@@ -573,6 +816,14 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Congelar_SONDA",
+            "HasValue": false
+          },
+          {
+            "Name": "Congelar_select_TEMPO",
             "HasValue": false
           }
         ],
@@ -1075,12 +1326,17 @@
               "Blue": 255
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4019",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
             "Name": "textAreaFlagProcessoAndamento",
-            "X": 360,
+            "X": 308,
             "Y": 14,
-            "Width": 108,
+            "Width": 160,
             "Height": 25,
             "Visible": true,
             "LockPosition": true,
@@ -1204,6 +1460,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "CANCELAR_PROCESSO",
+            "Type": "CustomContainerInstance",
+            "Name": "cANCELAR_PROCESSO1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -1214,7 +1485,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\n\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -1236,7 +1508,8 @@
               "ActionCustomTypeName": "Call Congelar_SONDA handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -1248,7 +1521,58 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nClearOthers();"
+              "Code": "Clear();\r\nClearOthers();\r\nContainerClear(&cANCELAR_PROCESSO1);"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonCancelarProcesso"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CSV",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagConservarSN"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -2121,6 +2445,30 @@
             "Moveable": false
           },
           {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4020",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaTempoZero",
+            "X": 15,
+            "Y": 65,
+            "Width": 66,
+            "Height": 50,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Type": "Button",
             "Pressed": "avanceON.png",
             "Released": "avance.png",
@@ -2131,7 +2479,7 @@
             "Width": 67,
             "Height": 52,
             "Visible": true,
-            "LockPosition": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -2148,7 +2496,7 @@
             "Width": 67,
             "Height": 52,
             "Visible": true,
-            "LockPosition": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -2163,7 +2511,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -2185,7 +2534,8 @@
               "ActionCustomTypeName": "Call Congelar_select_TEMPO handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -2198,6 +2548,55 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonVoltar"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar"
+            }
+          },
+          {
+            "InteractionName": "Incrementar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelIncrementar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Increase(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 1, 0, 9999, _INT_, 0);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Decrementar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelDecrementar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Decrease(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 1, 0, 9999, _INT_, 0);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonAvancar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);\r\ndouble value = GetNumberTextArea(textAreaTimerSpMinutosBuffer);"
             }
           }
         ],
@@ -3129,7 +3528,7 @@
           {
             "Type": "RadioButton",
             "Alpha": 255,
-            "Selected": true,
+            "Selected": false,
             "Deselectable": false,
             "FileNameSelected": "ConservCongON.png",
             "FileNameSelectedPressed": "ConservCongON.png",
@@ -3248,6 +3647,43 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "TelaInicial",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "Congelar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonStatusConservar0"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Resfriar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonStatusConservar1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -4380,7 +4816,7 @@
           {
             "Type": "RadioButton",
             "Alpha": 255,
-            "Selected": true,
+            "Selected": false,
             "Deselectable": false,
             "FileNameSelected": "ResfriarSondaON.png",
             "FileNameSelectedPressed": "ResfriarSondaON.png",
@@ -4517,6 +4953,55 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "TelaInicial",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "ModoSonda",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonStatusTeclaCongela0"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ModoTempo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerRadioButtonSelected",
+              "TriggerComponent": "radioButtonStatusTeclaCongela1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "SoftHard",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagResfriarHardSoft"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -6935,6 +7420,19 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Cancelar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
             }
           }
         ],
@@ -11931,7 +12429,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (selectedRecipeListPage == 1)\r\n\tReceitas_1();\r\nelse if (selectedRecipeListPage == 2)\r\n\tReceitas_2();\r\nelse if (selectedRecipeListPage == 3)\r\n\tReceitas_3();"
+              "Code": "UpdateJobs();\r\nif (selectedRecipeListPage == 1)\r\n\tReceitas_1();\r\nelse if (selectedRecipeListPage == 2)\r\n\tReceitas_2();\r\nelse if (selectedRecipeListPage == 3)\r\n\tReceitas_3();"
             }
           },
           {
@@ -15994,6 +16492,19 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "TelaInicial",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Tela_Inicial"
             }
           }
         ],
@@ -21261,6 +21772,40 @@
             "Action": {
               "Type": "ActionExecuteCode"
             }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelCancelarProcessoSim"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelNao"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "cancelarProcesso",
+            "HasValue": false
+          },
+          {
+            "Name": "nao",
+            "HasValue": false
           }
         ],
         "CustomActions": [
@@ -21603,6 +22148,55 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "FlexButton",
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 130,
+                "Height": 47,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "flexButtonSenhaUsuario",
+            "X": 175,
+            "Y": 89,
+            "Width": 130,
+            "Height": 47,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -21614,8 +22208,47 @@
               "ActionCustomTypeName": "Call Solicitar_senha init"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": ""
             }
+          },
+          {
+            "InteractionName": "Cancelar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelCancelar"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "Solicitar_senha cancelar happens"
+            }
+          },
+          {
+            "InteractionName": "Digitar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButtonSenhaUsuario"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "Solicitar_senha digitar happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "cancelar",
+            "HasValue": false
+          },
+          {
+            "Name": "confirmar",
+            "HasValue": false
+          },
+          {
+            "Name": "digitar",
+            "HasValue": false
           }
         ],
         "CustomActions": [
@@ -21628,7 +22261,8 @@
         "X": 0,
         "Y": 0,
         "Width": 480,
-        "Height": 272
+        "Height": 272,
+        "Includes": "#include <AT_module.hpp>\r\n#include <AT_module_ext.hpp>"
       },
       {
         "Components": [
@@ -24639,6 +25273,14 @@
       },
       {
         "TextEntryId": "SingleUseId4018",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4019",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4020",
         "IsResource": false
       }
     ],
