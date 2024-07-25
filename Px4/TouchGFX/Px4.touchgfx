@@ -1470,7 +1470,7 @@
             "Width": 480,
             "Height": 272,
             "Visible": false,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -1486,7 +1486,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\n\r\ncountCycleBlink = 0;"
+              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -2019,6 +2019,35 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId4021",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4022",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "textAreaFlagProcessoAndamento",
+            "X": 308,
+            "Y": 14,
+            "Width": 160,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId3645",
             "TextRotation": "0",
             "Color": {
@@ -2068,30 +2097,6 @@
             "Y": 199,
             "Width": 121,
             "Height": 55,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3814",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textAreaFlagProcessoAndamento",
-            "X": 360,
-            "Y": 14,
-            "Width": 108,
-            "Height": 25,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -2185,6 +2190,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "CANCELAR_PROCESSO",
+            "Type": "CustomContainerInstance",
+            "Name": "cANCELAR_PROCESSO1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -2195,7 +2215,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n"
             }
           },
           {
@@ -2217,7 +2238,8 @@
               "ActionCustomTypeName": "Call Congelar_TEMPO handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -2229,7 +2251,58 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nClearOthers();"
+              "Code": "Clear();\r\nClearOthers();\r\nContainerClear(&cANCELAR_PROCESSO1);"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonCancelarProcesso"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CSV",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagConservarSN"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -2596,7 +2669,20 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);\r\ndouble value = GetNumberTextArea(textAreaTimerSpMinutosBuffer);"
+              "Code": "if (GetNumberTextArea(textAreaTimerSpMinutosBuffer) == 0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n\tCongelar_TEMPO();\r\n"
+            }
+          },
+          {
+            "InteractionName": "CongelarTEMPO",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Congelar_select_TEMPO Congelar_TEMPO"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar_TEMPO"
             }
           }
         ],
@@ -2607,6 +2693,10 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Congelar_TEMPO",
             "HasValue": false
           }
         ],
@@ -3685,6 +3775,44 @@
               "Type": "ActionExecuteCode",
               "Code": "SoundBuzzerOn(25);"
             }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagConservarCongResf"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (radioButtonStatusConservar0.getSelected())\r\n{\r\n\tConservar_Congelar();\r\n}\r\nelse if (radioButtonStatusConservar1.getSelected())\r\n{\r\n\tConservar_Resfriar();\r\n}"
+            }
+          },
+          {
+            "InteractionName": "ConservarCongelar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Conservacao Conservar_Congelar"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Conservar_Congelar"
+            }
+          },
+          {
+            "InteractionName": "ConservarResfriar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Conservacao Conservar_Resfriar"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Conservar_Resfriar"
+            }
           }
         ],
         "CustomActions": [
@@ -3694,6 +3822,14 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Conservar_Congelar",
+            "HasValue": false
+          },
+          {
+            "Name": "Conservar_Resfriar",
             "HasValue": false
           }
         ],
@@ -4036,6 +4172,35 @@
             "Moveable": false
           },
           {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4050",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4051",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "textAreaFlagProcessoAndamento",
+            "X": 308,
+            "Y": 14,
+            "Width": 160,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Type": "Button",
             "Pressed": "voltar.png",
             "Released": "voltar.png",
@@ -4045,30 +4210,6 @@
             "Y": 64,
             "Width": 67,
             "Height": 52,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3831",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textAreaFlagConservarAndamento",
-            "X": 338,
-            "Y": 14,
-            "Width": 136,
-            "Height": 25,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -4162,6 +4303,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "CANCELAR_PROCESSO",
+            "Type": "CustomContainerInstance",
+            "Name": "cANCELAR_PROCESSO1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -4172,7 +4328,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -4194,7 +4351,8 @@
               "ActionCustomTypeName": "Call Conservar_Congelar handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -4207,6 +4365,45 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonCancelarProcesso"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Conservacao"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -4464,6 +4661,35 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId4052",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4053",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "textAreaFlagProcessoAndamento",
+            "X": 308,
+            "Y": 14,
+            "Width": 160,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId3815",
             "TextRotation": "0",
             "Color": {
@@ -4577,30 +4803,6 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId3825",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textAreaFlagConservarAndamento",
-            "X": 338,
-            "Y": 14,
-            "Width": 136,
-            "Height": 25,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId3817",
             "TextRotation": "0",
             "Color": {
@@ -4685,6 +4887,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "CANCELAR_PROCESSO",
+            "Type": "CustomContainerInstance",
+            "Name": "cANCELAR_PROCESSO1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -4695,7 +4912,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -4717,7 +4935,8 @@
               "ActionCustomTypeName": "Call Conservar_Resfriar handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -4730,6 +4949,45 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonCancelarProcesso"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Conservacao"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -5003,6 +5261,44 @@
               "Type": "ActionExecuteCode",
               "Code": "SoundBuzzerOn(25);"
             }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagResfriarSondaTempo"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (radioButtonStatusTeclaCongela0.getSelected())\r\n{\r\n\tResfriar_SONDA();\r\n}\r\nelse if (radioButtonStatusTeclaCongela1.getSelected())\r\n{\r\n\tResfriar_Select_Tempo();\r\n}"
+            }
+          },
+          {
+            "InteractionName": "ResfriarSONDA",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Resfriar Resfriar_SONDA"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar_SONDA"
+            }
+          },
+          {
+            "InteractionName": "ResfriarSelectTempo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Resfriar Resfriar_Select_Tempo"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar_Select_Tempo"
+            }
           }
         ],
         "CustomActions": [
@@ -5012,6 +5308,14 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Resfriar_SONDA",
+            "HasValue": false
+          },
+          {
+            "Name": "Resfriar_Select_Tempo",
             "HasValue": false
           }
         ],
@@ -5378,6 +5682,35 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId4024",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4025",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "textAreaFlagProcessoAndamento",
+            "X": 308,
+            "Y": 14,
+            "Width": 160,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId3842",
             "TextRotation": "0",
             "Color": {
@@ -5508,30 +5841,6 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId3849",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textAreaFlagProcessoAndamento",
-            "X": 360,
-            "Y": 14,
-            "Width": 108,
-            "Height": 25,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId3850",
             "TextRotation": "0",
             "Color": {
@@ -5645,6 +5954,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "CANCELAR_PROCESSO",
+            "Type": "CustomContainerInstance",
+            "Name": "cANCELAR_PROCESSO1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -5655,7 +5979,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -5677,7 +6002,8 @@
               "ActionCustomTypeName": "Call Resfriar_SONDA handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -5690,6 +6016,69 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonCancelarProcesso"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CSV",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagConservarSN"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "SoftHard",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagResfriarHardSoft"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -5923,6 +6312,30 @@
             "Moveable": false
           },
           {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4023",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaTempoZero",
+            "X": 15,
+            "Y": 65,
+            "Width": 66,
+            "Height": 50,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Type": "Button",
             "Pressed": "avanceON.png",
             "Released": "avance.png",
@@ -5965,7 +6378,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -5987,7 +6401,8 @@
               "ActionCustomTypeName": "Call Resfriar_Select_Tempo handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -6001,6 +6416,80 @@
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
             }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonResfriar"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar"
+            }
+          },
+          {
+            "InteractionName": "Incrementar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelIncrementar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Increase(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Decrementar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelDecrementar"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Decrease(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagCongelarTempo"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer) == 0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n\tResfriar_TEMPO();\r\n"
+            }
+          },
+          {
+            "InteractionName": "ResfriarTEMPO",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Resfriar_Select_Tempo Resfriar_TEMPO"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar_TEMPO"
+            }
+          },
+          {
+            "InteractionName": "SoftHard",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagResfriarHardSoft"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
           }
         ],
         "CustomActions": [
@@ -6010,6 +6499,10 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Resfriar_TEMPO",
             "HasValue": false
           }
         ],
@@ -6448,6 +6941,35 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId4048",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4049",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "textAreaFlagProcessoAndamento",
+            "X": 308,
+            "Y": 14,
+            "Width": 160,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId3872",
             "TextRotation": "0",
             "Color": {
@@ -6497,30 +7019,6 @@
             "Y": 199,
             "Width": 121,
             "Height": 55,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3876",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textAreaFlagProcessoAndamento",
-            "X": 360,
-            "Y": 14,
-            "Width": 108,
-            "Height": 25,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -6614,6 +7112,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "CANCELAR_PROCESSO",
+            "Type": "CustomContainerInstance",
+            "Name": "cANCELAR_PROCESSO1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -6624,7 +7137,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n"
             }
           },
           {
@@ -6646,7 +7160,8 @@
               "ActionCustomTypeName": "Call Resfriar_TEMPO handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -6659,6 +7174,69 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonCancelarProcesso"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CSV",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagConservarSN"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "SoftHard",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonFlagResfriarHardSoft"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -24568,10 +25146,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId3814",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId3815",
         "IsResource": false
       },
@@ -24612,10 +25186,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId3825",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId3826",
         "IsResource": false
       },
@@ -24633,10 +25203,6 @@
       },
       {
         "TextEntryId": "SingleUseId3830",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId3831",
         "IsResource": false
       },
       {
@@ -24705,10 +25271,6 @@
       },
       {
         "TextEntryId": "SingleUseId3848",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId3849",
         "IsResource": false
       },
       {
@@ -24813,10 +25375,6 @@
       },
       {
         "TextEntryId": "SingleUseId3875",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId3876",
         "IsResource": false
       },
       {
@@ -25281,6 +25839,62 @@
       },
       {
         "TextEntryId": "SingleUseId4020",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4021",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4022",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4023",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4024",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4025",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4045",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4046",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4047",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4048",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4049",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4050",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4051",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4052",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4053",
         "IsResource": false
       }
     ],

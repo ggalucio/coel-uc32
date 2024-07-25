@@ -27,6 +27,9 @@ public:
     // Congelar_SONDA
     void gotoCongelar_SONDAScreenNoTransition();
 
+    // Congelar_TEMPO
+    void gotoCongelar_TEMPOScreenNoTransition();
+
     // Congelar_select_TEMPO
     void gotoCongelar_select_TEMPOScreenNoTransition();
 
@@ -36,8 +39,23 @@ public:
     // Conservacao
     void gotoConservacaoScreenNoTransition();
 
+    // Conservar_Congelar
+    void gotoConservar_CongelarScreenNoTransition();
+
+    // Conservar_Resfriar
+    void gotoConservar_ResfriarScreenNoTransition();
+
     // Resfriar
     void gotoResfriarScreenNoTransition();
+
+    // Resfriar_SONDA
+    void gotoResfriar_SONDAScreenNoTransition();
+
+    // Resfriar_Select_Tempo
+    void gotoResfriar_Select_TempoScreenNoTransition();
+
+    // Resfriar_TEMPO
+    void gotoResfriar_TEMPOScreenNoTransition();
 
     // Degelo_Confirmar
     void gotoDegelo_ConfirmarScreenNoTransition();
@@ -92,6 +110,9 @@ protected:
     // Congelar_SONDA
     void gotoCongelar_SONDAScreenNoTransitionImpl();
 
+    // Congelar_TEMPO
+    void gotoCongelar_TEMPOScreenNoTransitionImpl();
+
     // Congelar_select_TEMPO
     void gotoCongelar_select_TEMPOScreenNoTransitionImpl();
 
@@ -101,8 +122,23 @@ protected:
     // Conservacao
     void gotoConservacaoScreenNoTransitionImpl();
 
+    // Conservar_Congelar
+    void gotoConservar_CongelarScreenNoTransitionImpl();
+
+    // Conservar_Resfriar
+    void gotoConservar_ResfriarScreenNoTransitionImpl();
+
     // Resfriar
     void gotoResfriarScreenNoTransitionImpl();
+
+    // Resfriar_SONDA
+    void gotoResfriar_SONDAScreenNoTransitionImpl();
+
+    // Resfriar_Select_Tempo
+    void gotoResfriar_Select_TempoScreenNoTransitionImpl();
+
+    // Resfriar_TEMPO
+    void gotoResfriar_TEMPOScreenNoTransitionImpl();
 
     // Degelo_Confirmar
     void gotoDegelo_ConfirmarScreenNoTransitionImpl();

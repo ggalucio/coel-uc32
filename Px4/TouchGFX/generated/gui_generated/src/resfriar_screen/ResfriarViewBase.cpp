@@ -37,6 +37,7 @@ ResfriarViewBase::ResfriarViewBase() :
 
     buttonFlagResfriarSondaTempo.setXY(406, 208);
     buttonFlagResfriarSondaTempo.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagResfriarSondaTempo.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
@@ -88,9 +89,39 @@ void ResfriarViewBase::tearDownScreen()
     ClearOthers();
 }
 
+void ResfriarViewBase::Resfriar_SONDA()
+{
+    //ResfriarSONDA
+    //When Resfriar_SONDA is called change screen to Resfriar_SONDA
+    //Go to Resfriar_SONDA with no screen transition
+    application().gotoResfriar_SONDAScreenNoTransition();
+}
+
+void ResfriarViewBase::Resfriar_Select_Tempo()
+{
+    //ResfriarSelectTempo
+    //When Resfriar_Select_Tempo is called change screen to Resfriar_Select_Tempo
+    //Go to Resfriar_Select_Tempo with no screen transition
+    application().gotoResfriar_Select_TempoScreenNoTransition();
+}
+
 void ResfriarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonTelaInicial)
+    if (&src == &buttonFlagResfriarSondaTempo)
+    {
+        //Avancar
+        //When buttonFlagResfriarSondaTempo clicked execute C++ code
+        //Execute C++ code
+        if (radioButtonStatusTeclaCongela0.getSelected())
+        {
+        	Resfriar_SONDA();
+        }
+        else if (radioButtonStatusTeclaCongela1.getSelected())
+        {
+        	Resfriar_Select_Tempo();
+        }
+    }
+    else if (&src == &buttonTelaInicial)
     {
         //TelaInicial
         //When buttonTelaInicial clicked change screen to Tela_Inicial

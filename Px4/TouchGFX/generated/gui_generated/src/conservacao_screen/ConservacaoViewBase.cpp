@@ -40,6 +40,7 @@ ConservacaoViewBase::ConservacaoViewBase() :
 
     buttonFlagConservarCongResf.setXY(406, 208);
     buttonFlagConservarCongResf.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagConservarCongResf.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
@@ -87,9 +88,39 @@ void ConservacaoViewBase::tearDownScreen()
     ClearOthers();
 }
 
+void ConservacaoViewBase::Conservar_Congelar()
+{
+    //ConservarCongelar
+    //When Conservar_Congelar is called change screen to Conservar_Congelar
+    //Go to Conservar_Congelar with no screen transition
+    application().gotoConservar_CongelarScreenNoTransition();
+}
+
+void ConservacaoViewBase::Conservar_Resfriar()
+{
+    //ConservarResfriar
+    //When Conservar_Resfriar is called change screen to Conservar_Resfriar
+    //Go to Conservar_Resfriar with no screen transition
+    application().gotoConservar_ResfriarScreenNoTransition();
+}
+
 void ConservacaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonTelaInicial)
+    if (&src == &buttonFlagConservarCongResf)
+    {
+        //Avancar
+        //When buttonFlagConservarCongResf clicked execute C++ code
+        //Execute C++ code
+        if (radioButtonStatusConservar0.getSelected())
+        {
+        	Conservar_Congelar();
+        }
+        else if (radioButtonStatusConservar1.getSelected())
+        {
+        	Conservar_Resfriar();
+        }
+    }
+    else if (&src == &buttonTelaInicial)
     {
         //TelaInicial
         //When buttonTelaInicial clicked change screen to Tela_Inicial

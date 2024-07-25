@@ -198,7 +198,6 @@ void Congelar_SONDAViewBase::setupScreen()
     Update(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);
     
     Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
-    
     countCycleBlink = 0;
 
 }
