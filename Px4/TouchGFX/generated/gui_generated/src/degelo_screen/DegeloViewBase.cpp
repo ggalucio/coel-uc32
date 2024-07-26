@@ -6,7 +6,10 @@
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
 
-DegeloViewBase::DegeloViewBase()
+DegeloViewBase::DegeloViewBase() :
+    buttonCallback(this, &DegeloViewBase::buttonCallbackHandler),
+    cANCELAR_PROCESSO1CancelarProcessoCallback(this, &DegeloViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler),
+    cANCELAR_PROCESSO1NaoCallback(this, &DegeloViewBase::cANCELAR_PROCESSO1NaoCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -75,9 +78,18 @@ DegeloViewBase::DegeloViewBase()
 
     buttonFinalizarDegelo.setXY(406, 64);
     buttonFinalizarDegelo.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonFinalizarDegelo.setAction(buttonCallback);
 
     toggleButtonDegeloProcessoAutomatico.setXY(406, 208);
     toggleButtonDegeloProcessoAutomatico.setBitmaps(touchgfx::Bitmap(BITMAP_STOP_ID), touchgfx::Bitmap(BITMAP_AUTO_ID));
+    toggleButtonDegeloProcessoAutomatico.setAction(buttonCallback);
+
+    textAreaFlagProcessoAndamento.setPosition(308, 14, 160, 25);
+    textAreaFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textAreaFlagProcessoAndamento.setLinespacing(0);
+    Unicode::snprintf(textAreaFlagProcessoAndamentoBuffer, TEXTAREAFLAGPROCESSOANDAMENTO_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4055).getText());
+    textAreaFlagProcessoAndamento.setWildcard(textAreaFlagProcessoAndamentoBuffer);
+    textAreaFlagProcessoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4054));
 
     textArea14513.setPosition(180, 100, 121, 56);
     textArea14513.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
@@ -107,6 +119,11 @@ DegeloViewBase::DegeloViewBase()
     textArea1410270.setWildcard(textArea1410270Buffer);
     textArea1410270.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3806));
 
+    cANCELAR_PROCESSO1.setXY(0, 0);
+    cANCELAR_PROCESSO1.setVisible(false);
+    cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
+    cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -125,14 +142,27 @@ DegeloViewBase::DegeloViewBase()
     add(textAreaTitle);
     add(buttonFinalizarDegelo);
     add(toggleButtonDegeloProcessoAutomatico);
+    add(textAreaFlagProcessoAndamento);
     add(textArea14513);
     add(textArea1410272);
     add(textAreaTimerDegeloCountMinutos);
     add(textArea1410270);
+    add(cANCELAR_PROCESSO1);
 }
 
 void DegeloViewBase::setupScreen()
 {
+    cANCELAR_PROCESSO1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textArea14513, textArea14513Buffer, 0, _DOUBLE_, 1);
+    Update(&textArea1410272, textArea1410272Buffer, 0, _DOUBLE_, 1);
+    Update(&textAreaTimerDegeloCountMinutos, textAreaTimerDegeloCountMinutosBuffer, 0, _DOUBLE_, 1);
+    Update(&textArea1410270, textArea1410270Buffer, 0, _DOUBLE_, 1);
+    
+    Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
+    countCycleBlink = 0;
 
 }
 
@@ -145,9 +175,35 @@ void DegeloViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
+void DegeloViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
+{
+    //CancelarProcesso
+    //When cANCELAR_PROCESSO1 cancelarProcesso change screen to Degelo_Confirmar
+    //Go to Degelo_Confirmar with no screen transition
+    application().gotoDegelo_ConfirmarScreenNoTransition();
+}
+
+void DegeloViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
+{
+    //Nao
+    //When cANCELAR_PROCESSO1 nao execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&cANCELAR_PROCESSO1, false);
+    SoundBuzzerOn(25);
+}
+
 void DegeloViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if (countCycleBlink > 1000)
+    {
+    	countCycleBlink = 0;
+    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    }
+    
+    countCycleBlink += 16;
 }
 
 void DegeloViewBase::tearDownScreen()
@@ -157,4 +213,23 @@ void DegeloViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void DegeloViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonFinalizarDegelo)
+    {
+        //Voltar
+        //When buttonFinalizarDegelo clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&cANCELAR_PROCESSO1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonDegeloProcessoAutomatico)
+    {
+        //DegeloProcessoAutomatico
+        //When toggleButtonDegeloProcessoAutomatico clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
 }

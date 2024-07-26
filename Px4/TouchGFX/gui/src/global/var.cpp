@@ -8,5 +8,6 @@
 #include "gui/global/var.hpp"
 
 uint8_t selectedRecipeListPage = 0;
+uint8_t selectedRecipeItem = 0;
 int countCycleBlink = 0;
 bool isZeroValue = false;

@@ -152,15 +152,19 @@ void Receitas_2ViewBase::setupScreen()
     //Execute C++ code
     SelectJob(4);
     ReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);
+    Update(&radioButtonMuneroReceita5, (selectedRecipeItem == 5 ? true : false));
     
     SelectJob(5);
     ReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);
+    Update(&radioButtonMuneroReceita6, (selectedRecipeItem == 6 ? true : false));
     
     SelectJob(6);
     ReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);
+    Update(&radioButtonMuneroReceita7, (selectedRecipeItem == 7 ? true : false));
     
     SelectJob(7);
     ReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);
+    Update(&radioButtonMuneroReceita8, (selectedRecipeItem == 8 ? true : false));
 
 }
 
@@ -170,7 +174,8 @@ void Receitas_2ViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    SoundBuzzerOn(25);
+    if (!(selectedRecipeItem >= 5 && selectedRecipeItem <= 8))
+    	SoundBuzzerOn(25);
 }
 
 void Receitas_2ViewBase::handleTickEvent()
@@ -242,6 +247,7 @@ void Receitas_2ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R5
         //When radioButtonMuneroReceita5 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 5;
         SelectJob(0x04);
         SoundBuzzerOn(25);
     }
@@ -250,6 +256,7 @@ void Receitas_2ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R6
         //When radioButtonMuneroReceita6 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 6;
         SelectJob(0x05);
         SoundBuzzerOn(25);
     }
@@ -258,6 +265,7 @@ void Receitas_2ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R7
         //When radioButtonMuneroReceita7 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 7;
         SelectJob(0x06);
         SoundBuzzerOn(25);
     }
@@ -266,6 +274,7 @@ void Receitas_2ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R8
         //When radioButtonMuneroReceita8 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 8;
         SelectJob(0x07);
         SoundBuzzerOn(25);
     }

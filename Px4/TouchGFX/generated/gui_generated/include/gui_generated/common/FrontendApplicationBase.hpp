@@ -57,6 +57,9 @@ public:
     // Resfriar_TEMPO
     void gotoResfriar_TEMPOScreenNoTransition();
 
+    // Degelo
+    void gotoDegeloScreenNoTransition();
+
     // Degelo_Confirmar
     void gotoDegelo_ConfirmarScreenNoTransition();
 
@@ -139,6 +142,9 @@ protected:
 
     // Resfriar_TEMPO
     void gotoResfriar_TEMPOScreenNoTransitionImpl();
+
+    // Degelo
+    void gotoDegeloScreenNoTransitionImpl();
 
     // Degelo_Confirmar
     void gotoDegelo_ConfirmarScreenNoTransitionImpl();

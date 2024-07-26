@@ -277,6 +277,19 @@ void FrontendApplicationBase::gotoResfriar_TEMPOScreenNoTransitionImpl()
     touchgfx::makeTransition<Resfriar_TEMPOView, Resfriar_TEMPOPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// Degelo
+
+void FrontendApplicationBase::gotoDegeloScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoDegeloScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoDegeloScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<DegeloView, DegeloPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // Degelo_Confirmar
 
 void FrontendApplicationBase::gotoDegelo_ConfirmarScreenNoTransition()

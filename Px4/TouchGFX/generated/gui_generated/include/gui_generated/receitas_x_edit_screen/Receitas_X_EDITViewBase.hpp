@@ -70,6 +70,10 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonReceitaXDesc;
     keyboardContainer keyboardContainer1;
     numKeyboardContainer numKeyboardContainer1;
+    touchgfx::TextAreaWithOneWildcard textAreaRXConservYn;
+    touchgfx::TextAreaWithOneWildcard textAreaRXhardSoft;
+    touchgfx::TextAreaWithOneWildcard textAreaRXCongResf;
+    touchgfx::TextAreaWithOneWildcard textAreaRXTimeTemp;
 
     /*
      * Wildcard Buffers
@@ -82,6 +86,14 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTemperaturaReceitaBuffer[TEXTAREATEMPERATURARECEITA_SIZE];
     static const uint16_t TEXTAREATEMPORECEITAX_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTempoReceitaXBuffer[TEXTAREATEMPORECEITAX_SIZE];
+    static const uint16_t TEXTAREARXCONSERVYN_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaRXConservYnBuffer[TEXTAREARXCONSERVYN_SIZE];
+    static const uint16_t TEXTAREARXHARDSOFT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaRXhardSoftBuffer[TEXTAREARXHARDSOFT_SIZE];
+    static const uint16_t TEXTAREARXCONGRESF_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaRXCongResfBuffer[TEXTAREARXCONGRESF_SIZE];
+    static const uint16_t TEXTAREARXTIMETEMP_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaRXTimeTempBuffer[TEXTAREARXTIMETEMP_SIZE];
 
 private:
 

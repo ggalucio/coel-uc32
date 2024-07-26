@@ -44,6 +44,7 @@ Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase() :
     buttonWithLabelFlagInicioDegelo.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3798));
     buttonWithLabelFlagInicioDegelo.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelFlagInicioDegelo.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelFlagInicioDegelo.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -91,5 +92,12 @@ void Degelo_ConfirmarViewBase::buttonCallbackHandler(const touchgfx::AbstractBut
         //When buttonWithLabelTelaInicial clicked change screen to Tela_Inicial
         //Go to Tela_Inicial with no screen transition
         application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &buttonWithLabelFlagInicioDegelo)
+    {
+        //Degelo
+        //When buttonWithLabelFlagInicioDegelo clicked change screen to Degelo
+        //Go to Degelo with no screen transition
+        application().gotoDegeloScreenNoTransition();
     }
 }

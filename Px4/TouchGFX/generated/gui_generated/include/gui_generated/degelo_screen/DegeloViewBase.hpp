@@ -15,6 +15,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/CANCELAR_PROCESSO.hpp>
 
 class DegeloViewBase : public touchgfx::View<DegeloPresenter>
 {
@@ -56,14 +57,18 @@ protected:
     touchgfx::TextArea textAreaTitle;
     touchgfx::Button buttonFinalizarDegelo;
     touchgfx::ToggleButton toggleButtonDegeloProcessoAutomatico;
+    touchgfx::TextAreaWithOneWildcard textAreaFlagProcessoAndamento;
     touchgfx::TextAreaWithOneWildcard textArea14513;
     touchgfx::TextAreaWithOneWildcard textArea1410272;
     touchgfx::TextAreaWithOneWildcard textAreaTimerDegeloCountMinutos;
     touchgfx::TextAreaWithOneWildcard textArea1410270;
+    CANCELAR_PROCESSO cANCELAR_PROCESSO1;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREAFLAGPROCESSOANDAMENTO_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaFlagProcessoAndamentoBuffer[TEXTAREAFLAGPROCESSOANDAMENTO_SIZE];
     static const uint16_t TEXTAREA14513_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea14513Buffer[TEXTAREA14513_SIZE];
     static const uint16_t TEXTAREA1410272_SIZE = 10;
@@ -74,6 +79,20 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1410270Buffer[TEXTAREA1410270_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<DegeloViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<DegeloViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
+    touchgfx::Callback<DegeloViewBase> cANCELAR_PROCESSO1NaoCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
+    void cANCELAR_PROCESSO1NaoCallbackHandler();
 
 };
 

@@ -1497,7 +1497,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "SoundBuzzerOn(25);\r\n"
             }
           },
           {
@@ -7615,6 +7615,35 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId4054",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4055",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "textAreaFlagProcessoAndamento",
+            "X": 308,
+            "Y": 14,
+            "Width": 160,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId3800",
             "TextRotation": "0",
             "Color": {
@@ -7728,6 +7757,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "CANCELAR_PROCESSO",
+            "Type": "CustomContainerInstance",
+            "Name": "cANCELAR_PROCESSO1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -7738,7 +7782,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Update(&textArea14513, textArea14513Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaTimerDegeloCountMinutos, textAreaTimerDegeloCountMinutosBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -7760,7 +7805,8 @@
               "ActionCustomTypeName": "Call Degelo handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -7773,6 +7819,57 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Voltar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFinalizarDegelo"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Degelo_Confirmar"
+            }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "CANCELAR_PROCESSO nao happens",
+              "TriggerComponent": "cANCELAR_PROCESSO1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DegeloProcessoAutomatico",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonDegeloProcessoAutomatico"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -8011,6 +8108,19 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "Degelo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelFlagInicioDegelo"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Degelo"
             }
           }
         ],
@@ -10780,7 +10890,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);"
+              "Code": "SelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita1, (selectedRecipeItem == 1 ? true : false));\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita2, (selectedRecipeItem == 2 ? true : false));\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita3, (selectedRecipeItem == 3 ? true : false));\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita4, (selectedRecipeItem == 4 ? true : false));\r\n"
             }
           },
           {
@@ -10791,7 +10901,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "if (!(selectedRecipeItem >= 1 && selectedRecipeItem <= 4))\r\n\tSoundBuzzerOn(25);"
             }
           },
           {
@@ -10875,7 +10985,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x00);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 1;\r\nSelectJob(0x00);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10887,7 +10997,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x01);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 2;\r\nSelectJob(0x01);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10899,7 +11009,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x02);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 3;\r\nSelectJob(0x02);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10911,7 +11021,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x03);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 4;\r\nSelectJob(0x03);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11431,7 +11541,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);"
+              "Code": "SelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita5, (selectedRecipeItem == 5 ? true : false));\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita6, (selectedRecipeItem == 6 ? true : false));\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita7, (selectedRecipeItem == 7 ? true : false));\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita8, (selectedRecipeItem == 8 ? true : false));"
             }
           },
           {
@@ -11442,7 +11552,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "if (!(selectedRecipeItem >= 5 && selectedRecipeItem <= 8))\r\n\tSoundBuzzerOn(25);"
             }
           },
           {
@@ -11539,7 +11649,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x04);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 5;\r\nSelectJob(0x04);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11551,7 +11661,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x05);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 6;\r\nSelectJob(0x05);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11563,7 +11673,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x06);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 7;\r\nSelectJob(0x06);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11575,7 +11685,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x07);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 8;\r\nSelectJob(0x07);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12078,7 +12188,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);"
+              "Code": "SelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita9, (selectedRecipeItem == 9 ? true : false));\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita10, (selectedRecipeItem == 10 ? true : false));\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita11, (selectedRecipeItem == 11 ? true : false));\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita12, (selectedRecipeItem == 12 ? true : false));"
             }
           },
           {
@@ -12089,7 +12199,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "if (!(selectedRecipeItem >= 9 && selectedRecipeItem <= 12))\r\n\tSoundBuzzerOn(25);"
             }
           },
           {
@@ -12173,7 +12283,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x08);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 9;\r\nSelectJob(0x08);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12185,7 +12295,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x09);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 10;\r\nSelectJob(0x09);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12197,7 +12307,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x0A);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 11;\r\nSelectJob(0x0A);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12209,7 +12319,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0x0B);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 12;\r\nSelectJob(0x0B);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12911,6 +13021,122 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4062",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4063",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXConservYn",
+            "X": 369,
+            "Y": 157,
+            "Width": 75,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4060",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4061",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXhardSoft",
+            "X": 369,
+            "Y": 132,
+            "Width": 75,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4058",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4059",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXCongResf",
+            "X": 369,
+            "Y": 107,
+            "Width": 75,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4056",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4057",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXTimeTemp",
+            "X": 369,
+            "Y": 82,
+            "Width": 75,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -12922,7 +13148,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\n//ReadJobName(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 20);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0x01, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0x02, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 0x05, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 0xff, _INT_, 0);"
+              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0x01, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0x02, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 0x05, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 0xff, _INT_, 0);\r\n\r\nAddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 0x03, _INT_, 0);\r\nAddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 0x04, _INT_, 0);\r\nAddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 0x06, _INT_, 0);\r\nAddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 0x07, _INT_, 0);\r\n\r\nUpdate(&toggleButtonRXTimeTemp, ReadJobData(0x03, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXCongResf, ReadJobData(0x04, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXhardSoft, ReadJobData(0x06, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXConservYn, ReadJobData(0x07, _INT_) != 0 ? true : false);\r\n\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
             }
           },
           {
@@ -13007,7 +13233,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "UpdateJobs();\r\nif (selectedRecipeListPage == 1)\r\n\tReceitas_1();\r\nelse if (selectedRecipeListPage == 2)\r\n\tReceitas_2();\r\nelse if (selectedRecipeListPage == 3)\r\n\tReceitas_3();"
+              "Code": "UpdateJobs();\r\nWait(100);\r\n\r\nif (selectedRecipeListPage == 1)\r\n\tReceitas_1();\r\nelse if (selectedRecipeListPage == 2)\r\n\tReceitas_2();\r\nelse if (selectedRecipeListPage == 3)\r\n\tReceitas_3();"
             }
           },
           {
@@ -13137,6 +13363,54 @@
               "Type": "ActionCustom2",
               "ActionCustomTypeName": "Call numKeyboardContainer LaunchNumericalKeyboard",
               "ActionComponent": "numKeyboardContainer1"
+            }
+          },
+          {
+            "InteractionName": "RXTimeTemp",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonRXTimeTemp"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "RXCongResf",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonRXCongResf"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "RXhardSoft",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonRXhardSoft"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "RXConservYn",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButtonRXConservYn"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           }
         ],
@@ -25895,6 +26169,46 @@
       },
       {
         "TextEntryId": "SingleUseId4053",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4054",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4055",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4056",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4057",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4058",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4059",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4060",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4061",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4062",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4063",
         "IsResource": false
       }
     ],

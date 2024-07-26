@@ -8,6 +8,9 @@
 #include "AT_module_ext.hpp"
 #include "Module/modulePlusExt.hpp"
 
+#include <touchgfx/Color.hpp>
+#include <cstdio>
+
 void ClearOthers(){
 	if (pClearItemsExt)
 		(*pClearItemsExt)();
@@ -120,7 +123,7 @@ void VisibilityLineProgress(touchgfx::LineProgress* lineProgress, bool visibilit
 
 /****************************************** TEXT AREA ************************************************************************/
 
-void Update(touchgfx::Unicode::UnicodeChar* buffer, char* src, uint16_t dstSize){
+void Update(touchgfx::Unicode::UnicodeChar* buffer, const char* src, uint16_t dstSize){
 	if (buffer)
 		touchgfx::Unicode::strncpy(buffer, src, dstSize);
 }
@@ -181,6 +184,7 @@ void RemoveAllCounter(){
 		(*pCountersRemoveAll)();
 }
 
+/*****************************************************************************************************************************/
 
 /************************************************ BUTTON *********************************************************************/
 
@@ -203,6 +207,30 @@ void Update(touchgfx::ToggleButton* toggleButton, bool state){
 }
 
 /*****************************************************************************************************************************/
+
+/************************************************ BOX ************************************************************************/
+
+void VisibilityBox(touchgfx::Box* box, bool visibility){
+	if (box){
+		if (box->isVisible() != visibility){
+			box->setVisible(visibility);
+			box->invalidate();
+		}
+	}
+}
+
+void SetColorBox(touchgfx::Box* box, uint8_t red, uint8_t green, uint8_t blue){
+	if (box){
+		box->setColor(touchgfx::Color::getColorFromRGB(red, green, blue));
+		box->invalidate();
+	}
+}
+
+void SetColorBox(touchgfx::Box* box, const char* color){
+	unsigned int red = 0x00, green = 0x00, blue = 0x00;
+	if (sscanf(color, "%2x%2x%2x", &red, &green, &blue) == 3)
+		SetColorBox(box, red, green, blue);
+}
 
 /*****************************************************************************************************************************/
 

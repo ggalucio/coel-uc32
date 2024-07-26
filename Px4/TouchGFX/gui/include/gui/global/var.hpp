@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 extern uint8_t selectedRecipeListPage;
+extern uint8_t selectedRecipeItem;
 extern int countCycleBlink;
 extern bool isZeroValue;
 
