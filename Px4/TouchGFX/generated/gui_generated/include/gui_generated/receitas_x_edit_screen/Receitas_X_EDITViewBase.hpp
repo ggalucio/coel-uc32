@@ -60,6 +60,10 @@ protected:
     touchgfx::TextArea textArea1_3;
     touchgfx::TextArea textArea1_4;
     touchgfx::TextArea textArea1_2_1;
+    touchgfx::TextAreaWithOneWildcard textAreaRXConservYn;
+    touchgfx::TextAreaWithOneWildcard textAreaRXhardSoft;
+    touchgfx::TextAreaWithOneWildcard textAreaRXCongResf;
+    touchgfx::TextAreaWithOneWildcard textAreaRXTimeTemp;
     touchgfx::TextAreaWithOneWildcard textAreaReceitaXDesc;
     touchgfx::TextArea textArea2;
     touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceita;
@@ -70,22 +74,12 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonReceitaXDesc;
     keyboardContainer keyboardContainer1;
     numKeyboardContainer numKeyboardContainer1;
-    touchgfx::TextAreaWithOneWildcard textAreaRXConservYn;
-    touchgfx::TextAreaWithOneWildcard textAreaRXhardSoft;
-    touchgfx::TextAreaWithOneWildcard textAreaRXCongResf;
-    touchgfx::TextAreaWithOneWildcard textAreaRXTimeTemp;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREATITLE_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTitleBuffer[TEXTAREATITLE_SIZE];
-    static const uint16_t TEXTAREARECEITAXDESC_SIZE = 20;
-    touchgfx::Unicode::UnicodeChar textAreaReceitaXDescBuffer[TEXTAREARECEITAXDESC_SIZE];
-    static const uint16_t TEXTAREATEMPERATURARECEITA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaTemperaturaReceitaBuffer[TEXTAREATEMPERATURARECEITA_SIZE];
-    static const uint16_t TEXTAREATEMPORECEITAX_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaTempoReceitaXBuffer[TEXTAREATEMPORECEITAX_SIZE];
     static const uint16_t TEXTAREARXCONSERVYN_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaRXConservYnBuffer[TEXTAREARXCONSERVYN_SIZE];
     static const uint16_t TEXTAREARXHARDSOFT_SIZE = 10;
@@ -94,6 +88,12 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaRXCongResfBuffer[TEXTAREARXCONGRESF_SIZE];
     static const uint16_t TEXTAREARXTIMETEMP_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaRXTimeTempBuffer[TEXTAREARXTIMETEMP_SIZE];
+    static const uint16_t TEXTAREARECEITAXDESC_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaReceitaXDescBuffer[TEXTAREARECEITAXDESC_SIZE];
+    static const uint16_t TEXTAREATEMPERATURARECEITA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaTemperaturaReceitaBuffer[TEXTAREATEMPERATURARECEITA_SIZE];
+    static const uint16_t TEXTAREATEMPORECEITAX_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaTempoReceitaXBuffer[TEXTAREATEMPORECEITAX_SIZE];
 
 private:
 

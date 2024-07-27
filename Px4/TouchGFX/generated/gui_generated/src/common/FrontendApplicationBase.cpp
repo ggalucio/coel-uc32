@@ -381,6 +381,19 @@ void FrontendApplicationBase::gotoReceitas_X_EDITScreenNoTransitionImpl()
     touchgfx::makeTransition<Receitas_X_EDITView, Receitas_X_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// Receita_confirm
+
+void FrontendApplicationBase::gotoReceita_confirmScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceita_confirmScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceita_confirmScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receita_confirmView, Receita_confirmPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // Configuracao_4
 
 void FrontendApplicationBase::gotoConfiguracao_4ScreenNoTransition()

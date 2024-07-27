@@ -81,6 +81,9 @@ public:
     // Receitas_X_EDIT
     void gotoReceitas_X_EDITScreenNoTransition();
 
+    // Receita_confirm
+    void gotoReceita_confirmScreenNoTransition();
+
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransition();
 
@@ -166,6 +169,9 @@ protected:
 
     // Receitas_X_EDIT
     void gotoReceitas_X_EDITScreenNoTransitionImpl();
+
+    // Receita_confirm
+    void gotoReceita_confirmScreenNoTransitionImpl();
 
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransitionImpl();

@@ -10966,17 +10966,6 @@
             }
           },
           {
-            "InteractionName": "FlagReceita1Interm",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "buttonFlagReceita1Interm"
-            },
-            "Action": {
-              "Type": "ActionNone"
-            }
-          },
-          {
             "InteractionName": "R1",
             "HasCompletedTrigger": false,
             "Trigger": {
@@ -11036,6 +11025,31 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Receitas_X_EDIT"
             }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagReceita1Interm"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (\tradioButtonMuneroReceita1.getSelected() || \r\n\tradioButtonMuneroReceita2.getSelected() || \r\n\tradioButtonMuneroReceita3.getSelected() || \r\n\tradioButtonMuneroReceita4.getSelected()){\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_confirm();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ReceitaConfirm",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_1 Receita_confirm"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receita_confirm"
+            }
           }
         ],
         "CustomActions": [
@@ -11049,6 +11063,10 @@
           },
           {
             "Name": "Receita_X_EDIT",
+            "HasValue": false
+          },
+          {
+            "Name": "Receita_confirm",
             "HasValue": false
           }
         ],
@@ -11630,17 +11648,6 @@
             }
           },
           {
-            "InteractionName": "FlagReceita1Interm",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "buttonFlagReceita1Interm"
-            },
-            "Action": {
-              "Type": "ActionNone"
-            }
-          },
-          {
             "InteractionName": "R5",
             "HasCompletedTrigger": false,
             "Trigger": {
@@ -11700,6 +11707,31 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Receitas_X_EDIT"
             }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagReceita1Interm"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (\tradioButtonMuneroReceita5.getSelected() || \r\n\tradioButtonMuneroReceita6.getSelected() || \r\n\tradioButtonMuneroReceita7.getSelected() || \r\n\tradioButtonMuneroReceita8.getSelected()){\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_confirm();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ReceitaConfirm",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_2 Receita_confirm"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receita_confirm"
+            }
           }
         ],
         "CustomActions": [
@@ -11713,6 +11745,10 @@
           },
           {
             "Name": "Receita_X_EDIT",
+            "HasValue": false
+          },
+          {
+            "Name": "Receita_confirm",
             "HasValue": false
           }
         ],
@@ -12264,17 +12300,6 @@
             }
           },
           {
-            "InteractionName": "FlagReceita1Interm",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "buttonFlagReceita1Interm"
-            },
-            "Action": {
-              "Type": "ActionNone"
-            }
-          },
-          {
             "InteractionName": "R9",
             "HasCompletedTrigger": false,
             "Trigger": {
@@ -12334,6 +12359,31 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Receitas_X_EDIT"
             }
+          },
+          {
+            "InteractionName": "Avancar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFlagReceita1Interm"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if (\tradioButtonMuneroReceita9.getSelected() || \r\n\tradioButtonMuneroReceita10.getSelected() || \r\n\tradioButtonMuneroReceita11.getSelected() || \r\n\tradioButtonMuneroReceita12.getSelected()){\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_confirm();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ReceitaConfirm",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receitas_3 Receita_confirm"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receita_confirm"
+            }
           }
         ],
         "CustomActions": [
@@ -12347,6 +12397,10 @@
           },
           {
             "Name": "Receita_X_EDIT",
+            "HasValue": false
+          },
+          {
+            "Name": "Receita_confirm",
             "HasValue": false
           }
         ],
@@ -12406,7 +12460,7 @@
               "Blue": 255
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId4018",
@@ -12416,10 +12470,10 @@
             "Name": "textAreaTitle",
             "X": 48,
             "Y": 4,
-            "Width": 196,
+            "Width": 287,
             "Height": 25,
             "Visible": true,
-            "LockPosition": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -12712,6 +12766,122 @@
             "Height": 19,
             "Visible": true,
             "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4062",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4063",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXConservYn",
+            "X": 369,
+            "Y": 157,
+            "Width": 75,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4060",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4061",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXhardSoft",
+            "X": 369,
+            "Y": 132,
+            "Width": 75,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4058",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4059",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXCongResf",
+            "X": 369,
+            "Y": 107,
+            "Width": 75,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4056",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4057",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaRXTimeTemp",
+            "X": 369,
+            "Y": 82,
+            "Width": 75,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -13021,122 +13191,6 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4062",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4063",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXConservYn",
-            "X": 369,
-            "Y": 157,
-            "Width": 75,
-            "Height": 25,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4060",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4061",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXhardSoft",
-            "X": 369,
-            "Y": 132,
-            "Width": 75,
-            "Height": 25,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4058",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4059",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXCongResf",
-            "X": 369,
-            "Y": 107,
-            "Width": 75,
-            "Height": 25,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4056",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4057",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXTimeTemp",
-            "X": 369,
-            "Y": 82,
-            "Width": 75,
-            "Height": 25,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
           }
         ],
         "Interactions": [
@@ -13148,7 +13202,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0x01, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0x02, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 0x05, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 0xff, _INT_, 0);\r\n\r\nAddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 0x03, _INT_, 0);\r\nAddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 0x04, _INT_, 0);\r\nAddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 0x06, _INT_, 0);\r\nAddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 0x07, _INT_, 0);\r\n\r\nUpdate(&toggleButtonRXTimeTemp, ReadJobData(0x03, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXCongResf, ReadJobData(0x04, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXhardSoft, ReadJobData(0x06, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXConservYn, ReadJobData(0x07, _INT_) != 0 ? true : false);\r\n\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
+              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\nAddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 3, _INT_, 0);\r\nAddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 4, _INT_, 0);\r\nAddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 6, _INT_, 0);\r\nAddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 7, _INT_, 0);\r\n\r\nUpdate(&toggleButtonRXTimeTemp, ReadJobData(3, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXCongResf, ReadJobData(4, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXhardSoft, ReadJobData(6, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXConservYn, ReadJobData(7, _INT_) != 0 ? true : false);\r\n\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
             }
           },
           {
@@ -13374,7 +13428,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13386,7 +13440,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
+              "Code": "Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13398,7 +13452,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "Update(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, toggleButtonRXhardSoft.getState() != 0 ? 255 : 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13410,7 +13464,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "Update(&textAreaRXConservYn, textAreaRXConservYnBuffer, toggleButtonRXConservYn.getState() != 0 ? 255 : 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -13622,7 +13676,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);\r\nVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -13644,7 +13699,8 @@
               "ActionCustomTypeName": "Call Receita_confirm handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, !textAreaFlagAlarmReceitaVazia.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -13658,6 +13714,57 @@
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
             }
+          },
+          {
+            "InteractionName": "Nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelRecitas1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Receitas_1"
+            }
+          },
+          {
+            "InteractionName": "Sim",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelFlagStartReceita"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "double tempoReceita = ReadJobData(1, _INT_);\r\ndouble valueCongResf = ReadJobData(4, _INT_);\r\n\r\nif (tempoReceita == 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\tif (valueCongResf == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
+            }
+          },
+          {
+            "InteractionName": "CongelarTEMPO",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receita_confirm Congelar_TEMPO"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar_TEMPO"
+            }
+          },
+          {
+            "InteractionName": "ResfriarTEMPO",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Receita_confirm Resfriar_TEMPO"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar_TEMPO"
+            }
           }
         ],
         "CustomActions": [
@@ -13667,6 +13774,14 @@
           },
           {
             "Name": "tearDownScreen",
+            "HasValue": false
+          },
+          {
+            "Name": "Congelar_TEMPO",
+            "HasValue": false
+          },
+          {
+            "Name": "Resfriar_TEMPO",
             "HasValue": false
           }
         ],

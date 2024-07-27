@@ -70,6 +70,7 @@ Receitas_3ViewBase::Receitas_3ViewBase() :
 
     buttonFlagReceita1Interm.setXY(406, 208);
     buttonFlagReceita1Interm.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagReceita1Interm.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
@@ -195,9 +196,32 @@ void Receitas_3ViewBase::Receita_X_EDIT()
     application().gotoReceitas_X_EDITScreenNoTransition();
 }
 
+void Receitas_3ViewBase::Receita_confirm()
+{
+    //ReceitaConfirm
+    //When Receita_confirm is called change screen to Receita_confirm
+    //Go to Receita_confirm with no screen transition
+    application().gotoReceita_confirmScreenNoTransition();
+}
+
 void Receitas_3ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonTelaInicial)
+    if (&src == &buttonFlagReceita1Interm)
+    {
+        //Avancar
+        //When buttonFlagReceita1Interm clicked execute C++ code
+        //Execute C++ code
+        if (	radioButtonMuneroReceita9.getSelected() || 
+        	radioButtonMuneroReceita10.getSelected() || 
+        	radioButtonMuneroReceita11.getSelected() || 
+        	radioButtonMuneroReceita12.getSelected()){
+        	SelectJob(selectedRecipeItem - 1);
+        	Receita_confirm();
+        }
+        else
+        	SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonTelaInicial)
     {
         //TelaInicial
         //When buttonTelaInicial clicked change screen to Tela_Inicial
