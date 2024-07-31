@@ -13202,7 +13202,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\nAddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 3, _INT_, 0);\r\nAddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 4, _INT_, 0);\r\nAddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 6, _INT_, 0);\r\nAddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 7, _INT_, 0);\r\n\r\nUpdate(&toggleButtonRXTimeTemp, ReadJobData(3, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXCongResf, ReadJobData(4, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXhardSoft, ReadJobData(6, _INT_) != 0 ? true : false);\r\nUpdate(&toggleButtonRXConservYn, ReadJobData(7, _INT_) != 0 ? true : false);\r\n\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
+              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\n//AddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 3, _INT_, 0);\r\n//AddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 4, _INT_, 0);\r\n//AddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 6, _INT_, 0);\r\n//AddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 7, _INT_, 0);\r\n\r\n//Update(&toggleButtonRXTimeTemp, ReadJobData(3, _INT_) != 0 ? true : false);\r\n//Update(&toggleButtonRXCongResf, ReadJobData(4, _INT_) != 0 ? true : false);\r\n//Update(&toggleButtonRXhardSoft, ReadJobData(6, _INT_) != 0 ? true : false);\r\n//Update(&toggleButtonRXConservYn, ReadJobData(7, _INT_) != 0 ? true : false);\r\n\r\nAddJob(&toggleButtonRXTimeTemp, 3);\r\nAddJob(&toggleButtonRXCongResf, 4);\r\nAddJob(&toggleButtonRXhardSoft, 6);\r\nAddJob(&toggleButtonRXConservYn, 7);\r\n\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
             }
           },
           {
@@ -13428,7 +13428,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "//Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13440,7 +13440,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
+              "Code": "//Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13452,7 +13452,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, toggleButtonRXhardSoft.getState() != 0 ? 255 : 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "//Update(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, toggleButtonRXhardSoft.getState() != 0 ? 255 : 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13464,7 +13464,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaRXConservYn, textAreaRXConservYnBuffer, toggleButtonRXConservYn.getState() != 0 ? 255 : 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "//Update(&textAreaRXConservYn, textAreaRXConservYnBuffer, toggleButtonRXConservYn.getState() != 0 ? 255 : 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           }
         ],

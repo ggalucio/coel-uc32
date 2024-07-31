@@ -231,15 +231,20 @@ void Receitas_X_EDITViewBase::setupScreen()
     AddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);
     AddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);
     
-    AddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 3, _INT_, 0);
-    AddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 4, _INT_, 0);
-    AddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 6, _INT_, 0);
-    AddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 7, _INT_, 0);
+    //AddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 3, _INT_, 0);
+    //AddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 4, _INT_, 0);
+    //AddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 6, _INT_, 0);
+    //AddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 7, _INT_, 0);
     
-    Update(&toggleButtonRXTimeTemp, ReadJobData(3, _INT_) != 0 ? true : false);
-    Update(&toggleButtonRXCongResf, ReadJobData(4, _INT_) != 0 ? true : false);
-    Update(&toggleButtonRXhardSoft, ReadJobData(6, _INT_) != 0 ? true : false);
-    Update(&toggleButtonRXConservYn, ReadJobData(7, _INT_) != 0 ? true : false);
+    //Update(&toggleButtonRXTimeTemp, ReadJobData(3, _INT_) != 0 ? true : false);
+    //Update(&toggleButtonRXCongResf, ReadJobData(4, _INT_) != 0 ? true : false);
+    //Update(&toggleButtonRXhardSoft, ReadJobData(6, _INT_) != 0 ? true : false);
+    //Update(&toggleButtonRXConservYn, ReadJobData(7, _INT_) != 0 ? true : false);
+    
+    AddJob(&toggleButtonRXTimeTemp, 3);
+    AddJob(&toggleButtonRXCongResf, 4);
+    AddJob(&toggleButtonRXhardSoft, 6);
+    AddJob(&toggleButtonRXConservYn, 7);
     
     ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());
 
@@ -335,7 +340,7 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //RXCongResf
         //When toggleButtonRXCongResf clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);
+        //Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);
         ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());
         SoundBuzzerOn(25);
     }
@@ -344,7 +349,7 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //RXhardSoft
         //When toggleButtonRXhardSoft clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, toggleButtonRXhardSoft.getState() != 0 ? 255 : 0, _INT_, 0);
+        //Update(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, toggleButtonRXhardSoft.getState() != 0 ? 255 : 0, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &toggleButtonRXConservYn)
@@ -352,7 +357,7 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //RXConservYn
         //When toggleButtonRXConservYn clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaRXConservYn, textAreaRXConservYnBuffer, toggleButtonRXConservYn.getState() != 0 ? 255 : 0, _INT_, 0);
+        //Update(&textAreaRXConservYn, textAreaRXConservYnBuffer, toggleButtonRXConservYn.getState() != 0 ? 255 : 0, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &toggleButtonRXTimeTemp)
@@ -360,7 +365,7 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //RXTimeTemp
         //When toggleButtonRXTimeTemp clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);
+        //Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonSalvar)

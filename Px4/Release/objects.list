@@ -2,6 +2,7 @@
 "ADDITIONAL/GFX/Module/Src/GraphicItemsExt.o"
 "ADDITIONAL/GFX/Module/Src/graphic_ext.o"
 "ADDITIONAL/GFX/Module/Src/taskManagerOthers.o"
+"ADDITIONAL/Modules/Job/jobModuleExtension.o"
 "APPLICAZIONE/Components/FatFs/fatFileSystem.o"
 "APPLICAZIONE/Components/Modbus/Client/modbusClient.o"
 "APPLICAZIONE/Components/Modbus/Client/modbusClientManager.o"

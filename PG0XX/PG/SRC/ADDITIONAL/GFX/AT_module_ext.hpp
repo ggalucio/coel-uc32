@@ -56,6 +56,9 @@ void VisibilityBox(touchgfx::Box* box, bool visibility);
 void SetColorBox(touchgfx::Box* box, uint8_t red, uint8_t green, uint8_t blue);
 void SetColorBox(touchgfx::Box* box, const char* color);
 
+// JOB
+void AddJob(touchgfx::ToggleButton* toggleButton, int idx);
+
 // TICK
 void TickElapsedOthers(void);
 

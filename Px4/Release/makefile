@@ -179,6 +179,7 @@ RM := rm -rf
 -include APPLICAZIONE/Components/Modbus/Client/subdir.mk
 -include APPLICAZIONE/Components/Modbus/subdir.mk
 -include APPLICAZIONE/Components/FatFs/subdir.mk
+-include ADDITIONAL/Modules/Job/subdir.mk
 -include ADDITIONAL/GFX/Module/Src/subdir.mk
 -include ADDITIONAL/GFX/subdir.mk
 -include subdir.mk

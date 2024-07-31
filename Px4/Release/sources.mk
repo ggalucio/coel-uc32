@@ -32,6 +32,7 @@ CPP_DEPS :=
 SUBDIRS := \
 ADDITIONAL/GFX \
 ADDITIONAL/GFX/Module/Src \
+ADDITIONAL/Modules/Job \
 APPLICAZIONE/Components/FatFs \
 APPLICAZIONE/Components/Modbus/Client \
 APPLICAZIONE/Components/Modbus/INT \
