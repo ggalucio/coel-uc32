@@ -58,6 +58,7 @@ void SetColorBox(touchgfx::Box* box, const char* color);
 
 // JOB
 void AddJob(touchgfx::ToggleButton* toggleButton, int idx);
+void UpdateJobsOthers(void);
 
 // TICK
 void TickElapsedOthers(void);

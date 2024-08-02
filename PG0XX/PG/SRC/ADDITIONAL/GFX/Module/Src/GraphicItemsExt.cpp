@@ -9,7 +9,7 @@
 #include "../Modules/Job/jobModuleExtension.hpp"
 #include "cstddef"
 
-#include <AT_module.hpp>
+//#include <AT_module.hpp>
 #include <stdlib.h>
 
 
@@ -164,9 +164,11 @@ void AddJobItem(touchgfx::ToggleButton *toggleButton, int idx){
 	if (toggleButton == NULL || nJobOtherItems == 10)
 		return;
 
+	toggleButton->forceState(ReadJobData(idx) != 0 ? true : false);
+	toggleButton->invalidate();
+
 	jobOtherItem[nJobOtherItems].ToggleButton = toggleButton;
 	jobOtherItem[nJobOtherItems].Idx = idx;
-	jobOtherItem[nJobOtherItems].state = ReadJobData(idx) != 0 ? true : false;
 	nJobOtherItems ++;
 }
 
@@ -183,18 +185,15 @@ void SetControlCounter(int id, ControlState state){
 	}
 }
 
-void RefreshJob(){
+void UpdateJobItemsOthers(){
 	if (nJobOtherItems == 0)
 		return;
 
 	int i;
 	for (i=0; i<nJobOtherItems; i++){
-		bool state = jobOtherItem[i].ToggleButton->getState();
-		if (state != jobOtherItem[i].state){
-			jobOtherItem[i].state = state;
-			AddJobDataToUpdate(jobOtherItem[i].Idx, state ? 255 : 0, 1);
-			Wait(50);
-		}
+		int idx = jobOtherItem[i].Idx;
+		uint8_t state = jobOtherItem[i].ToggleButton->getState() ? 0xFF : 0x00;
+		AddJobDataToUpdate(idx, state, 1);
 	}
 }
 
@@ -209,8 +208,5 @@ void RefreshTimerCounter(){
 void RefreshRunExt(){
 	/* Refreshing TextArea Counting */
 	RefreshTextAreaCounting();
-
-	/* Refreshing Job Items */
-	RefreshJob();
 }
 

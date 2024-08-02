@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Receita_Info_resumoBase::Receita_Info_resumoBase()
+Receita_Info_resumoBase::Receita_Info_resumoBase() :
+    buttonCallback(this, &Receita_Info_resumoBase::buttonCallbackHandler),
+    fecharCallback(0)
 {
     setWidth(480);
     setHeight(272);
@@ -35,6 +37,7 @@ Receita_Info_resumoBase::Receita_Info_resumoBase()
 
     buttonTelaInicial.setXY(141, 204);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_FECHAR_ID), touchgfx::Bitmap(BITMAP_FECHAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     toggleButtonReceitaTimeTempAtual.setXY(141, 147);
     toggleButtonReceitaTimeTempAtual.setBitmaps(touchgfx::Bitmap(BITMAP_REL_ID), touchgfx::Bitmap(BITMAP_TRM_ID));
@@ -84,6 +87,21 @@ void Receita_Info_resumoBase::initialize()
 
 void Receita_Info_resumoBase::init()
 {
+    //Initialize
+    //When init is called execute C++ code
+    //Execute C++ code
+    Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, ReadJobData(255, _INT_), _INT_, 0);
+    Update(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, ReadJobData(2, _DOUBLE_), _DOUBLE_, 1);
+}
 
+void Receita_Info_resumoBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //Fechar
+        //When buttonTelaInicial clicked emit fechar callback
+        //Emit callback
+        emitFecharCallback();
+    }
 }
 

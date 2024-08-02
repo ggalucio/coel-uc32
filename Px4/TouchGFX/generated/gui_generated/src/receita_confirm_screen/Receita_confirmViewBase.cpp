@@ -7,7 +7,8 @@
 #include "BitmapDatabase.hpp"
 
 Receita_confirmViewBase::Receita_confirmViewBase() :
-    buttonCallback(this, &Receita_confirmViewBase::buttonCallbackHandler)
+    buttonCallback(this, &Receita_confirmViewBase::buttonCallbackHandler),
+    receita_Info_resumo1FecharCallback(this, &Receita_confirmViewBase::receita_Info_resumo1FecharCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -29,8 +30,9 @@ Receita_confirmViewBase::Receita_confirmViewBase() :
     textAreaNumeroReceita.resizeToCurrentText();
     textAreaNumeroReceita.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3925));
 
-    image1.setXY(310, 75);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_INFO_ID));
+    buttonReceitaInfoResumo.setXY(310, 76);
+    buttonReceitaInfoResumo.setBitmaps(touchgfx::Bitmap(BITMAP_INFO_ID), touchgfx::Bitmap(BITMAP_INFO_ID));
+    buttonReceitaInfoResumo.setAction(buttonCallback);
 
     buttonWithLabelFlagStartReceita.setXY(257, 191);
     buttonWithLabelFlagStartReceita.setBitmaps(touchgfx::Bitmap(BITMAP_R3_ID), touchgfx::Bitmap(BITMAP_R4_ID));
@@ -51,23 +53,28 @@ Receita_confirmViewBase::Receita_confirmViewBase() :
     textAreaFlagAlarmReceitaVazia.setLinespacing(0);
     textAreaFlagAlarmReceitaVazia.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3929));
 
+    receita_Info_resumo1.setXY(0, 0);
+    receita_Info_resumo1.setVisible(false);
+    receita_Info_resumo1.setFecharCallback(receita_Info_resumo1FecharCallback);
+
     add(__background);
     add(boxFundo);
     add(textAreaTitle);
     add(textAreaNumeroReceita);
-    add(image1);
+    add(buttonReceitaInfoResumo);
     add(buttonWithLabelFlagStartReceita);
     add(buttonWithLabelRecitas1);
     add(textAreaFlagAlarmReceitaVazia);
+    add(receita_Info_resumo1);
 }
 
 void Receita_confirmViewBase::setupScreen()
 {
-
+    receita_Info_resumo1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);
+    Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);
     VisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);
     countCycleBlink = 0;
     isZeroValue = false;
@@ -80,6 +87,15 @@ void Receita_confirmViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
+    SoundBuzzerOn(25);
+}
+
+void Receita_confirmViewBase::receita_Info_resumo1FecharCallbackHandler()
+{
+    //Fechar
+    //When receita_Info_resumo1 fechar execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&receita_Info_resumo1, false);
     SoundBuzzerOn(25);
 }
 
@@ -125,7 +141,15 @@ void Receita_confirmViewBase::Resfriar_TEMPO()
 
 void Receita_confirmViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonWithLabelFlagStartReceita)
+    if (&src == &buttonReceitaInfoResumo)
+    {
+        //ReceitaInfoResumo
+        //When buttonReceitaInfoResumo clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&receita_Info_resumo1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonWithLabelFlagStartReceita)
     {
         //Sim
         //When buttonWithLabelFlagStartReceita clicked execute C++ code

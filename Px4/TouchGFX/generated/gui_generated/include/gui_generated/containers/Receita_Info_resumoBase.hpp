@@ -11,6 +11,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <AT_module.hpp>
 
 class Receita_Info_resumoBase : public touchgfx::Container
 {
@@ -20,6 +21,14 @@ public:
     virtual void initialize();
 
     /*
+     * Custom Trigger Callback Setters
+     */
+    void setFecharCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->fecharCallback = &callback;
+    }
+
+    /*
      * Custom Actions
      */
     virtual void init();
@@ -27,6 +36,17 @@ public:
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
+    }
+
+    /*
+     * Custom Trigger Emitters
+     */
+    virtual void emitFecharCallback()
+    {
+        if (fecharCallback && fecharCallback->isValid())
+        {
+            this->fecharCallback->execute();
+        }
     }
 
     /*
@@ -55,6 +75,21 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaNumeroReceitaBuffer[TEXTAREANUMERORECEITA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Receita_Info_resumoBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Custom Trigger Callback Declarations
+     */
+    touchgfx::GenericCallback<>* fecharCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

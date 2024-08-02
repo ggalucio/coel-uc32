@@ -14,7 +14,7 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
-#include <gui/containers/keyboardContainer.hpp>
+#include <gui/containers/keyboardContainer2.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
 
 class Receitas_X_EDITViewBase : public touchgfx::View<Receitas_X_EDITPresenter>
@@ -60,10 +60,6 @@ protected:
     touchgfx::TextArea textArea1_3;
     touchgfx::TextArea textArea1_4;
     touchgfx::TextArea textArea1_2_1;
-    touchgfx::TextAreaWithOneWildcard textAreaRXConservYn;
-    touchgfx::TextAreaWithOneWildcard textAreaRXhardSoft;
-    touchgfx::TextAreaWithOneWildcard textAreaRXCongResf;
-    touchgfx::TextAreaWithOneWildcard textAreaRXTimeTemp;
     touchgfx::TextAreaWithOneWildcard textAreaReceitaXDesc;
     touchgfx::TextArea textArea2;
     touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceita;
@@ -72,7 +68,7 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTemperaturaReceita;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTempoReceitaX;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonReceitaXDesc;
-    keyboardContainer keyboardContainer1;
+    keyboardContainer2 keyboardContainer21;
     numKeyboardContainer numKeyboardContainer1;
 
     /*
@@ -80,14 +76,6 @@ protected:
      */
     static const uint16_t TEXTAREATITLE_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTitleBuffer[TEXTAREATITLE_SIZE];
-    static const uint16_t TEXTAREARXCONSERVYN_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaRXConservYnBuffer[TEXTAREARXCONSERVYN_SIZE];
-    static const uint16_t TEXTAREARXHARDSOFT_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaRXhardSoftBuffer[TEXTAREARXHARDSOFT_SIZE];
-    static const uint16_t TEXTAREARXCONGRESF_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaRXCongResfBuffer[TEXTAREARXCONGRESF_SIZE];
-    static const uint16_t TEXTAREARXTIMETEMP_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaRXTimeTempBuffer[TEXTAREARXTIMETEMP_SIZE];
     static const uint16_t TEXTAREARECEITAXDESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceitaXDescBuffer[TEXTAREARECEITAXDESC_SIZE];
     static const uint16_t TEXTAREATEMPERATURARECEITA_SIZE = 10;
@@ -102,7 +90,7 @@ private:
      */
     touchgfx::Callback<Receitas_X_EDITViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Receitas_X_EDITViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-    touchgfx::Callback<Receitas_X_EDITViewBase> keyboardContainer1HideKeyboardCallback;
+    touchgfx::Callback<Receitas_X_EDITViewBase> keyboardContainer21HideKeyboardCallback;
     touchgfx::Callback<Receitas_X_EDITViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
     touchgfx::Callback<Receitas_X_EDITViewBase> numKeyboardContainer1OutOfRangeCallback;
     touchgfx::Callback<Receitas_X_EDITViewBase> numKeyboardContainer1ValidRangeCallback;
@@ -112,7 +100,7 @@ private:
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
-    void keyboardContainer1HideKeyboardCallbackHandler();
+    void keyboardContainer21HideKeyboardCallbackHandler();
     void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
     void numKeyboardContainer1OutOfRangeCallbackHandler();
     void numKeyboardContainer1ValidRangeCallbackHandler();

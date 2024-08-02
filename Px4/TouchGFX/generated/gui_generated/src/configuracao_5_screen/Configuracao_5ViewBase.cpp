@@ -12,7 +12,7 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     numKeyboardContainer1OutOfRangeCallback(this, &Configuracao_5ViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
     numKeyboardContainer1ValidRangeCallback(this, &Configuracao_5ViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
     numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_5ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler),
-    keyboardContainer1HideKeyboardCallback(this, &Configuracao_5ViewBase::keyboardContainer1HideKeyboardCallbackHandler)
+    keyboardContainer21HideKeyboardCallback(this, &Configuracao_5ViewBase::keyboardContainer21HideKeyboardCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -133,9 +133,9 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     flexButtonTimerAlarmeExternoSpMinutos.setAlpha(0);
     flexButtonTimerAlarmeExternoSpMinutos.setAction(flexButtonCallback);
 
-    keyboardContainer1.setXY(0, 0);
-    keyboardContainer1.setVisible(false);
-    keyboardContainer1.setHideKeyboardCallback(keyboardContainer1HideKeyboardCallback);
+    keyboardContainer21.setXY(0, 0);
+    keyboardContainer21.setVisible(false);
+    keyboardContainer21.setHideKeyboardCallback(keyboardContainer21HideKeyboardCallback);
 
     numKeyboardContainer1.setXY(0, 0);
     numKeyboardContainer1.setVisible(false);
@@ -165,13 +165,13 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     add(flexButtonHAW8214);
     add(flexButton1410299);
     add(flexButtonTimerAlarmeExternoSpMinutos);
-    add(keyboardContainer1);
+    add(keyboardContainer21);
     add(numKeyboardContainer1);
 }
 
 void Configuracao_5ViewBase::setupScreen()
 {
-    keyboardContainer1.initialize();
+    keyboardContainer21.initialize();
     numKeyboardContainer1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
@@ -218,12 +218,12 @@ void Configuracao_5ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
     SoundBuzzerOn(25);
 }
 
-void Configuracao_5ViewBase::keyboardContainer1HideKeyboardCallbackHandler()
+void Configuracao_5ViewBase::keyboardContainer21HideKeyboardCallbackHandler()
 {
     //HideKeyboard
-    //When keyboardContainer1 HideKeyboard execute C++ code
+    //When keyboardContainer21 HideKeyboard execute C++ code
     //Execute C++ code
-    ContainerVisibility(&keyboardContainer1, false);
+    ContainerVisibility(&keyboardContainer21, false);
     SoundBuzzerOn(25);
 }
 
@@ -239,7 +239,7 @@ void Configuracao_5ViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ContainerClear(&numKeyboardContainer1);
-    ContainerClear(&keyboardContainer1);
+    ContainerClear(&keyboardContainer21);
 }
 
 void Configuracao_5ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -282,13 +282,14 @@ void Configuracao_5ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //When flexButtonHAW8235 clicked execute C++ code
         //Execute C++ code
         AddKeyboardReference(&textAreaHAW8235, textAreaHAW8235Buffer);
-        ContainerVisibility(&keyboardContainer1, true);
+        keyboardContainer21.restore();
+        ContainerVisibility(&keyboardContainer21, true);
         SoundBuzzerOn(25);
 
         //LaunchHAW8235Keyboard
-        //When HAW8235 completed call LaunchKeyboard on keyboardContainer1
+        //When HAW8235 completed call LaunchKeyboard on keyboardContainer21
         //Call LaunchKeyboard
-        keyboardContainer1.LaunchKeyboard();
+        keyboardContainer21.LaunchKeyboard();
     }
     else if (&src == &flexButtonHAW8214)
     {
@@ -296,13 +297,14 @@ void Configuracao_5ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //When flexButtonHAW8214 clicked execute C++ code
         //Execute C++ code
         AddKeyboardReference(&textAreaHAW8214, textAreaHAW8214Buffer);
-        ContainerVisibility(&keyboardContainer1, true);
+        keyboardContainer21.restore();
+        ContainerVisibility(&keyboardContainer21, true);
         SoundBuzzerOn(25);
 
         //LaunchHAW8214Keyboard
-        //When HAW8214 completed call LaunchKeyboard on keyboardContainer1
+        //When HAW8214 completed call LaunchKeyboard on keyboardContainer21
         //Call LaunchKeyboard
-        keyboardContainer1.LaunchKeyboard();
+        keyboardContainer21.LaunchKeyboard();
     }
     else if (&src == &flexButton1410299)
     {

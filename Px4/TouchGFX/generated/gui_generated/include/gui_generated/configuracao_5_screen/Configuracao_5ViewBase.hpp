@@ -14,7 +14,7 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
-#include <gui/containers/keyboardContainer.hpp>
+#include <gui/containers/keyboardContainer2.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
 
 class Configuracao_5ViewBase : public touchgfx::View<Configuracao_5Presenter>
@@ -61,7 +61,7 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonHAW8214;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410299;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTimerAlarmeExternoSpMinutos;
-    keyboardContainer keyboardContainer1;
+    keyboardContainer2 keyboardContainer21;
     numKeyboardContainer numKeyboardContainer1;
 
     /*
@@ -86,7 +86,7 @@ private:
     touchgfx::Callback<Configuracao_5ViewBase> numKeyboardContainer1OutOfRangeCallback;
     touchgfx::Callback<Configuracao_5ViewBase> numKeyboardContainer1ValidRangeCallback;
     touchgfx::Callback<Configuracao_5ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
-    touchgfx::Callback<Configuracao_5ViewBase> keyboardContainer1HideKeyboardCallback;
+    touchgfx::Callback<Configuracao_5ViewBase> keyboardContainer21HideKeyboardCallback;
 
     /*
      * Callback Handler Declarations
@@ -96,7 +96,7 @@ private:
     void numKeyboardContainer1OutOfRangeCallbackHandler();
     void numKeyboardContainer1ValidRangeCallbackHandler();
     void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
-    void keyboardContainer1HideKeyboardCallbackHandler();
+    void keyboardContainer21HideKeyboardCallbackHandler();
 
 };
 

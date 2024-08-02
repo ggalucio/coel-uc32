@@ -35,8 +35,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define DVC_APPJMP_CURRENT_ADDRESS 0x08040000
-//#define DVC_APPJMP_CURRENT_ADDRESS 0x08000000
+//#define DVC_APPJMP_CURRENT_ADDRESS 0x08040000
+#define DVC_APPJMP_CURRENT_ADDRESS 0x08000000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/

@@ -241,6 +241,11 @@ void AddJob(touchgfx::ToggleButton* toggleButton, int idx){
 		(*pAddJobButton)(toggleButton, idx);
 }
 
+void UpdateJobsOthers(){
+	if (pUpdateJobItemsOthers)
+		(*pUpdateJobItemsOthers)();
+}
+
 /*****************************************************************************************************************************/
 
 void TickElapsedOthers(){

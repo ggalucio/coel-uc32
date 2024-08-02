@@ -18,6 +18,11 @@ touchgfx::TextArea *refTxtArea;
 bool upperCase 	= true;
 bool numCase 	= false;
 
+void Restore(){
+	upperCase = true;
+	numCase = false;
+}
+
 void Refresh(){
 	if(inputBuffer && inputTextArea){
 		touchgfx::Unicode::strncpy(inputBuffer, strValue, MAX_SIZE);
@@ -26,6 +31,7 @@ void Refresh(){
 }
 
 void AddTxtKeyboardRef(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* textBuffer){
+	Restore();
 	memset(strValue, 0, sizeof(char) * MAX_SIZE);
 	refTxtArea = textArea;
 	refBuff = textBuffer;
