@@ -177,7 +177,7 @@ void Configuracao_5ViewBase::setupScreen()
     //When screen transition begins execute C++ code
     //Execute C++ code
     Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);
-    Update(&textArea1410299, textArea1410299Buffer, 0.0, _DOUBLE_, 2);
+    Update(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);
     
     Update(&textAreaHAW8214, textAreaHAW8214Buffer, "Alarme de Tensao", 20);
     Update(&textAreaHAW8235, textAreaHAW8235Buffer, "Consultar manual", 20);
@@ -311,7 +311,7 @@ void Configuracao_5ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410299
         //When flexButton1410299 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _DOUBLE_, 2, 0);
+        AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

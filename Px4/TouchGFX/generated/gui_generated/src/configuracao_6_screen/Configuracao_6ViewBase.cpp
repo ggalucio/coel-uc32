@@ -163,8 +163,8 @@ void Configuracao_6ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textArea1410279, textArea1410279Buffer, 10.0, _DOUBLE_, 2);
-    Update(&textArea1410295, textArea1410295Buffer, 10.03, _DOUBLE_, 2);
+    Update(&textArea1410279, textArea1410279Buffer, 10.0, _FP_32BIT_, 2);
+    Update(&textArea1410295, textArea1410295Buffer, 10.03, _FP_32BIT_, 2);
     Update(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);
 
 }
@@ -284,7 +284,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410295
         //When flexButton1410295 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);
+        AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -298,7 +298,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410279
         //When flexButton1410279 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);
+        AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

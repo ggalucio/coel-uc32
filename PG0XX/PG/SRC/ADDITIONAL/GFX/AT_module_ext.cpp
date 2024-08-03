@@ -248,6 +248,19 @@ void UpdateJobsOthers(){
 
 /*****************************************************************************************************************************/
 
+/************************************************ IMAGE **********************************************************************/
+
+void VisibilityImage(touchgfx::Image* image, bool visibility){
+	if (image){
+		if (image->isVisible() != visibility){
+			image->setVisible(visibility);
+			image->invalidate();
+		}
+	}
+}
+
+/*****************************************************************************************************************************/
+
 void TickElapsedOthers(){
 	if (pRefreshRunExt)
 		(*pRefreshRunExt)();

@@ -154,17 +154,14 @@ void Receita_confirmViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //Sim
         //When buttonWithLabelFlagStartReceita clicked execute C++ code
         //Execute C++ code
-        double tempoReceita = ReadJobData(1, _INT_);
-        double valueCongResf = ReadJobData(4, _INT_);
-        
-        if (tempoReceita == 0.0)
+        if (ReadJobData(1, _INT_)== 0.0)
         {
         	isZeroValue = true;
         	SoundBuzzerOn(25);
         }
         else
         {
-        	if (valueCongResf == 0)
+        	if (ReadJobData(4, _INT_) == 0)
         		Congelar_TEMPO();
         	else
         		Resfriar_TEMPO();

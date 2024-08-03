@@ -58,12 +58,6 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     toggleButtonRXTimeTemp.setBitmaps(touchgfx::Bitmap(BITMAP_TEMPO_ID), touchgfx::Bitmap(BITMAP_TEMPERATURA_ID));
     toggleButtonRXTimeTemp.setAction(buttonCallback);
 
-    box2.setPosition(75, 130, 92, 34);
-    box2.setColor(touchgfx::Color::getColorFromRGB(128, 255, 255));
-
-    box3.setPosition(243, 130, 94, 34);
-    box3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 0));
-
     textArea1_1.setXY(8, 88);
     textArea1_1.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
     textArea1_1.setLinespacing(0);
@@ -84,11 +78,6 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     textArea1_4.setLinespacing(0);
     textArea1_4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3917));
 
-    textArea1_2_1.setXY(172, 138);
-    textArea1_2_1.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
-    textArea1_2_1.setLinespacing(0);
-    textArea1_2_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3918));
-
     textAreaReceitaXDesc.setPosition(75, 52, 262, 31);
     textAreaReceitaXDesc.setColor(touchgfx::Color::getColorFromRGB(48, 72, 167));
     textAreaReceitaXDesc.setLinespacing(0);
@@ -101,37 +90,9 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     textArea2.setLinespacing(0);
     textArea2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3919));
 
-    textAreaTemperaturaReceita.setPosition(244, 130, 91, 34);
-    textAreaTemperaturaReceita.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
-    textAreaTemperaturaReceita.setLinespacing(0);
-    Unicode::snprintf(textAreaTemperaturaReceitaBuffer, TEXTAREATEMPERATURARECEITA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3923).getText());
-    textAreaTemperaturaReceita.setWildcard(textAreaTemperaturaReceitaBuffer);
-    textAreaTemperaturaReceita.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3922));
-
-    textAreaTempoReceitaX.setPosition(76, 130, 91, 34);
-    textAreaTempoReceitaX.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
-    textAreaTempoReceitaX.setLinespacing(0);
-    Unicode::snprintf(textAreaTempoReceitaXBuffer, TEXTAREATEMPORECEITAX_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3921).getText());
-    textAreaTempoReceitaX.setWildcard(textAreaTempoReceitaXBuffer);
-    textAreaTempoReceitaX.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3920));
-
     buttonSalvar.setXY(427, 222);
     buttonSalvar.setBitmaps(touchgfx::Bitmap(BITMAP_SALVAR_ID), touchgfx::Bitmap(BITMAP_SALVAR_ID));
     buttonSalvar.setAction(buttonCallback);
-
-    flexButtonTemperaturaReceita.setBoxWithBorderPosition(0, 0, 91, 34);
-    flexButtonTemperaturaReceita.setBorderSize(5);
-    flexButtonTemperaturaReceita.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButtonTemperaturaReceita.setPosition(244, 130, 91, 34);
-    flexButtonTemperaturaReceita.setAlpha(0);
-    flexButtonTemperaturaReceita.setAction(flexButtonCallback);
-
-    flexButtonTempoReceitaX.setBoxWithBorderPosition(0, 0, 91, 34);
-    flexButtonTempoReceitaX.setBorderSize(5);
-    flexButtonTempoReceitaX.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButtonTempoReceitaX.setPosition(76, 130, 91, 34);
-    flexButtonTempoReceitaX.setAlpha(0);
-    flexButtonTempoReceitaX.setAction(flexButtonCallback);
 
     flexButtonReceitaXDesc.setBoxWithBorderPosition(0, 0, 259, 31);
     flexButtonReceitaXDesc.setBorderSize(5);
@@ -139,6 +100,62 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     flexButtonReceitaXDesc.setPosition(76, 52, 259, 31);
     flexButtonReceitaXDesc.setAlpha(0);
     flexButtonReceitaXDesc.setAction(flexButtonCallback);
+
+    containerTemperatura.setPosition(243, 126, 124, 46);
+
+    box3.setPosition(0, 4, 94, 34);
+    box3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 0));
+    containerTemperatura.add(box3);
+
+    textArea1_2_1_1.setXY(104, 12);
+    textArea1_2_1_1.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
+    textArea1_2_1_1.setLinespacing(0);
+    textArea1_2_1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
+    containerTemperatura.add(textArea1_2_1_1);
+
+    textAreaTemperaturaReceita.setPosition(1, 4, 91, 34);
+    textAreaTemperaturaReceita.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
+    textAreaTemperaturaReceita.setLinespacing(0);
+    Unicode::snprintf(textAreaTemperaturaReceitaBuffer, TEXTAREATEMPERATURARECEITA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3923).getText());
+    textAreaTemperaturaReceita.setWildcard(textAreaTemperaturaReceitaBuffer);
+    textAreaTemperaturaReceita.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3922));
+    containerTemperatura.add(textAreaTemperaturaReceita);
+
+    flexButtonTemperaturaReceita.setBoxWithBorderPosition(0, 0, 91, 34);
+    flexButtonTemperaturaReceita.setBorderSize(5);
+    flexButtonTemperaturaReceita.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonTemperaturaReceita.setPosition(1, 4, 91, 34);
+    flexButtonTemperaturaReceita.setAlpha(0);
+    flexButtonTemperaturaReceita.setAction(flexButtonCallback);
+    containerTemperatura.add(flexButtonTemperaturaReceita);
+
+    containerTempo.setPosition(70, 126, 137, 46);
+
+    box2.setPosition(5, 4, 92, 34);
+    box2.setColor(touchgfx::Color::getColorFromRGB(128, 255, 255));
+    containerTempo.add(box2);
+
+    textArea1_2_1.setXY(102, 12);
+    textArea1_2_1.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
+    textArea1_2_1.setLinespacing(0);
+    textArea1_2_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3918));
+    containerTempo.add(textArea1_2_1);
+
+    textAreaTempoReceitaX.setPosition(6, 4, 91, 34);
+    textAreaTempoReceitaX.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
+    textAreaTempoReceitaX.setLinespacing(0);
+    Unicode::snprintf(textAreaTempoReceitaXBuffer, TEXTAREATEMPORECEITAX_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3921).getText());
+    textAreaTempoReceitaX.setWildcard(textAreaTempoReceitaXBuffer);
+    textAreaTempoReceitaX.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3920));
+    containerTempo.add(textAreaTempoReceitaX);
+
+    flexButtonTempoReceitaX.setBoxWithBorderPosition(0, 0, 91, 34);
+    flexButtonTempoReceitaX.setBorderSize(5);
+    flexButtonTempoReceitaX.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonTempoReceitaX.setPosition(6, 4, 91, 34);
+    flexButtonTempoReceitaX.setAlpha(0);
+    flexButtonTempoReceitaX.setAction(flexButtonCallback);
+    containerTempo.add(flexButtonTempoReceitaX);
 
     keyboardContainer21.setXY(0, 0);
     keyboardContainer21.setVisible(false);
@@ -161,21 +178,16 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     add(toggleButtonRXhardSoft);
     add(toggleButtonRXConservYn);
     add(toggleButtonRXTimeTemp);
-    add(box2);
-    add(box3);
     add(textArea1_1);
     add(textArea1_2);
     add(textArea1_3);
     add(textArea1_4);
-    add(textArea1_2_1);
     add(textAreaReceitaXDesc);
     add(textArea2);
-    add(textAreaTemperaturaReceita);
-    add(textAreaTempoReceitaX);
     add(buttonSalvar);
-    add(flexButtonTemperaturaReceita);
-    add(flexButtonTempoReceitaX);
     add(flexButtonReceitaXDesc);
+    add(containerTemperatura);
+    add(containerTempo);
     add(keyboardContainer21);
     add(numKeyboardContainer1);
 }
@@ -187,19 +199,17 @@ void Receitas_X_EDITViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);
-    Update(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);
-    
     AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);
-    AddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _DOUBLE_, 1);
-    AddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);
-    AddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);
-    
+    AddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _FP_32BIT_, 1);
     AddJob(&toggleButtonRXTimeTemp, 3);
     AddJob(&toggleButtonRXCongResf, 4);
+    AddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);
     AddJob(&toggleButtonRXhardSoft, 6);
     AddJob(&toggleButtonRXConservYn, 7);
+    AddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);
     
+    ContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());
+    ContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());
     ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());
 
 }
@@ -294,7 +304,6 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //RXCongResf
         //When toggleButtonRXCongResf clicked execute C++ code
         //Execute C++ code
-        //Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);
         ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());
         SoundBuzzerOn(25);
     }
@@ -319,7 +328,8 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //RXTimeTemp
         //When toggleButtonRXTimeTemp clicked execute C++ code
         //Execute C++ code
-        //Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);
+        ContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());
+        ContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonSalvar)
@@ -344,7 +354,22 @@ void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
 
 void Receitas_X_EDITViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-    if (&src == &flexButtonTemperaturaReceita)
+    if (&src == &flexButtonReceitaXDesc)
+    {
+        //ReceitaDescricao
+        //When flexButtonReceitaXDesc clicked execute C++ code
+        //Execute C++ code
+        AddKeyboardReference(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer);
+        keyboardContainer21.restore();
+        ContainerVisibility(&keyboardContainer21, true);
+        SoundBuzzerOn(25);
+
+        //LaunchNameKeyboard
+        //When ReceitaDescricao completed call LaunchKeyboard on keyboardContainer21
+        //Call LaunchKeyboard
+        keyboardContainer21.LaunchKeyboard();
+    }
+    else if (&src == &flexButtonTemperaturaReceita)
     {
         //TemperaturaReceita
         //When flexButtonTemperaturaReceita clicked execute C++ code
@@ -371,20 +396,5 @@ void Receitas_X_EDITViewBase::flexButtonCallbackHandler(const touchgfx::Abstract
         //When TempoReceita completed call LaunchNumericalKeyboard on numKeyboardContainer1
         //Call LaunchNumericalKeyboard
         numKeyboardContainer1.LaunchNumericalKeyboard();
-    }
-    else if (&src == &flexButtonReceitaXDesc)
-    {
-        //ReceitaDescricao
-        //When flexButtonReceitaXDesc clicked execute C++ code
-        //Execute C++ code
-        AddKeyboardReference(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer);
-        keyboardContainer21.restore();
-        ContainerVisibility(&keyboardContainer21, true);
-        SoundBuzzerOn(25);
-
-        //LaunchNameKeyboard
-        //When ReceitaDescricao completed call LaunchKeyboard on keyboardContainer21
-        //Call LaunchKeyboard
-        keyboardContainer21.LaunchKeyboard();
     }
 }

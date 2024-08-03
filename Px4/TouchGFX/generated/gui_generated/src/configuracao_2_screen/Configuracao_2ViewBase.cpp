@@ -234,13 +234,13 @@ void Configuracao_2ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _DOUBLE_, 1);
-    Update(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _DOUBLE_, 1);
-    Update(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _DOUBLE_, 1);
-    Update(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _DOUBLE_, 1);
-    Update(&textArea1410272, textArea1410272Buffer, 0.0, _DOUBLE_, 1);
-    Update(&textArea1410275, textArea1410275Buffer, 0.0, _DOUBLE_, 1);
-    Update(&textArea1410270, textArea1410270Buffer, 10.0, _DOUBLE_, 2);
+    Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);
+    Update(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);
+    Update(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);
+    Update(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);
+    Update(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);
 
 }
 
@@ -324,7 +324,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410270
         //When flexButton1410270 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 2, 0);
+        AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -338,7 +338,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410275
         //When flexButton1410275 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -352,7 +352,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410272
         //When flexButton1410272 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -366,7 +366,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //DiferencialConservarResfriar
         //When flexButtonDiferencialConservarResfriar clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -380,7 +380,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //SpConservarResfriar
         //When flexButtonSpConservarResfriar clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -394,7 +394,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //DiferencialConservarCongelar
         //When flexButtonDiferencialConservarCongelar clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -408,7 +408,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //SpConservarCongelar
         //When flexButtonSpConservarCongelar clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
+#include <touchgfx/containers/Container.hpp>
 #include <gui/containers/keyboardContainer2.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
 
@@ -53,21 +54,24 @@ protected:
     touchgfx::ToggleButton toggleButtonRXhardSoft;
     touchgfx::ToggleButton toggleButtonRXConservYn;
     touchgfx::ToggleButton toggleButtonRXTimeTemp;
-    touchgfx::Box box2;
-    touchgfx::Box box3;
     touchgfx::TextArea textArea1_1;
     touchgfx::TextArea textArea1_2;
     touchgfx::TextArea textArea1_3;
     touchgfx::TextArea textArea1_4;
-    touchgfx::TextArea textArea1_2_1;
     touchgfx::TextAreaWithOneWildcard textAreaReceitaXDesc;
     touchgfx::TextArea textArea2;
-    touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceita;
-    touchgfx::TextAreaWithOneWildcard textAreaTempoReceitaX;
     touchgfx::Button buttonSalvar;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTemperaturaReceita;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTempoReceitaX;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonReceitaXDesc;
+    touchgfx::Container containerTemperatura;
+    touchgfx::Box box3;
+    touchgfx::TextArea textArea1_2_1_1;
+    touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceita;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTemperaturaReceita;
+    touchgfx::Container containerTempo;
+    touchgfx::Box box2;
+    touchgfx::TextArea textArea1_2_1;
+    touchgfx::TextAreaWithOneWildcard textAreaTempoReceitaX;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTempoReceitaX;
     keyboardContainer2 keyboardContainer21;
     numKeyboardContainer numKeyboardContainer1;
 

@@ -254,7 +254,10 @@ void Receitas_1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& s
         	radioButtonMuneroReceita2.getSelected() || 
         	radioButtonMuneroReceita3.getSelected() || 
         	radioButtonMuneroReceita4.getSelected())
+        {
+        	SelectJob(selectedRecipeItem - 1);
         	Receita_X_EDIT();
+        }
         else
         	SoundBuzzerOn(25);
         
@@ -277,7 +280,6 @@ void Receitas_1ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //When radioButtonMuneroReceita1 selected execute C++ code
         //Execute C++ code
         selectedRecipeItem = 1;
-        SelectJob(selectedRecipeItem - 1);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita2)
@@ -286,7 +288,6 @@ void Receitas_1ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //When radioButtonMuneroReceita2 selected execute C++ code
         //Execute C++ code
         selectedRecipeItem = 2;
-        SelectJob(selectedRecipeItem - 1);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita3)
@@ -295,7 +296,6 @@ void Receitas_1ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //When radioButtonMuneroReceita3 selected execute C++ code
         //Execute C++ code
         selectedRecipeItem = 3;
-        SelectJob(selectedRecipeItem - 1);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita4)
@@ -304,7 +304,6 @@ void Receitas_1ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //When radioButtonMuneroReceita4 selected execute C++ code
         //Execute C++ code
         selectedRecipeItem = 4;
-        SelectJob(selectedRecipeItem - 1);
         SoundBuzzerOn(25);
     }
 }

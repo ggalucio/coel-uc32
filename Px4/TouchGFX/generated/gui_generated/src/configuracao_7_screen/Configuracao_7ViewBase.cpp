@@ -203,12 +203,12 @@ void Configuracao_7ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _DOUBLE_, 1);
-    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _DOUBLE_, 1);
-    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _DOUBLE_, 1);
-    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _DOUBLE_, 1);
-    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _DOUBLE_, 1);
-    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _DOUBLE_, 0);
+    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);
+    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);
+    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);
+    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);
+    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);
 
 }
 
@@ -299,7 +299,7 @@ void Configuracao_7ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //DiferencialResfriarTempo
         //When flexButtonDiferencialResfriarTempo clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -313,7 +313,7 @@ void Configuracao_7ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //SpSondaResfCamara
         //When flexButtonSpSondaResfCamara clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -327,7 +327,7 @@ void Configuracao_7ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //SpResfriarSonda
         //When flexButtonSpResfriarSonda clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -341,7 +341,7 @@ void Configuracao_7ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //SpResfInternoF1
         //When flexButtonSpResfInternoF1 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -355,7 +355,7 @@ void Configuracao_7ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //SpResfEspetoF1
         //When flexButtonSpResfEspetoF1 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        AddNumKeyboardReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

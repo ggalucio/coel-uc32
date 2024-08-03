@@ -3314,7 +3314,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _DOUBLE_, 1);"
+              "Code": "Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _FP_32BIT_, 1);"
             }
           },
           {
@@ -3386,7 +3386,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -3398,7 +3398,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -99.9, 99.9, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -3410,7 +3410,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -3422,7 +3422,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9090,7 +9090,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 10.0, _DOUBLE_, 2);"
+              "Code": "Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);"
             }
           },
           {
@@ -9175,7 +9175,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9187,7 +9187,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9199,7 +9199,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9211,7 +9211,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9223,7 +9223,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9235,7 +9235,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9247,7 +9247,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10153,7 +10153,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea1410291, textArea1410291Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
+              "Code": "Update(&textArea1410291, textArea1410291Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
             }
           },
           {
@@ -10238,7 +10238,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10250,7 +10250,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10262,7 +10262,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10274,7 +10274,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10962,7 +10962,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (\tradioButtonMuneroReceita1.getSelected() || \r\n\tradioButtonMuneroReceita2.getSelected() || \r\n\tradioButtonMuneroReceita3.getSelected() || \r\n\tradioButtonMuneroReceita4.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 1;"
+              "Code": "if (\tradioButtonMuneroReceita1.getSelected() || \r\n\tradioButtonMuneroReceita2.getSelected() || \r\n\tradioButtonMuneroReceita3.getSelected() || \r\n\tradioButtonMuneroReceita4.getSelected())\r\n{\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_X_EDIT();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 1;"
             }
           },
           {
@@ -10974,7 +10974,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 1;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 1;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10986,7 +10986,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 2;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 2;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10998,7 +10998,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 3;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 3;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11010,7 +11010,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 4;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 4;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11644,7 +11644,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (\tradioButtonMuneroReceita5.getSelected() || \r\n\tradioButtonMuneroReceita6.getSelected() || \r\n\tradioButtonMuneroReceita7.getSelected() || \r\n\tradioButtonMuneroReceita8.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 2;"
+              "Code": "if (\tradioButtonMuneroReceita5.getSelected() || \r\n\tradioButtonMuneroReceita6.getSelected() || \r\n\tradioButtonMuneroReceita7.getSelected() || \r\n\tradioButtonMuneroReceita8.getSelected())\r\n{\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_X_EDIT();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 2;"
             }
           },
           {
@@ -11656,7 +11656,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 5;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 5;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11668,7 +11668,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 6;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 6;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11680,7 +11680,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 7;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 7;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11692,7 +11692,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 8;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 8;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12296,7 +12296,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (\tradioButtonMuneroReceita9.getSelected() || \r\n\tradioButtonMuneroReceita10.getSelected() || \r\n\tradioButtonMuneroReceita11.getSelected() || \r\n\tradioButtonMuneroReceita12.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 3;"
+              "Code": "if (\tradioButtonMuneroReceita9.getSelected() || \r\n\tradioButtonMuneroReceita10.getSelected() || \r\n\tradioButtonMuneroReceita11.getSelected() || \r\n\tradioButtonMuneroReceita12.getSelected())\r\n{\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_X_EDIT();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 3;"
             }
           },
           {
@@ -12308,7 +12308,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 9;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 9;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12320,7 +12320,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 10;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 10;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12332,7 +12332,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 11;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 11;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12344,7 +12344,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 12;\r\nSelectJob(selectedRecipeItem - 1);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 12;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12612,46 +12612,6 @@
             "Moveable": false
           },
           {
-            "Type": "Box",
-            "Color": {
-              "Red": 128,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "Name": "box2",
-            "X": 75,
-            "Y": 130,
-            "Width": 92,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "Box",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "Name": "box3",
-            "X": 243,
-            "Y": 130,
-            "Width": 94,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "Type": "TextArea",
             "TextId": "SingleUseId3914",
             "TextRotation": "0",
@@ -12749,30 +12709,6 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId3918",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 128,
-              "Green": 128,
-              "Blue": 128
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea1_2_1",
-            "X": 172,
-            "Y": 138,
-            "Width": 35,
-            "Height": 19,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId3912",
             "TextRotation": "0",
             "Color": {
@@ -12825,64 +12761,6 @@
             "Moveable": false
           },
           {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3922",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 128
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId3923",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaTemperaturaReceita",
-            "X": 244,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3920",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 128
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId3921",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaTempoReceitaX",
-            "X": 76,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "Type": "Button",
             "Pressed": "salvar.png",
             "Released": "salvar.png",
@@ -12892,104 +12770,6 @@
             "Y": 222,
             "Width": 34,
             "Height": 39,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "FlexButton",
-            "Alpha": 0,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "X": 0,
-                "Y": 0,
-                "Width": 91,
-                "Height": 34,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 5,
-                "ColorReleased": {
-                  "Red": 0,
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Red": 0,
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Red": 0,
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ],
-            "Name": "flexButtonTemperaturaReceita",
-            "X": 244,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "FlexButton",
-            "Alpha": 0,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "X": 0,
-                "Y": 0,
-                "Width": 91,
-                "Height": 34,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 5,
-                "ColorReleased": {
-                  "Red": 0,
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Red": 0,
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Red": 0,
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ],
-            "Name": "flexButtonTempoReceitaX",
-            "X": 76,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -13047,6 +12827,284 @@
             "Moveable": false
           },
           {
+            "Components": [
+              {
+                "Type": "Box",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "Name": "box3",
+                "X": 0,
+                "Y": 4,
+                "Width": 94,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId4098",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 128,
+                  "Green": 128,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea1_2_1_1",
+                "X": 104,
+                "Y": 12,
+                "Width": 20,
+                "Height": 19,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId3922",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId3923",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Name": "textAreaTemperaturaReceita",
+                "X": 1,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "FlexButton",
+                "Alpha": 0,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "X": 0,
+                    "Y": 0,
+                    "Width": 91,
+                    "Height": 34,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 5,
+                    "ColorReleased": {
+                      "Red": 0,
+                      "Green": 102,
+                      "Blue": 153
+                    },
+                    "ColorPressed": {
+                      "Red": 0,
+                      "Green": 153,
+                      "Blue": 204
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 0,
+                      "Green": 51,
+                      "Blue": 102
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 51,
+                      "Green": 102,
+                      "Blue": 153
+                    }
+                  }
+                ],
+                "Name": "flexButtonTemperaturaReceita",
+                "X": 1,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "Container",
+            "IsCacheableContainer": false,
+            "Name": "containerTemperatura",
+            "X": 243,
+            "Y": 126,
+            "Width": 124,
+            "Height": 46,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "Box",
+                "Color": {
+                  "Red": 128,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "Name": "box2",
+                "X": 5,
+                "Y": 4,
+                "Width": 92,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId3918",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 128,
+                  "Green": 128,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea1_2_1",
+                "X": 102,
+                "Y": 12,
+                "Width": 35,
+                "Height": 19,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId3920",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId3921",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Name": "textAreaTempoReceitaX",
+                "X": 6,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "FlexButton",
+                "Alpha": 0,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "X": 0,
+                    "Y": 0,
+                    "Width": 91,
+                    "Height": 34,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 5,
+                    "ColorReleased": {
+                      "Red": 0,
+                      "Green": 102,
+                      "Blue": 153
+                    },
+                    "ColorPressed": {
+                      "Red": 0,
+                      "Green": 153,
+                      "Blue": 204
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 0,
+                      "Green": 51,
+                      "Blue": 102
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 51,
+                      "Green": 102,
+                      "Blue": 153
+                    }
+                  }
+                ],
+                "Name": "flexButtonTempoReceitaX",
+                "X": 6,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "Container",
+            "IsCacheableContainer": false,
+            "Name": "containerTempo",
+            "X": 70,
+            "Y": 126,
+            "Width": 137,
+            "Height": 46,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "CustomContainerDefinitionName": "keyboardContainer2",
             "Type": "CustomContainerInstance",
             "Name": "keyboardContainer21",
@@ -13086,7 +13144,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\nAddJob(&toggleButtonRXTimeTemp, 3);\r\nAddJob(&toggleButtonRXCongResf, 4);\r\nAddJob(&toggleButtonRXhardSoft, 6);\r\nAddJob(&toggleButtonRXConservYn, 7);\r\n\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
+              "Code": "AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _FP_32BIT_, 1);\r\nAddJob(&toggleButtonRXTimeTemp, 3);\r\nAddJob(&toggleButtonRXCongResf, 4);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&toggleButtonRXhardSoft, 6);\r\nAddJob(&toggleButtonRXConservYn, 7);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\nContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());\r\nContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
             }
           },
           {
@@ -13312,7 +13370,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "//Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "ContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());\r\nContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13324,7 +13382,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "//Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
+              "Code": "ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13637,7 +13695,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "double tempoReceita = ReadJobData(1, _INT_);\r\ndouble valueCongResf = ReadJobData(4, _INT_);\r\n\r\nif (tempoReceita == 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\tif (valueCongResf == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
+              "Code": "if (ReadJobData(1, _INT_)== 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\tif (ReadJobData(4, _INT_) == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
             }
           },
           {
@@ -15289,7 +15347,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _DOUBLE_, 2);\r\n\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);"
+              "Code": "Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);\r\n\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);"
             }
           },
           {
@@ -15398,7 +15456,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -16822,7 +16880,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea1410279, textArea1410279Buffer, 10.0, _DOUBLE_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _DOUBLE_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
+              "Code": "Update(&textArea1410279, textArea1410279Buffer, 10.0, _FP_32BIT_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _FP_32BIT_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
             }
           },
           {
@@ -16907,7 +16965,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -16919,7 +16977,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18543,7 +18601,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _DOUBLE_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _DOUBLE_, 0);"
+              "Code": "Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);"
             }
           },
           {
@@ -18615,7 +18673,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18627,7 +18685,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18639,7 +18697,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18651,7 +18709,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18663,7 +18721,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -24955,6 +25013,30 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId4099",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaLabelC",
+            "X": 294,
+            "Y": 96,
+            "Width": 31,
+            "Height": 31,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId3992",
             "TextRotation": "0",
             "Color": {
@@ -24965,7 +25047,7 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
-            "Name": "textAreaLabel1",
+            "Name": "textAreaLabelMin",
             "X": 294,
             "Y": 96,
             "Width": 53,
@@ -25011,78 +25093,6 @@
             "Y": 204,
             "Width": 198,
             "Height": 44,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "Trm.png",
-            "Released": "Rel.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaTimeTempAtual",
-            "X": 141,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "R.png",
-            "Released": "C.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaCongResfAtual",
-            "X": 195,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "H.png",
-            "Released": "S.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaHardSoftAtual",
-            "X": 248,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "CsON.png",
-            "Released": "Cs.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaConservAtaul",
-            "X": 301,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -25147,6 +25157,151 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "Trm.png",
+            "Alpha": 255,
+            "Name": "imageTemp",
+            "X": 141,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "Rel.png",
+            "Alpha": 255,
+            "Name": "imageTime",
+            "X": 141,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "R.png",
+            "Alpha": 255,
+            "Name": "imageResf",
+            "X": 195,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "C.png",
+            "Alpha": 255,
+            "Name": "imageCong",
+            "X": 195,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "CsON.png",
+            "Alpha": 255,
+            "Name": "imageCsOn",
+            "X": 301,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "Cs.png",
+            "Alpha": 255,
+            "Name": "imageCsOff",
+            "X": 301,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "Image",
+                "RelativeFilename": "H.png",
+                "Alpha": 255,
+                "Name": "imageHard",
+                "X": 0,
+                "Y": 0,
+                "Width": 38,
+                "Height": 42,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "Image",
+                "RelativeFilename": "S.png",
+                "Alpha": 255,
+                "Name": "imageSoft",
+                "X": 0,
+                "Y": 0,
+                "Width": 38,
+                "Height": 42,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "Container",
+            "IsCacheableContainer": false,
+            "Name": "containerSoftHard",
+            "X": 248,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -25159,7 +25314,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, ReadJobData(255, _INT_), _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, ReadJobData(2, _DOUBLE_), _DOUBLE_, 1);"
+              "Code": "AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);\r\n\r\nif (ReadJobData(3, _INT_) == 0)\r\n{\r\n\tAddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 1, _INT_, 0);\r\n\tVisibilityTextArea(&textAreaLabelMin, true);\r\n\tVisibilityTextArea(&textAreaLabelC, false);\r\n\tVisibilityImage(&imageTime, true);\r\n\tVisibilityImage(&imageTemp, false);\r\n}\r\nelse\r\n{\r\n\tAddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 2, _FP_32BIT_, 1);\r\n\tVisibilityTextArea(&textAreaLabelMin, false);\r\n\tVisibilityTextArea(&textAreaLabelC, true);\r\n\tVisibilityImage(&imageTime, false);\r\n\tVisibilityImage(&imageTemp, true);\r\n}\r\n\r\nif (ReadJobData(4, _INT_) == 0)\r\n{\r\n\tVisibilityImage(&imageCong, true);\r\n\tVisibilityImage(&imageResf, false);\r\n\tContainerVisibility(&containerSoftHard, false);\r\n}\r\nelse\r\n{\r\n\tVisibilityImage(&imageCong, false);\r\n\tVisibilityImage(&imageResf, true);\r\n\tContainerVisibility(&containerSoftHard, true);\r\n}\r\n\r\nif (ReadJobData(6, _INT_) == 0)\r\n{\r\n\tVisibilityImage(&imageSoft, true);\r\n\tVisibilityImage(&imageHard, false);\r\n}\r\nelse\r\n{\r\n\tVisibilityImage(&imageSoft, false);\r\n\tVisibilityImage(&imageHard, true);\r\n}\r\n\r\nif (ReadJobData(7, _INT_) == 0)\r\n{\r\n\tVisibilityImage(&imageCsOff, true);\r\n\tVisibilityImage(&imageCsOn, false);\r\n}\r\nelse\r\n{\r\n\tVisibilityImage(&imageCsOff, false);\r\n\tVisibilityImage(&imageCsOn, true);\r\n}\r\n"
             }
           },
           {
@@ -25192,7 +25347,7 @@
         "Y": 0,
         "Width": 480,
         "Height": 272,
-        "Includes": "#include <AT_module.hpp>"
+        "Includes": "#include <AT_module.hpp>\r\n#include <AT_module_ext.hpp>"
       }
     ],
     "TextEntries": [
@@ -27934,6 +28089,14 @@
       },
       {
         "TextEntryId": "SingleUseId4097",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4098",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4099",
         "IsResource": false
       }
     ],

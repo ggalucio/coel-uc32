@@ -12,6 +12,7 @@
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
 #include <touchgfx/containers/progress_indicators/LineProgress.hpp>
 
@@ -59,6 +60,9 @@ void SetColorBox(touchgfx::Box* box, const char* color);
 // JOB
 void AddJob(touchgfx::ToggleButton* toggleButton, int idx);
 void UpdateJobsOthers(void);
+
+// IMAGE
+void VisibilityImage(touchgfx::Image* image, bool visibility);
 
 // TICK
 void TickElapsedOthers(void);
