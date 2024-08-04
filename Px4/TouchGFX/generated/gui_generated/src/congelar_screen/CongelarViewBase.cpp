@@ -84,18 +84,18 @@ void CongelarViewBase::tearDownScreen()
     ClearOthers();
 }
 
-void CongelarViewBase::Congelar_SONDA()
+void CongelarViewBase::goToCongelarSonda()
 {
-    //CongelarSONDA
-    //When Congelar_SONDA is called change screen to Congelar_SONDA
+    //interactionGoToCongelarSonda
+    //When goToCongelarSonda is called change screen to Congelar_SONDA
     //Go to Congelar_SONDA with no screen transition
     application().gotoCongelar_SONDAScreenNoTransition();
 }
 
-void CongelarViewBase::Congelar_select_TEMPO()
+void CongelarViewBase::goToCongelarSelectTempo()
 {
-    //CongelarSelectTEMPO
-    //When Congelar_select_TEMPO is called change screen to Congelar_select_TEMPO
+    //interactionGoToCongelarSelectTempo
+    //When goToCongelarSelectTempo is called change screen to Congelar_select_TEMPO
     //Go to Congelar_select_TEMPO with no screen transition
     application().gotoCongelar_select_TEMPOScreenNoTransition();
 }
@@ -104,16 +104,40 @@ void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
 {
     if (&src == &buttonFlagCongelarSonda)
     {
-        //Avancar
+        //buttonAvancar
         //When buttonFlagCongelarSonda clicked execute C++ code
         //Execute C++ code
-        if (radioButtonStatusTeclaCongela0.getSelected())
-        {
-        	Congelar_SONDA();
-        }
-        else if (radioButtonStatusTeclaCongela1.getSelected())
-        {
-        	Congelar_select_TEMPO();
+        // MODO SONDA
+        
+        if (Status_tecla_Congela) { // if tela de Congelar SONDA
+        
+        
+        
+            UpdateModbus485( MA_SP_SONDA_CONGELAR_CAMARA, SP_SONDA_CONGELAR_CAMARA, _INT2_);    //W_1_410242 = SP_SONDA_CONGELAR_CAMARA; // SP = SP_SONDA_CONGELAR_CAMARA
+            WriteModbus485(MA_SP_SONDA_CONGELAR_CAMARA, 1);
+            Wait(50);
+        
+            UpdateModbus485( MA_Diferencial_Congelar_tempo, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC
+            WriteModbus485(MA_Diferencial_Congelar_tempo, 1);
+            Wait(50);
+            //W_1_4645 = 1;                // Controlador em modo Controle
+        
+            Timer_Congelar_DECORRIDO_SP = 99999; // SP Timer- Inf
+        
+            Timer_Congelar_DECORRIDO_ON = 1; // START Timer Tempo_Congelar_DECORRIDO_ON
+            flag_Processo_ANDAMENTO = 1;     // Flag Processo_ANDAMENTO = TRUE
+        
+            Timer_delay_ON = true;          // Start Timer Delay
+        
+            // trocar a tela para a tela de Congelar SONDA
+            //W_HDW5000 = 2;               // Altera para tela de SONDA 
+            goToCongelarSonda();
+        
+        } else { // tela de Congelar SELECT TEMPO
+            flag_alarm_receita_vazia = false; // zera bit flag alarme de tempo Zero
+            // trocar a tela para a tela de Congelar SELECT TEMPO
+            //W_HDW5000 = 4;               // Tela Select Tempo
+            goToCongelarSelectTempo();
         }
     }
     else if (&src == &buttonTelaInicial)
@@ -133,6 +157,7 @@ void CongelarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //When radioButtonStatusTeclaCongela0 selected execute C++ code
         //Execute C++ code
         SoundBuzzerOn(25);
+        Status_tecla_Congela = true;
     }
     else if (&src == &radioButtonStatusTeclaCongela1)
     {
@@ -140,5 +165,6 @@ void CongelarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //When radioButtonStatusTeclaCongela1 selected execute C++ code
         //Execute C++ code
         SoundBuzzerOn(25);
+        Status_tecla_Congela = false;
     }
 }
