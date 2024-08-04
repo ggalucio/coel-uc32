@@ -24,12 +24,11 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     boxFundoAzul.setPosition(0, 0, 480, 35);
     boxFundoAzul.setColor(touchgfx::Color::getColorFromRGB(255, 128, 64));
 
-    textAreaTitle.setXY(48, 4);
+    textAreaTitle.setPosition(48, 4, 287, 25);
     textAreaTitle.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textAreaTitle.setLinespacing(0);
     Unicode::snprintf(textAreaTitleBuffer, TEXTAREATITLE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4018).getText());
     textAreaTitle.setWildcard(textAreaTitleBuffer);
-    textAreaTitle.resizeToCurrentText();
     textAreaTitle.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3910));
 
     image1.setXY(8, 4);
@@ -45,15 +44,19 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
 
     toggleButtonRXCongResf.setXY(75, 174);
     toggleButtonRXCongResf.setBitmaps(touchgfx::Bitmap(BITMAP_CONGELARAA_ID), touchgfx::Bitmap(BITMAP_REFRIARAA_ID));
+    toggleButtonRXCongResf.setAction(buttonCallback);
 
     toggleButtonRXhardSoft.setXY(207, 174);
     toggleButtonRXhardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFTS_ID), touchgfx::Bitmap(BITMAP_HARDS_ID));
+    toggleButtonRXhardSoft.setAction(buttonCallback);
 
     toggleButtonRXConservYn.setXY(152, 220);
     toggleButtonRXConservYn.setBitmaps(touchgfx::Bitmap(BITMAP_COFF_ID), touchgfx::Bitmap(BITMAP_BUTTONON_ID));
+    toggleButtonRXConservYn.setAction(buttonCallback);
 
     toggleButtonRXTimeTemp.setXY(76, 90);
     toggleButtonRXTimeTemp.setBitmaps(touchgfx::Bitmap(BITMAP_TEMPO_ID), touchgfx::Bitmap(BITMAP_TEMPERATURA_ID));
+    toggleButtonRXTimeTemp.setAction(buttonCallback);
 
     box2.setPosition(75, 130, 92, 34);
     box2.setColor(touchgfx::Color::getColorFromRGB(128, 255, 255));
@@ -85,6 +88,38 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     textArea1_2_1.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
     textArea1_2_1.setLinespacing(0);
     textArea1_2_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3918));
+
+    textAreaRXConservYn.setPosition(369, 157, 75, 25);
+    textAreaRXConservYn.setVisible(false);
+    textAreaRXConservYn.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaRXConservYn.setLinespacing(0);
+    Unicode::snprintf(textAreaRXConservYnBuffer, TEXTAREARXCONSERVYN_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4063).getText());
+    textAreaRXConservYn.setWildcard(textAreaRXConservYnBuffer);
+    textAreaRXConservYn.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4062));
+
+    textAreaRXhardSoft.setPosition(369, 132, 75, 25);
+    textAreaRXhardSoft.setVisible(false);
+    textAreaRXhardSoft.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaRXhardSoft.setLinespacing(0);
+    Unicode::snprintf(textAreaRXhardSoftBuffer, TEXTAREARXHARDSOFT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4061).getText());
+    textAreaRXhardSoft.setWildcard(textAreaRXhardSoftBuffer);
+    textAreaRXhardSoft.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4060));
+
+    textAreaRXCongResf.setPosition(369, 107, 75, 25);
+    textAreaRXCongResf.setVisible(false);
+    textAreaRXCongResf.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaRXCongResf.setLinespacing(0);
+    Unicode::snprintf(textAreaRXCongResfBuffer, TEXTAREARXCONGRESF_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4059).getText());
+    textAreaRXCongResf.setWildcard(textAreaRXCongResfBuffer);
+    textAreaRXCongResf.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4058));
+
+    textAreaRXTimeTemp.setPosition(369, 82, 75, 25);
+    textAreaRXTimeTemp.setVisible(false);
+    textAreaRXTimeTemp.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaRXTimeTemp.setLinespacing(0);
+    Unicode::snprintf(textAreaRXTimeTempBuffer, TEXTAREARXTIMETEMP_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4057).getText());
+    textAreaRXTimeTemp.setWildcard(textAreaRXTimeTempBuffer);
+    textAreaRXTimeTemp.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4056));
 
     textAreaReceitaXDesc.setPosition(75, 52, 262, 31);
     textAreaReceitaXDesc.setColor(touchgfx::Color::getColorFromRGB(48, 72, 167));
@@ -165,6 +200,10 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     add(textArea1_3);
     add(textArea1_4);
     add(textArea1_2_1);
+    add(textAreaRXConservYn);
+    add(textAreaRXhardSoft);
+    add(textAreaRXCongResf);
+    add(textAreaRXTimeTemp);
     add(textAreaReceitaXDesc);
     add(textArea2);
     add(textAreaTemperaturaReceita);
@@ -187,12 +226,27 @@ void Receitas_X_EDITViewBase::setupScreen()
     Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);
     Update(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);
     
-    //ReadJobName(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 20);
+    AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);
+    AddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _DOUBLE_, 1);
+    AddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);
+    AddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);
     
-    AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0x01, _INT_, 0);
-    AddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0x02, _DOUBLE_, 1);
-    AddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 0x05, _STRING_, 0);
-    AddJob(&textAreaTitle, textAreaTitleBuffer, 0xff, _INT_, 0);
+    //AddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 3, _INT_, 0);
+    //AddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 4, _INT_, 0);
+    //AddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 6, _INT_, 0);
+    //AddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 7, _INT_, 0);
+    
+    //Update(&toggleButtonRXTimeTemp, ReadJobData(3, _INT_) != 0 ? true : false);
+    //Update(&toggleButtonRXCongResf, ReadJobData(4, _INT_) != 0 ? true : false);
+    //Update(&toggleButtonRXhardSoft, ReadJobData(6, _INT_) != 0 ? true : false);
+    //Update(&toggleButtonRXConservYn, ReadJobData(7, _INT_) != 0 ? true : false);
+    
+    AddJob(&toggleButtonRXTimeTemp, 3);
+    AddJob(&toggleButtonRXCongResf, 4);
+    AddJob(&toggleButtonRXhardSoft, 6);
+    AddJob(&toggleButtonRXConservYn, 7);
+    
+    ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());
 
 }
 
@@ -281,12 +335,47 @@ void Receitas_X_EDITViewBase::Receitas_3()
 
 void Receitas_X_EDITViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonSalvar)
+    if (&src == &toggleButtonRXCongResf)
+    {
+        //RXCongResf
+        //When toggleButtonRXCongResf clicked execute C++ code
+        //Execute C++ code
+        //Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);
+        ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonRXhardSoft)
+    {
+        //RXhardSoft
+        //When toggleButtonRXhardSoft clicked execute C++ code
+        //Execute C++ code
+        //Update(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, toggleButtonRXhardSoft.getState() != 0 ? 255 : 0, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonRXConservYn)
+    {
+        //RXConservYn
+        //When toggleButtonRXConservYn clicked execute C++ code
+        //Execute C++ code
+        //Update(&textAreaRXConservYn, textAreaRXConservYnBuffer, toggleButtonRXConservYn.getState() != 0 ? 255 : 0, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonRXTimeTemp)
+    {
+        //RXTimeTemp
+        //When toggleButtonRXTimeTemp clicked execute C++ code
+        //Execute C++ code
+        //Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonSalvar)
     {
         //Salvar
         //When buttonSalvar clicked execute C++ code
         //Execute C++ code
         UpdateJobs();
+        Wait(100);
+        
         if (selectedRecipeListPage == 1)
         	Receitas_1();
         else if (selectedRecipeListPage == 2)

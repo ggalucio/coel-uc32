@@ -6,7 +6,10 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Congelar_TEMPOViewBase::Congelar_TEMPOViewBase()
+Congelar_TEMPOViewBase::Congelar_TEMPOViewBase() :
+    buttonCallback(this, &Congelar_TEMPOViewBase::buttonCallbackHandler),
+    cANCELAR_PROCESSO1CancelarProcessoCallback(this, &Congelar_TEMPOViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler),
+    cANCELAR_PROCESSO1NaoCallback(this, &Congelar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -61,9 +64,11 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase()
 
     buttonCancelarProcesso.setXY(406, 64);
     buttonCancelarProcesso.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonCancelarProcesso.setAction(buttonCallback);
 
     toggleButtonFlagConservarSN.setXY(405, 208);
     toggleButtonFlagConservarSN.setBitmaps(touchgfx::Bitmap(BITMAP_CSVOFF_ID), touchgfx::Bitmap(BITMAP_CSVON_ID));
+    toggleButtonFlagConservarSN.setAction(buttonCallback);
 
     imageVazio.setXY(406, 136);
     imageVazio.setBitmap(touchgfx::Bitmap(BITMAP_VAZIO_ID));
@@ -92,6 +97,13 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase()
     textAreaLabel3.setLinespacing(0);
     textAreaLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3642));
 
+    textAreaFlagProcessoAndamento.setPosition(308, 14, 160, 25);
+    textAreaFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textAreaFlagProcessoAndamento.setLinespacing(0);
+    Unicode::snprintf(textAreaFlagProcessoAndamentoBuffer, TEXTAREAFLAGPROCESSOANDAMENTO_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4022).getText());
+    textAreaFlagProcessoAndamento.setWildcard(textAreaFlagProcessoAndamentoBuffer);
+    textAreaFlagProcessoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4021));
+
     textAreaTimerCountMinutos.setPosition(172, 134, 121, 56);
     textAreaTimerCountMinutos.setColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
     textAreaTimerCountMinutos.setLinespacing(0);
@@ -105,11 +117,6 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase()
     Unicode::snprintf(textAreaTimerSpMinutosBuffer, TEXTAREATIMERSPMINUTOS_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3656).getText());
     textAreaTimerSpMinutos.setWildcard(textAreaTimerSpMinutosBuffer);
     textAreaTimerSpMinutos.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3647));
-
-    textAreaFlagProcessoAndamento.setXY(360, 14);
-    textAreaFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textAreaFlagProcessoAndamento.setLinespacing(0);
-    textAreaFlagProcessoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3814));
 
     textAreaTimerCongelarDecorridoCount.setPosition(328, 165, 56, 18);
     textAreaTimerCongelarDecorridoCount.setColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
@@ -132,6 +139,11 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase()
     textArea1410242.setWildcard(textArea1410242Buffer);
     textArea1410242.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3652));
 
+    cANCELAR_PROCESSO1.setXY(0, 0);
+    cANCELAR_PROCESSO1.setVisible(false);
+    cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
+    cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
+
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
@@ -153,16 +165,31 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase()
     add(textAreaLabel1);
     add(textAreaLabel2);
     add(textAreaLabel3);
+    add(textAreaFlagProcessoAndamento);
     add(textAreaTimerCountMinutos);
     add(textAreaTimerSpMinutos);
-    add(textAreaFlagProcessoAndamento);
     add(textAreaTimerCongelarDecorridoCount);
     add(textArea14512);
     add(textArea1410242);
+    add(cANCELAR_PROCESSO1);
 }
 
 void Congelar_TEMPOViewBase::setupScreen()
 {
+    cANCELAR_PROCESSO1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
+    Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);
+    
+    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);
+    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
+    
+    Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);
+    
+    Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
+    countCycleBlink = 0;
 
 }
 
@@ -175,9 +202,35 @@ void Congelar_TEMPOViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
+void Congelar_TEMPOViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
+{
+    //CancelarProcesso
+    //When cANCELAR_PROCESSO1 cancelarProcesso change screen to Congelar
+    //Go to Congelar with no screen transition
+    application().gotoCongelarScreenNoTransition();
+}
+
+void Congelar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
+{
+    //Nao
+    //When cANCELAR_PROCESSO1 nao execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&cANCELAR_PROCESSO1, false);
+    SoundBuzzerOn(25);
+}
+
 void Congelar_TEMPOViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if (countCycleBlink > 1000)
+    {
+    	countCycleBlink = 0;
+    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    }
+    
+    countCycleBlink += 16;
 }
 
 void Congelar_TEMPOViewBase::tearDownScreen()
@@ -187,4 +240,24 @@ void Congelar_TEMPOViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+    ContainerClear(&cANCELAR_PROCESSO1);
+}
+
+void Congelar_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonCancelarProcesso)
+    {
+        //Voltar
+        //When buttonCancelarProcesso clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&cANCELAR_PROCESSO1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonFlagConservarSN)
+    {
+        //CSV
+        //When toggleButtonFlagConservarSN clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
 }

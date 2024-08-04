@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/CANCELAR_PROCESSO.hpp>
 
 class Congelar_TEMPOViewBase : public touchgfx::View<Congelar_TEMPOPresenter>
 {
@@ -58,16 +59,19 @@ protected:
     touchgfx::TextArea textAreaLabel1;
     touchgfx::TextArea textAreaLabel2;
     touchgfx::TextArea textAreaLabel3;
+    touchgfx::TextAreaWithOneWildcard textAreaFlagProcessoAndamento;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCountMinutos;
     touchgfx::TextAreaWithOneWildcard textAreaTimerSpMinutos;
-    touchgfx::TextArea textAreaFlagProcessoAndamento;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::TextAreaWithOneWildcard textArea14512;
     touchgfx::TextAreaWithOneWildcard textArea1410242;
+    CANCELAR_PROCESSO cANCELAR_PROCESSO1;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREAFLAGPROCESSOANDAMENTO_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaFlagProcessoAndamentoBuffer[TEXTAREAFLAGPROCESSOANDAMENTO_SIZE];
     static const uint16_t TEXTAREATIMERCOUNTMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerCountMinutosBuffer[TEXTAREATIMERCOUNTMINUTOS_SIZE];
     static const uint16_t TEXTAREATIMERSPMINUTOS_SIZE = 10;
@@ -80,6 +84,20 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1410242Buffer[TEXTAREA1410242_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Congelar_TEMPOViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Congelar_TEMPOViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
+    touchgfx::Callback<Congelar_TEMPOViewBase> cANCELAR_PROCESSO1NaoCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
+    void cANCELAR_PROCESSO1NaoCallbackHandler();
 
 };
 

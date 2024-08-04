@@ -126,6 +126,14 @@ void Congelar_select_TEMPOViewBase::tearDownScreen()
     ClearOthers();
 }
 
+void Congelar_select_TEMPOViewBase::Congelar_TEMPO()
+{
+    //CongelarTEMPO
+    //When Congelar_TEMPO is called change screen to Congelar_TEMPO
+    //Go to Congelar_TEMPO with no screen transition
+    application().gotoCongelar_TEMPOScreenNoTransition();
+}
+
 void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
     if (&src == &buttonWithLabelIncrementar)
@@ -149,8 +157,13 @@ void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //Avancar
         //When buttonAvancar clicked execute C++ code
         //Execute C++ code
-        SoundBuzzerOn(25);
-        double value = GetNumberTextArea(textAreaTimerSpMinutosBuffer);
+        if (GetNumberTextArea(textAreaTimerSpMinutosBuffer) == 0)
+        {
+        	isZeroValue = true;
+        	SoundBuzzerOn(25);
+        }
+        else
+        	Congelar_TEMPO();
     }
     else if (&src == &buttonVoltar)
     {

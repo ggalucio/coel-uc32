@@ -17,6 +17,7 @@ extern "C"{
 extern void		(*pAddCounter)(CountingMode countingMode, uint64_t seconds);
 extern void		(*pAddTextAreaCounterItem)(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int id);
 extern void 	(*pAddDigitalClockCounterItem)(touchgfx::DigitalClock* digitalClock, int id);
+extern void		(*pAddJobButton)(touchgfx::ToggleButton* toggleButton, int idx);
 extern void		(*pSetControlCounter)(int id, ControlState state);
 extern void		(*pCountersRemoveAll)(void);
 extern void		(*pClearItemsExt)(void);
@@ -37,4 +38,6 @@ void InitGraphicModulePtrExt(){
 
 	pClearItemsExt				= ClearItemsExt;
 	pRefreshRunExt				= RefreshRunExt;
+
+	pAddJobButton				= AddJobItem;
 }

@@ -29,6 +29,7 @@ public:
     virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void Receita_X_EDIT();
+    virtual void Receita_confirm();
     virtual void afterTransition();
 
 protected:

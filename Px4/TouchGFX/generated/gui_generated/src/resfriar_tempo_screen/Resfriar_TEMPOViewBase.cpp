@@ -6,7 +6,10 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase()
+Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase() :
+    buttonCallback(this, &Resfriar_TEMPOViewBase::buttonCallbackHandler),
+    cANCELAR_PROCESSO1CancelarProcessoCallback(this, &Resfriar_TEMPOViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler),
+    cANCELAR_PROCESSO1NaoCallback(this, &Resfriar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -61,12 +64,15 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase()
 
     buttonCancelarProcesso.setXY(406, 64);
     buttonCancelarProcesso.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonCancelarProcesso.setAction(buttonCallback);
 
     toggleButtonFlagConservarSN.setXY(405, 208);
     toggleButtonFlagConservarSN.setBitmaps(touchgfx::Bitmap(BITMAP_CSVOFF_ID), touchgfx::Bitmap(BITMAP_CSVON_ID));
+    toggleButtonFlagConservarSN.setAction(buttonCallback);
 
     toggleButtonFlagResfriarHardSoft.setXY(406, 136);
     toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
+    toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
 
     image1.setXY(25, 79);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_THERMOM_ID));
@@ -92,6 +98,13 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase()
     textAreaLabel3.setLinespacing(0);
     textAreaLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3871));
 
+    textAreaFlagProcessoAndamento.setPosition(308, 14, 160, 25);
+    textAreaFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textAreaFlagProcessoAndamento.setLinespacing(0);
+    Unicode::snprintf(textAreaFlagProcessoAndamentoBuffer, TEXTAREAFLAGPROCESSOANDAMENTO_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4049).getText());
+    textAreaFlagProcessoAndamento.setWildcard(textAreaFlagProcessoAndamentoBuffer);
+    textAreaFlagProcessoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4048));
+
     textAreaTimerCountMinutos.setPosition(172, 134, 121, 56);
     textAreaTimerCountMinutos.setColor(touchgfx::Color::getColorFromRGB(0, 175, 239));
     textAreaTimerCountMinutos.setLinespacing(0);
@@ -105,11 +118,6 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase()
     Unicode::snprintf(textAreaTimerSpMinutosResfriarBuffer, TEXTAREATIMERSPMINUTOSRESFRIAR_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3875).getText());
     textAreaTimerSpMinutosResfriar.setWildcard(textAreaTimerSpMinutosResfriarBuffer);
     textAreaTimerSpMinutosResfriar.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3874));
-
-    textAreaFlagProcessoAndamento.setXY(360, 14);
-    textAreaFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textAreaFlagProcessoAndamento.setLinespacing(0);
-    textAreaFlagProcessoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3876));
 
     textAreaTimerCongelarDecorridoCount.setPosition(328, 165, 56, 18);
     textAreaTimerCongelarDecorridoCount.setColor(touchgfx::Color::getColorFromRGB(0, 175, 239));
@@ -132,6 +140,11 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase()
     textArea1410242.setWildcard(textArea1410242Buffer);
     textArea1410242.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3881));
 
+    cANCELAR_PROCESSO1.setXY(0, 0);
+    cANCELAR_PROCESSO1.setVisible(false);
+    cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
+    cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
+
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
@@ -153,16 +166,31 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase()
     add(textAreaLabel1);
     add(textAreaLabel2);
     add(textAreaLabel3);
+    add(textAreaFlagProcessoAndamento);
     add(textAreaTimerCountMinutos);
     add(textAreaTimerSpMinutosResfriar);
-    add(textAreaFlagProcessoAndamento);
     add(textAreaTimerCongelarDecorridoCount);
     add(textArea14512);
     add(textArea1410242);
+    add(cANCELAR_PROCESSO1);
 }
 
 void Resfriar_TEMPOViewBase::setupScreen()
 {
+    cANCELAR_PROCESSO1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
+    Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);
+    
+    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);
+    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
+    
+    Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);
+    
+    Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
+    countCycleBlink = 0;
 
 }
 
@@ -175,9 +203,35 @@ void Resfriar_TEMPOViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
+void Resfriar_TEMPOViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
+{
+    //CancelarProcesso
+    //When cANCELAR_PROCESSO1 cancelarProcesso change screen to Resfriar
+    //Go to Resfriar with no screen transition
+    application().gotoResfriarScreenNoTransition();
+}
+
+void Resfriar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
+{
+    //Nao
+    //When cANCELAR_PROCESSO1 nao execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&cANCELAR_PROCESSO1, false);
+    SoundBuzzerOn(25);
+}
+
 void Resfriar_TEMPOViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if (countCycleBlink > 1000)
+    {
+    	countCycleBlink = 0;
+    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    }
+    
+    countCycleBlink += 16;
 }
 
 void Resfriar_TEMPOViewBase::tearDownScreen()
@@ -187,4 +241,30 @@ void Resfriar_TEMPOViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Resfriar_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonCancelarProcesso)
+    {
+        //Voltar
+        //When buttonCancelarProcesso clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&cANCELAR_PROCESSO1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonFlagConservarSN)
+    {
+        //CSV
+        //When toggleButtonFlagConservarSN clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonFlagResfriarHardSoft)
+    {
+        //SoftHard
+        //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
 }

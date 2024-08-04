@@ -70,6 +70,7 @@ Receitas_3ViewBase::Receitas_3ViewBase() :
 
     buttonFlagReceita1Interm.setXY(406, 208);
     buttonFlagReceita1Interm.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagReceita1Interm.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
@@ -147,15 +148,19 @@ void Receitas_3ViewBase::setupScreen()
     //Execute C++ code
     SelectJob(8);
     ReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);
+    Update(&radioButtonMuneroReceita9, (selectedRecipeItem == 9 ? true : false));
     
     SelectJob(9);
     ReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);
+    Update(&radioButtonMuneroReceita10, (selectedRecipeItem == 10 ? true : false));
     
     SelectJob(10);
     ReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);
+    Update(&radioButtonMuneroReceita11, (selectedRecipeItem == 11 ? true : false));
     
     SelectJob(11);
     ReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);
+    Update(&radioButtonMuneroReceita12, (selectedRecipeItem == 12 ? true : false));
 
 }
 
@@ -165,7 +170,8 @@ void Receitas_3ViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    SoundBuzzerOn(25);
+    if (!(selectedRecipeItem >= 9 && selectedRecipeItem <= 12))
+    	SoundBuzzerOn(25);
 }
 
 void Receitas_3ViewBase::handleTickEvent()
@@ -190,9 +196,32 @@ void Receitas_3ViewBase::Receita_X_EDIT()
     application().gotoReceitas_X_EDITScreenNoTransition();
 }
 
+void Receitas_3ViewBase::Receita_confirm()
+{
+    //ReceitaConfirm
+    //When Receita_confirm is called change screen to Receita_confirm
+    //Go to Receita_confirm with no screen transition
+    application().gotoReceita_confirmScreenNoTransition();
+}
+
 void Receitas_3ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonTelaInicial)
+    if (&src == &buttonFlagReceita1Interm)
+    {
+        //Avancar
+        //When buttonFlagReceita1Interm clicked execute C++ code
+        //Execute C++ code
+        if (	radioButtonMuneroReceita9.getSelected() || 
+        	radioButtonMuneroReceita10.getSelected() || 
+        	radioButtonMuneroReceita11.getSelected() || 
+        	radioButtonMuneroReceita12.getSelected()){
+        	SelectJob(selectedRecipeItem - 1);
+        	Receita_confirm();
+        }
+        else
+        	SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonTelaInicial)
     {
         //TelaInicial
         //When buttonTelaInicial clicked change screen to Tela_Inicial
@@ -230,6 +259,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R9
         //When radioButtonMuneroReceita9 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 9;
         SelectJob(0x08);
         SoundBuzzerOn(25);
     }
@@ -238,6 +268,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R10
         //When radioButtonMuneroReceita10 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 10;
         SelectJob(0x09);
         SoundBuzzerOn(25);
     }
@@ -246,6 +277,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R11
         //When radioButtonMuneroReceita11 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 11;
         SelectJob(0x0A);
         SoundBuzzerOn(25);
     }
@@ -254,6 +286,7 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R12
         //When radioButtonMuneroReceita12 selected execute C++ code
         //Execute C++ code
+        selectedRecipeItem = 12;
         SelectJob(0x0B);
         SoundBuzzerOn(25);
     }
