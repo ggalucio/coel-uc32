@@ -9,8 +9,11 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
-#include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/containers/Container.hpp>
+#include <AT_module.hpp>
+#include <AT_module_ext.hpp>
 
 class Receita_Info_resumoBase : public touchgfx::Container
 {
@@ -18,6 +21,14 @@ public:
     Receita_Info_resumoBase();
     virtual ~Receita_Info_resumoBase() {}
     virtual void initialize();
+
+    /*
+     * Custom Trigger Callback Setters
+     */
+    void setFecharCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->fecharCallback = &callback;
+    }
 
     /*
      * Custom Actions
@@ -30,21 +41,38 @@ protected:
     }
 
     /*
+     * Custom Trigger Emitters
+     */
+    virtual void emitFecharCallback()
+    {
+        if (fecharCallback && fecharCallback->isValid())
+        {
+            this->fecharCallback->execute();
+        }
+    }
+
+    /*
      * Member Declarations
      */
     touchgfx::Box box1;
     touchgfx::Box box2;
     touchgfx::Box box3;
     touchgfx::Box box4;
-    touchgfx::TextArea textAreaLabel1;
+    touchgfx::TextArea textAreaLabelC;
+    touchgfx::TextArea textAreaLabelMin;
     touchgfx::TextArea textAreaLabel2;
     touchgfx::Button buttonTelaInicial;
-    touchgfx::ToggleButton toggleButtonReceitaTimeTempAtual;
-    touchgfx::ToggleButton toggleButtonReceitaCongResfAtual;
-    touchgfx::ToggleButton toggleButtonReceitaHardSoftAtual;
-    touchgfx::ToggleButton toggleButtonReceitaConservAtaul;
     touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceitaAtual;
     touchgfx::TextAreaWithOneWildcard textAreaNumeroReceita;
+    touchgfx::Image imageTemp;
+    touchgfx::Image imageTime;
+    touchgfx::Image imageResf;
+    touchgfx::Image imageCong;
+    touchgfx::Image imageCsOn;
+    touchgfx::Image imageCsOff;
+    touchgfx::Container containerSoftHard;
+    touchgfx::Image imageHard;
+    touchgfx::Image imageSoft;
 
     /*
      * Wildcard Buffers
@@ -55,6 +83,21 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaNumeroReceitaBuffer[TEXTAREANUMERORECEITA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Receita_Info_resumoBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Custom Trigger Callback Declarations
+     */
+    touchgfx::GenericCallback<>* fecharCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

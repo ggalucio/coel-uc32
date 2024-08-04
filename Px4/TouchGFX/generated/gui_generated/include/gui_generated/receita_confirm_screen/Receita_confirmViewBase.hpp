@@ -10,8 +10,9 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <gui/containers/Receita_Info_resumo.hpp>
 
 class Receita_confirmViewBase : public touchgfx::View<Receita_confirmPresenter>
 {
@@ -41,10 +42,11 @@ protected:
     touchgfx::Box boxFundo;
     touchgfx::TextArea textAreaTitle;
     touchgfx::TextAreaWithOneWildcard textAreaNumeroReceita;
-    touchgfx::Image image1;
+    touchgfx::Button buttonReceitaInfoResumo;
     touchgfx::ButtonWithLabel buttonWithLabelFlagStartReceita;
     touchgfx::ButtonWithLabel buttonWithLabelRecitas1;
     touchgfx::TextArea textAreaFlagAlarmReceitaVazia;
+    Receita_Info_resumo receita_Info_resumo1;
 
     /*
      * Wildcard Buffers
@@ -58,11 +60,13 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Receita_confirmViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Receita_confirmViewBase> receita_Info_resumo1FecharCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void receita_Info_resumo1FecharCallbackHandler();
 
 };
 

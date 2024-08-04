@@ -3314,7 +3314,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _DOUBLE_, 1);"
+              "Code": "Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _FP_32BIT_, 1);"
             }
           },
           {
@@ -3386,7 +3386,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -3398,7 +3398,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -99.9, 99.9, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -3410,7 +3410,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -3422,7 +3422,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9090,7 +9090,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 10.0, _DOUBLE_, 2);"
+              "Code": "Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);"
             }
           },
           {
@@ -9175,7 +9175,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9187,7 +9187,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9199,7 +9199,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9211,7 +9211,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9223,7 +9223,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9235,7 +9235,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -9247,7 +9247,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10153,7 +10153,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea1410291, textArea1410291Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
+              "Code": "Update(&textArea1410291, textArea1410291Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
             }
           },
           {
@@ -10238,7 +10238,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10250,7 +10250,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10262,7 +10262,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10274,7 +10274,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10890,7 +10890,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita1, (selectedRecipeItem == 1 ? true : false));\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita2, (selectedRecipeItem == 2 ? true : false));\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita3, (selectedRecipeItem == 3 ? true : false));\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita4, (selectedRecipeItem == 4 ? true : false));\r\n"
+              "Code": "SelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 1){\r\n\tUpdate(&radioButtonMuneroReceita1, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 2){\r\n\tUpdate(&radioButtonMuneroReceita2, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 3){\r\n\tUpdate(&radioButtonMuneroReceita3, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 4){\r\n\tUpdate(&radioButtonMuneroReceita4, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n"
             }
           },
           {
@@ -10962,7 +10962,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (\tradioButtonMuneroReceita1.getSelected() || \r\n\tradioButtonMuneroReceita2.getSelected() || \r\n\tradioButtonMuneroReceita3.getSelected() || \r\n\tradioButtonMuneroReceita4.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 1;"
+              "Code": "if (\tradioButtonMuneroReceita1.getSelected() || \r\n\tradioButtonMuneroReceita2.getSelected() || \r\n\tradioButtonMuneroReceita3.getSelected() || \r\n\tradioButtonMuneroReceita4.getSelected())\r\n{\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_X_EDIT();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 1;"
             }
           },
           {
@@ -10974,7 +10974,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 1;\r\nSelectJob(0x00);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 1;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10986,7 +10986,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 2;\r\nSelectJob(0x01);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 2;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10998,7 +10998,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 3;\r\nSelectJob(0x02);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 3;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11010,7 +11010,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 4;\r\nSelectJob(0x03);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 4;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11559,7 +11559,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita5, (selectedRecipeItem == 5 ? true : false));\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita6, (selectedRecipeItem == 6 ? true : false));\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita7, (selectedRecipeItem == 7 ? true : false));\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita8, (selectedRecipeItem == 8 ? true : false));"
+              "Code": "SelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 5){\r\n\tUpdate(&radioButtonMuneroReceita5, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 6){\r\n\tUpdate(&radioButtonMuneroReceita6, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 7){\r\n\tUpdate(&radioButtonMuneroReceita7, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 8){\r\n\tUpdate(&radioButtonMuneroReceita8, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
             }
           },
           {
@@ -11644,7 +11644,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (\tradioButtonMuneroReceita5.getSelected() || \r\n\tradioButtonMuneroReceita6.getSelected() || \r\n\tradioButtonMuneroReceita7.getSelected() || \r\n\tradioButtonMuneroReceita8.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 2;"
+              "Code": "if (\tradioButtonMuneroReceita5.getSelected() || \r\n\tradioButtonMuneroReceita6.getSelected() || \r\n\tradioButtonMuneroReceita7.getSelected() || \r\n\tradioButtonMuneroReceita8.getSelected())\r\n{\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_X_EDIT();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 2;"
             }
           },
           {
@@ -11656,7 +11656,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 5;\r\nSelectJob(0x04);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 5;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11668,7 +11668,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 6;\r\nSelectJob(0x05);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 6;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11680,7 +11680,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 7;\r\nSelectJob(0x06);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 7;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11692,7 +11692,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 8;\r\nSelectJob(0x07);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 8;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12224,7 +12224,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita9, (selectedRecipeItem == 9 ? true : false));\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita10, (selectedRecipeItem == 10 ? true : false));\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita11, (selectedRecipeItem == 11 ? true : false));\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);\r\nUpdate(&radioButtonMuneroReceita12, (selectedRecipeItem == 12 ? true : false));"
+              "Code": "SelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 9){\r\n\tUpdate(&radioButtonMuneroReceita9, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 10){\r\n\tUpdate(&radioButtonMuneroReceita10, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 11){\r\n\tUpdate(&radioButtonMuneroReceita11, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 12){\r\n\tUpdate(&radioButtonMuneroReceita12, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
             }
           },
           {
@@ -12296,7 +12296,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (\tradioButtonMuneroReceita9.getSelected() || \r\n\tradioButtonMuneroReceita10.getSelected() || \r\n\tradioButtonMuneroReceita11.getSelected() || \r\n\tradioButtonMuneroReceita12.getSelected())\r\n\tReceita_X_EDIT();\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 3;"
+              "Code": "if (\tradioButtonMuneroReceita9.getSelected() || \r\n\tradioButtonMuneroReceita10.getSelected() || \r\n\tradioButtonMuneroReceita11.getSelected() || \r\n\tradioButtonMuneroReceita12.getSelected())\r\n{\r\n\tSelectJob(selectedRecipeItem - 1);\r\n\tReceita_X_EDIT();\r\n}\r\nelse\r\n\tSoundBuzzerOn(25);\r\n\r\nselectedRecipeListPage = 3;"
             }
           },
           {
@@ -12308,7 +12308,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 9;\r\nSelectJob(0x08);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 9;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12320,7 +12320,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 10;\r\nSelectJob(0x09);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 10;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12332,7 +12332,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 11;\r\nSelectJob(0x0A);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 11;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12344,7 +12344,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "selectedRecipeItem = 12;\r\nSelectJob(0x0B);\r\nSoundBuzzerOn(25);"
+              "Code": "selectedRecipeItem = 12;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -12612,46 +12612,6 @@
             "Moveable": false
           },
           {
-            "Type": "Box",
-            "Color": {
-              "Red": 128,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "Name": "box2",
-            "X": 75,
-            "Y": 130,
-            "Width": 92,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "Box",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "Name": "box3",
-            "X": 243,
-            "Y": 130,
-            "Width": 94,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "Type": "TextArea",
             "TextId": "SingleUseId3914",
             "TextRotation": "0",
@@ -12749,146 +12709,6 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId3918",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 128,
-              "Green": 128,
-              "Blue": 128
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea1_2_1",
-            "X": 172,
-            "Y": 138,
-            "Width": 35,
-            "Height": 19,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4062",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4063",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXConservYn",
-            "X": 369,
-            "Y": 157,
-            "Width": 75,
-            "Height": 25,
-            "Visible": false,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4060",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4061",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXhardSoft",
-            "X": 369,
-            "Y": 132,
-            "Width": 75,
-            "Height": 25,
-            "Visible": false,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4058",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4059",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXCongResf",
-            "X": 369,
-            "Y": 107,
-            "Width": 75,
-            "Height": 25,
-            "Visible": false,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4056",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId4057",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaRXTimeTemp",
-            "X": 369,
-            "Y": 82,
-            "Width": 75,
-            "Height": 25,
-            "Visible": false,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId3912",
             "TextRotation": "0",
             "Color": {
@@ -12941,64 +12761,6 @@
             "Moveable": false
           },
           {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3922",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 128
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId3923",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaTemperaturaReceita",
-            "X": 244,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId3920",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 128
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId3921",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textAreaTempoReceitaX",
-            "X": 76,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "Type": "Button",
             "Pressed": "salvar.png",
             "Released": "salvar.png",
@@ -13008,104 +12770,6 @@
             "Y": 222,
             "Width": 34,
             "Height": 39,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "FlexButton",
-            "Alpha": 0,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "X": 0,
-                "Y": 0,
-                "Width": 91,
-                "Height": 34,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 5,
-                "ColorReleased": {
-                  "Red": 0,
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Red": 0,
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Red": 0,
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ],
-            "Name": "flexButtonTemperaturaReceita",
-            "X": 244,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "FlexButton",
-            "Alpha": 0,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "X": 0,
-                "Y": 0,
-                "Width": 91,
-                "Height": 34,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 5,
-                "ColorReleased": {
-                  "Red": 0,
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Red": 0,
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Red": 0,
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ],
-            "Name": "flexButtonTempoReceitaX",
-            "X": 76,
-            "Y": 130,
-            "Width": 91,
-            "Height": 34,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -13163,15 +12827,293 @@
             "Moveable": false
           },
           {
-            "CustomContainerDefinitionName": "keyboardContainer",
+            "Components": [
+              {
+                "Type": "Box",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "Name": "box3",
+                "X": 0,
+                "Y": 4,
+                "Width": 94,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId4098",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 128,
+                  "Green": 128,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea1_2_1_1",
+                "X": 104,
+                "Y": 12,
+                "Width": 20,
+                "Height": 19,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId3922",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId3923",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Name": "textAreaTemperaturaReceita",
+                "X": 1,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "FlexButton",
+                "Alpha": 0,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "X": 0,
+                    "Y": 0,
+                    "Width": 91,
+                    "Height": 34,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 5,
+                    "ColorReleased": {
+                      "Red": 0,
+                      "Green": 102,
+                      "Blue": 153
+                    },
+                    "ColorPressed": {
+                      "Red": 0,
+                      "Green": 153,
+                      "Blue": 204
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 0,
+                      "Green": 51,
+                      "Blue": 102
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 51,
+                      "Green": 102,
+                      "Blue": 153
+                    }
+                  }
+                ],
+                "Name": "flexButtonTemperaturaReceita",
+                "X": 1,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "Container",
+            "IsCacheableContainer": false,
+            "Name": "containerTemperatura",
+            "X": 243,
+            "Y": 126,
+            "Width": 124,
+            "Height": 46,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "Box",
+                "Color": {
+                  "Red": 128,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "Name": "box2",
+                "X": 5,
+                "Y": 4,
+                "Width": 92,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId3918",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 128,
+                  "Green": 128,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea1_2_1",
+                "X": 102,
+                "Y": 12,
+                "Width": 35,
+                "Height": 19,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "TextArea",
+                "TextId": "SingleUseId3920",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 128
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId3921",
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Name": "textAreaTempoReceitaX",
+                "X": 6,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "FlexButton",
+                "Alpha": 0,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "X": 0,
+                    "Y": 0,
+                    "Width": 91,
+                    "Height": 34,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 5,
+                    "ColorReleased": {
+                      "Red": 0,
+                      "Green": 102,
+                      "Blue": 153
+                    },
+                    "ColorPressed": {
+                      "Red": 0,
+                      "Green": 153,
+                      "Blue": 204
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 0,
+                      "Green": 51,
+                      "Blue": 102
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 51,
+                      "Green": 102,
+                      "Blue": 153
+                    }
+                  }
+                ],
+                "Name": "flexButtonTempoReceitaX",
+                "X": 6,
+                "Y": 4,
+                "Width": 91,
+                "Height": 34,
+                "Visible": true,
+                "LockPosition": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "Container",
+            "IsCacheableContainer": false,
+            "Name": "containerTempo",
+            "X": 70,
+            "Y": 126,
+            "Width": 137,
+            "Height": 46,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "keyboardContainer2",
             "Type": "CustomContainerInstance",
-            "Name": "keyboardContainer1",
+            "Name": "keyboardContainer21",
             "X": 0,
             "Y": 0,
             "Width": 480,
             "Height": 272,
             "Visible": false,
-            "LockPosition": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -13202,7 +13144,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 0, _DOUBLE_, 1);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _DOUBLE_, 1);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\n//AddJob(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, 3, _INT_, 0);\r\n//AddJob(&textAreaRXCongResf, textAreaRXCongResfBuffer, 4, _INT_, 0);\r\n//AddJob(&textAreaRXhardSoft, textAreaRXhardSoftBuffer, 6, _INT_, 0);\r\n//AddJob(&textAreaRXConservYn, textAreaRXConservYnBuffer, 7, _INT_, 0);\r\n\r\n//Update(&toggleButtonRXTimeTemp, ReadJobData(3, _INT_) != 0 ? true : false);\r\n//Update(&toggleButtonRXCongResf, ReadJobData(4, _INT_) != 0 ? true : false);\r\n//Update(&toggleButtonRXhardSoft, ReadJobData(6, _INT_) != 0 ? true : false);\r\n//Update(&toggleButtonRXConservYn, ReadJobData(7, _INT_) != 0 ? true : false);\r\n\r\nAddJob(&toggleButtonRXTimeTemp, 3);\r\nAddJob(&toggleButtonRXCongResf, 4);\r\nAddJob(&toggleButtonRXhardSoft, 6);\r\nAddJob(&toggleButtonRXConservYn, 7);\r\n\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
+              "Code": "AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _FP_32BIT_, 1);\r\nAddJob(&toggleButtonRXTimeTemp, 3);\r\nAddJob(&toggleButtonRXCongResf, 4);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&toggleButtonRXhardSoft, 6);\r\nAddJob(&toggleButtonRXConservYn, 7);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\nContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());\r\nContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
             }
           },
           {
@@ -13236,7 +13178,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nClearOthers();\r\nContainerClear(&numKeyboardContainer1);\r\nContainerClear(&keyboardContainer1);"
+              "Code": "Clear();\r\nClearOthers();\r\nContainerClear(&numKeyboardContainer1);\r\nContainerClear(&keyboardContainer21);"
             }
           },
           {
@@ -13287,7 +13229,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "UpdateJobs();\r\nWait(100);\r\n\r\nif (selectedRecipeListPage == 1)\r\n\tReceitas_1();\r\nelse if (selectedRecipeListPage == 2)\r\n\tReceitas_2();\r\nelse if (selectedRecipeListPage == 3)\r\n\tReceitas_3();"
+              "Code": "UpdateJobs();\r\nWait(50);\r\n\r\nUpdateJobsOthers();\r\nWait(50);\r\n\r\nif (selectedRecipeListPage == 2)\r\n\tReceitas_2();\r\nelse if (selectedRecipeListPage == 3)\r\n\tReceitas_3();\r\nelse\r\n\tReceitas_1();"
             }
           },
           {
@@ -13323,7 +13265,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddKeyboardReference(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer);\r\nContainerVisibility(&keyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddKeyboardReference(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer);\r\nkeyboardContainer21.restore();\r\nContainerVisibility(&keyboardContainer21, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13335,8 +13277,8 @@
             },
             "Action": {
               "Type": "ActionCustom2",
-              "ActionCustomTypeName": "Call keyboardContainer LaunchKeyboard",
-              "ActionComponent": "keyboardContainer1"
+              "ActionCustomTypeName": "Call keyboardContainer2 LaunchKeyboard",
+              "ActionComponent": "keyboardContainer21"
             }
           },
           {
@@ -13344,12 +13286,12 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerCustom",
-              "TriggerCustomTypeName": "keyboardContainer HideKeyboard happens",
-              "TriggerComponent": "keyboardContainer1"
+              "TriggerCustomTypeName": "keyboardContainer2 HideKeyboard happens",
+              "TriggerComponent": "keyboardContainer21"
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "ContainerVisibility(&keyboardContainer1, false);\r\nSoundBuzzerOn(25);"
+              "Code": "ContainerVisibility(&keyboardContainer21, false);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13428,7 +13370,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "//Update(&textAreaRXTimeTemp, textAreaRXTimeTempBuffer, toggleButtonRXTimeTemp.getState() != 0 ? 255: 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "ContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());\r\nContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13440,7 +13382,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "//Update(&textAreaRXCongResf, textAreaRXCongResfBuffer, toggleButtonRXCongResf.getState() != 0 ? 255 : 0, _INT_, 0);\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
+              "Code": "ButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -13570,16 +13512,17 @@
             "Moveable": false
           },
           {
-            "Type": "Image",
-            "RelativeFilename": "info.png",
+            "Type": "Button",
+            "Pressed": "info.png",
+            "Released": "info.png",
             "Alpha": 255,
-            "Name": "image1",
+            "Name": "buttonReceitaInfoResumo",
             "X": 310,
-            "Y": 75,
+            "Y": 76,
             "Width": 38,
             "Height": 38,
             "Visible": true,
-            "LockPosition": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -13666,6 +13609,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "Receita_Info_resumo",
+            "Type": "CustomContainerInstance",
+            "Name": "receita_Info_resumo1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -13677,7 +13635,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);\r\nVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
+              "Code": "Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);\r\nVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -13737,7 +13695,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "double tempoReceita = ReadJobData(1, _INT_);\r\ndouble valueCongResf = ReadJobData(4, _INT_);\r\n\r\nif (tempoReceita == 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\tif (valueCongResf == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
+              "Code": "if (ReadJobData(1, _INT_)== 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\tif (ReadJobData(4, _INT_) == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
             }
           },
           {
@@ -13764,6 +13722,31 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Resfriar_TEMPO"
+            }
+          },
+          {
+            "InteractionName": "ReceitaInfoResumo",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonReceitaInfoResumo"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&receita_Info_resumo1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "Fechar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "Receita_Info_resumo fechar happens",
+              "TriggerComponent": "receita_Info_resumo1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&receita_Info_resumo1, false);\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -15325,9 +15308,9 @@
             "Moveable": false
           },
           {
-            "CustomContainerDefinitionName": "keyboardContainer",
+            "CustomContainerDefinitionName": "keyboardContainer2",
             "Type": "CustomContainerInstance",
-            "Name": "keyboardContainer1",
+            "Name": "keyboardContainer21",
             "X": 0,
             "Y": 0,
             "Width": 480,
@@ -15364,7 +15347,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _DOUBLE_, 2);\r\n\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);"
+              "Code": "Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);\r\n\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);"
             }
           },
           {
@@ -15398,7 +15381,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nContainerClear(&numKeyboardContainer1);\r\nContainerClear(&keyboardContainer1);"
+              "Code": "Clear();\r\nContainerClear(&numKeyboardContainer1);\r\nContainerClear(&keyboardContainer21);"
             }
           },
           {
@@ -15473,7 +15456,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -15552,7 +15535,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddKeyboardReference(&textAreaHAW8214, textAreaHAW8214Buffer);\r\nContainerVisibility(&keyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddKeyboardReference(&textAreaHAW8214, textAreaHAW8214Buffer);\r\nkeyboardContainer21.restore();\r\nContainerVisibility(&keyboardContainer21, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -15564,7 +15547,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddKeyboardReference(&textAreaHAW8235, textAreaHAW8235Buffer);\r\nContainerVisibility(&keyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddKeyboardReference(&textAreaHAW8235, textAreaHAW8235Buffer);\r\nkeyboardContainer21.restore();\r\nContainerVisibility(&keyboardContainer21, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -15576,8 +15559,8 @@
             },
             "Action": {
               "Type": "ActionCustom2",
-              "ActionCustomTypeName": "Call keyboardContainer LaunchKeyboard",
-              "ActionComponent": "keyboardContainer1"
+              "ActionCustomTypeName": "Call keyboardContainer2 LaunchKeyboard",
+              "ActionComponent": "keyboardContainer21"
             }
           },
           {
@@ -15589,8 +15572,8 @@
             },
             "Action": {
               "Type": "ActionCustom2",
-              "ActionCustomTypeName": "Call keyboardContainer LaunchKeyboard",
-              "ActionComponent": "keyboardContainer1"
+              "ActionCustomTypeName": "Call keyboardContainer2 LaunchKeyboard",
+              "ActionComponent": "keyboardContainer21"
             }
           },
           {
@@ -15598,12 +15581,12 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerCustom",
-              "TriggerCustomTypeName": "keyboardContainer HideKeyboard happens",
-              "TriggerComponent": "keyboardContainer1"
+              "TriggerCustomTypeName": "keyboardContainer2 HideKeyboard happens",
+              "TriggerComponent": "keyboardContainer21"
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "ContainerVisibility(&keyboardContainer1, false);\r\nSoundBuzzerOn(25);"
+              "Code": "ContainerVisibility(&keyboardContainer21, false);\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -16897,7 +16880,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea1410279, textArea1410279Buffer, 10.0, _DOUBLE_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _DOUBLE_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
+              "Code": "Update(&textArea1410279, textArea1410279Buffer, 10.0, _FP_32BIT_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _FP_32BIT_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
             }
           },
           {
@@ -16982,7 +16965,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -16994,7 +16977,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18618,7 +18601,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _DOUBLE_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _DOUBLE_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _DOUBLE_, 0);"
+              "Code": "Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);"
             }
           },
           {
@@ -18690,7 +18673,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18702,7 +18685,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -99.9, 99.9, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18714,7 +18697,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18726,7 +18709,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, -99.9, 99.9, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18738,7 +18721,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -21496,6 +21479,1571 @@
       {
         "Components": [
           {
+            "Type": "Box",
+            "Color": {
+              "Red": 69,
+              "Green": 69,
+              "Blue": 69
+            },
+            "Alpha": 255,
+            "Name": "backgroundBox",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "Name": "keyboardBox",
+            "X": 21,
+            "Y": 0,
+            "Width": 438,
+            "Height": 272,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Color": {
+              "Red": 129,
+              "Green": 129,
+              "Blue": 129
+            },
+            "BorderColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 2,
+            "Alpha": 255,
+            "Name": "textBox",
+            "X": 27,
+            "Y": 21,
+            "Width": 426,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4064",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
+            "Name": "valTxt",
+            "X": 44,
+            "Y": 21,
+            "Width": 393,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4065",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "qTxt",
+            "X": 27,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4066",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "wTxt",
+            "X": 66,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4067",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "eTxt",
+            "X": 105,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4068",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "rTxt",
+            "X": 144,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4069",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "tTxt",
+            "X": 183,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4070",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "yTxt",
+            "X": 222,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4071",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "uTxt",
+            "X": 261,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4072",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "iTxt",
+            "X": 300,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4073",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "oTxt",
+            "X": 339,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4074",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "pTxt",
+            "X": 378,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4075",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "slashTxt",
+            "X": 417,
+            "Y": 72,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4076",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "aTxt",
+            "X": 27,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4077",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "sTxt",
+            "X": 66,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4078",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "dTxt",
+            "X": 105,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4079",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "fTxt",
+            "X": 144,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4080",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "gTxt",
+            "X": 183,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4081",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "hTxt",
+            "X": 222,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4082",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "jTxt",
+            "X": 261,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4083",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "kTxt",
+            "X": 300,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4084",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "lTxt",
+            "X": 339,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4085",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "dotsTxt",
+            "X": 378,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4086",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "dotcommaTxt",
+            "X": 417,
+            "Y": 116,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4087",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "zTxt",
+            "X": 105,
+            "Y": 160,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4088",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "xTxt",
+            "X": 144,
+            "Y": 160,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4089",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "cTxt",
+            "X": 183,
+            "Y": 160,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4090",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "vTxt",
+            "X": 222,
+            "Y": 160,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4091",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "bTxt",
+            "X": 261,
+            "Y": 160,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4092",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "nTxt",
+            "X": 300,
+            "Y": 160,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed.png",
+            "Released": "key_released.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4093",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "TextRotation": "0",
+            "Name": "mTxt",
+            "X": 339,
+            "Y": 160,
+            "Width": 36,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Button",
+            "Pressed": "shift_pressed.png",
+            "Released": "shift_released.png",
+            "Alpha": 255,
+            "Name": "keyShiftBtn",
+            "X": 27,
+            "Y": 160,
+            "Width": 75,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Button",
+            "Pressed": "del_pressed2.png",
+            "Released": "del_released2.png",
+            "Alpha": 255,
+            "Name": "deleteKeyBtn",
+            "X": 378,
+            "Y": 160,
+            "Width": 75,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Button",
+            "Pressed": "key_pressed4.png",
+            "Released": "key_released4.png",
+            "Alpha": 255,
+            "Name": "spaceKeyBtn",
+            "X": 183,
+            "Y": 204,
+            "Width": 192,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed3.png",
+            "Released": "key_released3.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4094",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "okBtn",
+            "X": 378,
+            "Y": 204,
+            "Width": 75,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed2.png",
+            "Released": "key_released2.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4095",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "cancelBtn",
+            "X": 27,
+            "Y": 204,
+            "Width": 75,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Pressed": "key_pressed2.png",
+            "Released": "key_released2.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4097",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "keyNumBtn",
+            "X": 105,
+            "Y": 204,
+            "Width": 75,
+            "Height": 38,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "KeyboardScreenLaunched",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call keyboardContainer2 LaunchKeyboard"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "#include <AT_module.hpp>",
+              "Code": "InitKeyboard(&valTxt, valTxtBuffer);"
+            }
+          },
+          {
+            "InteractionName": "QBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "qTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('Q');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "WBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "wTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('W');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "EBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "eTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('E');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "RBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "rTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('R');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "TBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "tTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('T');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "YBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "yTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('Y');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "UBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "uTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('U');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "IBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "iTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('I');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "OBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "oTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('O');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "PBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "pTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('P');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "SlashBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "slashTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('/');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ABtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "aTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('A');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "SBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "sTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('S');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "dTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('D');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "FBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "fTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('F');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "GBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "gTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('G');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "HBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "hTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('H');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "JBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "jTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('J');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "KBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "kTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('K');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "LBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "lTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('L');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DotsBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "dotsTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed(':');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DotCommaBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "dotcommaTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed(';');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ZBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "zTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('Z');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "XBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "xTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('X');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "cTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('C');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "VBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "vTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('V');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "BBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "bTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('B');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "NBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "nTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('N');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "MBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "mTxt"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed('M');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ShiftBtnPressed",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "keyShiftBtn"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "shiftPressed"
+            }
+          },
+          {
+            "InteractionName": "CancelBtnClicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "cancelBtn"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardContainer2 HideKeyboard happens"
+            }
+          },
+          {
+            "InteractionName": "SpaceBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "spaceKeyBtn"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardBtnPressed(' ');\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ShBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "ShiftBtnPressed"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardShfPressed();\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "DltBtnPressed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "deleteKeyBtn"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardDltPressed();\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "OkBtnPressed",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "okBtn"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "UpdateKeyboardReference();"
+            }
+          },
+          {
+            "InteractionName": "HideKeyboard",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "OkBtnPressed"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "keyboardContainer2 HideKeyboard happens"
+            }
+          },
+          {
+            "InteractionName": "NumKeyPressed",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "keyNumBtn"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "numPressed"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "NumKeyPressed"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "KeyboardNumPressed();"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "HideKeyboard",
+            "HasValue": false
+          }
+        ],
+        "CustomActions": [
+          {
+            "Name": "LaunchKeyboard",
+            "HasValue": false
+          }
+        ],
+        "Name": "keyboardContainer2",
+        "X": 0,
+        "Y": 0,
+        "Width": 480,
+        "Height": 272
+      },
+      {
+        "Components": [
+          {
             "Type": "TextArea",
             "TextId": "SingleUseId3628",
             "TextRotation": "0",
@@ -23465,6 +25013,30 @@
           },
           {
             "Type": "TextArea",
+            "TextId": "SingleUseId4099",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaLabelC",
+            "X": 294,
+            "Y": 96,
+            "Width": 31,
+            "Height": 31,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
             "TextId": "SingleUseId3992",
             "TextRotation": "0",
             "Color": {
@@ -23475,7 +25047,7 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
-            "Name": "textAreaLabel1",
+            "Name": "textAreaLabelMin",
             "X": 294,
             "Y": 96,
             "Width": 53,
@@ -23521,78 +25093,6 @@
             "Y": 204,
             "Width": 198,
             "Height": 44,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "Trm.png",
-            "Released": "Rel.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaTimeTempAtual",
-            "X": 141,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "R.png",
-            "Released": "C.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaCongResfAtual",
-            "X": 195,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "H.png",
-            "Released": "S.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaHardSoftAtual",
-            "X": 248,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "CsON.png",
-            "Released": "Cs.png",
-            "Alpha": 255,
-            "Name": "toggleButtonReceitaConservAtaul",
-            "X": 301,
-            "Y": 147,
-            "Width": 38,
-            "Height": 42,
             "Visible": true,
             "LockPosition": false,
             "Draggable": false,
@@ -23657,6 +25157,151 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "Trm.png",
+            "Alpha": 255,
+            "Name": "imageTemp",
+            "X": 141,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "Rel.png",
+            "Alpha": 255,
+            "Name": "imageTime",
+            "X": 141,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "R.png",
+            "Alpha": 255,
+            "Name": "imageResf",
+            "X": 195,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "C.png",
+            "Alpha": 255,
+            "Name": "imageCong",
+            "X": 195,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "CsON.png",
+            "Alpha": 255,
+            "Name": "imageCsOn",
+            "X": 301,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "Cs.png",
+            "Alpha": 255,
+            "Name": "imageCsOff",
+            "X": 301,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Type": "Image",
+                "RelativeFilename": "H.png",
+                "Alpha": 255,
+                "Name": "imageHard",
+                "X": 0,
+                "Y": 0,
+                "Width": 38,
+                "Height": 42,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Type": "Image",
+                "RelativeFilename": "S.png",
+                "Alpha": 255,
+                "Name": "imageSoft",
+                "X": 0,
+                "Y": 0,
+                "Width": 38,
+                "Height": 42,
+                "Visible": true,
+                "LockPosition": false,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "Type": "Container",
+            "IsCacheableContainer": false,
+            "Name": "containerSoftHard",
+            "X": 248,
+            "Y": 151,
+            "Width": 38,
+            "Height": 42,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -23668,8 +25313,27 @@
               "ActionCustomTypeName": "Call Receita_Info_resumo init"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);\r\n\r\nif (ReadJobData(3, _INT_) == 0)\r\n{\r\n\tAddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 1, _INT_, 0);\r\n\tVisibilityTextArea(&textAreaLabelMin, true);\r\n\tVisibilityTextArea(&textAreaLabelC, false);\r\n\tVisibilityImage(&imageTime, true);\r\n\tVisibilityImage(&imageTemp, false);\r\n}\r\nelse\r\n{\r\n\tAddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 2, _FP_32BIT_, 1);\r\n\tVisibilityTextArea(&textAreaLabelMin, false);\r\n\tVisibilityTextArea(&textAreaLabelC, true);\r\n\tVisibilityImage(&imageTime, false);\r\n\tVisibilityImage(&imageTemp, true);\r\n}\r\n\r\nif (ReadJobData(4, _INT_) == 0)\r\n{\r\n\tVisibilityImage(&imageCong, true);\r\n\tVisibilityImage(&imageResf, false);\r\n\tContainerVisibility(&containerSoftHard, false);\r\n}\r\nelse\r\n{\r\n\tVisibilityImage(&imageCong, false);\r\n\tVisibilityImage(&imageResf, true);\r\n\tContainerVisibility(&containerSoftHard, true);\r\n}\r\n\r\nif (ReadJobData(6, _INT_) == 0)\r\n{\r\n\tVisibilityImage(&imageSoft, true);\r\n\tVisibilityImage(&imageHard, false);\r\n}\r\nelse\r\n{\r\n\tVisibilityImage(&imageSoft, false);\r\n\tVisibilityImage(&imageHard, true);\r\n}\r\n\r\nif (ReadJobData(7, _INT_) == 0)\r\n{\r\n\tVisibilityImage(&imageCsOff, true);\r\n\tVisibilityImage(&imageCsOn, false);\r\n}\r\nelse\r\n{\r\n\tVisibilityImage(&imageCsOff, false);\r\n\tVisibilityImage(&imageCsOn, true);\r\n}\r\n"
             }
+          },
+          {
+            "InteractionName": "Fechar",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTelaInicial"
+            },
+            "Action": {
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "Receita_Info_resumo fechar happens"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "fechar",
+            "HasValue": false
           }
         ],
         "CustomActions": [
@@ -23682,7 +25346,8 @@
         "X": 0,
         "Y": 0,
         "Width": 480,
-        "Height": 272
+        "Height": 272,
+        "Includes": "#include <AT_module.hpp>\r\n#include <AT_module_ext.hpp>"
       }
     ],
     "TextEntries": [
@@ -26295,35 +27960,143 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4056",
+        "TextEntryId": "SingleUseId4064",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4057",
+        "TextEntryId": "SingleUseId4065",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4058",
+        "TextEntryId": "SingleUseId4066",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4059",
+        "TextEntryId": "SingleUseId4067",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4060",
+        "TextEntryId": "SingleUseId4068",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4061",
+        "TextEntryId": "SingleUseId4069",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4062",
+        "TextEntryId": "SingleUseId4070",
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4063",
+        "TextEntryId": "SingleUseId4071",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4072",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4073",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4074",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4075",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4076",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4077",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4078",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4079",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4080",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4081",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4082",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4083",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4084",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4085",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4086",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4087",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4088",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4089",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4090",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4091",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4092",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4093",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4094",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4095",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4097",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4098",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4099",
         "IsResource": false
       }
     ],

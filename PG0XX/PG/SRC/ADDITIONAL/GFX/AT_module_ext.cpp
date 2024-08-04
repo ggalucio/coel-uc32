@@ -241,6 +241,24 @@ void AddJob(touchgfx::ToggleButton* toggleButton, int idx){
 		(*pAddJobButton)(toggleButton, idx);
 }
 
+void UpdateJobsOthers(){
+	if (pUpdateJobItemsOthers)
+		(*pUpdateJobItemsOthers)();
+}
+
+/*****************************************************************************************************************************/
+
+/************************************************ IMAGE **********************************************************************/
+
+void VisibilityImage(touchgfx::Image* image, bool visibility){
+	if (image){
+		if (image->isVisible() != visibility){
+			image->setVisible(visibility);
+			image->invalidate();
+		}
+	}
+}
+
 /*****************************************************************************************************************************/
 
 void TickElapsedOthers(){

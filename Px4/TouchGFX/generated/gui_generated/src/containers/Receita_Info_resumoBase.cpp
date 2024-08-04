@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Receita_Info_resumoBase::Receita_Info_resumoBase()
+Receita_Info_resumoBase::Receita_Info_resumoBase() :
+    buttonCallback(this, &Receita_Info_resumoBase::buttonCallbackHandler),
+    fecharCallback(0)
 {
     setWidth(480);
     setHeight(272);
@@ -23,10 +25,15 @@ Receita_Info_resumoBase::Receita_Info_resumoBase()
     box4.setPosition(271, 26, 46, 28);
     box4.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
-    textAreaLabel1.setXY(294, 96);
-    textAreaLabel1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textAreaLabel1.setLinespacing(0);
-    textAreaLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3992));
+    textAreaLabelC.setXY(294, 96);
+    textAreaLabelC.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textAreaLabelC.setLinespacing(0);
+    textAreaLabelC.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4099));
+
+    textAreaLabelMin.setXY(294, 96);
+    textAreaLabelMin.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textAreaLabelMin.setLinespacing(0);
+    textAreaLabelMin.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3992));
 
     textAreaLabel2.setXY(169, 23);
     textAreaLabel2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -35,18 +42,7 @@ Receita_Info_resumoBase::Receita_Info_resumoBase()
 
     buttonTelaInicial.setXY(141, 204);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_FECHAR_ID), touchgfx::Bitmap(BITMAP_FECHAR_ID));
-
-    toggleButtonReceitaTimeTempAtual.setXY(141, 147);
-    toggleButtonReceitaTimeTempAtual.setBitmaps(touchgfx::Bitmap(BITMAP_REL_ID), touchgfx::Bitmap(BITMAP_TRM_ID));
-
-    toggleButtonReceitaCongResfAtual.setXY(195, 147);
-    toggleButtonReceitaCongResfAtual.setBitmaps(touchgfx::Bitmap(BITMAP_C_ID), touchgfx::Bitmap(BITMAP_R_ID));
-
-    toggleButtonReceitaHardSoftAtual.setXY(248, 147);
-    toggleButtonReceitaHardSoftAtual.setBitmaps(touchgfx::Bitmap(BITMAP_S_ID), touchgfx::Bitmap(BITMAP_H_ID));
-
-    toggleButtonReceitaConservAtaul.setXY(301, 147);
-    toggleButtonReceitaConservAtaul.setBitmaps(touchgfx::Bitmap(BITMAP_CS_ID), touchgfx::Bitmap(BITMAP_CSON_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     textAreaTemperaturaReceitaAtual.setPosition(210, 85, 76, 42);
     textAreaTemperaturaReceitaAtual.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
@@ -62,19 +58,51 @@ Receita_Info_resumoBase::Receita_Info_resumoBase()
     textAreaNumeroReceita.setWildcard(textAreaNumeroReceitaBuffer);
     textAreaNumeroReceita.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3994));
 
+    imageTemp.setXY(141, 151);
+    imageTemp.setBitmap(touchgfx::Bitmap(BITMAP_TRM_ID));
+
+    imageTime.setXY(141, 151);
+    imageTime.setBitmap(touchgfx::Bitmap(BITMAP_REL_ID));
+
+    imageResf.setXY(195, 151);
+    imageResf.setBitmap(touchgfx::Bitmap(BITMAP_R_ID));
+
+    imageCong.setXY(195, 151);
+    imageCong.setBitmap(touchgfx::Bitmap(BITMAP_C_ID));
+
+    imageCsOn.setXY(301, 151);
+    imageCsOn.setBitmap(touchgfx::Bitmap(BITMAP_CSON_ID));
+
+    imageCsOff.setXY(301, 151);
+    imageCsOff.setBitmap(touchgfx::Bitmap(BITMAP_CS_ID));
+
+    containerSoftHard.setPosition(248, 151, 38, 42);
+
+    imageHard.setXY(0, 0);
+    imageHard.setBitmap(touchgfx::Bitmap(BITMAP_H_ID));
+    containerSoftHard.add(imageHard);
+
+    imageSoft.setXY(0, 0);
+    imageSoft.setBitmap(touchgfx::Bitmap(BITMAP_S_ID));
+    containerSoftHard.add(imageSoft);
+
     add(box1);
     add(box2);
     add(box3);
     add(box4);
-    add(textAreaLabel1);
+    add(textAreaLabelC);
+    add(textAreaLabelMin);
     add(textAreaLabel2);
     add(buttonTelaInicial);
-    add(toggleButtonReceitaTimeTempAtual);
-    add(toggleButtonReceitaCongResfAtual);
-    add(toggleButtonReceitaHardSoftAtual);
-    add(toggleButtonReceitaConservAtaul);
     add(textAreaTemperaturaReceitaAtual);
     add(textAreaNumeroReceita);
+    add(imageTemp);
+    add(imageTime);
+    add(imageResf);
+    add(imageCong);
+    add(imageCsOn);
+    add(imageCsOff);
+    add(containerSoftHard);
 }
 
 void Receita_Info_resumoBase::initialize()
@@ -84,6 +112,72 @@ void Receita_Info_resumoBase::initialize()
 
 void Receita_Info_resumoBase::init()
 {
+    //Initialize
+    //When init is called execute C++ code
+    //Execute C++ code
+    AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);
+    
+    if (ReadJobData(3, _INT_) == 0)
+    {
+    	AddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 1, _INT_, 0);
+    	VisibilityTextArea(&textAreaLabelMin, true);
+    	VisibilityTextArea(&textAreaLabelC, false);
+    	VisibilityImage(&imageTime, true);
+    	VisibilityImage(&imageTemp, false);
+    }
+    else
+    {
+    	AddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 2, _FP_32BIT_, 1);
+    	VisibilityTextArea(&textAreaLabelMin, false);
+    	VisibilityTextArea(&textAreaLabelC, true);
+    	VisibilityImage(&imageTime, false);
+    	VisibilityImage(&imageTemp, true);
+    }
+    
+    if (ReadJobData(4, _INT_) == 0)
+    {
+    	VisibilityImage(&imageCong, true);
+    	VisibilityImage(&imageResf, false);
+    	ContainerVisibility(&containerSoftHard, false);
+    }
+    else
+    {
+    	VisibilityImage(&imageCong, false);
+    	VisibilityImage(&imageResf, true);
+    	ContainerVisibility(&containerSoftHard, true);
+    }
+    
+    if (ReadJobData(6, _INT_) == 0)
+    {
+    	VisibilityImage(&imageSoft, true);
+    	VisibilityImage(&imageHard, false);
+    }
+    else
+    {
+    	VisibilityImage(&imageSoft, false);
+    	VisibilityImage(&imageHard, true);
+    }
+    
+    if (ReadJobData(7, _INT_) == 0)
+    {
+    	VisibilityImage(&imageCsOff, true);
+    	VisibilityImage(&imageCsOn, false);
+    }
+    else
+    {
+    	VisibilityImage(&imageCsOff, false);
+    	VisibilityImage(&imageCsOn, true);
+    }
+}
 
+void Receita_Info_resumoBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //Fechar
+        //When buttonTelaInicial clicked emit fechar callback
+        //Emit callback
+        emitFecharCallback();
+    }
 }
 

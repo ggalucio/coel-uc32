@@ -148,6 +148,8 @@
     <ClCompile Include="..\..\gui\src\receitas_x_edit_screen\Receitas_X_EDITView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\receitas_x_edit_screen\Receitas_X_EDITViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\global\var.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\keyboardContainer2.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardContainer2Base.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -425,6 +427,8 @@
     <ClInclude Include="..\..\gui\include\gui\receitas_x_edit_screen\Receitas_X_EDITView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\receitas_x_edit_screen\Receitas_X_EDITViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\global\var.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\keyboardContainer2.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardContainer2Base.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\modbus_address\Address.hpp"/>
   </ItemGroup>
   <ItemGroup>

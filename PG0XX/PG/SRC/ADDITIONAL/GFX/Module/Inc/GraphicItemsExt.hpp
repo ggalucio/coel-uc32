@@ -35,7 +35,6 @@ typedef struct{
 typedef struct{
 	touchgfx::ToggleButton *ToggleButton;
 	int Idx;
-	bool state;
 }JobOtherItem;
 
 void ClearItemsExt(void);
@@ -47,6 +46,7 @@ void AddTextAreaCounterItem(touchgfx::TextArea *textArea, touchgfx::Unicode::Uni
 void AddDigitalClockCounterItem(touchgfx::DigitalClock* digitalClock, int id);
 void AddJobItem(touchgfx::ToggleButton *toggleButton, int idx);
 void SetControlCounter(int id, ControlState state);
+void UpdateJobItemsOthers(void);
 void CountersRemoveAll(void);
 void RefreshTimerCounter(void);
 void RefreshRunExt(void);
