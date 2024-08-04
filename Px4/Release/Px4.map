@@ -19903,6 +19903,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 TouchGFX/gui/src/global/var.o
  .data          0x0000000000000000        0x0 TouchGFX/gui/src/global/var.o
  .bss           0x0000000000000000        0x0 TouchGFX/gui/src/global/var.o
+ .bss.Timer_Congelar_DECORRIDO_OUT
+                0x0000000000000000        0x1 TouchGFX/gui/src/global/var.o
  .group         0x0000000000000000       0x14 TouchGFX/gui/src/higiene_confirmar_screen/HIGIENE_CONFIRMARPresenter.o
  .group         0x0000000000000000       0x28 TouchGFX/gui/src/higiene_confirmar_screen/HIGIENE_CONFIRMARPresenter.o
  .text          0x0000000000000000        0x0 TouchGFX/gui/src/higiene_confirmar_screen/HIGIENE_CONFIRMARPresenter.o
