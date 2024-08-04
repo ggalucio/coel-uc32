@@ -25,8 +25,8 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void Congelar_SONDA();
-    virtual void Congelar_select_TEMPO();
+    virtual void goToCongelarSonda();
+    virtual void goToCongelarSelectTempo();
     virtual void afterTransition();
 
 protected:
