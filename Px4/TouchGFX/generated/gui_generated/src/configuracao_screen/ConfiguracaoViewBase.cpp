@@ -6,7 +6,12 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-ConfiguracaoViewBase::ConfiguracaoViewBase()
+ConfiguracaoViewBase::ConfiguracaoViewBase() :
+    buttonCallback(this, &ConfiguracaoViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &ConfiguracaoViewBase::flexButtonCallbackHandler),
+    numKeyboardContainer1OutOfRangeCallback(this, &ConfiguracaoViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
+    numKeyboardContainer1ValidRangeCallback(this, &ConfiguracaoViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &ConfiguracaoViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -53,9 +58,12 @@ ConfiguracaoViewBase::ConfiguracaoViewBase()
     textAreaLabel5.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3689));
 
     buttonTelaInicial.setXY(433, 220);
+    buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR3_ID), touchgfx::Bitmap(BITMAP_VOLTAR3_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     buttonConfiguracao2.setXY(443, 102);
     buttonConfiguracao2.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE2_ID), touchgfx::Bitmap(BITMAP_AVANCE2_ID));
+    buttonConfiguracao2.setAction(buttonCallback);
 
     buttonResetFabrica.setXY(356, 226);
     buttonResetFabrica.setBitmaps(touchgfx::Bitmap(BITMAP_RESET_ID), touchgfx::Bitmap(BITMAP_RESET_ID));
@@ -88,6 +96,40 @@ ConfiguracaoViewBase::ConfiguracaoViewBase()
     textAreaCongelarSondaSp.setWildcard(textAreaCongelarSondaSpBuffer);
     textAreaCongelarSondaSp.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3677));
 
+    flexButtonDiferencialCongelarTempo.setBoxWithBorderPosition(0, 0, 78, 28);
+    flexButtonDiferencialCongelarTempo.setBorderSize(5);
+    flexButtonDiferencialCongelarTempo.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonDiferencialCongelarTempo.setPosition(26, 160, 78, 28);
+    flexButtonDiferencialCongelarTempo.setAlpha(0);
+    flexButtonDiferencialCongelarTempo.setAction(flexButtonCallback);
+
+    flexButtonSpCongelarTempo.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonSpCongelarTempo.setBorderSize(5);
+    flexButtonSpCongelarTempo.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpCongelarTempo.setPosition(26, 120, 78, 29);
+    flexButtonSpCongelarTempo.setAlpha(0);
+    flexButtonSpCongelarTempo.setAction(flexButtonCallback);
+
+    flexButtonSpSondaCongelarCamara.setBoxWithBorderPosition(0, 0, 78, 28);
+    flexButtonSpSondaCongelarCamara.setBorderSize(5);
+    flexButtonSpSondaCongelarCamara.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonSpSondaCongelarCamara.setPosition(26, 82, 78, 28);
+    flexButtonSpSondaCongelarCamara.setAlpha(0);
+    flexButtonSpSondaCongelarCamara.setAction(flexButtonCallback);
+
+    flexButtonCongelarSondaSp.setBoxWithBorderPosition(0, 0, 78, 29);
+    flexButtonCongelarSondaSp.setBorderSize(5);
+    flexButtonCongelarSondaSp.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonCongelarSondaSp.setPosition(26, 41, 78, 29);
+    flexButtonCongelarSondaSp.setAlpha(0);
+    flexButtonCongelarSondaSp.setAction(flexButtonCallback);
+
+    numKeyboardContainer1.setXY(0, 0);
+    numKeyboardContainer1.setVisible(false);
+    numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
+    numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
+    numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
+
     add(__background);
     add(boxFundo);
     add(boxAzul4);
@@ -106,11 +148,59 @@ ConfiguracaoViewBase::ConfiguracaoViewBase()
     add(textAreaSpCongelarTempo);
     add(textAreaSpSondaCongelarCamara);
     add(textAreaCongelarSondaSp);
+    add(flexButtonDiferencialCongelarTempo);
+    add(flexButtonSpCongelarTempo);
+    add(flexButtonSpSondaCongelarCamara);
+    add(flexButtonCongelarSondaSp);
+    add(numKeyboardContainer1);
 }
 
 void ConfiguracaoViewBase::setupScreen()
 {
+    numKeyboardContainer1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _DOUBLE_, 1);
+    Update(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _DOUBLE_, 1);
+    Update(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _DOUBLE_, 1);
+    Update(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _DOUBLE_, 1);
 
+}
+
+//Called when the screen transition ends
+void ConfiguracaoViewBase::afterTransition()
+{
+    //ScreenTransitionEnds
+    //When screen transition ends execute C++ code
+    //Execute C++ code
+    SoundBuzzerOn(25);
+    ContainerVisibility(&numKeyboardContainer1, false);
+}
+
+void ConfiguracaoViewBase::numKeyboardContainer1OutOfRangeCallbackHandler()
+{
+    //OutOfRangeFIred
+    //When numKeyboardContainer1 OutOfRange call OutOfRangeMsg on numKeyboardContainer1
+    //Call OutOfRangeMsg
+    numKeyboardContainer1.OutOfRangeMsg();
+}
+
+void ConfiguracaoViewBase::numKeyboardContainer1ValidRangeCallbackHandler()
+{
+    //InsideRangeFired
+    //When numKeyboardContainer1 ValidRange call InputValidRange on numKeyboardContainer1
+    //Call InputValidRange
+    numKeyboardContainer1.InputValidRange();
+}
+
+void ConfiguracaoViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler()
+{
+    //HideNumKeyboard
+    //When numKeyboardContainer1 HideKeypadTrigger execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&numKeyboardContainer1, false);
+    SoundBuzzerOn(25);
 }
 
 void ConfiguracaoViewBase::handleTickEvent()
@@ -120,5 +210,87 @@ void ConfiguracaoViewBase::handleTickEvent()
 
 void ConfiguracaoViewBase::tearDownScreen()
 {
+    //TearDownScreen
+    //When tearDownScreen is called execute C++ code
+    //Execute C++ code
+    Clear();
+    ContainerClear(&numKeyboardContainer1);
+}
 
+void ConfiguracaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &buttonConfiguracao2)
+    {
+        //Configuracao2
+        //When buttonConfiguracao2 clicked change screen to Configuracao_2
+        //Go to Configuracao_2 with no screen transition
+        application().gotoConfiguracao_2ScreenNoTransition();
+    }
+}
+
+void ConfiguracaoViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButtonDiferencialCongelarTempo)
+    {
+        //DiferencialCongelarTempo
+        //When flexButtonDiferencialCongelarTempo clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchDiferencialCongelarTempoKeyboard
+        //When DiferencialCongelarTempo completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
+    }
+    else if (&src == &flexButtonSpCongelarTempo)
+    {
+        //SpCongelarTempo
+        //When flexButtonSpCongelarTempo clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchSpCongelarTempoKeyboard
+        //When SpCongelarTempo completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
+    }
+    else if (&src == &flexButtonSpSondaCongelarCamara)
+    {
+        //SpSondaCongelarCamara
+        //When flexButtonSpSondaCongelarCamara clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -99.9, 99.9, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchSpSondaCongelarCamaraKeyboard
+        //When SpSondaCongelarCamara completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
+    }
+    else if (&src == &flexButtonCongelarSondaSp)
+    {
+        //CongelarSondaSp
+        //When flexButtonCongelarSondaSp clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchCongelarSondaSpKeyboard
+        //When CongelarSondaSp completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
+    }
 }

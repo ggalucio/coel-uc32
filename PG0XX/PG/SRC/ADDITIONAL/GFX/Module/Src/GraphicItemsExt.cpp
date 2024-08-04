@@ -6,17 +6,24 @@
  */
 
 #include "../Inc/GraphicItemsExt.hpp"
+#include "../Modules/Job/jobModuleExtension.hpp"
 #include "cstddef"
+
+#include <AT_module.hpp>
 #include <stdlib.h>
+
 
 int nCounterItems = 0;
 int nObjectCounterItems = 0;
+int nJobOtherItems = 0;
 
 CounterItem			counterItem[20];
 ObjectCounterItem	objectCounterItem[10];
+JobOtherItem		jobOtherItem[10];
 
 void ClearItemsExt(){
 	nObjectCounterItems = 0;
+	nJobOtherItems = 0;
 }
 
 double ArrayCharToDouble(char* src){
@@ -153,6 +160,16 @@ void AddDigitalClockCounterItem(touchgfx::DigitalClock* digitalClock, int id){
 	nObjectCounterItems ++;
 }
 
+void AddJobItem(touchgfx::ToggleButton *toggleButton, int idx){
+	if (toggleButton == NULL || nJobOtherItems == 10)
+		return;
+
+	jobOtherItem[nJobOtherItems].ToggleButton = toggleButton;
+	jobOtherItem[nJobOtherItems].Idx = idx;
+	jobOtherItem[nJobOtherItems].state = ReadJobData(idx) != 0 ? true : false;
+	nJobOtherItems ++;
+}
+
 void SetControlCounter(int id, ControlState state){
 	if (nCounterItems == 0)
 		return;
@@ -162,6 +179,21 @@ void SetControlCounter(int id, ControlState state){
 			counterItem[id].state = state;
 			//if (counterItem[id].state == _STOP_)
 			//	StopCounter(&counterItem[id]);
+		}
+	}
+}
+
+void RefreshJob(){
+	if (nJobOtherItems == 0)
+		return;
+
+	int i;
+	for (i=0; i<nJobOtherItems; i++){
+		bool state = jobOtherItem[i].ToggleButton->getState();
+		if (state != jobOtherItem[i].state){
+			jobOtherItem[i].state = state;
+			AddJobDataToUpdate(jobOtherItem[i].Idx, state ? 255 : 0, 1);
+			Wait(50);
 		}
 	}
 }
@@ -177,5 +209,8 @@ void RefreshTimerCounter(){
 void RefreshRunExt(){
 	/* Refreshing TextArea Counting */
 	RefreshTextAreaCounting();
+
+	/* Refreshing Job Items */
+	RefreshJob();
 }
 

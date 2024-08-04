@@ -26,6 +26,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -44,11 +45,11 @@ protected:
     touchgfx::Button buttonTelaInicial;
     touchgfx::Button buttonConfiguracao5;
     touchgfx::Button buttonConfiguracao3;
-    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigita2_2;
-    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigita2_1;
-    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigita2_0;
-    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigita1_1;
-    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigita1_0;
+    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigita2Inverter;
+    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigital2Normal;
+    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigital2Desabilitar;
+    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigital1Inverter;
+    touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigital1Normal;
     touchgfx::TextAreaWithOneWildcard textAreaLogicaEntradaDigital2;
     touchgfx::TextAreaWithOneWildcard textAreaLogicaEntradaDigital1;
 
@@ -61,6 +62,16 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaLogicaEntradaDigital1Buffer[TEXTAREALOGICAENTRADADIGITAL1_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Configuracao_4ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

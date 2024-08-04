@@ -11,6 +11,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
 #include <touchgfx/containers/progress_indicators/LineProgress.hpp>
 
@@ -33,7 +34,9 @@ void RefreshLineProgress(touchgfx::LineProgress* lineProgress);
 void VisibilityLineProgress(touchgfx::LineProgress* lineProgress, bool visibility);
 
 // TEXT AREA
-double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer,  uint16_t dstSize);
+void Update(touchgfx::Unicode::UnicodeChar* buffer, const char* src, uint16_t dstSize);
+void Update(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, char* src, uint16_t dstSize);
+double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer, uint16_t dstSize);
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer);
 
 // COUNTER
@@ -47,6 +50,14 @@ void RemoveAllCounter(void);
 // BUTTON
 void Update(touchgfx::RadioButton* radioButton, bool select);
 void Update(touchgfx::ToggleButton* toggleButton, bool state);
+
+// BOX
+void VisibilityBox(touchgfx::Box* box, bool visibility);
+void SetColorBox(touchgfx::Box* box, uint8_t red, uint8_t green, uint8_t blue);
+void SetColorBox(touchgfx::Box* box, const char* color);
+
+// JOB
+void AddJob(touchgfx::ToggleButton* toggleButton, int idx);
 
 // TICK
 void TickElapsedOthers(void);

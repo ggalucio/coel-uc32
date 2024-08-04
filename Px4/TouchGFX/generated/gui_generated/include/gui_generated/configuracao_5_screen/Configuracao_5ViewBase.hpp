@@ -13,6 +13,9 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/keyboardContainer.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
 
 class Configuracao_5ViewBase : public touchgfx::View<Configuracao_5Presenter>
 {
@@ -26,6 +29,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -49,24 +53,50 @@ protected:
     touchgfx::Button buttonConfiguracao6;
     touchgfx::Button buttonConfiguracao4;
     touchgfx::ToggleButton toggleButtonFlagHabDesabTeclaRedial;
-    touchgfx::TextAreaWithOneWildcard textAreaTimerAlarmeExternoSpMinutos;
-    touchgfx::TextAreaWithOneWildcard textAreaHAW8214;
-    touchgfx::TextAreaWithOneWildcard textAreaHAW8235;
     touchgfx::TextAreaWithOneWildcard textArea1410299;
+    touchgfx::TextAreaWithOneWildcard textAreaHAW8235;
+    touchgfx::TextAreaWithOneWildcard textAreaHAW8214;
+    touchgfx::TextAreaWithOneWildcard textAreaTimerAlarmeExternoSpMinutos;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonHAW8235;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonHAW8214;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410299;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTimerAlarmeExternoSpMinutos;
+    keyboardContainer keyboardContainer1;
+    numKeyboardContainer numKeyboardContainer1;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaTimerAlarmeExternoSpMinutosBuffer[TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE];
-    static const uint16_t TEXTAREAHAW8214_SIZE = 20;
-    touchgfx::Unicode::UnicodeChar textAreaHAW8214Buffer[TEXTAREAHAW8214_SIZE];
-    static const uint16_t TEXTAREAHAW8235_SIZE = 20;
-    touchgfx::Unicode::UnicodeChar textAreaHAW8235Buffer[TEXTAREAHAW8235_SIZE];
     static const uint16_t TEXTAREA1410299_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410299Buffer[TEXTAREA1410299_SIZE];
+    static const uint16_t TEXTAREAHAW8235_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaHAW8235Buffer[TEXTAREAHAW8235_SIZE];
+    static const uint16_t TEXTAREAHAW8214_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaHAW8214Buffer[TEXTAREAHAW8214_SIZE];
+    static const uint16_t TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaTimerAlarmeExternoSpMinutosBuffer[TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Configuracao_5ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Configuracao_5ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Configuracao_5ViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Configuracao_5ViewBase> numKeyboardContainer1ValidRangeCallback;
+    touchgfx::Callback<Configuracao_5ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+    touchgfx::Callback<Configuracao_5ViewBase> keyboardContainer1HideKeyboardCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
+    void keyboardContainer1HideKeyboardCallbackHandler();
 
 };
 

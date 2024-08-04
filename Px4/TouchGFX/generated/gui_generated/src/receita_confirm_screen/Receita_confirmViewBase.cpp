@@ -6,7 +6,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Receita_confirmViewBase::Receita_confirmViewBase()
+Receita_confirmViewBase::Receita_confirmViewBase() :
+    buttonCallback(this, &Receita_confirmViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -36,12 +37,14 @@ Receita_confirmViewBase::Receita_confirmViewBase()
     buttonWithLabelFlagStartReceita.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3927));
     buttonWithLabelFlagStartReceita.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelFlagStartReceita.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelFlagStartReceita.setAction(buttonCallback);
 
     buttonWithLabelRecitas1.setXY(77, 191);
     buttonWithLabelRecitas1.setBitmaps(touchgfx::Bitmap(BITMAP_R1_ID), touchgfx::Bitmap(BITMAP_R2_ID));
     buttonWithLabelRecitas1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3928));
     buttonWithLabelRecitas1.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelRecitas1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelRecitas1.setAction(buttonCallback);
 
     textAreaFlagAlarmReceitaVazia.setXY(38, 129);
     textAreaFlagAlarmReceitaVazia.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
@@ -61,6 +64,14 @@ Receita_confirmViewBase::Receita_confirmViewBase()
 void Receita_confirmViewBase::setupScreen()
 {
 
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);
+    VisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);
+    countCycleBlink = 0;
+    isZeroValue = false;
+
 }
 
 //Called when the screen transition ends
@@ -74,7 +85,17 @@ void Receita_confirmViewBase::afterTransition()
 
 void Receita_confirmViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if (countCycleBlink > 1000)
+    {
+    	countCycleBlink = 0;
+    	if (isZeroValue)
+    		VisibilityTextArea(&textAreaFlagAlarmReceitaVazia, !textAreaFlagAlarmReceitaVazia.isVisible());
+    }
+    
+    countCycleBlink += 16;
 }
 
 void Receita_confirmViewBase::tearDownScreen()
@@ -84,4 +105,52 @@ void Receita_confirmViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Receita_confirmViewBase::Congelar_TEMPO()
+{
+    //CongelarTEMPO
+    //When Congelar_TEMPO is called change screen to Congelar_TEMPO
+    //Go to Congelar_TEMPO with no screen transition
+    application().gotoCongelar_TEMPOScreenNoTransition();
+}
+
+void Receita_confirmViewBase::Resfriar_TEMPO()
+{
+    //ResfriarTEMPO
+    //When Resfriar_TEMPO is called change screen to Resfriar_TEMPO
+    //Go to Resfriar_TEMPO with no screen transition
+    application().gotoResfriar_TEMPOScreenNoTransition();
+}
+
+void Receita_confirmViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelFlagStartReceita)
+    {
+        //Sim
+        //When buttonWithLabelFlagStartReceita clicked execute C++ code
+        //Execute C++ code
+        double tempoReceita = ReadJobData(1, _INT_);
+        double valueCongResf = ReadJobData(4, _INT_);
+        
+        if (tempoReceita == 0.0)
+        {
+        	isZeroValue = true;
+        	SoundBuzzerOn(25);
+        }
+        else
+        {
+        	if (valueCongResf == 0)
+        		Congelar_TEMPO();
+        	else
+        		Resfriar_TEMPO();
+        }
+    }
+    else if (&src == &buttonWithLabelRecitas1)
+    {
+        //Nao
+        //When buttonWithLabelRecitas1 clicked change screen to Receitas_1
+        //Go to Receitas_1 with no screen transition
+        application().gotoReceitas_1ScreenNoTransition();
+    }
 }

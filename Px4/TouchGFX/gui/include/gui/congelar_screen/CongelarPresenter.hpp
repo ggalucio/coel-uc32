@@ -6,8 +6,6 @@
 
 using namespace touchgfx;
 
-extern int selectModeCongelar;
-
 class CongelarView;
 
 class CongelarPresenter : public touchgfx::Presenter, public ModelListener

@@ -17,6 +17,7 @@ extern "C"{
 void		(*pAddCounter)(CountingMode countingMode, uint64_t seconds);
 void		(*pAddTextAreaCounterItem)(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int id);
 void		(*pAddDigitalClockCounterItem)(touchgfx::DigitalClock* digitalClock, int id);
+void		(*pAddJobButton)(touchgfx::ToggleButton* toggleButton, int idx);
 void		(*pSetControlCounter)(int id, ControlState state);
 void		(*pCountersRemoveAll)(void);
 void		(*pClearItemsExt)(void);

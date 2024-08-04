@@ -11,10 +11,6 @@ public:
     virtual ~CongelarView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-
-    int getModeValue();
-    void setModeValue(int index);
-
 protected:
 };
 

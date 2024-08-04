@@ -6,7 +6,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Congelar_select_TEMPOViewBase::Congelar_select_TEMPOViewBase()
+Congelar_select_TEMPOViewBase::Congelar_select_TEMPOViewBase() :
+    buttonCallback(this, &Congelar_select_TEMPOViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -43,18 +44,27 @@ Congelar_select_TEMPOViewBase::Congelar_select_TEMPOViewBase()
     buttonWithLabelIncrementar.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3634));
     buttonWithLabelIncrementar.setLabelColor(touchgfx::Color::getColorFromRGB(42, 106, 162));
     buttonWithLabelIncrementar.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    buttonWithLabelIncrementar.setAction(buttonCallback);
 
     buttonWithLabelDecrementar.setXY(173, 188);
     buttonWithLabelDecrementar.setBitmaps(touchgfx::Bitmap(BITMAP_VAZIO_ID), touchgfx::Bitmap(BITMAP_VAZIO_ID));
     buttonWithLabelDecrementar.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3635));
     buttonWithLabelDecrementar.setLabelColor(touchgfx::Color::getColorFromRGB(42, 106, 162));
     buttonWithLabelDecrementar.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    buttonWithLabelDecrementar.setAction(buttonCallback);
+
+    textAreaTempoZero.setXY(15, 65);
+    textAreaTempoZero.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    textAreaTempoZero.setLinespacing(0);
+    textAreaTempoZero.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4020));
 
     buttonAvancar.setXY(406, 208);
     buttonAvancar.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonAvancar.setAction(buttonCallback);
 
     buttonVoltar.setXY(406, 64);
     buttonVoltar.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonVoltar.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -65,12 +75,21 @@ Congelar_select_TEMPOViewBase::Congelar_select_TEMPOViewBase()
     add(textAreaTimerSpMinutos);
     add(buttonWithLabelIncrementar);
     add(buttonWithLabelDecrementar);
+    add(textAreaTempoZero);
     add(buttonAvancar);
     add(buttonVoltar);
 }
 
 void Congelar_select_TEMPOViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);
+    VisibilityTextArea(&textAreaTempoZero, false);
+    countCycleBlink = 0;
+    isZeroValue = false;
 
 }
 
@@ -85,7 +104,17 @@ void Congelar_select_TEMPOViewBase::afterTransition()
 
 void Congelar_select_TEMPOViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if (countCycleBlink > 1000)
+    {
+    	countCycleBlink = 0;
+    	if (isZeroValue)
+    		VisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());
+    }
+    
+    countCycleBlink += 16;
 }
 
 void Congelar_select_TEMPOViewBase::tearDownScreen()
@@ -95,4 +124,52 @@ void Congelar_select_TEMPOViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Congelar_select_TEMPOViewBase::Congelar_TEMPO()
+{
+    //CongelarTEMPO
+    //When Congelar_TEMPO is called change screen to Congelar_TEMPO
+    //Go to Congelar_TEMPO with no screen transition
+    application().gotoCongelar_TEMPOScreenNoTransition();
+}
+
+void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelIncrementar)
+    {
+        //Incrementar
+        //When buttonWithLabelIncrementar clicked execute C++ code
+        //Execute C++ code
+        Increase(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 1, 0, 9999, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonWithLabelDecrementar)
+    {
+        //Decrementar
+        //When buttonWithLabelDecrementar clicked execute C++ code
+        //Execute C++ code
+        Decrease(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 1, 0, 9999, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonAvancar)
+    {
+        //Avancar
+        //When buttonAvancar clicked execute C++ code
+        //Execute C++ code
+        if (GetNumberTextArea(textAreaTimerSpMinutosBuffer) == 0)
+        {
+        	isZeroValue = true;
+        	SoundBuzzerOn(25);
+        }
+        else
+        	Congelar_TEMPO();
+    }
+    else if (&src == &buttonVoltar)
+    {
+        //Voltar
+        //When buttonVoltar clicked change screen to Congelar
+        //Go to Congelar with no screen transition
+        application().gotoCongelarScreenNoTransition();
+    }
 }

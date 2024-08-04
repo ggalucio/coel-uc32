@@ -6,7 +6,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase()
+Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase() :
+    buttonCallback(this, &Resfriar_Select_TempoViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -43,21 +44,31 @@ Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase()
     buttonWithLabelIncrementar.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3862));
     buttonWithLabelIncrementar.setLabelColor(touchgfx::Color::getColorFromRGB(42, 106, 162));
     buttonWithLabelIncrementar.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    buttonWithLabelIncrementar.setAction(buttonCallback);
 
     buttonWithLabelDecrementar.setXY(173, 188);
     buttonWithLabelDecrementar.setBitmaps(touchgfx::Bitmap(BITMAP_VAZIO_ID), touchgfx::Bitmap(BITMAP_VAZIO_ID));
     buttonWithLabelDecrementar.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3863));
     buttonWithLabelDecrementar.setLabelColor(touchgfx::Color::getColorFromRGB(42, 106, 162));
     buttonWithLabelDecrementar.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    buttonWithLabelDecrementar.setAction(buttonCallback);
 
     toggleButtonFlagResfriarHardSoft.setXY(406, 136);
     toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
+    toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
+
+    textAreaTempoZero.setXY(15, 65);
+    textAreaTempoZero.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    textAreaTempoZero.setLinespacing(0);
+    textAreaTempoZero.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4023));
 
     buttonFlagCongelarTempo.setXY(406, 208);
     buttonFlagCongelarTempo.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagCongelarTempo.setAction(buttonCallback);
 
     buttonResfriar.setXY(406, 64);
     buttonResfriar.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonResfriar.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -69,12 +80,21 @@ Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase()
     add(buttonWithLabelIncrementar);
     add(buttonWithLabelDecrementar);
     add(toggleButtonFlagResfriarHardSoft);
+    add(textAreaTempoZero);
     add(buttonFlagCongelarTempo);
     add(buttonResfriar);
 }
 
 void Resfriar_Select_TempoViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);
+    VisibilityTextArea(&textAreaTempoZero, false);
+    countCycleBlink = 0;
+    isZeroValue = false;
 
 }
 
@@ -89,7 +109,17 @@ void Resfriar_Select_TempoViewBase::afterTransition()
 
 void Resfriar_Select_TempoViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if (countCycleBlink > 1000)
+    {
+    	countCycleBlink = 0;
+    	if (isZeroValue)
+    		VisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());
+    }
+    
+    countCycleBlink += 16;
 }
 
 void Resfriar_Select_TempoViewBase::tearDownScreen()
@@ -99,4 +129,59 @@ void Resfriar_Select_TempoViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Resfriar_Select_TempoViewBase::Resfriar_TEMPO()
+{
+    //ResfriarTEMPO
+    //When Resfriar_TEMPO is called change screen to Resfriar_TEMPO
+    //Go to Resfriar_TEMPO with no screen transition
+    application().gotoResfriar_TEMPOScreenNoTransition();
+}
+
+void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelIncrementar)
+    {
+        //Incrementar
+        //When buttonWithLabelIncrementar clicked execute C++ code
+        //Execute C++ code
+        Increase(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonWithLabelDecrementar)
+    {
+        //Decrementar
+        //When buttonWithLabelDecrementar clicked execute C++ code
+        //Execute C++ code
+        Decrease(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonFlagResfriarHardSoft)
+    {
+        //SoftHard
+        //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &buttonFlagCongelarTempo)
+    {
+        //Avancar
+        //When buttonFlagCongelarTempo clicked execute C++ code
+        //Execute C++ code
+        if (GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer) == 0)
+        {
+        	isZeroValue = true;
+        	SoundBuzzerOn(25);
+        }
+        else
+        	Resfriar_TEMPO();
+    }
+    else if (&src == &buttonResfriar)
+    {
+        //Voltar
+        //When buttonResfriar clicked change screen to Resfriar
+        //Go to Resfriar with no screen transition
+        application().gotoResfriarScreenNoTransition();
+    }
 }

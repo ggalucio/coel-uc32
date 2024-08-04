@@ -26,6 +26,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void Resfriar_TEMPO();
     virtual void afterTransition();
 
 protected:
@@ -46,6 +47,7 @@ protected:
     touchgfx::ButtonWithLabel buttonWithLabelIncrementar;
     touchgfx::ButtonWithLabel buttonWithLabelDecrementar;
     touchgfx::ToggleButton toggleButtonFlagResfriarHardSoft;
+    touchgfx::TextArea textAreaTempoZero;
     touchgfx::Button buttonFlagCongelarTempo;
     touchgfx::Button buttonResfriar;
 
@@ -56,6 +58,16 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerSpMinutosResfriarBuffer[TEXTAREATIMERSPMINUTOSRESFRIAR_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Resfriar_Select_TempoViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

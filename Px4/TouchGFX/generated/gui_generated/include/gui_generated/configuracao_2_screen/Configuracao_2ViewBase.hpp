@@ -11,6 +11,8 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
 
 class Configuracao_2ViewBase : public touchgfx::View<Configuracao_2Presenter>
 {
@@ -24,6 +26,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -52,17 +55,31 @@ protected:
     touchgfx::Button buttonTelaInicial;
     touchgfx::Button buttonConfiguracao3;
     touchgfx::Button buttonConfiguracao;
+    touchgfx::TextAreaWithOneWildcard textArea1410270;
+    touchgfx::TextAreaWithOneWildcard textArea1410275;
+    touchgfx::TextAreaWithOneWildcard textArea1410272;
     touchgfx::TextAreaWithOneWildcard textAreaDiferencialConservarResfriar;
     touchgfx::TextAreaWithOneWildcard textAreaSpConservarResfriar;
     touchgfx::TextAreaWithOneWildcard textAreaDiferencialConservarCongelar;
     touchgfx::TextAreaWithOneWildcard textAreaSpConservarCongelar;
-    touchgfx::TextAreaWithOneWildcard textArea1410270;
-    touchgfx::TextAreaWithOneWildcard textArea1410275;
-    touchgfx::TextAreaWithOneWildcard textArea1410272;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410270;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410275;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410272;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialConservarResfriar;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpConservarResfriar;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialConservarCongelar;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpConservarCongelar;
+    numKeyboardContainer numKeyboardContainer1;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREA1410270_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1410270Buffer[TEXTAREA1410270_SIZE];
+    static const uint16_t TEXTAREA1410275_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
+    static const uint16_t TEXTAREA1410272_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea1410272Buffer[TEXTAREA1410272_SIZE];
     static const uint16_t TEXTAREADIFERENCIALCONSERVARRESFRIAR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaDiferencialConservarResfriarBuffer[TEXTAREADIFERENCIALCONSERVARRESFRIAR_SIZE];
     static const uint16_t TEXTAREASPCONSERVARRESFRIAR_SIZE = 10;
@@ -71,14 +88,26 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaDiferencialConservarCongelarBuffer[TEXTAREADIFERENCIALCONSERVARCONGELAR_SIZE];
     static const uint16_t TEXTAREASPCONSERVARCONGELAR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpConservarCongelarBuffer[TEXTAREASPCONSERVARCONGELAR_SIZE];
-    static const uint16_t TEXTAREA1410270_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410270Buffer[TEXTAREA1410270_SIZE];
-    static const uint16_t TEXTAREA1410275_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
-    static const uint16_t TEXTAREA1410272_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410272Buffer[TEXTAREA1410272_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Configuracao_2ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Configuracao_2ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1ValidRangeCallback;
+    touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
 
 };
 

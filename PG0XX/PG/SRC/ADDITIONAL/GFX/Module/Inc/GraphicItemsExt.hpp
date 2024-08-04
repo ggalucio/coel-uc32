@@ -9,6 +9,7 @@
 #define GFX_MODULE_INC_GRAPHICITEMSEXT_HPP_
 
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
 #include <stdint.h>
 
@@ -31,6 +32,12 @@ typedef struct{
 	int Id;
 }ObjectCounterItem;
 
+typedef struct{
+	touchgfx::ToggleButton *ToggleButton;
+	int Idx;
+	bool state;
+}JobOtherItem;
+
 void ClearItemsExt(void);
 double ArrayCharToDouble(char* src);
 uint16_t UnicodeCharToArrayChar(touchgfx::Unicode::UnicodeChar* buffer, char* dst, uint16_t maxbytes);
@@ -38,6 +45,7 @@ uint16_t UnicodeCharToArrayChar(touchgfx::Unicode::UnicodeChar* buffer, char* ds
 void AddCounter(CountingMode countingMode, uint64_t seconds);
 void AddTextAreaCounterItem(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int id);
 void AddDigitalClockCounterItem(touchgfx::DigitalClock* digitalClock, int id);
+void AddJobItem(touchgfx::ToggleButton *toggleButton, int idx);
 void SetControlCounter(int id, ControlState state);
 void CountersRemoveAll(void);
 void RefreshTimerCounter(void);

@@ -11,6 +11,8 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
 
 class Configuracao_7ViewBase : public touchgfx::View<Configuracao_7Presenter>
 {
@@ -24,6 +26,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -49,16 +52,27 @@ protected:
     touchgfx::TextArea textAreaLabel6;
     touchgfx::Button buttonTelaInicial;
     touchgfx::Button buttonConfiguracao6;
+    touchgfx::TextAreaWithOneWildcard textAreaPorcResfPresetTempoF1F2;
+    touchgfx::TextAreaWithOneWildcard textAreaDiferencialResfriarTempo;
     touchgfx::TextAreaWithOneWildcard textAreaSpSondaResfCamara;
     touchgfx::TextAreaWithOneWildcard textAreaSpResfriarSonda;
     touchgfx::TextAreaWithOneWildcard textAreaSpResfInternoF1;
     touchgfx::TextAreaWithOneWildcard textAreaSpResfEspetoF1;
-    touchgfx::TextAreaWithOneWildcard textAreaPorcResfPresetTempoF1F2;
-    touchgfx::TextAreaWithOneWildcard textAreaDiferencialResfriarTempo;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonPorcResfPresetTempoF1F2;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialResfriarTempo;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpSondaResfCamara;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpResfriarSonda;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpResfInternoF1;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpResfEspetoF1;
+    numKeyboardContainer numKeyboardContainer1;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREAPORCRESFPRESETTEMPOF1F2_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaPorcResfPresetTempoF1F2Buffer[TEXTAREAPORCRESFPRESETTEMPOF1F2_SIZE];
+    static const uint16_t TEXTAREADIFERENCIALRESFRIARTEMPO_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaDiferencialResfriarTempoBuffer[TEXTAREADIFERENCIALRESFRIARTEMPO_SIZE];
     static const uint16_t TEXTAREASPSONDARESFCAMARA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpSondaResfCamaraBuffer[TEXTAREASPSONDARESFCAMARA_SIZE];
     static const uint16_t TEXTAREASPRESFRIARSONDA_SIZE = 10;
@@ -67,12 +81,26 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaSpResfInternoF1Buffer[TEXTAREASPRESFINTERNOF1_SIZE];
     static const uint16_t TEXTAREASPRESFESPETOF1_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpResfEspetoF1Buffer[TEXTAREASPRESFESPETOF1_SIZE];
-    static const uint16_t TEXTAREAPORCRESFPRESETTEMPOF1F2_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaPorcResfPresetTempoF1F2Buffer[TEXTAREAPORCRESFPRESETTEMPOF1F2_SIZE];
-    static const uint16_t TEXTAREADIFERENCIALRESFRIARTEMPO_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaDiferencialResfriarTempoBuffer[TEXTAREADIFERENCIALRESFRIARTEMPO_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Configuracao_7ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Configuracao_7ViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Configuracao_7ViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Configuracao_7ViewBase> numKeyboardContainer1ValidRangeCallback;
+    touchgfx::Callback<Configuracao_7ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
 
 };
 

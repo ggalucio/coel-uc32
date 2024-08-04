@@ -10,6 +10,8 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <gui/containers/Solicitar_senha.hpp>
+#include <gui/containers/numKeyboardContainerPwd.hpp>
 
 class Tela_InicialViewBase : public touchgfx::View<Tela_InicialPresenter>
 {
@@ -23,6 +25,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void launchPasswordKeyboard();
     virtual void afterTransition();
 
 protected:
@@ -43,8 +46,30 @@ protected:
     touchgfx::Button buttonDegelo;
     touchgfx::Button buttonHigiene;
     touchgfx::Button buttonSolicitacaoSenah;
+    Solicitar_senha solicitar_senha1;
+    numKeyboardContainerPwd numKeyboardContainerPwd1;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Tela_InicialViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Tela_InicialViewBase> solicitar_senha1CancelarCallback;
+    touchgfx::Callback<Tela_InicialViewBase> solicitar_senha1DigitarCallback;
+    touchgfx::Callback<Tela_InicialViewBase> numKeyboardContainerPwd1CredentialSuccessCallback;
+    touchgfx::Callback<Tela_InicialViewBase> numKeyboardContainerPwd1CredentialFailedCallback;
+    touchgfx::Callback<Tela_InicialViewBase> numKeyboardContainerPwd1CancelTriggerCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void solicitar_senha1CancelarCallbackHandler();
+    void solicitar_senha1DigitarCallbackHandler();
+    void numKeyboardContainerPwd1CredentialSuccessCallbackHandler();
+    void numKeyboardContainerPwd1CredentialFailedCallbackHandler();
+    void numKeyboardContainerPwd1CancelTriggerCallbackHandler();
 
 };
 

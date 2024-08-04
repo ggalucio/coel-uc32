@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-CongelarViewBase::CongelarViewBase()
+CongelarViewBase::CongelarViewBase() :
+    buttonCallback(this, &CongelarViewBase::buttonCallbackHandler),
+    radioButtonSelectedCallback(this, &CongelarViewBase::radioButtonSelectedCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -25,19 +27,21 @@ CongelarViewBase::CongelarViewBase()
 
     radioButtonStatusTeclaCongela0.setXY(14, 64);
     radioButtonStatusTeclaCongela0.setBitmaps(touchgfx::Bitmap(BITMAP_MSONDAOFF_ID), touchgfx::Bitmap(BITMAP_MSONDAON_ID), touchgfx::Bitmap(BITMAP_MSONDAON_ID), touchgfx::Bitmap(BITMAP_MSONDAON_ID));
-    radioButtonStatusTeclaCongela0.setSelected(true);
+    radioButtonStatusTeclaCongela0.setSelected(false);
     radioButtonStatusTeclaCongela0.setDeselectionEnabled(false);
 
-    radioButtonStatusTeclaCongela1.setXY(116, 64);
+    radioButtonStatusTeclaCongela1.setXY(140, 64);
     radioButtonStatusTeclaCongela1.setBitmaps(touchgfx::Bitmap(BITMAP_MCONGTEMPOOFF_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID), touchgfx::Bitmap(BITMAP_MCONGTEMPOON_ID));
     radioButtonStatusTeclaCongela1.setSelected(false);
     radioButtonStatusTeclaCongela1.setDeselectionEnabled(false);
 
     buttonFlagCongelarSonda.setXY(406, 208);
     buttonFlagCongelarSonda.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagCongelarSonda.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -49,6 +53,7 @@ CongelarViewBase::CongelarViewBase()
     add(buttonTelaInicial);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
+    radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void CongelarViewBase::setupScreen()
@@ -77,4 +82,89 @@ void CongelarViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void CongelarViewBase::goToCongelarSonda()
+{
+    //interactionGoToCongelarSonda
+    //When goToCongelarSonda is called change screen to Congelar_SONDA
+    //Go to Congelar_SONDA with no screen transition
+    application().gotoCongelar_SONDAScreenNoTransition();
+}
+
+void CongelarViewBase::goToCongelarSelectTempo()
+{
+    //interactionGoToCongelarSelectTempo
+    //When goToCongelarSelectTempo is called change screen to Congelar_select_TEMPO
+    //Go to Congelar_select_TEMPO with no screen transition
+    application().gotoCongelar_select_TEMPOScreenNoTransition();
+}
+
+void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonFlagCongelarSonda)
+    {
+        //buttonAvancar
+        //When buttonFlagCongelarSonda clicked execute C++ code
+        //Execute C++ code
+        // MODO SONDA
+        
+        if (Status_tecla_Congela) { // if tela de Congelar SONDA
+        
+        
+        
+            UpdateModbus485( MA_SP_SONDA_CONGELAR_CAMARA, SP_SONDA_CONGELAR_CAMARA, _INT2_);    //W_1_410242 = SP_SONDA_CONGELAR_CAMARA; // SP = SP_SONDA_CONGELAR_CAMARA
+            WriteModbus485(MA_SP_SONDA_CONGELAR_CAMARA, 1);
+            Wait(50);
+        
+            UpdateModbus485( MA_Diferencial_Congelar_tempo, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC
+            WriteModbus485(MA_Diferencial_Congelar_tempo, 1);
+            Wait(50);
+            //W_1_4645 = 1;                // Controlador em modo Controle
+        
+            Timer_Congelar_DECORRIDO_SP = 99999; // SP Timer- Inf
+        
+            Timer_Congelar_DECORRIDO_ON = 1; // START Timer Tempo_Congelar_DECORRIDO_ON
+            flag_Processo_ANDAMENTO = 1;     // Flag Processo_ANDAMENTO = TRUE
+        
+            Timer_delay_ON = true;          // Start Timer Delay
+        
+            // trocar a tela para a tela de Congelar SONDA
+            //W_HDW5000 = 2;               // Altera para tela de SONDA 
+            goToCongelarSonda();
+        
+        } else { // tela de Congelar SELECT TEMPO
+            flag_alarm_receita_vazia = false; // zera bit flag alarme de tempo Zero
+            // trocar a tela para a tela de Congelar SELECT TEMPO
+            //W_HDW5000 = 4;               // Tela Select Tempo
+            goToCongelarSelectTempo();
+        }
+    }
+    else if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+}
+
+void CongelarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &radioButtonStatusTeclaCongela0)
+    {
+        //ModoSonda
+        //When radioButtonStatusTeclaCongela0 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+        Status_tecla_Congela = true;
+    }
+    else if (&src == &radioButtonStatusTeclaCongela1)
+    {
+        //ModoTempo
+        //When radioButtonStatusTeclaCongela1 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+        Status_tecla_Congela = false;
+    }
 }

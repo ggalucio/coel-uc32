@@ -25,6 +25,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void Congelar_TEMPO();
     virtual void afterTransition();
 
 protected:
@@ -44,6 +45,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaTimerSpMinutos;
     touchgfx::ButtonWithLabel buttonWithLabelIncrementar;
     touchgfx::ButtonWithLabel buttonWithLabelDecrementar;
+    touchgfx::TextArea textAreaTempoZero;
     touchgfx::Button buttonAvancar;
     touchgfx::Button buttonVoltar;
 
@@ -54,6 +56,16 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerSpMinutosBuffer[TEXTAREATIMERSPMINUTOS_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Congelar_select_TEMPOViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

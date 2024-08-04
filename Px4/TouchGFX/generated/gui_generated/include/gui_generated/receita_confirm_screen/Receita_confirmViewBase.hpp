@@ -25,6 +25,8 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void Congelar_TEMPO();
+    virtual void Resfriar_TEMPO();
     virtual void afterTransition();
 
 protected:
@@ -51,6 +53,16 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaNumeroReceitaBuffer[TEXTAREANUMERORECEITA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Receita_confirmViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

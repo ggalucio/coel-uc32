@@ -6,7 +6,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-ResfriarViewBase::ResfriarViewBase()
+ResfriarViewBase::ResfriarViewBase() :
+    buttonCallback(this, &ResfriarViewBase::buttonCallbackHandler),
+    radioButtonSelectedCallback(this, &ResfriarViewBase::radioButtonSelectedCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -25,22 +27,25 @@ ResfriarViewBase::ResfriarViewBase()
 
     radioButtonStatusTeclaCongela0.setXY(14, 64);
     radioButtonStatusTeclaCongela0.setBitmaps(touchgfx::Bitmap(BITMAP_RESFRIARSONDAOFF_ID), touchgfx::Bitmap(BITMAP_RESFRIARSONDAON_ID), touchgfx::Bitmap(BITMAP_RESFRIARSONDAON_ID), touchgfx::Bitmap(BITMAP_RESFRIARSONDAON_ID));
-    radioButtonStatusTeclaCongela0.setSelected(true);
+    radioButtonStatusTeclaCongela0.setSelected(false);
     radioButtonStatusTeclaCongela0.setDeselectionEnabled(false);
 
-    radioButtonStatusTeclaCongela1.setXY(116, 64);
+    radioButtonStatusTeclaCongela1.setXY(140, 64);
     radioButtonStatusTeclaCongela1.setBitmaps(touchgfx::Bitmap(BITMAP_RESFRIARTEMPOOFF_ID), touchgfx::Bitmap(BITMAP_RESFRIARTEMPOON_ID), touchgfx::Bitmap(BITMAP_RESFRIARTEMPOON_ID), touchgfx::Bitmap(BITMAP_RESFRIARTEMPOON_ID));
     radioButtonStatusTeclaCongela1.setSelected(false);
     radioButtonStatusTeclaCongela1.setDeselectionEnabled(false);
 
     buttonFlagResfriarSondaTempo.setXY(406, 208);
     buttonFlagResfriarSondaTempo.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonFlagResfriarSondaTempo.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonTelaInicial.setAction(buttonCallback);
 
     toggleButtonFlagResfriarHardSoft.setXY(406, 136);
     toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
+    toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
 
     add(__background);
     add(boxFundo);
@@ -53,6 +58,7 @@ ResfriarViewBase::ResfriarViewBase()
     add(toggleButtonFlagResfriarHardSoft);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
+    radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void ResfriarViewBase::setupScreen()
@@ -81,4 +87,70 @@ void ResfriarViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void ResfriarViewBase::Resfriar_SONDA()
+{
+    //ResfriarSONDA
+    //When Resfriar_SONDA is called change screen to Resfriar_SONDA
+    //Go to Resfriar_SONDA with no screen transition
+    application().gotoResfriar_SONDAScreenNoTransition();
+}
+
+void ResfriarViewBase::Resfriar_Select_Tempo()
+{
+    //ResfriarSelectTempo
+    //When Resfriar_Select_Tempo is called change screen to Resfriar_Select_Tempo
+    //Go to Resfriar_Select_Tempo with no screen transition
+    application().gotoResfriar_Select_TempoScreenNoTransition();
+}
+
+void ResfriarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonFlagResfriarSondaTempo)
+    {
+        //Avancar
+        //When buttonFlagResfriarSondaTempo clicked execute C++ code
+        //Execute C++ code
+        if (radioButtonStatusTeclaCongela0.getSelected())
+        {
+        	Resfriar_SONDA();
+        }
+        else if (radioButtonStatusTeclaCongela1.getSelected())
+        {
+        	Resfriar_Select_Tempo();
+        }
+    }
+    else if (&src == &buttonTelaInicial)
+    {
+        //TelaInicial
+        //When buttonTelaInicial clicked change screen to Tela_Inicial
+        //Go to Tela_Inicial with no screen transition
+        application().gotoTela_InicialScreenNoTransition();
+    }
+    else if (&src == &toggleButtonFlagResfriarHardSoft)
+    {
+        //SoftHard
+        //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+}
+
+void ResfriarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &radioButtonStatusTeclaCongela0)
+    {
+        //ModoSonda
+        //When radioButtonStatusTeclaCongela0 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &radioButtonStatusTeclaCongela1)
+    {
+        //ModoTempo
+        //When radioButtonStatusTeclaCongela1 selected execute C++ code
+        //Execute C++ code
+        SoundBuzzerOn(25);
+    }
 }

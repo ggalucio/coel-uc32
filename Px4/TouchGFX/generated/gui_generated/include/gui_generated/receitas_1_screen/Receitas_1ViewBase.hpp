@@ -28,6 +28,8 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void Receita_X_EDIT();
+    virtual void Receita_confirm();
     virtual void afterTransition();
 
 protected:
@@ -64,16 +66,28 @@ protected:
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREARECEITA1DESC_SIZE = 10;
+    static const uint16_t TEXTAREARECEITA1DESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceita1DescBuffer[TEXTAREARECEITA1DESC_SIZE];
-    static const uint16_t TEXTAREARECEITA2DESC_SIZE = 10;
+    static const uint16_t TEXTAREARECEITA2DESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceita2DescBuffer[TEXTAREARECEITA2DESC_SIZE];
-    static const uint16_t TEXTAREARECEITA3DESC_SIZE = 10;
+    static const uint16_t TEXTAREARECEITA3DESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceita3DescBuffer[TEXTAREARECEITA3DESC_SIZE];
-    static const uint16_t TEXTAREARECEITA4DESC_SIZE = 10;
+    static const uint16_t TEXTAREARECEITA4DESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceita4DescBuffer[TEXTAREARECEITA4DESC_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Receitas_1ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Receitas_1ViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

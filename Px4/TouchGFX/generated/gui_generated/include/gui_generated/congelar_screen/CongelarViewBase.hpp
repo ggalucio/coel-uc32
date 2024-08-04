@@ -25,6 +25,8 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void goToCongelarSonda();
+    virtual void goToCongelarSelectTempo();
     virtual void afterTransition();
 
 protected:
@@ -46,6 +48,18 @@ protected:
     touchgfx::RadioButtonGroup<2> radioButtonGroup1;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<CongelarViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<CongelarViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

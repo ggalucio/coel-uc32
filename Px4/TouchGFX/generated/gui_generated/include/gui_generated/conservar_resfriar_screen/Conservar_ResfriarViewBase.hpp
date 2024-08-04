@@ -11,8 +11,9 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
-#include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Button.hpp>
+#include <gui/containers/CANCELAR_PROCESSO.hpp>
 
 class Conservar_ResfriarViewBase : public touchgfx::View<Conservar_ResfriarPresenter>
 {
@@ -49,19 +50,22 @@ protected:
     touchgfx::Box boxFundoAzul2;
     touchgfx::Image image1;
     touchgfx::Image image3;
+    touchgfx::TextAreaWithOneWildcard textAreaFlagProcessoAndamento;
     touchgfx::TextArea textAreaUnidade1;
     touchgfx::TextArea textAreaUnidade1_1;
     touchgfx::TextArea textAreaLabel1;
     touchgfx::TextArea textAreaLabel1_1;
     touchgfx::Button buttonCancelarProcesso;
-    touchgfx::TextArea textAreaFlagConservarAndamento;
     touchgfx::TextAreaWithOneWildcard textArea14515;
     touchgfx::TextAreaWithOneWildcard textArea14512;
     touchgfx::TextAreaWithOneWildcard textArea1410242;
+    CANCELAR_PROCESSO cANCELAR_PROCESSO1;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREAFLAGPROCESSOANDAMENTO_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaFlagProcessoAndamentoBuffer[TEXTAREAFLAGPROCESSOANDAMENTO_SIZE];
     static const uint16_t TEXTAREA14515_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea14515Buffer[TEXTAREA14515_SIZE];
     static const uint16_t TEXTAREA14512_SIZE = 10;
@@ -70,6 +74,20 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1410242Buffer[TEXTAREA1410242_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Conservar_ResfriarViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Conservar_ResfriarViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
+    touchgfx::Callback<Conservar_ResfriarViewBase> cANCELAR_PROCESSO1NaoCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
+    void cANCELAR_PROCESSO1NaoCallbackHandler();
 
 };
 
