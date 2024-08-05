@@ -9,6 +9,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <AT_module.hpp>
 
 class Finalizar_higieneBase : public touchgfx::Container
 {
@@ -37,6 +38,16 @@ protected:
     touchgfx::TextArea textAreaMensagem;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Finalizar_higieneBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

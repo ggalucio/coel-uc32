@@ -17299,6 +17299,30 @@
             "Y": 110,
             "Width": 321,
             "Height": 98,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4098",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 60,
+              "Green": 255,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaStatusPorta_1",
+            "X": 42,
+            "Y": 86,
+            "Width": 302,
+            "Height": 147,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -17335,6 +17359,34 @@
             "Height": 52,
             "Visible": true,
             "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4100",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "status_porta",
+            "X": 5,
+            "Y": 233,
+            "Width": 0,
+            "Height": 25,
+            "Visible": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -17397,6 +17449,18 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "script_screen_HIGIENE",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerScreenTransitionBegins"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "#include <AT_module.hpp>",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&status_porta, status_portaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           }
         ],
@@ -24857,6 +24921,32 @@
             "Action": {
               "Type": "ActionExecuteCode"
             }
+          },
+          {
+            "InteractionName": "cancela_higiene",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelCancelarHigiene"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "#include <AT_module.hpp>",
+              "Code": "Clear();\r\nSoundBuzzerOn(25);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_); \r\nWriteModbus485(\"10242\", 2);\r\n\r\nUpdateModbus485(\"645\", 0, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 3, _INT_);\r\nWriteModbus485(\"10322\", 1);"
+            }
+          },
+          {
+            "InteractionName": "cancela_higiene_1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "cancela_higiene"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HIGIENE"
+            }
           }
         ],
         "CustomActions": [
@@ -27934,6 +28024,14 @@
       },
       {
         "TextEntryId": "SingleUseId4097",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4098",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4100",
         "IsResource": false
       }
     ],

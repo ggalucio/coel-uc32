@@ -5,6 +5,8 @@
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
+#include <AT_module.hpp>
+
 
 HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonCallback(this, &HIGIENE_CONFIRMARViewBase::buttonCallbackHandler)
@@ -25,9 +27,15 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     textAreaTitle.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3960));
 
     textAreaStatusPorta.setXY(42, 110);
+    textAreaStatusPorta.setVisible(false);
     textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     textAreaStatusPorta.setLinespacing(0);
     textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3961));
+
+    textAreaStatusPorta_1.setXY(42, 86);
+    textAreaStatusPorta_1.setColor(touchgfx::Color::getColorFromRGB(60, 255, 0));
+    textAreaStatusPorta_1.setLinespacing(0);
+    textAreaStatusPorta_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
 
     buttonStartHigiene.setXY(406, 208);
     buttonStartHigiene.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
@@ -36,17 +44,34 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
+    status_porta.setXY(5, 233);
+    status_porta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    status_porta.setLinespacing(0);
+    status_portaBuffer[0] = 0;
+    status_porta.setWildcard(status_portaBuffer);
+    status_porta.resizeToCurrentText();
+    status_porta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
     add(textAreaTitle);
     add(textAreaStatusPorta);
+    add(textAreaStatusPorta_1);
     add(buttonStartHigiene);
     add(buttonTelaInicial);
+    add(status_porta);
 }
 
 void HIGIENE_CONFIRMARViewBase::setupScreen()
 {
+
+    //script_screen_HIGIENE
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&status_porta, status_portaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 

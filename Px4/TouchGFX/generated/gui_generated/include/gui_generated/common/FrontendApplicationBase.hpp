@@ -96,6 +96,9 @@ public:
     // HIGIENE_CONFIRMAR
     void gotoHIGIENE_CONFIRMARScreenNoTransition();
 
+    // HIGIENE
+    void gotoHIGIENEScreenNoTransition();
+
     // Configuracao_7
     void gotoConfiguracao_7ScreenNoTransition();
 
@@ -184,6 +187,9 @@ protected:
 
     // HIGIENE_CONFIRMAR
     void gotoHIGIENE_CONFIRMARScreenNoTransitionImpl();
+
+    // HIGIENE
+    void gotoHIGIENEScreenNoTransitionImpl();
 
     // Configuracao_7
     void gotoConfiguracao_7ScreenNoTransitionImpl();
