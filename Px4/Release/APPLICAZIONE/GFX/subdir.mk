@@ -7,6 +7,10 @@
 CPP_SRCS += \
 C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/GFX/AT_module.cpp 
 
+O_SRCS += \
+C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/GFX/AT_module.o \
+C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/GFX/AT_module_.o 
+
 OBJS += \
 ./APPLICAZIONE/GFX/AT_module.o 
 

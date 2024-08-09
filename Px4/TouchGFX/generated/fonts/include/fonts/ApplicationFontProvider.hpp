@@ -36,6 +36,7 @@ struct Typography
     static const touchgfx::FontId ARIAL_72 = 20;
     static const touchgfx::FontId VEDANA_10 = 21;
     static const touchgfx::FontId VERDANA_20_ITAIC = 22;
+    static const touchgfx::FontId SEGOEUI30 = 23;
 };
 
 struct TypographyFontIndex
@@ -63,7 +64,8 @@ struct TypographyFontIndex
     static const touchgfx::FontId ARIAL_72 = 20;           // arial_72_4bpp
     static const touchgfx::FontId VEDANA_10 = 21;          // verdana_10_4bpp
     static const touchgfx::FontId VERDANA_20_ITAIC = 22;   // verdanai_20_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 23;
+    static const touchgfx::FontId SEGOEUI30 = 23;          // segoeui_30_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 24;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

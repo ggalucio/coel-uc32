@@ -42,6 +42,7 @@ protected:
     touchgfx::Box boxFundo;
     touchgfx::Box boxProcessOff;
     touchgfx::Box boxFundoAzul;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox2;
     touchgfx::BoxWithBorder boxWithBorderBox1;
@@ -52,7 +53,8 @@ protected:
     touchgfx::TextArea textAreaTitle;
     touchgfx::Button buttonCancelarProcesso;
     touchgfx::ToggleButton toggleButtonFlagConservarSN;
-    touchgfx::ToggleButton toggleButtonFlagResfriarHardSoft;
+    touchgfx::Image imageSoft;
+    touchgfx::Image imageHard;
     touchgfx::Image image1;
     touchgfx::Image image2;
     touchgfx::Image image3;

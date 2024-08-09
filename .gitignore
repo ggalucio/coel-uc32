@@ -58,3 +58,9 @@ Debug/
 
 # Local script to update branch
 UpdateBranch.sh
+
+#Arquivos compilados
+Px4/Release/Px4.elf
+Px4/Release/Px4.hex
+Px4/Release/Px4.list
+Px4/Release/Px4.map

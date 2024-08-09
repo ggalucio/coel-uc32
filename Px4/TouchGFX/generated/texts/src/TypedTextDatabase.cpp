@@ -28,6 +28,7 @@ extern touchgfx::GeneratedFont& getFont_digital7italic_28_4bpp();
 extern touchgfx::GeneratedFont& getFont_arial_72_4bpp();
 extern touchgfx::GeneratedFont& getFont_verdana_10_4bpp();
 extern touchgfx::GeneratedFont& getFont_verdanai_20_4bpp();
+extern touchgfx::GeneratedFont& getFont_segoeui_30_4bpp();
 
 const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_verdana_20_4bpp()),
@@ -52,7 +53,8 @@ const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_digital7italic_28_4bpp()),
     &(getFont_arial_72_4bpp()),
     &(getFont_verdana_10_4bpp()),
-    &(getFont_verdanai_20_4bpp())
+    &(getFont_verdanai_20_4bpp()),
+    &(getFont_segoeui_30_4bpp())
 };
 
 extern const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[];
@@ -853,6 +855,9 @@ void resetFont(touchgfx::FontId fontId)
         break;
     case 22:
         touchgfx_fonts[22] = &(getFont_verdanai_20_4bpp());
+        break;
+    case 23:
+        touchgfx_fonts[23] = &(getFont_segoeui_30_4bpp());
         break;
     }
 }

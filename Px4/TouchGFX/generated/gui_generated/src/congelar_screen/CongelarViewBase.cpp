@@ -104,7 +104,7 @@ void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
 {
     if (&src == &buttonFlagCongelarSonda)
     {
-        //buttonAvancar
+        //Avancar
         //When buttonFlagCongelarSonda clicked execute C++ code
         //Execute C++ code
         // MODO SONDA

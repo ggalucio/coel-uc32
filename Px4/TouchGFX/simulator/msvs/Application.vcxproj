@@ -34,7 +34,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\containers\alarmCenterContainerBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\alarmContainer.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\alarmContainerBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\background\process.cpp"/>
     <ClCompile Include="..\..\gui\src\inicializacao_screen\InicializacaoPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\inicializacao_screen\InicializacaoView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\inicializacao_screen\InicializacaoViewBase.cpp"/>
@@ -150,6 +149,7 @@
     <ClCompile Include="..\..\gui\src\global\var.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\keyboardContainer2.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardContainer2Base.cpp"/>
+    <ClCompile Include="..\..\gui\src\background\Timing.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -313,7 +313,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\alarmCenterContainerBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\alarmContainer.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\alarmContainerBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\background\process.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\inicializacao_screen\InicializacaoPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\inicializacao_screen\InicializacaoView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\inicializacao_screen\InicializacaoViewBase.hpp"/>
@@ -430,6 +429,7 @@
     <ClInclude Include="..\..\gui\include\gui\containers\keyboardContainer2.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardContainer2Base.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\modbus_address\Address.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\background\Timing.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

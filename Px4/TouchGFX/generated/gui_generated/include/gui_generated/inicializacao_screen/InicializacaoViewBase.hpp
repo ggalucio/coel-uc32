@@ -23,6 +23,8 @@ public:
     virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void inicialScreen();
+    virtual void initialize();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
