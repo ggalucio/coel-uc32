@@ -64,6 +64,17 @@ ResfriarViewBase::ResfriarViewBase() :
 void ResfriarViewBase::setupScreen()
 {
 
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    if (Status_tecla_Congela == 3)
+    	Update(&radioButtonStatusTeclaCongela0, true);
+    
+    if (Status_tecla_Congela == 4)
+    	Update(&radioButtonStatusTeclaCongela1, true);
+    
+    Update(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);
+
 }
 
 //Called when the screen transition ends
@@ -72,7 +83,8 @@ void ResfriarViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    SoundBuzzerOn(25);
+    if (Status_tecla_Congela != 3 && Status_tecla_Congela != 4)
+    	SoundBuzzerOn(25);
 }
 
 void ResfriarViewBase::handleTickEvent()
@@ -112,13 +124,57 @@ void ResfriarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
         //Avancar
         //When buttonFlagResfriarSondaTempo clicked execute C++ code
         //Execute C++ code
-        if (radioButtonStatusTeclaCongela0.getSelected())
+        // MODO SONDA
+        if (Status_tecla_Congela == 3)
         {
-        	Resfriar_SONDA();
+        	if (flag_Resfriar_HARD_SOFT == false) // SE MODO SOFT
+        	{
+        		UpdateModbus485("242", SP_SONDA_RESF_CAMARA , _INT_);		// SP = RESF MODO SSONDA
+        		WriteModbus485("242", 1);
+        		Wait(50);
+        
+        		UpdateModbus485("282", Diferencial_Resfriar_Tempo , _INT_);	// Diferencial rd
+        		WriteModbus485("282", 1);
+        		Wait(50);
+        
+        		SP_Resf_Hard_Interno_display = SP_SONDA_RESF_CAMARA;
+        		SP_Resf_Hard_Espeto_display = SP_Resfriar_Sonda;
+        	}
+        	else
+        	{
+        		Hard_Resf_fase_numero = 1;					// Resfriamento por etapas - Etapa =1		
+        		Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;
+        		Dif_Resf_Hard_F2 = Dif_Resf_Hard_F1;
+        
+        		UpdateModbus485("242", SP_Resf_Interno_F1 , _INT_);	// SP X34 = SP_Interno_F1_controle
+        		WriteModbus485("242", 1);
+        		Wait(50);
+        
+        		UpdateModbus485("282", Dif_Resf_Hard_F1 , _INT_);	// Diferencial de controle para modo Delicado Sonda
+        		WriteModbus485("282", 1);
+        		Wait(50);
+        
+        		SP_Resf_Espeto_F2 = SP_Resfriar_Sonda;
+        		SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;	
+        	}
+        	
+        	Timer_Congelar_DECORRIDO_SP = 99999;	// SP Timer- Inf	
+        	Timer_Congelar_DECORRIDO_ON = 1;		// START Timer TEmpo_REsfriar_DECORRIDO_ON
+        	flag_Processo_ANDAMENTO = 1;		// Flag PRocesso_ANDAMENTO = TRUE
+        	Timer_delay_ON = 1;				// Start Timer Delay
+        
+        	UpdateModbus485("645", 1 , _INT_);		// Controlador em modo COntrole
+        	WriteModbus485("645", 1);
+        	Wait(50);	
+        
+        	Resfriar_SONDA();				// Altera para tela de Resfriar SONDA
         }
-        else if (radioButtonStatusTeclaCongela1.getSelected())
+        
+        //  MODO Tempo
+        if (Status_tecla_Congela == 4)
         {
-        	Resfriar_Select_Tempo();
+        	flag_alarm_receita_vazia = 0;		// zera bit flag alarme de tempo Zero
+        	Resfriar_Select_Tempo();			// Tela Resfriar modo Tempo
         }
     }
     else if (&src == &buttonTelaInicial)
@@ -133,6 +189,7 @@ void ResfriarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
         //SoftHard
         //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
         //Execute C++ code
+        flag_Resfriar_HARD_SOFT = toggleButtonFlagResfriarHardSoft.getState();
         SoundBuzzerOn(25);
     }
 }
@@ -144,6 +201,7 @@ void ResfriarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //ModoSonda
         //When radioButtonStatusTeclaCongela0 selected execute C++ code
         //Execute C++ code
+        Status_tecla_Congela = 3;
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonStatusTeclaCongela1)
@@ -151,6 +209,7 @@ void ResfriarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //ModoTempo
         //When radioButtonStatusTeclaCongela1 selected execute C++ code
         //Execute C++ code
+        Status_tecla_Congela = 4;
         SoundBuzzerOn(25);
     }
 }

@@ -91,10 +91,11 @@ void Resfriar_Select_TempoViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);
+    Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);
+    Update(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);
+    
     VisibilityTextArea(&textAreaTempoZero, false);
     countCycleBlink = 0;
-    isZeroValue = false;
 
 }
 
@@ -115,7 +116,8 @@ void Resfriar_Select_TempoViewBase::handleTickEvent()
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;
-    	if (isZeroValue)
+    
+    	if (flag_alarm_receita_vazia)
     		VisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());
     }
     
@@ -147,6 +149,7 @@ void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //When buttonWithLabelIncrementar clicked execute C++ code
         //Execute C++ code
         Increase(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);
+        Timer_SP_MINUTOS_Resfriar = GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelDecrementar)
@@ -155,6 +158,7 @@ void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //When buttonWithLabelDecrementar clicked execute C++ code
         //Execute C++ code
         Decrease(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);
+        Timer_SP_MINUTOS_Resfriar = GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer);
         SoundBuzzerOn(25);
     }
     else if (&src == &toggleButtonFlagResfriarHardSoft)
@@ -162,6 +166,7 @@ void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //SoftHard
         //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
         //Execute C++ code
+        flag_Resfriar_HARD_SOFT = toggleButtonFlagResfriarHardSoft.getState();
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonFlagCongelarTempo)
@@ -169,13 +174,64 @@ void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //Avancar
         //When buttonFlagCongelarTempo clicked execute C++ code
         //Execute C++ code
-        if (GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer) == 0)
+        if (Timer_SP_MINUTOS_Resfriar == 0)
         {
+        	flag_alarm_receita_vazia = 1;						// flag alarm de timer em valor 0
+        
         	isZeroValue = true;
         	SoundBuzzerOn(25);
         }
         else
-        	Resfriar_TEMPO();
+        {
+        	if (flag_Resfriar_HARD_SOFT == 0)		// if SOFT
+        	{
+        		UpdateModbus485("10242", SP_SONDA_RESF_CAMARA, _INT_);
+        		WriteModbus485("10242", 1);
+        		Wait(50);
+        		
+        		SP_Resf_Hard_Interno_display = SP_Resfriar_Tempo_SOFT;
+        
+        		UpdateModbus485("10282", Diferencial_Resfriar_Tempo, _INT_);	// Diferencial rd
+        		WriteModbus485("10282", 1);
+        		Wait(50);
+        	}
+        	else	// if HARD
+        	{
+        		Hard_Resf_fase_numero = 1;						// Resfriamento por etapas - Etapa = 1
+        
+        		Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;
+        		Dif_Resf_Hard_F2 = Dif_Resf_Hard_F1;
+        
+        		UpdateModbus485("242", SP_Resf_Interno_F1, _INT_);
+        		WriteModbus485("242", 1);
+        		Wait(50);
+        
+        		UpdateModbus485("10282", Dif_Resf_Hard_F1, _INT_);		// Diferencial de controle para modo Delicado Sonda
+        		WriteModbus485("10282", 1);
+        		Wait(50);
+        
+        		SP_Resf_Hard_Interno_display = SP_Resf_Interno_F1;
+        						
+        		Preset_Resf_Tempo_F1 = Timer_SP_MINUTOS_Resfriar * 6;		// transforma Sp minutos em seg*10
+        		Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 * Porc_Resf_preset_tempo_F1F2;
+        		Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 / 10;
+        
+        		Preset_Resf_Tempo_F2 = Timer_SP_MINUTOS_Resfriar * 6 - Preset_Resf_Tempo_F1;
+        
+        		SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;
+        		xBeep_once = false;
+        	}
+        
+        	Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS_Resfriar * 6;	// TRansforma SP minutos em seg10
+        	UpdateModbus485("645", 1, _INT_);						//  Controlador em modo COntrole
+        	WriteModbus485("645", 1);
+        	Wait(50);
+        
+        	Timer_Congelar_DECORRIDO_ON = 1;						// START Timer TEmpo_COngelar_DECORRIDO_ON
+        	flag_Processo_ANDAMENTO = 1;						// Flag PRocesso_ANDAMENTO = TRUE
+        	
+        	Resfriar_TEMPO();								// tela de Resfriar TEMPO
+        }
     }
     else if (&src == &buttonResfriar)
     {

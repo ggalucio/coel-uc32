@@ -73,7 +73,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "\r\nif (countTicksEventInicializacao < 3000)\r\n\tcountTicksEventInicializacao += 16;\r\nelse\r\n\tinicialScreen();"
+              "Code": "\r\nif (countTicksEventInicializacao < 3000)\r\n\tcountTicksEventInicializacao += 16;\r\nelse\r\n{\r\n\tinitialize();\r\n\tinicialScreen();\r\n}"
             }
           },
           {
@@ -100,6 +100,30 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Tela_Inicial"
             }
+          },
+          {
+            "InteractionName": "Initialize",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Inicializacao initialize"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "\r\n\r\n// Inicialização Controlador\r\n\r\nwriteModbus(\"10242\", 999);\t// SP = 99.9ºC\r\nwriteModbus(\"641\", 0);\t// Degelo OFF\r\nwriteModbus(\"645\", 0);\t// Inicializa controlador em Stand-by\r\n\r\n\r\n// Inicializações gerais\r\n\r\nW_HSW9 = 1; \t\t\t\t\t// Desativa msg de timeout\r\n\r\n\r\nTimer_Congelar_DECORRIDO_ON = 0;\t\t// Timer_Congelar_decorrido_ON\r\nTimer_Congelar_DECORRIDO_OUT = 0;\t\t// Timer_Congelar_decorrido_OUT\r\n\r\nTimer_buzzer_SP = 4;\t\t\t// Timer Buzzer 4seg\r\nW_HAW8000 = 0;\t\t\t\t// Timer_Congelar_COUNT = 0\r\nTimer_COUNT_MINUTOS = 0;\t\t\t// Timer_Congelar_COUNT_minutos = 0\r\n\r\nTimer_Delay_SP = 1;\t\t\t\t// Timer Delay SP\r\n\r\nTimer_Degelo_SP = 9999;\t\t\t// Timer SP\r\nTimer_degelo_delay_SP = 5;\t\t\t// Timer_degelo_delay_SP = 1 seg\r\n\r\n\r\n\r\nwriteModbus(\"10322\", 3);\t// oo3 = Fn\r\nwriteModbus(\"10323\", 0);\t// Inicia OUT4 = oF\r\n\r\n\r\n\r\nnumero_receita = 1; \t// Inicia na Receita 1\r\n\r\n\r\n\r\nif (initial_value == 0) \r\n{\r\n\tStatus_tecla_Congela = 1;\t\t\t// MODO CONGELAR SONDA\r\n\tTimer_SP_MINUTOS = 1;\t\t\t// Inicia com timer em 1 min CONGELAR TEMPO\r\n\tTimer_SP_MINUTOS_Resfriar = 1;\t\t// Inicia com timer em 1 min RESFRIAR TEMPO\r\n\t\r\n\t\r\n\tSP_Conservar_Congelar =-250;\t\t// SP Conservar_Congelar=-25ºC\t\t\r\n\tDiferencial_Conservar_COngelar = 30;\t// Diferencial_conservar_Congelar\r\n\r\n\tSP_Conservar_Resfriar = 30; \t\t// Setpoiint Conservar_resfriar = 3.0\r\n\tDiferencial_Conservar_Resfriar = 20; \t// Diferencial_conservar_resfriar=2.0\r\n\r\n\tCONGELAR_SONDA_SP =- 180;\t\t\t// SP modo COngelar SONDA\r\n\r\n\tSP_Congelar_Tempo = -400;\t\t\t// SP congelar TEmpo\r\n\tDiferencial_Congelar_tempo = 30;\t\t// Diferencial congelar Tempo\r\n\r\n\tSP_Resfriar_Sonda = 20; \t\t\t// SP Resfriar modo SOnda = 2.0ºC\r\n\r\n\tSP_Resfriar_Tempo_SOFT = -200;\t\t// SP Tempo SOFT\r\n\tSP_Resfriar_Tempo_HARD = -400;\t\t// SP Tempo HARD\r\n\tDiferencial_Resfriar_Tempo = 30;\t\t// Diferencial Tempo = 2.0ºC\r\n\t\r\n\tlogica_entrada_digital1 = 1;\t\t// Logica da entrada digital (1 normal / -1 invertido)\r\n\tlogica_entrada_digital2 = 1;\t\t// Logica da entrada digital (1 normal / -1 invertido)\r\n\t\r\n\t\r\n\twriteModbus(\"10294\", 1);\t\t// Ventilador ligado durante Degelo\r\n\twriteModbus(\"10256\", 1);\t\t// i.F1 = Door Open \"1\"\r\n\r\n//\twriteModbus(\"10299\", 2);\t\t// P.od = Start delay Compressor protection disabled\r\n\twriteModbus(\"10256\", 2);\t\t// i.F1 = Entrada Digital 1 > Porta com parada ventilador (NA = porta fechada)\r\n\twriteModbus(\"10258\", 5);\t\t// i.F2 = Entrada Digital 2 > Alarme externo com desativação das saídas\r\n\t\r\n\twriteModbus(\"324\", 0);\t\t// Desativa buzzer do controlador\r\n\r\n\ttimer_alarme_externo_SP_MINUTOS = 1;\t// Tempo de retorno do alarme externi (min)\r\n\tTimer_Alarme_externo_SP = timer_alarme_externo_SP_MINUTOS * 6;\t// Retorno do alarme em 1 minuto\r\n\t\r\n\t\r\n\t//W_HAW8214 = \"Alarme de Tensao\"\t\t// Descrição do alarme externo\r\n\t//W_HAW8235 = \"Consultar manual\"\r\n\r\n\tflag_hab_desab_Tecla_REDIAL = 0;\t\t// Tecla Redial desabilitado\r\n\r\n\twriteModbus(\"10255\", 5);\t\t\t// i.p4 = Entrada Digital 4\r\n\r\n\tSenha_Gravada = 123;\t\t\t// Senha Inicial = 123\r\n\r\n\twriteModbus(\"10294\", 0);\t\t\t// Ventilador desligado durante o degelo\r\n\tdegelo_porta_aberta = false;\t\t// degelo entra independente da porta\r\n\twriteModbus(\"10265.0\", 1); \t\t\t// Degelo por gas quente\r\n\tdegelo_processo_automatico = false;\t// após término do degelo, Não inicia ultimo processo automaticamente\r\n\twriteModbus(\"10270\", 1000);\t\t\t// Duração do degelo 10.00 minutos\r\n\twriteModbus(\"10279\", 1000);\t\t\t// Duração do pós degelo (gotejamento) 10.00 minutos\r\n\twriteModbus(\"10295\", 1003);\t\t\t// Retardo para ativação do evaporador após o degelo 10 minutos e 3 segundos\r\n\r\n\tSP_SONDA_CONGELAR_CAMARA = -250;\t\t// Setpoint da Camara no modo CONGELAR Sonda\r\n\tSP_SONDA_RESF_CAMARA = 0;\t\t\t// Setpoint da Camara no modo RESFRIAR Sonda \r\n\r\n\tSP_Resf_Interno_F1 = -250;\t\t\t\t// SP interno de resfriamento modo HARD - FAse 1\r\n\tDif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;\t// Diferencial interno de resfriamento modo HARD - FAse 1\r\n\tSP_Resf_Espeto_F1 = 150;\t\t\t\t// SP ESpeto de resfriamento modo HARD - Troca FAse 1 para Fase 2\t\r\n\r\n\tSP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;\t// SP interno de resfriamento modo HARD - FAse 1\r\n\tDif_Resf_Hard_F2 = Diferencial_Resfriar_Tempo;\t// Diferencial interno de resfriamento modo HARD - FAse 1\t\r\n\tSP_Resf_Espeto_F2 = SP_Resfriar_Sonda;\t\t// SP ESpeto de resfriamento modo HARD - Finalização\r\n\r\n\tPorc_Resf_preset_tempo_F1F2 = 6;   \t\t// Porcentagem /10 do tempo total do ciclo de refriamento 60% fase 1 > 40% fase 2\r\n\r\n\t// RECEITA\r\n\tTempo_receita_1 = 120;\r\n\tTempo_receita_2 = 120;\r\n\tTempo_receita_3 = 120;\r\n\tTempo_receita_4 = 120;\r\n\tTempo_receita_5 = 120;\r\n\tTempo_receita_6 = 120;\r\n\tTempo_receita_7 = 120;\r\n\tTempo_receita_8 = 120;\r\n\tTempo_receita_9 = 120;\r\n\tTempo_receita_10 = 120;\r\n\tTempo_receita_11 = 120;\r\n\tTempo_receita_12 = 120;\r\n\r\n// Inicializar mensagem \"sem receita\"\r\n\t\r\n}\r\n\r\n// Inicialização Controlador\r\n\r\nwriteModbus(\"10242\", 999);\t// SP = 99.9ºC\r\nwriteModbus(\"641\", 0);\t// Degelo OFF\r\nwriteModbus(\"645\", 0);\t// Inicializa controlador em Stand-by\r\n\r\n\r\n\r\n"
+            }
+          },
+          {
+            "InteractionName": "WriteModbus",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Inicializacao writeModbus"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "UpdateModbus485(address, value, _INT_);\r\nWriteModbus485(address, 1);\r\nWait(50);"
+            }
           }
         ],
         "CustomActions": [
@@ -114,6 +138,15 @@
           {
             "Name": "inicialScreen",
             "HasValue": false
+          },
+          {
+            "Name": "initialize",
+            "HasValue": false
+          },
+          {
+            "Name": "writeModbus",
+            "HasValue": true,
+            "ValueType": "char const* address, double"
           }
         ],
         "Name": "Inicializacao",
@@ -771,7 +804,7 @@
             }
           },
           {
-            "InteractionName": "buttonAvancar",
+            "InteractionName": "Avancar",
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerClicked",
@@ -5062,7 +5095,7 @@
             "Name": "textAreaTitle",
             "X": 5,
             "Y": 8,
-            "Width": 153,
+            "Width": 152,
             "Height": 37,
             "Visible": true,
             "LockPosition": true,
@@ -5176,7 +5209,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if (Status_tecla_Congela == 3)\r\n\tUpdate(&radioButtonStatusTeclaCongela0, true);\r\n\r\nif (Status_tecla_Congela == 4)\r\n\tUpdate(&radioButtonStatusTeclaCongela1, true);\r\n\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);"
             }
           },
           {
@@ -5187,7 +5221,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "if (Status_tecla_Congela != 3 && Status_tecla_Congela != 4)\r\n\tSoundBuzzerOn(25);"
             }
           },
           {
@@ -5235,7 +5269,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "Status_tecla_Congela = 3;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -5247,7 +5281,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "Status_tecla_Congela = 4;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -5259,7 +5293,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "flag_Resfriar_HARD_SOFT = toggleButtonFlagResfriarHardSoft.getState();\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -5271,7 +5305,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (radioButtonStatusTeclaCongela0.getSelected())\r\n{\r\n\tResfriar_SONDA();\r\n}\r\nelse if (radioButtonStatusTeclaCongela1.getSelected())\r\n{\r\n\tResfriar_Select_Tempo();\r\n}"
+              "Code": "// MODO SONDA\r\nif (Status_tecla_Congela == 3)\r\n{\r\n\tif (flag_Resfriar_HARD_SOFT == false) // SE MODO SOFT\r\n\t{\r\n\t\tUpdateModbus485(\"242\", SP_SONDA_RESF_CAMARA , _INT_);\t\t// SP = RESF MODO SSONDA\r\n\t\tWriteModbus485(\"242\", 1);\r\n\t\tWait(50);\r\n\r\n\t\tUpdateModbus485(\"282\", Diferencial_Resfriar_Tempo , _INT_);\t// Diferencial rd\r\n\t\tWriteModbus485(\"282\", 1);\r\n\t\tWait(50);\r\n\r\n\t\tSP_Resf_Hard_Interno_display = SP_SONDA_RESF_CAMARA;\r\n\t\tSP_Resf_Hard_Espeto_display = SP_Resfriar_Sonda;\r\n\t}\r\n\telse\r\n\t{\r\n\t\tHard_Resf_fase_numero = 1;\t\t\t\t\t// Resfriamento por etapas - Etapa =1\t\t\r\n\t\tDif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;\r\n\t\tDif_Resf_Hard_F2 = Dif_Resf_Hard_F1;\r\n\r\n\t\tUpdateModbus485(\"242\", SP_Resf_Interno_F1 , _INT_);\t// SP X34 = SP_Interno_F1_controle\r\n\t\tWriteModbus485(\"242\", 1);\r\n\t\tWait(50);\r\n\r\n\t\tUpdateModbus485(\"282\", Dif_Resf_Hard_F1 , _INT_);\t// Diferencial de controle para modo Delicado Sonda\r\n\t\tWriteModbus485(\"282\", 1);\r\n\t\tWait(50);\r\n\r\n\t\tSP_Resf_Espeto_F2 = SP_Resfriar_Sonda;\r\n\t\tSP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;\t\r\n\t}\r\n\t\r\n\tTimer_Congelar_DECORRIDO_SP = 99999;\t// SP Timer- Inf\t\r\n\tTimer_Congelar_DECORRIDO_ON = 1;\t\t// START Timer TEmpo_REsfriar_DECORRIDO_ON\r\n\tflag_Processo_ANDAMENTO = 1;\t\t// Flag PRocesso_ANDAMENTO = TRUE\r\n\tTimer_delay_ON = 1;\t\t\t\t// Start Timer Delay\r\n\r\n\tUpdateModbus485(\"645\", 1 , _INT_);\t\t// Controlador em modo COntrole\r\n\tWriteModbus485(\"645\", 1);\r\n\tWait(50);\t\r\n\r\n\tResfriar_SONDA();\t\t\t\t// Altera para tela de Resfriar SONDA\r\n}\r\n\r\n//  MODO Tempo\r\nif (Status_tecla_Congela == 4)\r\n{\r\n\tflag_alarm_receita_vazia = 0;\t\t// zera bit flag alarme de tempo Zero\r\n\tResfriar_Select_Tempo();\t\t\t// Tela Resfriar modo Tempo\r\n}"
             }
           },
           {
@@ -6379,7 +6413,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
+              "Code": "Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);\r\n\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -6402,7 +6436,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\r\n\tif (flag_alarm_receita_vazia)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -6439,7 +6473,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Increase(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "Increase(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);\r\nTimer_SP_MINUTOS_Resfriar = GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -6451,7 +6485,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Decrease(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "Decrease(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 1, 0, 9999, _INT_, 0);\r\nTimer_SP_MINUTOS_Resfriar = GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -6463,7 +6497,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (GetNumberTextArea(textAreaTimerSpMinutosResfriarBuffer) == 0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n\tResfriar_TEMPO();\r\n"
+              "Code": "if (Timer_SP_MINUTOS_Resfriar == 0)\r\n{\r\n\tflag_alarm_receita_vazia = 1;\t\t\t\t\t\t// flag alarm de timer em valor 0\r\n\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\tif (flag_Resfriar_HARD_SOFT == 0)\t\t// if SOFT\r\n\t{\r\n\t\tUpdateModbus485(\"10242\", SP_SONDA_RESF_CAMARA, _INT_);\r\n\t\tWriteModbus485(\"10242\", 1);\r\n\t\tWait(50);\r\n\t\t\r\n\t\tSP_Resf_Hard_Interno_display = SP_Resfriar_Tempo_SOFT;\r\n\r\n\t\tUpdateModbus485(\"10282\", Diferencial_Resfriar_Tempo, _INT_);\t// Diferencial rd\r\n\t\tWriteModbus485(\"10282\", 1);\r\n\t\tWait(50);\r\n\t}\r\n\telse\t// if HARD\r\n\t{\r\n\t\tHard_Resf_fase_numero = 1;\t\t\t\t\t\t// Resfriamento por etapas - Etapa = 1\r\n\r\n\t\tDif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;\r\n\t\tDif_Resf_Hard_F2 = Dif_Resf_Hard_F1;\r\n\r\n\t\tUpdateModbus485(\"242\", SP_Resf_Interno_F1, _INT_);\r\n\t\tWriteModbus485(\"242\", 1);\r\n\t\tWait(50);\r\n\r\n\t\tUpdateModbus485(\"10282\", Dif_Resf_Hard_F1, _INT_);\t\t// Diferencial de controle para modo Delicado Sonda\r\n\t\tWriteModbus485(\"10282\", 1);\r\n\t\tWait(50);\r\n\r\n\t\tSP_Resf_Hard_Interno_display = SP_Resf_Interno_F1;\r\n\t\t\t\t\t\t\r\n\t\tPreset_Resf_Tempo_F1 = Timer_SP_MINUTOS_Resfriar * 6;\t\t// transforma Sp minutos em seg*10\r\n\t\tPreset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 * Porc_Resf_preset_tempo_F1F2;\r\n\t\tPreset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 / 10;\r\n\r\n\t\tPreset_Resf_Tempo_F2 = Timer_SP_MINUTOS_Resfriar * 6 - Preset_Resf_Tempo_F1;\r\n\r\n\t\tSP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;\r\n\t\txBeep_once = false;\r\n\t}\r\n\r\n\tTimer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS_Resfriar * 6;\t// TRansforma SP minutos em seg10\r\n\tUpdateModbus485(\"645\", 1, _INT_);\t\t\t\t\t\t//  Controlador em modo COntrole\r\n\tWriteModbus485(\"645\", 1);\r\n\tWait(50);\r\n\r\n\tTimer_Congelar_DECORRIDO_ON = 1;\t\t\t\t\t\t// START Timer TEmpo_COngelar_DECORRIDO_ON\r\n\tflag_Processo_ANDAMENTO = 1;\t\t\t\t\t\t// Flag PRocesso_ANDAMENTO = TRUE\r\n\t\r\n\tResfriar_TEMPO();\t\t\t\t\t\t\t\t// tela de Resfriar TEMPO\r\n}\r\n"
             }
           },
           {
@@ -6488,7 +6522,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "flag_Resfriar_HARD_SOFT = toggleButtonFlagResfriarHardSoft.getState();\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -6567,6 +6601,26 @@
             "Height": 53,
             "Visible": true,
             "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 0,
+              "Green": 175,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "Name": "boxFlagProcessoAndamento",
+            "X": 5,
+            "Y": 64,
+            "Width": 392,
+            "Height": 196,
+            "Visible": false,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -6802,18 +6856,32 @@
             "Moveable": false
           },
           {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "HARD.png",
-            "Released": "SOFT.png",
+            "Type": "Image",
+            "RelativeFilename": "SOFT.png",
             "Alpha": 255,
-            "Name": "toggleButtonFlagResfriarHardSoft",
+            "Name": "imageSoft",
             "X": 406,
             "Y": 136,
             "Width": 67,
             "Height": 52,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "HARD.png",
+            "Alpha": 255,
+            "Name": "imageHard",
+            "X": 405,
+            "Y": 136,
+            "Width": 67,
+            "Height": 52,
+            "Visible": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -7138,7 +7206,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n"
+              "Code": "ReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _FP_32BIT_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _FP_32BIT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n\r\nUpdate(&toggleButtonFlagConservarSN, flag_Conservar_S_N);\r\nVisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);"
             }
           },
           {
@@ -7161,7 +7229,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nVisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (flag_Processo_ANDAMENTO)\r\n\t\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -7224,19 +7292,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
-            }
-          },
-          {
-            "InteractionName": "SoftHard",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "toggleButtonFlagResfriarHardSoft"
-            },
-            "Action": {
-              "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();\r\nSoundBuzzerOn(25);"
             }
           }
         ],

@@ -78,6 +78,9 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
     case Typography::VERDANA_20_ITAIC:
         // verdanai_20_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[22]);
+    case Typography::SEGOEUI30:
+        // segoeui_30_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[23]);
     default:
         return 0;
     }

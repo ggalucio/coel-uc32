@@ -24,6 +24,10 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase() :
     boxFundoAzul.setPosition(0, 0, 480, 53);
     boxFundoAzul.setColor(touchgfx::Color::getColorFromRGB(0, 175, 239));
 
+    boxFlagProcessoAndamento.setPosition(5, 64, 392, 196);
+    boxFlagProcessoAndamento.setVisible(false);
+    boxFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(0, 175, 239));
+
     boxWithBorderBox3.setPosition(66, 133, 324, 57);
     boxWithBorderBox3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     boxWithBorderBox3.setBorderColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
@@ -70,9 +74,12 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase() :
     toggleButtonFlagConservarSN.setBitmaps(touchgfx::Bitmap(BITMAP_CSVOFF_ID), touchgfx::Bitmap(BITMAP_CSVON_ID));
     toggleButtonFlagConservarSN.setAction(buttonCallback);
 
-    toggleButtonFlagResfriarHardSoft.setXY(406, 136);
-    toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
-    toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
+    imageSoft.setXY(406, 136);
+    imageSoft.setBitmap(touchgfx::Bitmap(BITMAP_SOFT_ID));
+
+    imageHard.setXY(405, 136);
+    imageHard.setVisible(false);
+    imageHard.setBitmap(touchgfx::Bitmap(BITMAP_HARD_ID));
 
     image1.setXY(25, 79);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_THERMOM_ID));
@@ -149,6 +156,7 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase() :
     add(boxFundo);
     add(boxProcessOff);
     add(boxFundoAzul);
+    add(boxFlagProcessoAndamento);
     add(boxWithBorderBox3);
     add(boxWithBorderBox2);
     add(boxWithBorderBox1);
@@ -159,7 +167,8 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase() :
     add(textAreaTitle);
     add(buttonCancelarProcesso);
     add(toggleButtonFlagConservarSN);
-    add(toggleButtonFlagResfriarHardSoft);
+    add(imageSoft);
+    add(imageHard);
     add(image1);
     add(image2);
     add(image3);
@@ -181,16 +190,20 @@ void Resfriar_TEMPOViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
-    Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);
+    ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _FP_32BIT_, REPEAT);
+    ReadWriteModbus485(&textArea1410242, textArea1410242Buffer, "10242", 1, _FP_32BIT_, REPEAT);
     
-    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);
-    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
+    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
+    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
     
-    Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, _INT_, 0);
+    Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);
     
     Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
     countCycleBlink = 0;
+    
+    
+    Update(&toggleButtonFlagConservarSN, flag_Conservar_S_N);
+    VisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);
 
 }
 
@@ -225,10 +238,17 @@ void Resfriar_TEMPOViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
+    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
+    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
+    
+    VisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);
+    
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;
-    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    	
+    	if (flag_Processo_ANDAMENTO)
+    		VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
     }
     
     countCycleBlink += 16;
@@ -258,13 +278,7 @@ void Resfriar_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //CSV
         //When toggleButtonFlagConservarSN clicked execute C++ code
         //Execute C++ code
-        SoundBuzzerOn(25);
-    }
-    else if (&src == &toggleButtonFlagResfriarHardSoft)
-    {
-        //SoftHard
-        //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
-        //Execute C++ code
+        flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();
         SoundBuzzerOn(25);
     }
 }

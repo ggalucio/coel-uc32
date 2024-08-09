@@ -7,6 +7,9 @@
 C_SRCS += \
 C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/ts.c 
 
+O_SRCS += \
+C:/ATProgetti/PG064/PG/SRC/APPLICAZIONE/Components/TouchDrivers/ts.o 
+
 C_DEPS += \
 ./APPLICAZIONE/Components/TouchDrivers/ts.d 
 
