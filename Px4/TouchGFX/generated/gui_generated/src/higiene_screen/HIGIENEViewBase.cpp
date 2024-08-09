@@ -6,7 +6,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-HIGIENEViewBase::HIGIENEViewBase()
+HIGIENEViewBase::HIGIENEViewBase() :
+    buttonCallback(this, &HIGIENEViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -35,6 +36,7 @@ HIGIENEViewBase::HIGIENEViewBase()
 
     buttonFinalizarHigiene.setXY(406, 64);
     buttonFinalizarHigiene.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonFinalizarHigiene.setAction(buttonCallback);
 
     image3.setXY(18, 78);
     image3.setBitmap(touchgfx::Bitmap(BITMAP_AMPULHETA_ID));
@@ -103,4 +105,15 @@ void HIGIENEViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void HIGIENEViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonFinalizarHigiene)
+    {
+        //Interaction1
+        //When buttonFinalizarHigiene clicked change screen to HIGIENE_CONFIRMAR
+        //Go to HIGIENE_CONFIRMAR with no screen transition
+        application().gotoHIGIENE_CONFIRMARScreenNoTransition();
+    }
 }

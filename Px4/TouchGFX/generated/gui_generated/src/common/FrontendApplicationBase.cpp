@@ -446,6 +446,19 @@ void FrontendApplicationBase::gotoHIGIENE_CONFIRMARScreenNoTransitionImpl()
     touchgfx::makeTransition<HIGIENE_CONFIRMARView, HIGIENE_CONFIRMARPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// HIGIENE
+
+void FrontendApplicationBase::gotoHIGIENEScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoHIGIENEScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoHIGIENEScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<HIGIENEView, HIGIENEPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // Configuracao_7
 
 void FrontendApplicationBase::gotoConfiguracao_7ScreenNoTransition()

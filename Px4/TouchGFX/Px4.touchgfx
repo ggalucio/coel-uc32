@@ -8000,7 +8000,7 @@
             "Name": "textAreaTitle",
             "X": 48,
             "Y": 8,
-            "Width": 125,
+            "Width": 124,
             "Height": 37,
             "Visible": true,
             "LockPosition": true,
@@ -17421,6 +17421,30 @@
             "Moveable": false
           },
           {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4100",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 255,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaStatusPortaAberta",
+            "X": 56,
+            "Y": 90,
+            "Width": 302,
+            "Height": 147,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Type": "Button",
             "Pressed": "avanceON.png",
             "Released": "avance.png",
@@ -17430,7 +17454,7 @@
             "Y": 208,
             "Width": 67,
             "Height": 52,
-            "Visible": true,
+            "Visible": false,
             "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
@@ -17453,6 +17477,35 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4101",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4102",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "status_porta",
+            "X": 5,
+            "Y": 64,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -17463,7 +17516,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&status_porta, status_portaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -17485,7 +17539,9 @@
               "ActionCustomTypeName": "Call HIGIENE_CONFIRMAR handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Includes": "",
+              "Code": "\r\nif ((touchgfx::Unicode::atoi(status_portaBuffer)) == 1){\r\n\tbuttonStartHigiene.setVisible(true);\r\n\ttextAreaStatusPorta.setVisible(false);\r\n\ttextAreaStatusPortaAberta.setVisible(true); \r\n}else{\r\n\tbuttonStartHigiene.setVisible(false);\r\n\ttextAreaStatusPorta.setVisible(true);\r\n\ttextAreaStatusPortaAberta.setVisible(false); \r\n}\r\ninvalidate();"
             }
           },
           {
@@ -17511,6 +17567,19 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "start_higiene",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonStartHigiene"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HIGIENE"
             }
           }
         ],
@@ -17827,6 +17896,19 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFinalizarHigiene"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HIGIENE_CONFIRMAR"
             }
           }
         ],
@@ -28153,6 +28235,18 @@
       },
       {
         "TextEntryId": "SingleUseId4099",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4100",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4101",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4102",
         "IsResource": false
       }
     ],

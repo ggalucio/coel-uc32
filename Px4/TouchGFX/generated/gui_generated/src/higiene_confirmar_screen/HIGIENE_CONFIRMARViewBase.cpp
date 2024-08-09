@@ -29,24 +29,50 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     textAreaStatusPorta.setLinespacing(0);
     textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3961));
 
+    textAreaStatusPortaAberta.setXY(56, 90);
+    textAreaStatusPortaAberta.setVisible(false);
+    textAreaStatusPortaAberta.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
+    textAreaStatusPortaAberta.setLinespacing(0);
+    textAreaStatusPortaAberta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
+
     buttonStartHigiene.setXY(406, 208);
+    buttonStartHigiene.setVisible(false);
     buttonStartHigiene.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
+    buttonStartHigiene.setAction(buttonCallback);
 
     buttonTelaInicial.setXY(406, 64);
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
+
+    status_porta.setXY(5, 64);
+    status_porta.setVisible(false);
+    status_porta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    status_porta.setLinespacing(0);
+    Unicode::snprintf(status_portaBuffer, STATUS_PORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4102).getText());
+    status_porta.setWildcard(status_portaBuffer);
+    status_porta.resizeToCurrentText();
+    status_porta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4101));
 
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
     add(textAreaTitle);
     add(textAreaStatusPorta);
+    add(textAreaStatusPortaAberta);
     add(buttonStartHigiene);
     add(buttonTelaInicial);
+    add(status_porta);
 }
 
 void HIGIENE_CONFIRMARViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&status_porta, status_portaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 
@@ -61,7 +87,20 @@ void HIGIENE_CONFIRMARViewBase::afterTransition()
 
 void HIGIENE_CONFIRMARViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    
+    if ((touchgfx::Unicode::atoi(status_portaBuffer)) == 1){
+    	buttonStartHigiene.setVisible(true);
+    	textAreaStatusPorta.setVisible(false);
+    	textAreaStatusPortaAberta.setVisible(true); 
+    }else{
+    	buttonStartHigiene.setVisible(false);
+    	textAreaStatusPorta.setVisible(true);
+    	textAreaStatusPortaAberta.setVisible(false); 
+    }
+    invalidate();
 }
 
 void HIGIENE_CONFIRMARViewBase::tearDownScreen()
@@ -75,7 +114,14 @@ void HIGIENE_CONFIRMARViewBase::tearDownScreen()
 
 void HIGIENE_CONFIRMARViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonTelaInicial)
+    if (&src == &buttonStartHigiene)
+    {
+        //start_higiene
+        //When buttonStartHigiene clicked change screen to HIGIENE
+        //Go to HIGIENE with no screen transition
+        application().gotoHIGIENEScreenNoTransition();
+    }
+    else if (&src == &buttonTelaInicial)
     {
         //TelaInicial
         //When buttonTelaInicial clicked change screen to Tela_Inicial
