@@ -152,6 +152,19 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase() :
     cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
     cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4128).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4127));
+
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
@@ -182,6 +195,8 @@ Resfriar_TEMPOViewBase::Resfriar_TEMPOViewBase() :
     add(textArea14512);
     add(textArea1410242);
     add(cANCELAR_PROCESSO1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Resfriar_TEMPOViewBase::setupScreen()
@@ -190,8 +205,12 @@ void Resfriar_TEMPOViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _FP_32BIT_, REPEAT);
-    ReadWriteModbus485(&textArea1410242, textArea1410242Buffer, "10242", 1, _FP_32BIT_, REPEAT);
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(&textArea1410242, textArea1410242Buffer, "10242", 1, _DOUBLE_, REPEAT);
     
     Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
     Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
@@ -238,6 +257,13 @@ void Resfriar_TEMPOViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    
     Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
     Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
     

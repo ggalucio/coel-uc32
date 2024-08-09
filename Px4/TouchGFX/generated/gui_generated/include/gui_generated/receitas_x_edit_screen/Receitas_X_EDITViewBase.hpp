@@ -74,6 +74,8 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTempoReceitaX;
     keyboardContainer2 keyboardContainer21;
     numKeyboardContainer numKeyboardContainer1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -86,6 +88,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTemperaturaReceitaBuffer[TEXTAREATEMPERATURARECEITA_SIZE];
     static const uint16_t TEXTAREATEMPORECEITAX_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTempoReceitaXBuffer[TEXTAREATEMPORECEITAX_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

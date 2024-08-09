@@ -114,6 +114,19 @@ Conservar_ResfriarViewBase::Conservar_ResfriarViewBase() :
     cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
     cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4120).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4119));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -137,6 +150,8 @@ Conservar_ResfriarViewBase::Conservar_ResfriarViewBase() :
     add(textArea14512);
     add(textArea1410242);
     add(cANCELAR_PROCESSO1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Conservar_ResfriarViewBase::setupScreen()
@@ -145,10 +160,17 @@ void Conservar_ResfriarViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);
+    Clear();
     
-    Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
-    Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    ReadWriteModbus485(&textArea14515, textArea14515Buffer, "515", 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(&textArea1410242, textArea1410242Buffer, "10242", 1, _DOUBLE_, REPEAT);
+    
+    //Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);
+    //Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
+    //Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);
     
     Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
     countCycleBlink = 0;
@@ -186,6 +208,13 @@ void Conservar_ResfriarViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;

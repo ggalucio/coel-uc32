@@ -340,6 +340,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4103",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4104",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -350,7 +395,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -372,7 +418,8 @@
               "ActionCustomTypeName": "Call Tela_Inicial handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "\r\nif ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -719,6 +766,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4105",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4106",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -729,7 +821,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -751,7 +844,8 @@
               "ActionCustomTypeName": "Call Congelar handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "\r\nif ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -1508,6 +1602,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4107",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4108",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -1519,7 +1658,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n// Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);\r\n// Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -1542,7 +1681,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;\r\n"
             }
           },
           {
@@ -2238,6 +2377,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4109",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4110",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -2249,7 +2433,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n"
             }
           },
           {
@@ -2272,7 +2456,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -2607,6 +2791,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4111",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4112",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -2618,7 +2847,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -2641,7 +2870,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -2854,7 +3083,7 @@
             "Name": "textAreaLabel1",
             "X": 111,
             "Y": 41,
-            "Width": 113,
+            "Width": 112,
             "Height": 26,
             "Visible": true,
             "LockPosition": true,
@@ -2878,7 +3107,7 @@
             "Name": "textAreaLabel2",
             "X": 111,
             "Y": 81,
-            "Width": 113,
+            "Width": 112,
             "Height": 26,
             "Visible": true,
             "LockPosition": true,
@@ -2902,7 +3131,7 @@
             "Name": "textAreaLabel3",
             "X": 111,
             "Y": 120,
-            "Width": 111,
+            "Width": 110,
             "Height": 26,
             "Visible": true,
             "LockPosition": true,
@@ -2926,7 +3155,7 @@
             "Name": "textAreaLabel4",
             "X": 111,
             "Y": 159,
-            "Width": 127,
+            "Width": 128,
             "Height": 13,
             "Visible": true,
             "LockPosition": true,
@@ -2950,7 +3179,7 @@
             "Name": "textAreaLabel5",
             "X": 354,
             "Y": 201,
-            "Width": 41,
+            "Width": 42,
             "Height": 19,
             "Visible": true,
             "LockPosition": true,
@@ -3336,6 +3565,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4113",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4114",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -3347,7 +3621,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _FP_32BIT_, 1);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _FP_32BIT_, 1);"
             }
           },
           {
@@ -3369,7 +3643,8 @@
               "ActionCustomTypeName": "Call Configuracao handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -3725,6 +4000,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4115",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4116",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -3735,7 +4055,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -3757,7 +4078,8 @@
               "ActionCustomTypeName": "Call Conservacao handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -4351,6 +4673,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4117",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4118",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -4362,7 +4729,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -4385,7 +4752,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -4935,6 +5302,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4119",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4120",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -4946,7 +5358,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -4969,7 +5381,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -5199,6 +5611,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4121",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4122",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -5210,7 +5667,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (Status_tecla_Congela == 3)\r\n\tUpdate(&radioButtonStatusTeclaCongela0, true);\r\n\r\nif (Status_tecla_Congela == 4)\r\n\tUpdate(&radioButtonStatusTeclaCongela1, true);\r\n\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nif (Status_tecla_Congela == 3)\r\n\tUpdate(&radioButtonStatusTeclaCongela0, true);\r\n\r\nif (Status_tecla_Congela == 4)\r\n\tUpdate(&radioButtonStatusTeclaCongela1, true);\r\n\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);"
             }
           },
           {
@@ -5232,7 +5689,8 @@
               "ActionCustomTypeName": "Call Resfriar handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -5830,13 +6288,13 @@
             "Wildcard1": {
               "TextId": "SingleUseId3846",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 20
             },
             "Name": "textArea14515",
-            "X": 172,
+            "X": 157,
             "Y": 69,
-            "Width": 121,
-            "Height": 56,
+            "Width": 156,
+            "Height": 58,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -6003,6 +6461,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4123",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4124",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -6014,7 +6517,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, 0, _DOUBLE_, 1);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n// Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n// Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n"
             }
           },
           {
@@ -6037,7 +6540,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -6402,6 +6905,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4125",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4126",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -6413,7 +6961,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);\r\n\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);\r\n\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -6436,7 +6984,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\r\n\tif (flag_alarm_receita_vazia)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\r\n\tif (flag_alarm_receita_vazia)\r\n\t\tVisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -7195,6 +7743,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4127",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4128",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -7206,7 +7799,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "ReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _FP_32BIT_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _FP_32BIT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n\r\nUpdate(&toggleButtonFlagConservarSN, flag_Conservar_S_N);\r\nVisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n\r\nUpdate(&toggleButtonFlagConservarSN, flag_Conservar_S_N);\r\nVisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);"
             }
           },
           {
@@ -7229,7 +7822,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nVisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (flag_Processo_ANDAMENTO)\r\n\t\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nVisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (flag_Processo_ANDAMENTO)\r\n\t\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -7625,7 +8218,7 @@
             "Name": "textAreaTitle",
             "X": 48,
             "Y": 8,
-            "Width": 125,
+            "Width": 124,
             "Height": 37,
             "Visible": true,
             "LockPosition": true,
@@ -7828,6 +8421,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4129",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4130",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -7839,7 +8477,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea14513, textArea14513Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaTimerDegeloCountMinutos, textAreaTimerDegeloCountMinutosBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textArea14513, textArea14513Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaTimerDegeloCountMinutos, textAreaTimerDegeloCountMinutosBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -7862,7 +8500,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -8000,7 +8638,7 @@
             "Name": "textAreaTitle",
             "X": 48,
             "Y": 8,
-            "Width": 125,
+            "Width": 124,
             "Height": 37,
             "Visible": true,
             "LockPosition": true,
@@ -8106,6 +8744,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4131",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4132",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -8116,7 +8799,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -8138,7 +8822,8 @@
               "ActionCustomTypeName": "Call Degelo_Confirmar handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n\ttextArea1.setVisible(false);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n\ttextArea1.setVisible(true);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -9135,6 +9820,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4133",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4134",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -9146,7 +9876,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);"
             }
           },
           {
@@ -9168,7 +9898,8 @@
               "ActionCustomTypeName": "Call Configuracao_2 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -10198,6 +10929,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4135",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4136",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -10209,7 +10985,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea1410291, textArea1410291Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textArea1410291, textArea1410291Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
             }
           },
           {
@@ -10231,7 +11007,8 @@
               "ActionCustomTypeName": "Call Configuracao_3 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -10935,6 +11712,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4137",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4138",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -10946,7 +11768,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 1){\r\n\tUpdate(&radioButtonMuneroReceita1, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 2){\r\n\tUpdate(&radioButtonMuneroReceita2, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 3){\r\n\tUpdate(&radioButtonMuneroReceita3, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 4){\r\n\tUpdate(&radioButtonMuneroReceita4, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 1){\r\n\tUpdate(&radioButtonMuneroReceita1, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 2){\r\n\tUpdate(&radioButtonMuneroReceita2, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 3){\r\n\tUpdate(&radioButtonMuneroReceita3, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 4){\r\n\tUpdate(&radioButtonMuneroReceita4, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n"
             }
           },
           {
@@ -10968,7 +11790,8 @@
               "ActionCustomTypeName": "Call Receitas_1 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -11604,6 +12427,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4139",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4140",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -11615,7 +12483,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 5){\r\n\tUpdate(&radioButtonMuneroReceita5, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 6){\r\n\tUpdate(&radioButtonMuneroReceita6, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 7){\r\n\tUpdate(&radioButtonMuneroReceita7, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 8){\r\n\tUpdate(&radioButtonMuneroReceita8, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 5){\r\n\tUpdate(&radioButtonMuneroReceita5, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 6){\r\n\tUpdate(&radioButtonMuneroReceita6, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 7){\r\n\tUpdate(&radioButtonMuneroReceita7, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 8){\r\n\tUpdate(&radioButtonMuneroReceita8, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
             }
           },
           {
@@ -11637,7 +12505,8 @@
               "ActionCustomTypeName": "Call Receitas_2 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -12269,6 +13138,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4141",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4142",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -12280,7 +13194,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 9){\r\n\tUpdate(&radioButtonMuneroReceita9, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 10){\r\n\tUpdate(&radioButtonMuneroReceita10, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 11){\r\n\tUpdate(&radioButtonMuneroReceita11, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 12){\r\n\tUpdate(&radioButtonMuneroReceita12, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 9){\r\n\tUpdate(&radioButtonMuneroReceita9, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 10){\r\n\tUpdate(&radioButtonMuneroReceita10, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 11){\r\n\tUpdate(&radioButtonMuneroReceita11, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 12){\r\n\tUpdate(&radioButtonMuneroReceita12, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
             }
           },
           {
@@ -12302,7 +13216,8 @@
               "ActionCustomTypeName": "Call Receitas_3 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -13189,6 +14104,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4143",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4144",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -13200,7 +14160,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _FP_32BIT_, 1);\r\nAddJob(&toggleButtonRXTimeTemp, 3);\r\nAddJob(&toggleButtonRXCongResf, 4);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&toggleButtonRXhardSoft, 6);\r\nAddJob(&toggleButtonRXConservYn, 7);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\nContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());\r\nContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nAddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);\r\nAddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _FP_32BIT_, 1);\r\nAddJob(&toggleButtonRXTimeTemp, 3);\r\nAddJob(&toggleButtonRXCongResf, 4);\r\nAddJob(&textAreaReceitaXDesc, textAreaReceitaXDescBuffer, 5, _STRING_, 0);\r\nAddJob(&toggleButtonRXhardSoft, 6);\r\nAddJob(&toggleButtonRXConservYn, 7);\r\nAddJob(&textAreaTitle, textAreaTitleBuffer, 255, _INT_, 0);\r\n\r\nContainerVisibility(&containerTempo, !toggleButtonRXTimeTemp.getState());\r\nContainerVisibility(&containerTemperatura, toggleButtonRXTimeTemp.getState());\r\nButtonVisibility(&toggleButtonRXhardSoft, toggleButtonRXCongResf.getState());"
             }
           },
           {
@@ -13222,7 +14182,8 @@
               "ActionCustomTypeName": "Call Receitas_X_EDIT handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -13680,6 +14641,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4145",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4146",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -13691,7 +14697,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);\r\nVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);\r\nVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -13714,7 +14720,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, !textAreaFlagAlarmReceitaVazia.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tif (isZeroValue)\r\n\t\tVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, !textAreaFlagAlarmReceitaVazia.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -14203,6 +15209,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4147",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4148",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -14214,7 +15265,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);"
             }
           },
           {
@@ -14236,7 +15287,8 @@
               "ActionCustomTypeName": "Call Configuracao_4 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -14482,6 +15534,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4149",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4150",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -14492,7 +15589,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -14514,7 +15612,8 @@
               "ActionCustomTypeName": "Call refine_senha_secreto handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -14698,6 +15797,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4151",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4152",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -14708,7 +15852,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -14730,7 +15875,8 @@
               "ActionCustomTypeName": "Call Alarme_externo handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -15392,6 +16538,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4153",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4154",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -15403,7 +16594,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);\r\n\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);\r\n\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);"
             }
           },
           {
@@ -15425,7 +16616,8 @@
               "ActionCustomTypeName": "Call Configuracao_5 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -16284,6 +17476,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4155",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4156",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -16294,7 +17531,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -16316,7 +17554,8 @@
               "ActionCustomTypeName": "Call Receita_Temperatura handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -16925,6 +18164,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4157",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4158",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -16936,7 +18220,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textArea1410279, textArea1410279Buffer, 10.0, _FP_32BIT_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _FP_32BIT_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textArea1410279, textArea1410279Buffer, 10.0, _FP_32BIT_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _FP_32BIT_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
             }
           },
           {
@@ -16958,7 +18242,8 @@
               "ActionCustomTypeName": "Call Configuracao_6 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -17270,6 +18555,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4159",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4160",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -17280,7 +18610,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -17301,7 +18632,8 @@
               "ActionCustomTypeName": "Call RESET_FABRICA handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -17408,12 +18740,36 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
-            "Name": "textAreaStatusPorta",
+            "Name": "textAreaStatusPortaFechada",
             "X": 42,
             "Y": 110,
             "Width": 321,
             "Height": 98,
             "Visible": true,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4100",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 255,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaStatusPortaAberta",
+            "X": 51,
+            "Y": 90,
+            "Width": 302,
+            "Height": 147,
+            "Visible": false,
             "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
@@ -17430,7 +18786,7 @@
             "Y": 208,
             "Width": 67,
             "Height": 52,
-            "Visible": true,
+            "Visible": false,
             "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
@@ -17453,6 +18809,35 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4101",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4102",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "status_porta",
+            "X": 5,
+            "Y": 64,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -17463,7 +18848,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&status_porta, status_portaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -17485,7 +18871,8 @@
               "ActionCustomTypeName": "Call HIGIENE_CONFIRMAR handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "\r\nif ((touchgfx::Unicode::atoi(status_portaBuffer)) == 1){\r\n\tbuttonStartHigiene.setVisible(true);\r\n\ttextAreaStatusPortaFechada.setVisible(false);\r\n\ttextAreaStatusPortaAberta.setVisible(true); \r\n}else{\r\n\tbuttonStartHigiene.setVisible(false);\r\n\ttextAreaStatusPortaFechada.setVisible(true);\r\n\ttextAreaStatusPortaAberta.setVisible(false); \r\n}\r\ninvalidate();"
             }
           },
           {
@@ -17511,6 +18898,19 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "start_higiente",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonStartHigiene"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HIGIENE"
             }
           }
         ],
@@ -17782,6 +19182,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4161",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4162",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -17792,7 +19237,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_);\r\nWriteModbus485(\"10242\", 1);\r\n\r\nUpdateModbus485(\"645\", 1, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 11, _INT_);\r\nWriteModbus485(\"10322\", 1);"
             }
           },
           {
@@ -17814,7 +19260,8 @@
               "ActionCustomTypeName": "Call HIGIENE handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -17827,6 +19274,19 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "HigieneConfirma",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonFinalizarHigiene"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HIGIENE_CONFIRMAR"
             }
           }
         ],
@@ -18646,6 +20106,51 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "porta.png",
+            "Alpha": 255,
+            "Name": "imageStatusPorta",
+            "X": 200,
+            "Y": 0,
+            "Width": 112,
+            "Height": 39,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4163",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4164",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textAreaStatusPorta",
+            "X": 98,
+            "Y": 13,
+            "Width": 13,
+            "Height": 25,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -18657,7 +20162,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);"
             }
           },
           {
@@ -18679,7 +20184,8 @@
               "ActionCustomTypeName": "Call Configuracao_7 handleTickEvent"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -28153,6 +29659,266 @@
       },
       {
         "TextEntryId": "SingleUseId4099",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4100",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4101",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4102",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4103",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4104",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4105",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4106",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4107",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4108",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4109",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4110",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4111",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4112",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4113",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4114",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4115",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4116",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4117",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4118",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4119",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4120",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4121",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4122",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4123",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4124",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4125",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4126",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4127",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4128",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4129",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4130",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4131",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4132",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4133",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4134",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4135",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4136",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4137",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4138",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4139",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4140",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4141",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4142",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4143",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4144",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4145",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4146",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4147",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4148",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4149",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4150",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4151",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4152",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4153",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4154",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4155",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4156",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4157",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4158",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4159",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4160",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4161",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4162",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4163",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4164",
         "IsResource": false
       }
     ],

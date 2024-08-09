@@ -67,13 +67,15 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::TextAreaWithOneWildcard textAreaSpResfHardEspetoDisplay;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREAFLAGPROCESSOANDAMENTO_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaFlagProcessoAndamentoBuffer[TEXTAREAFLAGPROCESSOANDAMENTO_SIZE];
-    static const uint16_t TEXTAREA14515_SIZE = 10;
+    static const uint16_t TEXTAREA14515_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textArea14515Buffer[TEXTAREA14515_SIZE];
     static const uint16_t TEXTAREATIMERCOUNTMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerCountMinutosBuffer[TEXTAREATIMERCOUNTMINUTOS_SIZE];
@@ -85,6 +87,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerCongelarDecorridoCountBuffer[TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE];
     static const uint16_t TEXTAREASPRESFHARDESPETODISPLAY_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpResfHardEspetoDisplayBuffer[TEXTAREASPRESFHARDESPETODISPLAY_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

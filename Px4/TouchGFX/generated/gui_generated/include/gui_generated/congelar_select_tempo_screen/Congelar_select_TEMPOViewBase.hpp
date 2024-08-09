@@ -12,6 +12,7 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class Congelar_select_TEMPOViewBase : public touchgfx::View<Congelar_select_TEMPOPresenter>
 {
@@ -48,12 +49,16 @@ protected:
     touchgfx::TextArea textAreaTempoZero;
     touchgfx::Button buttonAvancar;
     touchgfx::Button buttonVoltar;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREATIMERSPMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerSpMinutosBuffer[TEXTAREATIMERSPMINUTOS_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

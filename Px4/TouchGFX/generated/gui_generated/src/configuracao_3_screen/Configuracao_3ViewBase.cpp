@@ -159,6 +159,19 @@ Configuracao_3ViewBase::Configuracao_3ViewBase() :
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4136).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4135));
+
     add(__background);
     add(boxFundo);
     add(boxWithBorderBranco);
@@ -187,6 +200,8 @@ Configuracao_3ViewBase::Configuracao_3ViewBase() :
     add(flexButton1410248);
     add(flexButton1410291);
     add(numKeyboardContainer1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Configuracao_3ViewBase::setupScreen()
@@ -195,6 +210,10 @@ void Configuracao_3ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     Update(&textArea1410291, textArea1410291Buffer, 0.0, _FP_32BIT_, 1);
     Update(&textArea1410248, textArea1410248Buffer, 0.0, _FP_32BIT_, 1);
     Update(&textArea1410249, textArea1410249Buffer, 0.0, _FP_32BIT_, 1);
@@ -239,7 +258,15 @@ void Configuracao_3ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
 
 void Configuracao_3ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
 }
 
 void Configuracao_3ViewBase::tearDownScreen()

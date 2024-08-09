@@ -62,6 +62,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaReceita6Desc;
     touchgfx::TextAreaWithOneWildcard textAreaReceita7Desc;
     touchgfx::TextAreaWithOneWildcard textAreaReceita8Desc;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
     touchgfx::RadioButtonGroup<4> radioButtonGroup1;
 
     /*
@@ -75,6 +77,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaReceita7DescBuffer[TEXTAREARECEITA7DESC_SIZE];
     static const uint16_t TEXTAREARECEITA8DESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceita8DescBuffer[TEXTAREARECEITA8DESC_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

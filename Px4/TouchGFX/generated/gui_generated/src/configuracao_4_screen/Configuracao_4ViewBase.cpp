@@ -97,6 +97,19 @@ Configuracao_4ViewBase::Configuracao_4ViewBase() :
     textAreaLogicaEntradaDigital1.setWildcard(textAreaLogicaEntradaDigital1Buffer);
     textAreaLogicaEntradaDigital1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3741));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4148).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4147));
+
     add(__background);
     add(boxFundo);
     add(boxWithBorder1);
@@ -113,6 +126,8 @@ Configuracao_4ViewBase::Configuracao_4ViewBase() :
     add(buttonWithLabelLogicaEntradaDigital1Normal);
     add(textAreaLogicaEntradaDigital2);
     add(textAreaLogicaEntradaDigital1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Configuracao_4ViewBase::setupScreen()
@@ -121,6 +136,10 @@ void Configuracao_4ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);
     Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);
 
@@ -137,7 +156,15 @@ void Configuracao_4ViewBase::afterTransition()
 
 void Configuracao_4ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
 }
 
 void Configuracao_4ViewBase::tearDownScreen()

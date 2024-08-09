@@ -46,6 +46,19 @@ Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase() :
     buttonWithLabelFlagInicioDegelo.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelFlagInicioDegelo.setAction(buttonCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4132).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4131));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -54,10 +67,19 @@ Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase() :
     add(textArea1);
     add(buttonWithLabelTelaInicial);
     add(buttonWithLabelFlagInicioDegelo);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Degelo_ConfirmarViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 
@@ -72,7 +94,17 @@ void Degelo_ConfirmarViewBase::afterTransition()
 
 void Degelo_ConfirmarViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    	textArea1.setVisible(false);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    	textArea1.setVisible(true);
+    }
+    invalidate();
 }
 
 void Degelo_ConfirmarViewBase::tearDownScreen()

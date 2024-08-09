@@ -29,21 +29,51 @@ RESET_FABRICAViewBase::RESET_FABRICAViewBase()
     buttonWithLabelResetFabrica.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelResetFabrica.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4160).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4159));
+
     add(__background);
     add(boxFundo);
     add(textAreaLabel);
     add(buttonConfiguracao);
     add(buttonWithLabelResetFabrica);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void RESET_FABRICAViewBase::setupScreen()
 {
 
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+
 }
 
 void RESET_FABRICAViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
 }
 
 void RESET_FABRICAViewBase::tearDownScreen()

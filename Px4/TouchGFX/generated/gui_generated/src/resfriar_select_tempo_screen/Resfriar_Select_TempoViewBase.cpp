@@ -70,6 +70,19 @@ Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase() :
     buttonResfriar.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonResfriar.setAction(buttonCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4126).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4125));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -83,6 +96,8 @@ Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase() :
     add(textAreaTempoZero);
     add(buttonFlagCongelarTempo);
     add(buttonResfriar);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Resfriar_Select_TempoViewBase::setupScreen()
@@ -91,6 +106,10 @@ void Resfriar_Select_TempoViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);
     Update(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);
     
@@ -113,6 +132,13 @@ void Resfriar_Select_TempoViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;

@@ -46,6 +46,19 @@ ConservacaoViewBase::ConservacaoViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4116).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4115));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -55,6 +68,8 @@ ConservacaoViewBase::ConservacaoViewBase() :
     add(radioButtonStatusConservar1);
     add(buttonFlagConservarCongResf);
     add(buttonTelaInicial);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
     radioButtonGroup1.add(radioButtonStatusConservar0);
     radioButtonGroup1.add(radioButtonStatusConservar1);
     radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
@@ -62,6 +77,13 @@ ConservacaoViewBase::ConservacaoViewBase() :
 
 void ConservacaoViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 
@@ -76,7 +98,15 @@ void ConservacaoViewBase::afterTransition()
 
 void ConservacaoViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
 }
 
 void ConservacaoViewBase::tearDownScreen()

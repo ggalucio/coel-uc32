@@ -46,6 +46,19 @@ Alarme_externoViewBase::Alarme_externoViewBase()
     textAreaFlagAlarmeExternoAndamento.setLinespacing(0);
     textAreaFlagAlarmeExternoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3939));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4152).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4151));
+
     add(__background);
     add(boxFundo);
     add(animatedImageFlagAlarmeExternoAndamento);
@@ -53,10 +66,19 @@ Alarme_externoViewBase::Alarme_externoViewBase()
     add(textAreaHAW8235);
     add(textAreaTimerAlarmeExternoCount);
     add(textAreaFlagAlarmeExternoAndamento);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Alarme_externoViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 
@@ -71,7 +93,15 @@ void Alarme_externoViewBase::afterTransition()
 
 void Alarme_externoViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
 }
 
 void Alarme_externoViewBase::tearDownScreen()

@@ -65,6 +65,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea14515;
     touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceitaAtual;
     touchgfx::TextAreaWithOneWildcard textArea14512;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -81,6 +83,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTemperaturaReceitaAtualBuffer[TEXTAREATEMPERATURARECEITAATUAL_SIZE];
     static const uint16_t TEXTAREA14512_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea14512Buffer[TEXTAREA14512_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

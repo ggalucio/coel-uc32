@@ -12,6 +12,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <gui/containers/Solicitar_senha.hpp>
 #include <gui/containers/numKeyboardContainerPwd.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class Tela_InicialViewBase : public touchgfx::View<Tela_InicialPresenter>
 {
@@ -48,6 +49,14 @@ protected:
     touchgfx::Button buttonSolicitacaoSenah;
     Solicitar_senha solicitar_senha1;
     numKeyboardContainerPwd numKeyboardContainerPwd1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

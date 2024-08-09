@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class ConfiguracaoViewBase : public touchgfx::View<ConfiguracaoPresenter>
 {
@@ -59,6 +60,8 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpSondaCongelarCamara;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonCongelarSondaSp;
     numKeyboardContainer numKeyboardContainer1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -71,6 +74,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaSpSondaCongelarCamaraBuffer[TEXTAREASPSONDACONGELARCAMARA_SIZE];
     static const uint16_t TEXTAREACONGELARSONDASP_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaCongelarSondaSpBuffer[TEXTAREACONGELARSONDASP_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

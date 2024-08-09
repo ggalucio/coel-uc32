@@ -57,6 +57,19 @@ Receita_confirmViewBase::Receita_confirmViewBase() :
     receita_Info_resumo1.setVisible(false);
     receita_Info_resumo1.setFecharCallback(receita_Info_resumo1FecharCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4146).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4145));
+
     add(__background);
     add(boxFundo);
     add(textAreaTitle);
@@ -66,6 +79,8 @@ Receita_confirmViewBase::Receita_confirmViewBase() :
     add(buttonWithLabelRecitas1);
     add(textAreaFlagAlarmReceitaVazia);
     add(receita_Info_resumo1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Receita_confirmViewBase::setupScreen()
@@ -74,6 +89,10 @@ void Receita_confirmViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);
     VisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);
     countCycleBlink = 0;
@@ -104,6 +123,13 @@ void Receita_confirmViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;

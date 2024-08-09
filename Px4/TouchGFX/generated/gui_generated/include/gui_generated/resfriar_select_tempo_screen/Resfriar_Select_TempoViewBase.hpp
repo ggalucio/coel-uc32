@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class Resfriar_Select_TempoViewBase : public touchgfx::View<Resfriar_Select_TempoPresenter>
 {
@@ -50,12 +51,16 @@ protected:
     touchgfx::TextArea textAreaTempoZero;
     touchgfx::Button buttonFlagCongelarTempo;
     touchgfx::Button buttonResfriar;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREATIMERSPMINUTOSRESFRIAR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerSpMinutosResfriarBuffer[TEXTAREATIMERSPMINUTOSRESFRIAR_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
