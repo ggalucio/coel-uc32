@@ -396,7 +396,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);"
+              "Code": "W_HDW5000 = 0;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -821,7 +821,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);"
+              "Code": "W_HDW5000 = 1;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -1657,7 +1657,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n// Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);\r\n// Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "W_HDW5000 = 2; \r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n// Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);\r\n// Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -2432,7 +2432,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n"
+              "Code": "W_HDW5000 = 3;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n"
             }
           },
           {
@@ -2846,7 +2846,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
+              "Code": "W_HDW5000 = 4;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -3620,7 +3620,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, CONGELAR_SONDA_SP / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, SP_SONDA_CONGELAR_CAMARA / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, SP_Congelar_Tempo / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, Diferencial_Congelar_tempo / 10, _FP_32BIT_, 1);"
+              "Code": "W_HDW5000 = 6;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, CONGELAR_SONDA_SP / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, SP_SONDA_CONGELAR_CAMARA / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, SP_Congelar_Tempo / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, Diferencial_Congelar_tempo / 10, _FP_32BIT_, 1);"
             }
           },
           {
@@ -4068,7 +4068,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nif (Status_Conservar == 1)\r\n\tUpdate(&radioButtonStatusConservar0, true);\r\n\r\nif (Status_Conservar == 2)\r\n\tUpdate(&radioButtonStatusConservar1, true);"
+              "Code": "W_HDW5000 = 7;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nif (Status_Conservar == 1)\r\n\tUpdate(&radioButtonStatusConservar0, true);\r\n\r\nif (Status_Conservar == 2)\r\n\tUpdate(&radioButtonStatusConservar1, true);"
             }
           },
           {
@@ -4350,6 +4350,26 @@
             "Height": 196,
             "Visible": true,
             "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 44,
+              "Green": 182,
+              "Blue": 115
+            },
+            "Alpha": 255,
+            "Name": "boxFlagProcessoAndamento",
+            "X": 5,
+            "Y": 64,
+            "Width": 392,
+            "Height": 196,
+            "Visible": false,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -4758,7 +4778,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "W_HDW5000 = 8;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -4781,7 +4801,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nVisibilityBox(&boxFlagProcessoAndamento, flag_Conservar_ANDAMENTO);\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (flag_Conservar_ANDAMENTO)\r\n\t\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n\telse\r\n\t\tUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"Finalizado!\", 20);\r\n}\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -4809,17 +4829,15 @@
             }
           },
           {
-            "InteractionName": "CancelarProcesso",
-            "HasCompletedTrigger": false,
+            "InteractionName": "CancelarProcessoSim",
+            "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerCustom",
               "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
               "TriggerComponent": "cANCELAR_PROCESSO1"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Conservacao"
+              "Type": "ActionExecuteCode"
             }
           },
           {
@@ -4833,6 +4851,19 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "ContainerVisibility(&cANCELAR_PROCESSO1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "CancelarProcessoSim"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Conservacao"
             }
           }
         ],
@@ -5387,7 +5418,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "W_HDW5000 = 9;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\n//Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n//Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -5696,7 +5727,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nif (Status_tecla_Congela == 3)\r\n\tUpdate(&radioButtonStatusTeclaCongela0, true);\r\n\r\nif (Status_tecla_Congela == 4)\r\n\tUpdate(&radioButtonStatusTeclaCongela1, true);\r\n\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);"
+              "Code": "W_HDW5000 = 10;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nif (Status_tecla_Congela == 3)\r\n\tUpdate(&radioButtonStatusTeclaCongela0, true);\r\n\r\nif (Status_tecla_Congela == 4)\r\n\tUpdate(&radioButtonStatusTeclaCongela1, true);\r\n\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);"
             }
           },
           {
@@ -6580,7 +6611,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, SP_Resf_Hard_Espeto_display / 10, _DOUBLE_, 1);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, Tempo_estimado_Resfriar_Sonda, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n"
+              "Code": "W_HDW5000 = 11;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, SP_Resf_Hard_Espeto_display / 10, _DOUBLE_, 1);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, Tempo_estimado_Resfriar_Sonda, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n"
             }
           },
           {
@@ -7041,7 +7072,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);\r\n\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;"
+              "Code": "W_HDW5000 = 12;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\nUpdate(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);\r\n\r\nVisibilityTextArea(&textAreaTempoZero, false);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -7917,7 +7948,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n\r\nUpdate(&toggleButtonFlagConservarSN, flag_Conservar_S_N);\r\nVisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);\r\n\r\n\r\nSetRangeLineProgress(&lineProgressTimerCongelar, (int)xbar_zero, (int)Timer_Congelar_DECORRIDO_SP);"
+              "Code": "W_HDW5000 = 13;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n\r\nUpdate(&toggleButtonFlagConservarSN, flag_Conservar_S_N);\r\nVisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);\r\n\r\n\r\nSetRangeLineProgress(&lineProgressTimerCongelar, (int)xbar_zero, (int)Timer_Congelar_DECORRIDO_SP);"
             }
           },
           {
@@ -8624,7 +8655,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textArea14513, textArea14513Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaTimerDegeloCountMinutos, textAreaTimerDegeloCountMinutosBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
+              "Code": "W_HDW5000 = 14;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textArea14513, textArea14513Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0, _DOUBLE_, 1);\r\nUpdate(&textAreaTimerDegeloCountMinutos, textAreaTimerDegeloCountMinutosBuffer, 0, _DOUBLE_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;"
             }
           },
           {
@@ -8947,7 +8978,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
+              "Code": "W_HDW5000 = 15;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -10023,7 +10054,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, SP_Conservar_Congelar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, Diferencial_Conservar_COngelar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, SP_Conservar_Resfriar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, Diferencial_Conservar_Resfriar / 10, _FP_32BIT_, 1);\r\nReadWriteModbus485(&textArea1410272, textArea1410272Buffer, \"10272\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410275, textArea1410275Buffer, \"10275\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410270, textArea1410270Buffer, \"10270\", 2, _FP_32BIT_, ONCE);"
+              "Code": "W_HDW5000 = 17;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, SP_Conservar_Congelar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, Diferencial_Conservar_COngelar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, SP_Conservar_Resfriar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, Diferencial_Conservar_Resfriar / 10, _FP_32BIT_, 1);\r\nReadWriteModbus485(&textArea1410272, textArea1410272Buffer, \"10272\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410275, textArea1410275Buffer, \"10275\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410270, textArea1410270Buffer, \"10270\", 2, _FP_32BIT_, ONCE);"
             }
           },
           {
@@ -11132,7 +11163,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410291, textArea1410291Buffer, \"10291\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410248, textArea1410248Buffer, \"10248\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410249, textArea1410249Buffer, \"10249\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410250, textArea1410250Buffer, \"10250\", 1, _FP_32BIT_, ONCE);\r\nUpdate(&toggleButtonHSW4, HSW4);\r\nUpdate(&textAreaSenhaGravada, textAreaSenhaGravadaBuffer, Senha_Gravada, _INT_, 0);"
+              "Code": "W_HDW5000 = 18;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410291, textArea1410291Buffer, \"10291\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410248, textArea1410248Buffer, \"10248\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410249, textArea1410249Buffer, \"10249\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410250, textArea1410250Buffer, \"10250\", 1, _FP_32BIT_, ONCE);\r\nUpdate(&toggleButtonHSW4, HSW4);\r\nUpdate(&textAreaSenhaGravada, textAreaSenhaGravadaBuffer, Senha_Gravada, _INT_, 0);"
             }
           },
           {
@@ -11915,7 +11946,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 1){\r\n\tUpdate(&radioButtonMuneroReceita1, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 2){\r\n\tUpdate(&radioButtonMuneroReceita2, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 3){\r\n\tUpdate(&radioButtonMuneroReceita3, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 4){\r\n\tUpdate(&radioButtonMuneroReceita4, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n"
+              "Code": "W_HDW5000 = 19;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(0);\r\nReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);\r\n\r\nSelectJob(1);\r\nReadJobName(&textAreaReceita2Desc, textAreaReceita2DescBuffer, 20);\r\n\r\nSelectJob(2);\r\nReadJobName(&textAreaReceita3Desc, textAreaReceita3DescBuffer, 20);\r\n\r\nSelectJob(3);\r\nReadJobName(&textAreaReceita4Desc, textAreaReceita4DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 1){\r\n\tUpdate(&radioButtonMuneroReceita1, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 2){\r\n\tUpdate(&radioButtonMuneroReceita2, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 3){\r\n\tUpdate(&radioButtonMuneroReceita3, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 4){\r\n\tUpdate(&radioButtonMuneroReceita4, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n"
             }
           },
           {
@@ -12630,7 +12661,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 5){\r\n\tUpdate(&radioButtonMuneroReceita5, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 6){\r\n\tUpdate(&radioButtonMuneroReceita6, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 7){\r\n\tUpdate(&radioButtonMuneroReceita7, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 8){\r\n\tUpdate(&radioButtonMuneroReceita8, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
+              "Code": "W_HDW5000 = 20;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(4);\r\nReadJobName(&textAreaReceita5Desc, textAreaReceita5DescBuffer, 20);\r\n\r\nSelectJob(5);\r\nReadJobName(&textAreaReceita6Desc, textAreaReceita6DescBuffer, 20);\r\n\r\nSelectJob(6);\r\nReadJobName(&textAreaReceita7Desc, textAreaReceita7DescBuffer, 20);\r\n\r\nSelectJob(7);\r\nReadJobName(&textAreaReceita8Desc, textAreaReceita8DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 5){\r\n\tUpdate(&radioButtonMuneroReceita5, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 6){\r\n\tUpdate(&radioButtonMuneroReceita6, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 7){\r\n\tUpdate(&radioButtonMuneroReceita7, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 8){\r\n\tUpdate(&radioButtonMuneroReceita8, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
             }
           },
           {
@@ -13341,7 +13372,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 9){\r\n\tUpdate(&radioButtonMuneroReceita9, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 10){\r\n\tUpdate(&radioButtonMuneroReceita10, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 11){\r\n\tUpdate(&radioButtonMuneroReceita11, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 12){\r\n\tUpdate(&radioButtonMuneroReceita12, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
+              "Code": "W_HDW5000 = 21;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nSelectJob(8);\r\nReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);\r\n\r\nSelectJob(9);\r\nReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);\r\n\r\nSelectJob(10);\r\nReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);\r\n\r\nSelectJob(11);\r\nReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);\r\n\r\n\r\nif (selectedRecipeItem == 9){\r\n\tUpdate(&radioButtonMuneroReceita9, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 10){\r\n\tUpdate(&radioButtonMuneroReceita10, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 11){\r\n\tUpdate(&radioButtonMuneroReceita11, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}\r\n\r\nif (selectedRecipeItem == 12){\r\n\tUpdate(&radioButtonMuneroReceita12, true);\r\n\tSelectJob(selectedRecipeItem - 1);\r\n}"
             }
           },
           {
@@ -13978,9 +14009,9 @@
                 "Alpha": 255,
                 "AutoSize": true,
                 "LineSpacing": 0,
-                "Name": "textArea1_2_1_1",
+                "Name": "textArea1_2_1_C",
                 "X": 104,
-                "Y": 12,
+                "Y": 10,
                 "Width": 20,
                 "Height": 19,
                 "Visible": true,
@@ -14844,7 +14875,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);\r\nVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
+              "Code": "W_HDW5000 = 34;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);\r\nVisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);\r\ncountCycleBlink = 0;\r\nisZeroValue = false;"
             }
           },
           {
@@ -15412,7 +15443,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);"
+              "Code": "W_HDW5000 = 36;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);"
             }
           },
           {
@@ -15737,7 +15768,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
+              "Code": "W_HDW5000 = 37;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -16000,7 +16031,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
+              "Code": "W_HDW5000 = 38;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -16741,7 +16772,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, timer_alarme_externo_SP_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);\r\nUpdate(&toggleButtonFlagHabDesabTeclaRedial, flag_hab_desab_Tecla_REDIAL);\r\nReadWriteModbus485(&textArea1410299, textArea1410299Buffer, \"10299\", 2, _FP_32BIT_, ONCE);\r\n\r\n"
+              "Code": "W_HDW5000 = 39;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, timer_alarme_externo_SP_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);\r\nUpdate(&toggleButtonFlagHabDesabTeclaRedial, flag_hab_desab_Tecla_REDIAL);\r\nReadWriteModbus485(&textArea1410299, textArea1410299Buffer, \"10299\", 2, _FP_32BIT_, ONCE);\r\n\r\n"
             }
           },
           {
@@ -17679,7 +17710,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
+              "Code": "W_HDW5000 = 40;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -18367,7 +18398,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410279, textArea1410279Buffer, \"10279\", 2, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410295, textArea1410295Buffer, \"10295\", 2, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410294, textArea1410294Buffer, \"10294\", 0, _INT_, ONCE);\r\n\r\nUpdate(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);\r\nUpdate(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);"
+              "Code": "W_HDW5000 = 42;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410279, textArea1410279Buffer, \"10279\", 2, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410295, textArea1410295Buffer, \"10295\", 2, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410294, textArea1410294Buffer, \"10294\", 0, _INT_, ONCE);\r\n\r\nUpdate(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);\r\nUpdate(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);"
             }
           },
           {
@@ -18758,7 +18789,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
+              "Code": "W_HDW5000 = 43;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
             }
           },
           {
@@ -18945,30 +18976,6 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId4098",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 60,
-              "Green": 255,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textAreaStatusPorta_1",
-            "X": 42,
-            "Y": 86,
-            "Width": 20,
-            "Height": 19,
-            "Visible": true,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId4100",
             "TextRotation": "0",
             "Color": {
@@ -19027,34 +19034,6 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId4100",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "status_porta1",
-            "X": 62,
-            "Y": 95,
-            "Width": 302,
-            "Height": 147,
-            "Visible": true,
-            "LockPosition": false,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
             "TextId": "SingleUseId4101",
             "TextRotation": "0",
             "Color": {
@@ -19092,7 +19071,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&status_porta, status_portaBuffer, \"553\", 0, _INT_, REPEAT);"
+              "Code": "W_HDW5000 = 44;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&status_porta, status_portaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -19115,7 +19094,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "\r\nif ((touchgfx::Unicode::atoi(status_portaBuffer)) == 1){\r\n\tbuttonStartHigiene.setVisible(true);\r\n\ttextAreaStatusPortaFechada.setVisible(false);\r\n\ttextAreaStatusPortaAberta.setVisible(true); \r\n}else{\r\n\tbuttonStartHigiene.setVisible(false);\r\n\ttextAreaStatusPortaFechada.setVisible(true);\r\n\ttextAreaStatusPortaAberta.setVisible(false); \r\n}\r\ninvalidate();"
+              "Code": "\r\nif ((touchgfx::Unicode::atoi(status_portaBuffer)) == 1){\r\n\tbuttonStartHigiene.setVisible(true);\r\n\ttextAreaStatusPortaFechada.setVisible(false);\r\n\ttextAreaStatusPortaAberta.setVisible(true); \r\n}else{\r\n\tbuttonStartHigiene.setVisible(false);\r\n\ttextAreaStatusPortaFechada.setVisible(true);\r\n\ttextAreaStatusPortaAberta.setVisible(false); \r\n}\r\ninvalidate();\r\n"
             }
           },
           {
@@ -19493,7 +19472,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_);\r\nWriteModbus485(\"10242\", 1);\r\n\r\nUpdateModbus485(\"645\", 1, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 11, _INT_);\r\nWriteModbus485(\"10322\", 1);"
+              "Code": "W_HDW5000 = 45;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_);\r\nWriteModbus485(\"10242\", 1);\r\n\r\nUpdateModbus485(\"645\", 1, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 11, _INT_);\r\nWriteModbus485(\"10322\", 1);"
             }
           },
           {
@@ -20417,7 +20396,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, SP_Resf_Espeto_F1 / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, SP_Resf_Interno_F1 / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, SP_Resfriar_Sonda / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, SP_SONDA_RESF_CAMARA / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, Diferencial_Resfriar_Tempo / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, Porc_Resf_preset_tempo_F1F2, _FP_32BIT_, 0);"
+              "Code": "W_HDW5000 = 47;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, SP_Resf_Espeto_F1 / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, SP_Resf_Interno_F1 / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, SP_Resfriar_Sonda / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, SP_SONDA_RESF_CAMARA / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, Diferencial_Resfriar_Tempo / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, Porc_Resf_preset_tempo_F1F2, _FP_32BIT_, 0);"
             }
           },
           {
@@ -20718,7 +20697,8 @@
               "Type": "TriggerScreenTransitionBegins"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "W_HDW5000 = 999;"
             }
           },
           {
@@ -29611,10 +29591,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId3961",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId3962",
         "IsResource": false
       },
@@ -29935,15 +29911,7 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4098",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId4099",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId4100",
         "IsResource": false
       },
       {
@@ -30200,6 +30168,22 @@
       },
       {
         "TextEntryId": "SingleUseId4164",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4165",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4098",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3961",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4100",
         "IsResource": false
       }
     ],

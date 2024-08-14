@@ -8,7 +8,6 @@
 
 Conservar_CongelarViewBase::Conservar_CongelarViewBase() :
     buttonCallback(this, &Conservar_CongelarViewBase::buttonCallbackHandler),
-    cANCELAR_PROCESSO1CancelarProcessoCallback(this, &Conservar_CongelarViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler),
     cANCELAR_PROCESSO1NaoCallback(this, &Conservar_CongelarViewBase::cANCELAR_PROCESSO1NaoCallbackHandler)
 {
 
@@ -37,6 +36,10 @@ Conservar_CongelarViewBase::Conservar_CongelarViewBase() :
 
     boxProcessOff.setPosition(5, 64, 392, 196);
     boxProcessOff.setColor(touchgfx::Color::getColorFromRGB(241, 241, 242));
+
+    boxFlagProcessoAndamento.setPosition(5, 64, 392, 196);
+    boxFlagProcessoAndamento.setVisible(false);
+    boxFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(44, 182, 115));
 
     boxWithBorderBox3.setPosition(66, 133, 324, 57);
     boxWithBorderBox3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -111,7 +114,6 @@ Conservar_CongelarViewBase::Conservar_CongelarViewBase() :
 
     cANCELAR_PROCESSO1.setXY(0, 0);
     cANCELAR_PROCESSO1.setVisible(false);
-    cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
     cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
     imageStatusPorta.setXY(200, 0);
@@ -135,6 +137,7 @@ Conservar_CongelarViewBase::Conservar_CongelarViewBase() :
     add(imageVazio_1);
     add(imageLogo);
     add(boxProcessOff);
+    add(boxFlagProcessoAndamento);
     add(boxWithBorderBox3);
     add(boxWithBorderBox1);
     add(boxFundoAzul2);
@@ -160,6 +163,8 @@ void Conservar_CongelarViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    W_HDW5000 = 8;
+    
     Clear();
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
@@ -167,10 +172,6 @@ void Conservar_CongelarViewBase::setupScreen()
     ReadWriteModbus485(&textArea14515, textArea14515Buffer, "515", 1, _DOUBLE_, REPEAT);
     ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _DOUBLE_, REPEAT);
     ReadWriteModbus485(&textArea1410242, textArea1410242Buffer, "10242", 1, _DOUBLE_, REPEAT);
-    
-    //Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);
-    //Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
-    //Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);
     
     Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
     countCycleBlink = 0;
@@ -184,14 +185,6 @@ void Conservar_CongelarViewBase::afterTransition()
     //When screen transition ends execute C++ code
     //Execute C++ code
     SoundBuzzerOn(25);
-}
-
-void Conservar_CongelarViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
-{
-    //CancelarProcesso
-    //When cANCELAR_PROCESSO1 cancelarProcesso change screen to Conservacao
-    //Go to Conservacao with no screen transition
-    application().gotoConservacaoScreenNoTransition();
 }
 
 void Conservar_CongelarViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
@@ -215,12 +208,16 @@ void Conservar_CongelarViewBase::handleTickEvent()
     }
     invalidate();
     
+    VisibilityBox(&boxFlagProcessoAndamento, flag_Conservar_ANDAMENTO);
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;
-    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    	
+    	if (flag_Conservar_ANDAMENTO)
+    		VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    	else
+    		Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "Finalizado!", 20);
     }
-    
     countCycleBlink += 16;
 }
 

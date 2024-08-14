@@ -32,11 +32,6 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     textAreaStatusPortaFechada.setLinespacing(0);
     textAreaStatusPortaFechada.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3961));
 
-    textAreaStatusPorta_1.setXY(42, 86);
-    textAreaStatusPorta_1.setColor(touchgfx::Color::getColorFromRGB(60, 255, 0));
-    textAreaStatusPorta_1.setLinespacing(0);
-    textAreaStatusPorta_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
-
     textAreaStatusPortaAberta.setXY(51, 90);
     textAreaStatusPortaAberta.setVisible(false);
     textAreaStatusPortaAberta.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
@@ -52,11 +47,6 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
-    status_porta1.setXY(62, 95);
-    status_porta1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    status_porta1.setLinespacing(0);
-    status_porta1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
-
     status_porta.setXY(5, 64);
     status_porta.setVisible(false);
     status_porta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -71,11 +61,9 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     add(boxFundoAzul);
     add(textAreaTitle);
     add(textAreaStatusPortaFechada);
-    add(textAreaStatusPorta_1);
     add(textAreaStatusPortaAberta);
     add(buttonStartHigiene);
     add(buttonTelaInicial);
-    add(status_porta1);
     add(status_porta);
 }
 
@@ -85,6 +73,8 @@ void HIGIENE_CONFIRMARViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    W_HDW5000 = 44;
+    
     Clear();
     
     ReadWriteModbus485(&status_porta, status_portaBuffer, "553", 0, _INT_, REPEAT);

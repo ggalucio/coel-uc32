@@ -45,6 +45,7 @@ protected:
     touchgfx::Image imageVazio_1;
     touchgfx::Image imageLogo;
     touchgfx::Box boxProcessOff;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox1;
     touchgfx::Box boxFundoAzul2;
@@ -83,14 +84,12 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Conservar_CongelarViewBase, const touchgfx::AbstractButton&> buttonCallback;
-    touchgfx::Callback<Conservar_CongelarViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
     touchgfx::Callback<Conservar_CongelarViewBase> cANCELAR_PROCESSO1NaoCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
-    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
     void cANCELAR_PROCESSO1NaoCallbackHandler();
 
 };

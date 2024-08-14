@@ -107,11 +107,11 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     box3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 0));
     containerTemperatura.add(box3);
 
-    textArea1_2_1_1.setXY(104, 12);
-    textArea1_2_1_1.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
-    textArea1_2_1_1.setLinespacing(0);
-    textArea1_2_1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
-    containerTemperatura.add(textArea1_2_1_1);
+    textArea1_2_1_C.setXY(104, 10);
+    textArea1_2_1_C.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
+    textArea1_2_1_C.setLinespacing(0);
+    textArea1_2_1_C.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
+    containerTemperatura.add(textArea1_2_1_C);
 
     textAreaTemperaturaReceita.setPosition(1, 4, 91, 34);
     textAreaTemperaturaReceita.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));

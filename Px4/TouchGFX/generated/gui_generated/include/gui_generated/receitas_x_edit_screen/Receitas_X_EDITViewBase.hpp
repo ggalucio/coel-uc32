@@ -64,7 +64,7 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonReceitaXDesc;
     touchgfx::Container containerTemperatura;
     touchgfx::Box box3;
-    touchgfx::TextArea textArea1_2_1_1;
+    touchgfx::TextArea textArea1_2_1_C;
     touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceita;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTemperaturaReceita;
     touchgfx::Container containerTempo;

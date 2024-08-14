@@ -40,11 +40,9 @@ protected:
     touchgfx::Box boxFundoAzul;
     touchgfx::TextArea textAreaTitle;
     touchgfx::TextArea textAreaStatusPortaFechada;
-    touchgfx::TextArea textAreaStatusPorta_1;
     touchgfx::TextArea textAreaStatusPortaAberta;
     touchgfx::Button buttonStartHigiene;
     touchgfx::Button buttonTelaInicial;
-    touchgfx::TextArea status_porta1;
     touchgfx::TextAreaWithOneWildcard status_porta;
 
     /*
