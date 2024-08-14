@@ -48,6 +48,9 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     status_porta.setVisible(false);
     status_porta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     status_porta.setLinespacing(0);
+    status_portaBuffer[0] = 0;
+    status_porta.setWildcard(status_portaBuffer);
+    status_porta.resizeToCurrentText();
     status_porta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4101));
 
     add(__background);

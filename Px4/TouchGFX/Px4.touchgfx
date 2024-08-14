@@ -17500,7 +17500,7 @@
             "Width": 13,
             "Height": 25,
             "Visible": false,
-            "LockPosition": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
