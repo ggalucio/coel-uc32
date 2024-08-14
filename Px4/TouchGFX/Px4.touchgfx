@@ -17491,7 +17491,6 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId4102",
               "UseBuffer": true,
               "BufferSize": 10
             },
@@ -28243,10 +28242,6 @@
       },
       {
         "TextEntryId": "SingleUseId4101",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId4102",
         "IsResource": false
       }
     ],
