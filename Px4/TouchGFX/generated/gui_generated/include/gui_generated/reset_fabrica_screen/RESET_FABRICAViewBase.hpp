@@ -26,6 +26,8 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void writeModbus(char const* address, double value);
+    virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
@@ -50,6 +52,16 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<RESET_FABRICAViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

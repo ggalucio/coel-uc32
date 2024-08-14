@@ -12,6 +12,8 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/containers/progress_indicators/LineProgress.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <gui/containers/CANCELAR_PROCESSO.hpp>
@@ -28,6 +30,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -53,6 +56,8 @@ protected:
     touchgfx::TextArea textAreaTitle;
     touchgfx::Button buttonCancelarProcesso;
     touchgfx::ToggleButton toggleButtonFlagConservarSN;
+    touchgfx::LineProgress lineProgressTimerCongelar;
+    touchgfx::PainterRGB565 lineProgressTimerCongelarPainter;
     touchgfx::Image imageSoft;
     touchgfx::Image imageHard;
     touchgfx::Image image1;
@@ -105,6 +110,11 @@ private:
     void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
     void cANCELAR_PROCESSO1NaoCallbackHandler();
 
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 7200;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // RESFRIAR_TEMPOVIEWBASE_HPP

@@ -253,13 +253,13 @@ void Configuracao_2ViewBase::setupScreen()
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);
-    Update(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);
-    Update(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);
+    Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, SP_Conservar_Congelar / 10, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, Diferencial_Conservar_COngelar / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, SP_Conservar_Resfriar / 10, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, Diferencial_Conservar_Resfriar / 10, _FP_32BIT_, 1);
+    ReadWriteModbus485(&textArea1410272, textArea1410272Buffer, "10272", 1, _FP_32BIT_, ONCE);
+    ReadWriteModbus485(&textArea1410275, textArea1410275Buffer, "10275", 1, _FP_32BIT_, ONCE);
+    ReadWriteModbus485(&textArea1410270, textArea1410270Buffer, "10270", 2, _FP_32BIT_, ONCE);
 
 }
 
@@ -315,6 +315,11 @@ void Configuracao_2ViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    SP_Conservar_Congelar = 10 * GetNumberTextArea(textAreaSpConservarCongelarBuffer);
+    Diferencial_Conservar_COngelar = 10 * GetNumberTextArea(textAreaDiferencialConservarCongelarBuffer);
+    SP_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaSpConservarResfriarBuffer);
+    Diferencial_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaDiferencialConservarResfriarBuffer);
+    
     Clear();
     ContainerClear(&numKeyboardContainer1);
 }
@@ -351,7 +356,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410270
         //When flexButton1410270 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -365,7 +370,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410275
         //When flexButton1410275 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -379,7 +384,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410272
         //When flexButton1410272 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

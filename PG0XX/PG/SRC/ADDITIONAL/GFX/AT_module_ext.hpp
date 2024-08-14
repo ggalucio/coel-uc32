@@ -31,6 +31,7 @@ void VisibilityDigitalClock(touchgfx::DigitalClock* digitalClock, bool visibilit
 void Decrease(touchgfx::LineProgress* lineProgress);
 void Increase(touchgfx::LineProgress* lineProgress);
 void Update(touchgfx::LineProgress* lineProgress, int value);
+void SetRangeLineProgress(touchgfx::LineProgress* lineProgress, int minVal, int maxVal);
 void RefreshLineProgress(touchgfx::LineProgress* lineProgress);
 void VisibilityLineProgress(touchgfx::LineProgress* lineProgress, bool visibility);
 

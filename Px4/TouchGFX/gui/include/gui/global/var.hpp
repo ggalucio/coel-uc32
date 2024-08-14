@@ -117,5 +117,13 @@ extern double timer_higiene_ON;
 extern bool Timer_Degelo_OUT;
 extern bool Timer_alarme_externo_OUT;
 extern bool timer_higiene_OUT;
+extern bool HSW4;
+extern bool reset_fabrica;
+extern bool cancelar_processo_SIM;
+extern double xbar_zero;
+extern double W_HDW5000;
+extern bool flag_Conservar_ANDAMENTO;
+extern double Status_Conservar;
+extern double Receita_Cong_Resf_ATUAL;
 
 #endif /* GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_ */

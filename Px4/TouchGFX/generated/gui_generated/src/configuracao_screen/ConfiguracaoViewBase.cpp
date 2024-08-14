@@ -67,6 +67,7 @@ ConfiguracaoViewBase::ConfiguracaoViewBase() :
 
     buttonResetFabrica.setXY(356, 226);
     buttonResetFabrica.setBitmaps(touchgfx::Bitmap(BITMAP_RESET_ID), touchgfx::Bitmap(BITMAP_RESET_ID));
+    buttonResetFabrica.setAction(buttonCallback);
 
     textAreaDiferencialCongelarTempo.setPosition(26, 159, 78, 29);
     textAreaDiferencialCongelarTempo.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -180,10 +181,10 @@ void ConfiguracaoViewBase::setupScreen()
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _FP_32BIT_, 1);
-    Update(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _FP_32BIT_, 1);
-    Update(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _FP_32BIT_, 1);
+    Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, CONGELAR_SONDA_SP / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, SP_SONDA_CONGELAR_CAMARA / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, SP_Congelar_Tempo / 10, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, Diferencial_Congelar_tempo / 10, _FP_32BIT_, 1);
 
 }
 
@@ -193,7 +194,7 @@ void ConfiguracaoViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    SoundBuzzerOn(25);
+    //SoundBuzzerOn(25);
     ContainerVisibility(&numKeyboardContainer1, false);
 }
 
@@ -240,6 +241,11 @@ void ConfiguracaoViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    CONGELAR_SONDA_SP = 10 * GetNumberTextArea(textAreaCongelarSondaSpBuffer);
+    SP_SONDA_CONGELAR_CAMARA = 10 * GetNumberTextArea(textAreaSpSondaCongelarCamaraBuffer);
+    SP_Congelar_Tempo = 10 * GetNumberTextArea(textAreaSpCongelarTempoBuffer);
+    Diferencial_Congelar_tempo = 10 * GetNumberTextArea(textAreaDiferencialCongelarTempoBuffer);
+    
     Clear();
     ContainerClear(&numKeyboardContainer1);
 }
@@ -259,6 +265,13 @@ void ConfiguracaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&
         //When buttonConfiguracao2 clicked change screen to Configuracao_2
         //Go to Configuracao_2 with no screen transition
         application().gotoConfiguracao_2ScreenNoTransition();
+    }
+    else if (&src == &buttonResetFabrica)
+    {
+        //ResetFabrica
+        //When buttonResetFabrica clicked change screen to RESET_FABRICA
+        //Go to RESET_FABRICA with no screen transition
+        application().gotoRESET_FABRICAScreenNoTransition();
     }
 }
 

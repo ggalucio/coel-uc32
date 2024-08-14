@@ -29,6 +29,7 @@ public:
     virtual void tearDownScreen();
     virtual void Conservar_Congelar();
     virtual void Conservar_Resfriar();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:

@@ -83,12 +83,12 @@ Configuracao_3ViewBase::Configuracao_3ViewBase() :
     toggleButtonHSW4.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFFS_ID), touchgfx::Bitmap(BITMAP_SETONS_ID));
     toggleButtonHSW4.setAction(buttonCallback);
 
-    textArea1410275.setPosition(66, 192, 78, 29);
-    textArea1410275.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textArea1410275.setLinespacing(0);
-    Unicode::snprintf(textArea1410275Buffer, TEXTAREA1410275_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3730).getText());
-    textArea1410275.setWildcard(textArea1410275Buffer);
-    textArea1410275.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3729));
+    textAreaSenhaGravada.setPosition(66, 192, 78, 29);
+    textAreaSenhaGravada.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaSenhaGravada.setLinespacing(0);
+    Unicode::snprintf(textAreaSenhaGravadaBuffer, TEXTAREASENHAGRAVADA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3730).getText());
+    textAreaSenhaGravada.setWildcard(textAreaSenhaGravadaBuffer);
+    textAreaSenhaGravada.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3729));
 
     textArea1410250.setPosition(66, 117, 78, 29);
     textArea1410250.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -189,7 +189,7 @@ Configuracao_3ViewBase::Configuracao_3ViewBase() :
     add(buttonConfiguracao4);
     add(buttonConfiguracao2);
     add(toggleButtonHSW4);
-    add(textArea1410275);
+    add(textAreaSenhaGravada);
     add(textArea1410250);
     add(textArea1410249);
     add(textArea1410248);
@@ -214,11 +214,12 @@ void Configuracao_3ViewBase::setupScreen()
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    Update(&textArea1410291, textArea1410291Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410248, textArea1410248Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410249, textArea1410249Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410250, textArea1410250Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);
+    ReadWriteModbus485(&textArea1410291, textArea1410291Buffer, "10291", 1, _FP_32BIT_, ONCE);
+    ReadWriteModbus485(&textArea1410248, textArea1410248Buffer, "10248", 1, _FP_32BIT_, ONCE);
+    ReadWriteModbus485(&textArea1410249, textArea1410249Buffer, "10249", 1, _FP_32BIT_, ONCE);
+    ReadWriteModbus485(&textArea1410250, textArea1410250Buffer, "10250", 1, _FP_32BIT_, ONCE);
+    Update(&toggleButtonHSW4, HSW4);
+    Update(&textAreaSenhaGravada, textAreaSenhaGravadaBuffer, Senha_Gravada, _INT_, 0);
 
 }
 
@@ -274,6 +275,8 @@ void Configuracao_3ViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    Senha_Gravada = GetNumberTextArea(textAreaSenhaGravadaBuffer);
+    
     Clear();
     ContainerClear(&numKeyboardContainer1);
 }
@@ -306,6 +309,8 @@ void Configuracao_3ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //HSW4
         //When toggleButtonHSW4 clicked execute C++ code
         //Execute C++ code
+        HSW4 = toggleButtonHSW4.getState();
+        
         SoundBuzzerOn(25);
     }
 }
@@ -314,15 +319,15 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
 {
     if (&src == &flexButton1410275)
     {
-        //ADDR1410275
+        //SenhaGravada
         //When flexButton1410275 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, 0.0, 65535.0, _INT_, 0, 0);
+        AddNumKeyboardReference(&textAreaSenhaGravada, textAreaSenhaGravadaBuffer, 0.0, 65535.0, _INT_, 0, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
         //LaunchADDR1410275Keyboard
-        //When ADDR1410275 completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //When SenhaGravada completed call LaunchNumericalKeyboard on numKeyboardContainer1
         //Call LaunchNumericalKeyboard
         numKeyboardContainer1.LaunchNumericalKeyboard();
     }
@@ -331,7 +336,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410250
         //When flexButton1410250 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -345,7 +350,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410249
         //When flexButton1410249 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -359,7 +364,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410248
         //When flexButton1410248 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -373,7 +378,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410291
         //When flexButton1410291 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

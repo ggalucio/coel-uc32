@@ -56,7 +56,7 @@ protected:
     touchgfx::Button buttonConfiguracao4;
     touchgfx::Button buttonConfiguracao2;
     touchgfx::ToggleButton toggleButtonHSW4;
-    touchgfx::TextAreaWithOneWildcard textArea1410275;
+    touchgfx::TextAreaWithOneWildcard textAreaSenhaGravada;
     touchgfx::TextAreaWithOneWildcard textArea1410250;
     touchgfx::TextAreaWithOneWildcard textArea1410249;
     touchgfx::TextAreaWithOneWildcard textArea1410248;
@@ -73,8 +73,8 @@ protected:
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREA1410275_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
+    static const uint16_t TEXTAREASENHAGRAVADA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaSenhaGravadaBuffer[TEXTAREASENHAGRAVADA_SIZE];
     static const uint16_t TEXTAREA1410250_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410250Buffer[TEXTAREA1410250_SIZE];
     static const uint16_t TEXTAREA1410249_SIZE = 10;

@@ -5,6 +5,8 @@
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
+#include <AT_module.hpp>
+
 
 HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonCallback(this, &HIGIENE_CONFIRMARViewBase::buttonCallbackHandler)
@@ -25,9 +27,15 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     textAreaTitle.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3960));
 
     textAreaStatusPortaFechada.setXY(42, 110);
+    textAreaStatusPortaFechada.setVisible(false);
     textAreaStatusPortaFechada.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     textAreaStatusPortaFechada.setLinespacing(0);
     textAreaStatusPortaFechada.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3961));
+
+    textAreaStatusPorta_1.setXY(42, 86);
+    textAreaStatusPorta_1.setColor(touchgfx::Color::getColorFromRGB(60, 255, 0));
+    textAreaStatusPorta_1.setLinespacing(0);
+    textAreaStatusPorta_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
 
     textAreaStatusPortaAberta.setXY(51, 90);
     textAreaStatusPortaAberta.setVisible(false);
@@ -44,6 +52,11 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
+    status_porta1.setXY(62, 95);
+    status_porta1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    status_porta1.setLinespacing(0);
+    status_porta1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
+
     status_porta.setXY(5, 64);
     status_porta.setVisible(false);
     status_porta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -58,9 +71,11 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     add(boxFundoAzul);
     add(textAreaTitle);
     add(textAreaStatusPortaFechada);
+    add(textAreaStatusPorta_1);
     add(textAreaStatusPortaAberta);
     add(buttonStartHigiene);
     add(buttonTelaInicial);
+    add(status_porta1);
     add(status_porta);
 }
 
@@ -68,6 +83,13 @@ void HIGIENE_CONFIRMARViewBase::setupScreen()
 {
 
     //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    
+    ReadWriteModbus485(&status_porta, status_portaBuffer, "553", 0, _INT_, REPEAT);
+
+    //script_screen_HIGIENE
     //When screen transition begins execute C++ code
     //Execute C++ code
     Clear();

@@ -112,6 +112,11 @@ void Tela_InicialViewBase::afterTransition()
     //When screen transition ends execute C++ code
     //Execute C++ code
     SoundBuzzerOn(25);
+
+    //LaunchPasswordKeyboard
+    //When screen transition ends call LaunchNumericalKeyboard on numKeyboardContainerPwd1
+    //Call LaunchNumericalKeyboard
+    numKeyboardContainerPwd1.LaunchNumericalKeyboard();
 }
 
 void Tela_InicialViewBase::solicitar_senha1CancelarCallbackHandler()
@@ -136,10 +141,9 @@ void Tela_InicialViewBase::solicitar_senha1DigitarCallbackHandler()
 void Tela_InicialViewBase::numKeyboardContainerPwd1CredentialSuccessCallbackHandler()
 {
     //CredentialSuccess
-    //When numKeyboardContainerPwd1 CredentialSuccess execute C++ code
-    //Execute C++ code
-    ContainerVisibility(&numKeyboardContainerPwd1, false);
-    SoundBuzzerOn(25);
+    //When numKeyboardContainerPwd1 CredentialSuccess change screen to Configuracao
+    //Go to Configuracao with no screen transition
+    application().gotoConfiguracaoScreenNoTransition();
 }
 
 void Tela_InicialViewBase::numKeyboardContainerPwd1CredentialFailedCallbackHandler()
@@ -178,6 +182,8 @@ void Tela_InicialViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    LogoutUser();
+    
     Clear();
     ClearOthers();
     ContainerClear(&numKeyboardContainerPwd1);
@@ -185,10 +191,7 @@ void Tela_InicialViewBase::tearDownScreen()
 
 void Tela_InicialViewBase::launchPasswordKeyboard()
 {
-    //LaunchPasswordKeyboard
-    //When launchPasswordKeyboard is called call LaunchNumericalKeyboard on numKeyboardContainerPwd1
-    //Call LaunchNumericalKeyboard
-    numKeyboardContainerPwd1.LaunchNumericalKeyboard();
+
 }
 
 void Tela_InicialViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -238,8 +241,9 @@ void Tela_InicialViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&
     else if (&src == &buttonSolicitacaoSenah)
     {
         //SolicitacaoSenha
-        //When buttonSolicitacaoSenah clicked change screen to Configuracao
-        //Go to Configuracao with no screen transition
-        application().gotoConfiguracaoScreenNoTransition();
+        //When buttonSolicitacaoSenah clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&numKeyboardContainerPwd1, !UserIsLogged());
+        SoundBuzzerOn(25);
     }
 }

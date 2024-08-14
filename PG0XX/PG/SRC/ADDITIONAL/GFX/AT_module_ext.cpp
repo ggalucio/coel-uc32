@@ -108,6 +108,14 @@ void Update(touchgfx::LineProgress* lineProgress, int value){
 	}
 }
 
+void SetRangeLineProgress(touchgfx::LineProgress* lineProgress, int minVal, int maxVal){
+	if(lineProgress)
+	{
+		lineProgress->setRange(minVal, maxVal);
+		lineProgress->invalidate();
+	}
+}
+
 void RefreshLineProgress(touchgfx::LineProgress* lineProgress){
 	if (lineProgress)
 		lineProgress->invalidate();

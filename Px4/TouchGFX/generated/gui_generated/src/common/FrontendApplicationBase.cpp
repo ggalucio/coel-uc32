@@ -433,6 +433,19 @@ void FrontendApplicationBase::gotoConfiguracao_6ScreenNoTransitionImpl()
     touchgfx::makeTransition<Configuracao_6View, Configuracao_6Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// RESET_FABRICA
+
+void FrontendApplicationBase::gotoRESET_FABRICAScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoRESET_FABRICAScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoRESET_FABRICAScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<RESET_FABRICAView, RESET_FABRICAPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // HIGIENE_CONFIRMAR
 
 void FrontendApplicationBase::gotoHIGIENE_CONFIRMARScreenNoTransition()

@@ -21,6 +21,10 @@ Resfriar_SONDAViewBase::Resfriar_SONDAViewBase() :
     boxProcessOff.setPosition(5, 64, 392, 196);
     boxProcessOff.setColor(touchgfx::Color::getColorFromRGB(241, 241, 242));
 
+    boxFlagProcessoAndamento.setPosition(5, 64, 392, 196);
+    boxFlagProcessoAndamento.setVisible(false);
+    boxFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(0, 175, 239));
+
     boxFundoAzul.setPosition(0, 0, 480, 53);
     boxFundoAzul.setColor(touchgfx::Color::getColorFromRGB(0, 175, 239));
 
@@ -70,9 +74,12 @@ Resfriar_SONDAViewBase::Resfriar_SONDAViewBase() :
     toggleButtonFlagConservarSN.setBitmaps(touchgfx::Bitmap(BITMAP_CSVOFF_ID), touchgfx::Bitmap(BITMAP_CSVON_ID));
     toggleButtonFlagConservarSN.setAction(buttonCallback);
 
-    toggleButtonFlagResfriarHardSoft.setXY(406, 136);
-    toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
-    toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
+    imageSoft.setXY(406, 136);
+    imageSoft.setBitmap(touchgfx::Bitmap(BITMAP_SOFT_ID));
+
+    imageHard.setXY(405, 136);
+    imageHard.setVisible(false);
+    imageHard.setBitmap(touchgfx::Bitmap(BITMAP_HARD_ID));
 
     image1.setXY(25, 79);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_PAO_ID));
@@ -168,6 +175,7 @@ Resfriar_SONDAViewBase::Resfriar_SONDAViewBase() :
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
+    add(boxFlagProcessoAndamento);
     add(boxFundoAzul);
     add(boxWithBorderBox3);
     add(boxWithBorderBox2);
@@ -179,7 +187,8 @@ Resfriar_SONDAViewBase::Resfriar_SONDAViewBase() :
     add(textAreaTitle);
     add(buttonCancelarProcesso);
     add(toggleButtonFlagConservarSN);
-    add(toggleButtonFlagResfriarHardSoft);
+    add(imageSoft);
+    add(imageHard);
     add(image1);
     add(image2);
     add(image3);
@@ -209,16 +218,13 @@ void Resfriar_SONDAViewBase::setupScreen()
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
     ReadWriteModbus485(&textArea14515, textArea14515Buffer, "515", 1, _DOUBLE_, REPEAT);
-    Update(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, 0, _DOUBLE_, 1);
+    Update(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, SP_Resf_Hard_Espeto_display / 10, _DOUBLE_, 1);
     ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _DOUBLE_, REPEAT);
     
-    // Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);
-    // Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
+    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
+    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
     
-    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);
-    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
-    
-    Update(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, 0, _INT_, 0);
+    Update(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, Tempo_estimado_Resfriar_Sonda, _INT_, 0);
     
     Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
     countCycleBlink = 0;
@@ -236,8 +242,111 @@ void Resfriar_SONDAViewBase::afterTransition()
 
 void Resfriar_SONDAViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
 {
+    //CancelarProcessoSim
+    //When cANCELAR_PROCESSO1 cancelarProcesso execute C++ code
+    //Execute C++ code
+    flag_Processo_ANDAMENTO = true;
+    
+    
+    if (flag_Processo_ANDAMENTO)
+    {
+    
+    	if (Status_tecla_Congela == 0){		// Modo COngelar Sonda
+    		flag_Processo_ANDAMENTO = false; 	// Zera flag_PROCESSO_ANDAMENTO
+    		writeModbus("10242", 999);		// SP = 99.9ºC
+    		writeModbus("645", 0);		// Controlador em Stand-By
+    			
+    		W_HDW5000 = 19;			// Tela Receita
+    			
+    		Timer_Congelar_DECORRIDO_ON = 0;	// Zera bit Timer_decorrido_ON	
+    	}	
+    
+    	if (Status_tecla_Congela == 1){ 		// Modo COngelar Sonda
+    		flag_Processo_ANDAMENTO = false; 	// Zera flag_PROCESSO_ANDAMENTO
+    		writeModbus("10242", 999);		// SP = 99.9ºC
+    		writeModbus("645", 0);		// Controlador em Stand-By
+    			
+    		W_HDW5000 = 1;			// Tela Congelar Sonda
+    			
+    		Timer_Congelar_DECORRIDO_ON = 0;	// Zera bit Timer_decorrido_ON	
+    	}
+    
+    	if (Status_tecla_Congela == 2){		// Modo COngelar Tempo
+    		flag_Processo_ANDAMENTO = false; 	// Zera flag_PROCESSO_ANDAMENTO
+    		writeModbus("10242", 999);		// SP = 99.9ºC
+    		writeModbus("645", 0);		// Controlador em Stand-By
+    		
+    		W_HDW5000 = 1;	
+    
+    		Timer_Congelar_DECORRIDO_ON = 0;	// Zera bit Timer_decorrido_ON	
+    	}
+    
+    	if (Status_tecla_Congela == 3){		// Modo Resfriar Sonda
+    		flag_Processo_ANDAMENTO = false; 	// Zera flag_PROCESSO_ANDAMENTO
+    		writeModbus("640", 0);		// Desliga Modo Turbo
+    		writeModbus("10242", 999);		// SP = 99.9ºC
+    		writeModbus("645", 0);		// Controlador em Stand-By
+    		
+    		W_HDW5000 = 10;
+    
+    		Timer_Congelar_DECORRIDO_ON = 0;	// Zera bit Timer_decorrido_ON		
+    	}
+    
+    	if (Status_tecla_Congela == 4){		// Modo Resfriar Tempo
+    		flag_Processo_ANDAMENTO = false; 	// Zera flag_PROCESSO_ANDAMENTO
+    		writeModbus("10242", 999);		// SP = 99ºC
+    		writeModbus("645", 0);		// Controlador em Stand-By
+    		
+    		W_HDW5000 = 10;
+    		
+    		Timer_Congelar_DECORRIDO_ON = 0;	// Zera bit Timer_decorrido_ON
+    	}
+    
+    	flag_Processo_ANDAMENTO = false;
+    
+    	// @Timer_buzzer_ON = 1;			// inicia Timer_Buzzer
+    }
+    else
+    {
+    	if (Status_tecla_Congela == 0){   					// if Receita Temperatura
+    		W_HDW5000 = 19;							// Tela_Receita Temperatura
+    	}						
+    	if (Status_tecla_Congela == 1 || Status_tecla_Congela ==2){		// if Congelar_SONDA ou Congelar_Tempo
+    		W_HDW5000 = 1;							// Tela_Congelar
+    	}
+    	if (Status_tecla_Congela == 3 || Status_tecla_Congela == 4){	// if @Status_tecla_Congela=3 or @Status_tecla_Congela=4
+    		W_HDW5000 = 10;							// Tela_Resfriar
+    	}
+    
+    }
+    
+    if (flag_Conservar_ANDAMENTO)
+    {
+    	if (Status_Conservar == 1){		// Conservar_Congelar
+    		W_HDW5000 = 7;			// Tela Conservar
+    		writeModbus("10242", 999);		// SP = 99ºC
+    		writeModbus("645", 0);		// Controlador em modo Standby
+    	}
+    	
+    	if (Status_Conservar == 2){		// Consewrvar_Resfriar
+    		W_HDW5000 = 7;			// Tela COnservar
+    		writeModbus("10242", 999);		// SP = 99ºC
+    		writeModbus("645", 0);		// Controlador em modo Stand-by
+    	}
+    	
+    	flag_Conservar_ANDAMENTO = 0;		// Zera flag_conservar_andamento
+    
+    	Timer_buzzer_ON = 1;			// inicia Timer_Buzzer
+    }
+    
+    Timer_delay_OUT = 0;		// Zera Timer_delay_OUT
+    
+    cancelar_processo_SIM = false; 	// Zera bit cancelar_processo_SIM
+    
+    
+
     //CancelarProcesso
-    //When cANCELAR_PROCESSO1 cancelarProcesso change screen to Resfriar
+    //When CancelarProcessoSim completed change screen to Resfriar
     //Go to Resfriar with no screen transition
     application().gotoResfriarScreenNoTransition();
 }
@@ -263,12 +372,22 @@ void Resfriar_SONDAViewBase::handleTickEvent()
     }
     invalidate();
     
+    
+    Update(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, SP_Resf_Hard_Espeto_display / 10, _DOUBLE_, 1);
+    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
+    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
+    Update(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, Tempo_estimado_Resfriar_Sonda, _INT_, 0);
+    
+    VisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;
-    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    	
+    	if (flag_Processo_ANDAMENTO)
+    		VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    	else
+    		Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "Finalizado!", 20);
     }
-    
     countCycleBlink += 16;
 }
 
@@ -279,6 +398,16 @@ void Resfriar_SONDAViewBase::tearDownScreen()
     //Execute C++ code
     Clear();
     ClearOthers();
+}
+
+void Resfriar_SONDAViewBase::writeModbus(char const* address, double value)
+{
+    //WriteModbus
+    //When writeModbus is called execute C++ code
+    //Execute C++ code
+    UpdateModbus485(address, value, _INT_);
+    WriteModbus485(address, 1);
+    Wait(50);
 }
 
 void Resfriar_SONDAViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -296,13 +425,7 @@ void Resfriar_SONDAViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //CSV
         //When toggleButtonFlagConservarSN clicked execute C++ code
         //Execute C++ code
-        SoundBuzzerOn(25);
-    }
-    else if (&src == &toggleButtonFlagResfriarHardSoft)
-    {
-        //SoftHard
-        //When toggleButtonFlagResfriarHardSoft clicked execute C++ code
-        //Execute C++ code
+        flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();
         SoundBuzzerOn(25);
     }
 }

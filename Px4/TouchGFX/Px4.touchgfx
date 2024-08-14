@@ -431,7 +431,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nClearOthers();\r\nContainerClear(&numKeyboardContainerPwd1);"
+              "Code": "LogoutUser();\r\n\r\nClear();\r\nClearOthers();\r\nContainerClear(&numKeyboardContainerPwd1);"
             }
           },
           {
@@ -442,9 +442,8 @@
               "TriggerComponent": "buttonSolicitacaoSenah"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Configuracao"
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&numKeyboardContainerPwd1, !UserIsLogged());\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -490,8 +489,7 @@
             "InteractionName": "LaunchPasswordKeyboard",
             "HasCompletedTrigger": false,
             "Trigger": {
-              "Type": "TriggerWhen",
-              "ActionCustomTypeName": "Call Tela_Inicial launchPasswordKeyboard"
+              "Type": "TriggerScreenEntered"
             },
             "Action": {
               "Type": "ActionCustom2",
@@ -508,8 +506,9 @@
               "TriggerComponent": "numKeyboardContainerPwd1"
             },
             "Action": {
-              "Type": "ActionExecuteCode",
-              "Code": "ContainerVisibility(&numKeyboardContainerPwd1, false);\r\nSoundBuzzerOn(25);"
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Configuracao"
             }
           },
           {
@@ -3621,7 +3620,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, -18.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, -40.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, 3.0, _FP_32BIT_, 1);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, CONGELAR_SONDA_SP / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, SP_SONDA_CONGELAR_CAMARA / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, SP_Congelar_Tempo / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, Diferencial_Congelar_tempo / 10, _FP_32BIT_, 1);"
             }
           },
           {
@@ -3632,7 +3631,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);\r\nContainerVisibility(&numKeyboardContainer1, false);"
+              "Code": "//SoundBuzzerOn(25);\r\nContainerVisibility(&numKeyboardContainer1, false);"
             }
           },
           {
@@ -3656,7 +3655,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nContainerClear(&numKeyboardContainer1);"
+              "Code": "CONGELAR_SONDA_SP = 10 * GetNumberTextArea(textAreaCongelarSondaSpBuffer);\r\nSP_SONDA_CONGELAR_CAMARA = 10 * GetNumberTextArea(textAreaSpSondaCongelarCamaraBuffer);\r\nSP_Congelar_Tempo = 10 * GetNumberTextArea(textAreaSpCongelarTempoBuffer);\r\nDiferencial_Congelar_tempo = 10 * GetNumberTextArea(textAreaDiferencialCongelarTempoBuffer);\r\n\r\nClear();\r\nContainerClear(&numKeyboardContainer1);"
             }
           },
           {
@@ -3824,6 +3823,19 @@
             "Action": {
               "Type": "ActionExecuteCode",
               "Code": "ContainerVisibility(&numKeyboardContainer1, false);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "ResetFabrica",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonResetFabrica"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "RESET_FABRICA"
             }
           }
         ],
@@ -4056,7 +4068,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nif (Status_Conservar == 1)\r\n\tUpdate(&radioButtonStatusConservar0, true);\r\n\r\nif (Status_Conservar == 2)\r\n\tUpdate(&radioButtonStatusConservar1, true);"
             }
           },
           {
@@ -4067,7 +4079,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "if (Status_Conservar != 1 && Status_Conservar != 2)\r\n\tSoundBuzzerOn(25);"
             }
           },
           {
@@ -4116,7 +4128,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "Status_Conservar = 1;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -4128,7 +4140,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "Status_Conservar = 2;\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -4140,7 +4152,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (radioButtonStatusConservar0.getSelected())\r\n{\r\n\tConservar_Congelar();\r\n}\r\nelse if (radioButtonStatusConservar1.getSelected())\r\n{\r\n\tConservar_Resfriar();\r\n}"
+              "Code": "if (Status_tecla_Congela == 0){\t\t\t\t// Se Modo Receita_Temperatura\r\n\tif (Receita_Cong_Resf_ATUAL == 0){\t\t// Modo COngelar da Receita\r\n\t\tStatus_tecla_Congela = 2;\r\n\t}\r\n\tif (Receita_Cong_Resf_ATUAL == 1){\t\t// Modo Resfriar da Receita\r\n\t\tStatus_tecla_Congela = 4;\r\n\t}\r\n}\r\n\r\n\r\nif (flag_transicao_Conservar == 1){\t\t\t\t\t// Entra automaticamente em Conservar de Congelar ou Resfriar\r\n\tif (Status_tecla_Congela == 1 || Status_tecla_Congela == 2)\r\n\t\tStatus_Conservar = 1;\t\t\t\t\t// COnservar_COngelar\t\t\t\r\n\telse\t\t\t\t\t\t\t\t\t// @Status_tecla_Congela=3 or @Status_tecla_Congela=4\r\n\t\tStatus_Conservar = 2;\t\t\t\t\t// COnservar_resfriar\r\n}\r\n\r\nflag_transicao_Conservar = false;\t\t\t\t// zera bit transição\r\n\r\n\r\nif (Status_Conservar == 1){\t\t\t\t\t// if COnservar_Congelar=1\r\n\tW_HDW5000 = 8;\t\t\t\t\t\t// vai para tela Conservar_COngelar\r\n\twriteModbus(\"10242\", SP_Conservar_Congelar);\t\t// SP= Conservar Congelar \r\n\twriteModbus(\"10282\", Diferencial_Conservar_COngelar);\t// Diferencial rd\r\n\twriteModbus(\"645\", 1);\t\t\t\t\t// Controlador em modo COntrole\r\n\tConservar_Congelar();\r\n}\r\nelse{\r\n\tW_HDW5000 = 9;\t\t\t\t\t\t// vai para tela Conservar_COngelar\r\n\twriteModbus(\"10242\", SP_Conservar_Resfriar);\t\t// SP= COnservar Resfriar\r\n\twriteModbus(\"10282\", Diferencial_Conservar_Resfriar);\t// Diferencial rd=3ºC\r\n\twriteModbus(\"645\", 1);\t\t\t\t\t// Controlador em modo COntrole\r\n\tConservar_Resfriar();\r\n}\r\n\r\nflag_Conservar_ANDAMENTO = true;\t\t// flag_conservar_ANDAMENTO=1\r\n\r\nflag_Conservar_Cong_Resf = false; \t// zera bit\r\n"
             }
           },
           {
@@ -4168,6 +4180,18 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Conservar_Resfriar"
             }
+          },
+          {
+            "InteractionName": "WriteModbus",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Conservacao writeModbus"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "UpdateModbus485(address, value, _INT_);\r\nWriteModbus485(address, 1);\r\nWait(50);"
+            }
           }
         ],
         "CustomActions": [
@@ -4186,6 +4210,11 @@
           {
             "Name": "Conservar_Resfriar",
             "HasValue": false
+          },
+          {
+            "Name": "writeModbus",
+            "HasValue": true,
+            "ValueType": "char const* address, double"
           }
         ],
         "Name": "Conservacao",
@@ -5865,6 +5894,26 @@
               "Blue": 239
             },
             "Alpha": 255,
+            "Name": "boxFlagProcessoAndamento",
+            "X": 5,
+            "Y": 64,
+            "Width": 392,
+            "Height": 196,
+            "Visible": false,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Box",
+            "Color": {
+              "Red": 0,
+              "Green": 175,
+              "Blue": 239
+            },
+            "Alpha": 255,
             "Name": "boxFundoAzul",
             "X": 0,
             "Y": 0,
@@ -6107,18 +6156,32 @@
             "Moveable": false
           },
           {
-            "Type": "ToggleButton",
-            "InitialStatePressed": false,
-            "Pressed": "HARD.png",
-            "Released": "SOFT.png",
+            "Type": "Image",
+            "RelativeFilename": "SOFT.png",
             "Alpha": 255,
-            "Name": "toggleButtonFlagResfriarHardSoft",
+            "Name": "imageSoft",
             "X": 406,
             "Y": 136,
             "Width": 67,
             "Height": 52,
             "Visible": true,
-            "LockPosition": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "Image",
+            "RelativeFilename": "HARD.png",
+            "Alpha": 255,
+            "Name": "imageHard",
+            "X": 405,
+            "Y": 136,
+            "Width": 67,
+            "Height": 52,
+            "Visible": false,
+            "LockPosition": true,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -6517,7 +6580,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, 0, _DOUBLE_, 1);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\n// Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);\r\n// Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, 0, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14515, textArea14515Buffer, \"515\", 1, _DOUBLE_, REPEAT);\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, SP_Resf_Hard_Espeto_display / 10, _DOUBLE_, 1);\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, Tempo_estimado_Resfriar_Sonda, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n"
             }
           },
           {
@@ -6540,7 +6603,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\n\r\nUpdate(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, SP_Resf_Hard_Espeto_display / 10, _DOUBLE_, 1);\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\nUpdate(&textAreaTempoEstimadoResfriarSonda, textAreaTempoEstimadoResfriarSondaBuffer, Tempo_estimado_Resfriar_Sonda, _INT_, 0);\r\n\r\nVisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (flag_Processo_ANDAMENTO)\r\n\t\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n\telse\r\n\t\tUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"Finalizado!\", 20);\r\n}\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -6568,17 +6631,16 @@
             }
           },
           {
-            "InteractionName": "CancelarProcesso",
-            "HasCompletedTrigger": false,
+            "InteractionName": "CancelarProcessoSim",
+            "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerCustom",
               "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
               "TriggerComponent": "cANCELAR_PROCESSO1"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Resfriar"
+              "Type": "ActionExecuteCode",
+              "Code": "flag_Processo_ANDAMENTO = true;\r\n\r\n\r\nif (flag_Processo_ANDAMENTO)\r\n{\r\n\r\n\tif (Status_tecla_Congela == 0){\t\t// Modo COngelar Sonda\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\t\r\n\t\tW_HDW5000 = 19;\t\t\t// Tela Receita\r\n\t\t\t\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\r\n\t}\t\r\n\r\n\tif (Status_tecla_Congela == 1){ \t\t// Modo COngelar Sonda\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\t\r\n\t\tW_HDW5000 = 1;\t\t\t// Tela Congelar Sonda\r\n\t\t\t\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\r\n\t}\r\n\r\n\tif (Status_tecla_Congela == 2){\t\t// Modo COngelar Tempo\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\r\n\t\tW_HDW5000 = 1;\t\r\n\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\r\n\t}\r\n\r\n\tif (Status_tecla_Congela == 3){\t\t// Modo Resfriar Sonda\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"640\", 0);\t\t// Desliga Modo Turbo\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\r\n\t\tW_HDW5000 = 10;\r\n\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\t\r\n\t}\r\n\r\n\tif (Status_tecla_Congela == 4){\t\t// Modo Resfriar Tempo\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\r\n\t\tW_HDW5000 = 10;\r\n\t\t\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\r\n\t}\r\n\r\n\tflag_Processo_ANDAMENTO = false;\r\n\r\n\t// @Timer_buzzer_ON = 1;\t\t\t// inicia Timer_Buzzer\r\n}\r\nelse\r\n{\r\n\tif (Status_tecla_Congela == 0){   \t\t\t\t\t// if Receita Temperatura\r\n\t\tW_HDW5000 = 19;\t\t\t\t\t\t\t// Tela_Receita Temperatura\r\n\t}\t\t\t\t\t\t\r\n\tif (Status_tecla_Congela == 1 || Status_tecla_Congela ==2){\t\t// if Congelar_SONDA ou Congelar_Tempo\r\n\t\tW_HDW5000 = 1;\t\t\t\t\t\t\t// Tela_Congelar\r\n\t}\r\n\tif (Status_tecla_Congela == 3 || Status_tecla_Congela == 4){\t// if @Status_tecla_Congela=3 or @Status_tecla_Congela=4\r\n\t\tW_HDW5000 = 10;\t\t\t\t\t\t\t// Tela_Resfriar\r\n\t}\r\n\r\n}\r\n\r\nif (flag_Conservar_ANDAMENTO)\r\n{\r\n\tif (Status_Conservar == 1){\t\t// Conservar_Congelar\r\n\t\tW_HDW5000 = 7;\t\t\t// Tela Conservar\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em modo Standby\r\n\t}\r\n\t\r\n\tif (Status_Conservar == 2){\t\t// Consewrvar_Resfriar\r\n\t\tW_HDW5000 = 7;\t\t\t// Tela COnservar\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em modo Stand-by\r\n\t}\r\n\t\r\n\tflag_Conservar_ANDAMENTO = 0;\t\t// Zera flag_conservar_andamento\r\n\r\n\tTimer_buzzer_ON = 1;\t\t\t// inicia Timer_Buzzer\r\n}\r\n\r\nTimer_delay_OUT = 0;\t\t// Zera Timer_delay_OUT\r\n\r\ncancelar_processo_SIM = false; \t// Zera bit cancelar_processo_SIM\r\n\r\n"
             }
           },
           {
@@ -6603,19 +6665,32 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();\r\nSoundBuzzerOn(25);"
             }
           },
           {
-            "InteractionName": "SoftHard",
+            "InteractionName": "CancelarProcesso",
             "HasCompletedTrigger": false,
             "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "toggleButtonFlagResfriarHardSoft"
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "CancelarProcessoSim"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar"
+            }
+          },
+          {
+            "InteractionName": "WriteModbus",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Resfriar_SONDA writeModbus"
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "UpdateModbus485(address, value, _INT_);\r\nWriteModbus485(address, 1);\r\nWait(50);"
             }
           }
         ],
@@ -6627,6 +6702,11 @@
           {
             "Name": "tearDownScreen",
             "HasValue": false
+          },
+          {
+            "Name": "writeModbus",
+            "HasValue": true,
+            "ValueType": "char const* address, double"
           }
         ],
         "Name": "Resfriar_SONDA",
@@ -7404,6 +7484,44 @@
             "Moveable": false
           },
           {
+            "Type": "LineProgress",
+            "FileNameProgress": "",
+            "Color": {
+              "Red": 0,
+              "Green": 175,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "StartX": 7,
+            "StartY": 7,
+            "EndY": 7,
+            "EndX": 97,
+            "LineWidth": 10,
+            "LineEndingStyle": "Round",
+            "Style": "Style2",
+            "FileNameBackground": "__designer\\Blue_ProgressIndicators_bg_small_progress_indicator_bg_round_0_degrees.png",
+            "IndicatorPositionX": 0,
+            "IndicatorPositionY": 0,
+            "IndicatorPositionWidth": 0,
+            "IndicatorPositionHeight": 0,
+            "ProgressRangeMin": 0,
+            "ProgressRangeMax": 100,
+            "ProgressRangeSteps": 0,
+            "ProgressRangeStepsMin": 0,
+            "ProgressInitialValue": 60,
+            "Name": "lineProgressTimerCongelar",
+            "X": 180,
+            "Y": 172,
+            "Width": 104,
+            "Height": 14,
+            "Visible": true,
+            "LockPosition": false,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Type": "Image",
             "RelativeFilename": "SOFT.png",
             "Alpha": 255,
@@ -7799,7 +7917,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n\r\nUpdate(&toggleButtonFlagConservarSN, flag_Conservar_S_N);\r\nVisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea14512, textArea14512Buffer, \"512\", 1, _DOUBLE_, REPEAT);\r\nReadWriteModbus485(&textArea1410242, textArea1410242Buffer, \"10242\", 1, _DOUBLE_, REPEAT);\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nUpdate(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);\r\n\r\nUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"OPERANDO...\", 20);\r\ncountCycleBlink = 0;\r\n\r\n\r\nUpdate(&toggleButtonFlagConservarSN, flag_Conservar_S_N);\r\nVisibilityImage(&imageHard, flag_Resfriar_HARD_SOFT);\r\n\r\n\r\nSetRangeLineProgress(&lineProgressTimerCongelar, (int)xbar_zero, (int)Timer_Congelar_DECORRIDO_SP);"
             }
           },
           {
@@ -7822,7 +7940,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\n\r\nVisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (flag_Processo_ANDAMENTO)\r\n\t\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n}\r\n\r\ncountCycleBlink += 16;"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\n\r\nUpdate(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);\r\nUpdate(&lineProgressTimerCongelar, (int)Timer_Congelar_DECORRIDO_COUNT);\r\n\r\n\r\nVisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (flag_Processo_ANDAMENTO)\r\n\t\tVisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());\r\n\telse\r\n\t\tUpdate(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, \"Finalizado!\", 20);\r\n}\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -7850,17 +7968,16 @@
             }
           },
           {
-            "InteractionName": "CancelarProcesso",
-            "HasCompletedTrigger": false,
+            "InteractionName": "CancelarProcessoSim",
+            "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerCustom",
               "TriggerCustomTypeName": "CANCELAR_PROCESSO cancelarProcesso happens",
               "TriggerComponent": "cANCELAR_PROCESSO1"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Resfriar"
+              "Type": "ActionExecuteCode",
+              "Code": "flag_Processo_ANDAMENTO = true;\r\n\r\n\r\nif (flag_Processo_ANDAMENTO)\r\n{\r\n\r\n\tif (Status_tecla_Congela == 0){\t\t// Modo COngelar Sonda\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\t\r\n\t\tW_HDW5000 = 19;\t\t\t// Tela Receita\r\n\t\t\t\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\r\n\t}\t\r\n\r\n\tif (Status_tecla_Congela == 1){ \t\t// Modo COngelar Sonda\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\t\r\n\t\tW_HDW5000 = 1;\t\t\t// Tela Congelar Sonda\r\n\t\t\t\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\r\n\t}\r\n\r\n\tif (Status_tecla_Congela == 2){\t\t// Modo COngelar Tempo\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\r\n\t\tW_HDW5000 = 1;\t\r\n\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\r\n\t}\r\n\r\n\tif (Status_tecla_Congela == 3){\t\t// Modo Resfriar Sonda\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"640\", 0);\t\t// Desliga Modo Turbo\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99.9ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\r\n\t\tW_HDW5000 = 10;\r\n\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\t\t\r\n\t}\r\n\r\n\tif (Status_tecla_Congela == 4){\t\t// Modo Resfriar Tempo\r\n\t\tflag_Processo_ANDAMENTO = false; \t// Zera flag_PROCESSO_ANDAMENTO\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em Stand-By\r\n\t\t\r\n\t\tW_HDW5000 = 10;\r\n\t\t\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0;\t// Zera bit Timer_decorrido_ON\r\n\t}\r\n\r\n\tflag_Processo_ANDAMENTO = false;\r\n\r\n\t// @Timer_buzzer_ON = 1;\t\t\t// inicia Timer_Buzzer\r\n}\r\nelse\r\n{\r\n\tif (Status_tecla_Congela == 0){   \t\t\t\t\t// if Receita Temperatura\r\n\t\tW_HDW5000 = 19;\t\t\t\t\t\t\t// Tela_Receita Temperatura\r\n\t}\t\t\t\t\t\t\r\n\tif (Status_tecla_Congela == 1 || Status_tecla_Congela ==2){\t\t// if Congelar_SONDA ou Congelar_Tempo\r\n\t\tW_HDW5000 = 1;\t\t\t\t\t\t\t// Tela_Congelar\r\n\t}\r\n\tif (Status_tecla_Congela == 3 || Status_tecla_Congela == 4){\t// if @Status_tecla_Congela=3 or @Status_tecla_Congela=4\r\n\t\tW_HDW5000 = 10;\t\t\t\t\t\t\t// Tela_Resfriar\r\n\t}\r\n\r\n}\r\n\r\nif (flag_Conservar_ANDAMENTO)\r\n{\r\n\tif (Status_Conservar == 1){\t\t// Conservar_Congelar\r\n\t\tW_HDW5000 = 7;\t\t\t// Tela Conservar\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em modo Standby\r\n\t}\r\n\t\r\n\tif (Status_Conservar == 2){\t\t// Consewrvar_Resfriar\r\n\t\tW_HDW5000 = 7;\t\t\t// Tela COnservar\r\n\t\twriteModbus(\"10242\", 999);\t\t// SP = 99ºC\r\n\t\twriteModbus(\"645\", 0);\t\t// Controlador em modo Stand-by\r\n\t}\r\n\t\r\n\tflag_Conservar_ANDAMENTO = 0;\t\t// Zera flag_conservar_andamento\r\n\r\n\tTimer_buzzer_ON = 1;\t\t\t// inicia Timer_Buzzer\r\n}\r\n\r\nTimer_delay_OUT = 0;\t\t// Zera Timer_delay_OUT\r\n\r\ncancelar_processo_SIM = false; \t// Zera bit cancelar_processo_SIM\r\n\r\n"
             }
           },
           {
@@ -7887,6 +8004,31 @@
               "Type": "ActionExecuteCode",
               "Code": "flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();\r\nSoundBuzzerOn(25);"
             }
+          },
+          {
+            "InteractionName": "CancelarProcesso",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "CancelarProcessoSim"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar"
+            }
+          },
+          {
+            "InteractionName": "WriteModbus",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call Resfriar_TEMPO writeModbus"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "UpdateModbus485(address, value, _INT_);\r\nWriteModbus485(address, 1);\r\nWait(50);"
+            }
           }
         ],
         "CustomActions": [
@@ -7897,11 +8039,16 @@
           {
             "Name": "tearDownScreen",
             "HasValue": false
+          },
+          {
+            "Name": "writeModbus",
+            "HasValue": true,
+            "ValueType": "char const* address, double"
           }
         ],
         "Name": "Resfriar_TEMPO",
         "OverrideDefaultBufferSize": false,
-        "CanvasBufferSize": 0
+        "CanvasBufferSize": 7200
       },
       {
         "Components": [
@@ -9876,7 +10023,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, SP_Conservar_Congelar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, Diferencial_Conservar_COngelar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, SP_Conservar_Resfriar / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, Diferencial_Conservar_Resfriar / 10, _FP_32BIT_, 1);\r\nReadWriteModbus485(&textArea1410272, textArea1410272Buffer, \"10272\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410275, textArea1410275Buffer, \"10275\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410270, textArea1410270Buffer, \"10270\", 2, _FP_32BIT_, ONCE);"
             }
           },
           {
@@ -9911,7 +10058,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nContainerClear(&numKeyboardContainer1);"
+              "Code": "SP_Conservar_Congelar = 10 * GetNumberTextArea(textAreaSpConservarCongelarBuffer);\r\nDiferencial_Conservar_COngelar = 10 * GetNumberTextArea(textAreaDiferencialConservarCongelarBuffer);\r\nSP_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaSpConservarResfriarBuffer);\r\nDiferencial_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaDiferencialConservarResfriarBuffer);\r\n\r\nClear();\r\nContainerClear(&numKeyboardContainer1);"
             }
           },
           {
@@ -10010,7 +10157,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10022,7 +10169,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10034,7 +10181,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -10542,7 +10689,7 @@
               "UseBuffer": true,
               "BufferSize": 10
             },
-            "Name": "textArea1410275",
+            "Name": "textAreaSenhaGravada",
             "X": 66,
             "Y": 192,
             "Width": 78,
@@ -10985,7 +11132,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textArea1410291, textArea1410291Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410248, textArea1410248Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410249, textArea1410249Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410250, textArea1410250Buffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textArea1410275, textArea1410275Buffer, 123, _INT_, 0);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410291, textArea1410291Buffer, \"10291\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410248, textArea1410248Buffer, \"10248\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410249, textArea1410249Buffer, \"10249\", 1, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410250, textArea1410250Buffer, \"10250\", 1, _FP_32BIT_, ONCE);\r\nUpdate(&toggleButtonHSW4, HSW4);\r\nUpdate(&textAreaSenhaGravada, textAreaSenhaGravadaBuffer, Senha_Gravada, _INT_, 0);"
             }
           },
           {
@@ -11020,7 +11167,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nContainerClear(&numKeyboardContainer1);"
+              "Code": "Senha_Gravada = GetNumberTextArea(textAreaSenhaGravadaBuffer);\r\n\r\nClear();\r\nContainerClear(&numKeyboardContainer1);"
             }
           },
           {
@@ -11071,7 +11218,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11083,7 +11230,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11095,7 +11242,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11107,7 +11254,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11119,11 +11266,11 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "HSW4 = toggleButtonHSW4.getState();\r\n\r\nSoundBuzzerOn(25);"
             }
           },
           {
-            "InteractionName": "ADDR1410275",
+            "InteractionName": "SenhaGravada",
             "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerClicked",
@@ -11131,7 +11278,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, 0.0, 65535.0, _INT_, 0, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReference(&textAreaSenhaGravada, textAreaSenhaGravadaBuffer, 0.0, 65535.0, _INT_, 0, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -11232,7 +11379,7 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerInteractionCompleted",
-              "InteractionToTriggerOn": "ADDR1410275"
+              "InteractionToTriggerOn": "SenhaGravada"
             },
             "Action": {
               "Type": "ActionCustom2",
@@ -15265,7 +15412,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);"
             }
           },
           {
@@ -15351,7 +15498,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "logica_entrada_digital1 = 1;\r\nUpdate(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -15363,7 +15510,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, -1, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "logica_entrada_digital1 = -1;\r\nUpdate(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -15375,7 +15522,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 0, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "logica_entrada_digital2 = 0;\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -15387,7 +15534,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "logica_entrada_digital2 = 1;\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -15399,7 +15546,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, -1, _INT_, 0);\r\nSoundBuzzerOn(25);"
+              "Code": "logica_entrada_digital2 = -1;\r\nUpdate(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);\r\nSoundBuzzerOn(25);"
             }
           }
         ],
@@ -16594,7 +16741,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);\r\nUpdate(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);\r\n\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, timer_alarme_externo_SP_MINUTOS, _INT_, 0);\r\nUpdate(&textAreaHAW8214, textAreaHAW8214Buffer, \"Alarme de Tensao\", 20);\r\nUpdate(&textAreaHAW8235, textAreaHAW8235Buffer, \"Consultar manual\", 20);\r\nUpdate(&toggleButtonFlagHabDesabTeclaRedial, flag_hab_desab_Tecla_REDIAL);\r\nReadWriteModbus485(&textArea1410299, textArea1410299Buffer, \"10299\", 2, _FP_32BIT_, ONCE);\r\n\r\n"
             }
           },
           {
@@ -16629,7 +16776,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nContainerClear(&numKeyboardContainer1);\r\nContainerClear(&keyboardContainer21);"
+              "Code": "timer_alarme_externo_SP_MINUTOS = GetNumberTextArea(textAreaTimerAlarmeExternoSpMinutosBuffer);\r\n\r\nClear();\r\nContainerClear(&numKeyboardContainer1);\r\nContainerClear(&keyboardContainer21);"
             }
           },
           {
@@ -16692,7 +16839,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "flag_hab_desab_Tecla_REDIAL = toggleButtonFlagHabDesabTeclaRedial.getState();\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -16704,7 +16851,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18220,7 +18367,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textArea1410279, textArea1410279Buffer, 10.0, _FP_32BIT_, 2);\r\nUpdate(&textArea1410295, textArea1410295Buffer, 10.03, _FP_32BIT_, 2);\r\nUpdate(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410279, textArea1410279Buffer, \"10279\", 2, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410295, textArea1410295Buffer, \"10295\", 2, _FP_32BIT_, ONCE);\r\nReadWriteModbus485(&textArea1410294, textArea1410294Buffer, \"10294\", 0, _INT_, ONCE);\r\n\r\nUpdate(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);\r\nUpdate(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);"
             }
           },
           {
@@ -18306,7 +18453,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18318,7 +18465,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18330,7 +18477,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddNumKeyboardReference(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
+              "Code": "AddNumKeyboardReferenceRS485(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 0);\r\nContainerVisibility(&numKeyboardContainer1, true);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18342,7 +18489,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "degelo_porta_aberta = toggleButtonDegeloPortaAberta.getState();\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18366,7 +18513,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "degelo_processo_automatico = toggleButtonDegeloProcessoAutomatico.getState();\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18621,7 +18768,8 @@
               "Type": "TriggerScreenEntered"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "SoundBuzzerOn(25);"
             }
           },
           {
@@ -18633,7 +18781,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
+              "Code": "reset_fabrica = buttonWithLabelResetFabrica.getPressedState();\r\n\r\nif ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();"
             }
           },
           {
@@ -18644,7 +18792,45 @@
               "ActionCustomTypeName": "Call RESET_FABRICA tearDownScreen"
             },
             "Action": {
-              "Type": "ActionExecuteCode"
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\nClearOthers();"
+            }
+          },
+          {
+            "InteractionName": "Configuracao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonConfiguracao"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Configuracao"
+            }
+          },
+          {
+            "InteractionName": "ResetFabrica",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelResetFabrica"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Status_tecla_Congela = 1;\t\t\t// MODO CONGELAR SONDA\r\nTimer_SP_MINUTOS = 120;\t\t\t// Inicia com timer em 120 min CONGELAR TEMPO\r\nTimer_SP_MINUTOS_Resfriar = 120;\t\t// Inicia com timer em 120 min RESFRIAR TEMPO\r\n\t\r\n\t\r\nSP_Conservar_Congelar = -250;\t\t// SP Conservar_Congelar=-25ºC\t\t\r\nDiferencial_Conservar_COngelar = 50;\t// Diferencial_conservar_Congelar\r\n\r\nSP_Conservar_Resfriar = 30; \t\t// Setpoiint Conservar_resfriar = 3.0\r\nDiferencial_Conservar_Resfriar = 50; \t// Diferencial_conservar_resfriar=5.0\r\n\r\nCONGELAR_SONDA_SP=-180;\t\t\t// SP modo COngelar SONDA\r\n\r\nSP_Congelar_Tempo = -400;\t\t\t// SP congelar TEmpo\r\nDiferencial_Congelar_tempo = 50;\t\t// Diferencial congelar Tempo\r\n\r\nSP_Resfriar_Sonda = 40; \t\t\t// SP Resfriar modo SOnda = 4.0ºC\r\n\r\nSP_Resfriar_Tempo_SOFT = -20;\t\t// SP Tempo SOFT = -2.0\r\nSP_Resfriar_Tempo_HARD = -20;\t\t// SP Tempo HARD  = -2.0\r\nDiferencial_Resfriar_Tempo = 50;\t\t// Diferencial Tempo = 5.0ºC\r\n\t\r\nlogica_entrada_digital1 = 1;\t\t// Logica da entrada digital (1 normal / -1 invertido)\r\nlogica_entrada_digital2 = 1;\t\t// Logica da entrada digital (1 normal / -1 invertido)\r\n\r\nwriteModbus(\"10294\", 1);\t\t\t// Ventilador ligado durante Degelo\r\nwriteModbus(\"10256\", 1);\t\t\t// i.F1 = Door Open \"1\"\r\n\r\nwriteModbus(\"10256\", 2);\t\t\t// i.F1 = Entrada Digital 1 > Porta com parada ventilador (NA = porta fechada)\r\nwriteModbus(\"10258\", 5);\t\t\t// i.F2 = Entrada Digital 2 > Alarme externo com desativação das saídas\r\n\t\r\nwriteModbus(\"10324\", 0);\t\t\t// Desativa buzzer do controlador\r\n\r\ntimer_alarme_externo_SP_MINUTOS = 1;\t\t\t\t\t// Tempo de retorno do alarme externi (min)\r\nTimer_Alarme_externo_SP = timer_alarme_externo_SP_MINUTOS * 6;\t// Retorno do alarme em 1 minuto\r\n\r\n//W_HAW8214 = \"Alarme de Tensao\"\t\t// Descrição do alarme externo\r\n//W_HAW8235 = \"Consultar manual\"\r\n\r\nflag_hab_desab_Tecla_REDIAL = 0;\t\t// Tecla Redial desabilitado\r\n\r\nwriteModbus(\"10255\", 5);\t\t\t// i.p4 = Entrada Digital 4\r\n\r\nSenha_Gravada = 123;\t\t\t// Senha Inicial = 123\r\n\r\nwriteModbus(\"10294\", 0);\t\t\t// Ventilador desligado durante o degelo\r\ndegelo_porta_aberta = false;\t\t// degelo entra independente da porta\r\nwriteModbus(\"10265.0\", 1); \t\t// Degelo por gas quente\r\ndegelo_processo_automatico\t= false;\t// após término do degelo, Não inicia ultimo processo automaticamente\r\nwriteModbus(\"10270\", 1000);\t\t\t\t// Duração do degelo 10.00 minutos\r\nwriteModbus(\"10279\", 1000);\t\t\t\t// Duração do pós degelo (gotejamento) 10.00 minutos\r\nwriteModbus(\"10295\", 1003);\t\t\t\t// Retardo para ativação do evaporador após o degelo 10 minutos e 3 segundos\r\n\r\nSP_SONDA_CONGELAR_CAMARA = -250;\t\t\t\t// Setpoint da Camara no modo CONGELAR Sonda\r\nSP_SONDA_RESF_CAMARA = 0;\t\t\t\t\t// Setpoint da Camara no modo RESFRIAR Sonda \r\n\t\r\n\r\nSP_Resf_Interno_F1 = -250;\t\t\t\t\t// SP interno de resfriamento modo HARD - FAse 1\r\nDif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;\t\t// Diferencial interno de resfriamento modo HARD - FAse 1\r\nSP_Resf_Espeto_F1 = 150;\t\t\t\t\t// SP ESpeto de resfriamento modo HARD - Troca FAse 1 para Fase 2\t\r\n\r\nSP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;\t\t// SP interno de resfriamento modo HARD - FAse 1\r\nDif_Resf_Hard_F2 = Diferencial_Resfriar_Tempo;\t\t// Diferencial interno de resfriamento modo HARD - FAse 1\t\r\nSP_Resf_Espeto_F2 = SP_Resfriar_Sonda;\t\t\t// SP ESpeto de resfriamento modo HARD - Finalização\r\n\r\nPorc_Resf_preset_tempo_F1F2 = 6;\t\t\t\t// Porcentagem /10 do tempo total do ciclo de refriamento 60% fase 1 > 40% fase 2\r\n\t\r\n// RECEITA\r\nTempo_receita_1 = 120;\r\nTempo_receita_2 = 120;\r\nTempo_receita_3 = 120;\r\nTempo_receita_4 = 120;\r\nTempo_receita_5 = 120;\r\nTempo_receita_6 = 120;\r\nTempo_receita_7 = 120;\r\nTempo_receita_8 = 120;\r\nTempo_receita_9 = 120;\r\nTempo_receita_10 = 120;\r\nTempo_receita_11 = 120;\r\nTempo_receita_12 = 120;\r\n\r\nreset_fabrica = false;\r\n\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "WriteModbus",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call RESET_FABRICA writeModbus"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "UpdateModbus485(address, value, _INT_);\r\nWriteModbus485(address, 1);\r\nWait(50);"
             }
           }
         ],
@@ -18656,6 +18842,11 @@
           {
             "Name": "tearDownScreen",
             "HasValue": false
+          },
+          {
+            "Name": "writeModbus",
+            "HasValue": true,
+            "ValueType": "char const* address, double"
           }
         ],
         "Name": "RESET_FABRICA",
@@ -18745,6 +18936,30 @@
             "Y": 110,
             "Width": 321,
             "Height": 98,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4098",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 60,
+              "Green": 255,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textAreaStatusPorta_1",
+            "X": 42,
+            "Y": 86,
+            "Width": 20,
+            "Height": 19,
             "Visible": true,
             "LockPosition": true,
             "Draggable": false,
@@ -18805,6 +19020,34 @@
             "Height": 52,
             "Visible": true,
             "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Type": "TextArea",
+            "TextId": "SingleUseId4100",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "status_porta1",
+            "X": 62,
+            "Y": 95,
+            "Width": 302,
+            "Height": 147,
+            "Visible": true,
+            "LockPosition": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -18898,6 +19141,18 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Tela_Inicial"
+            }
+          },
+          {
+            "InteractionName": "script_screen_HIGIENE",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerScreenTransitionBegins"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "#include <AT_module.hpp>",
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&status_porta, status_portaBuffer, \"553\", 0, _INT_, REPEAT);"
             }
           },
           {
@@ -20162,7 +20417,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);"
+              "Code": "Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdate(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, SP_Resf_Espeto_F1 / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, SP_Resf_Interno_F1 / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, SP_Resfriar_Sonda / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, SP_SONDA_RESF_CAMARA / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, Diferencial_Resfriar_Tempo / 10, _FP_32BIT_, 1);\r\nUpdate(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, Porc_Resf_preset_tempo_F1F2, _FP_32BIT_, 0);"
             }
           },
           {
@@ -20197,7 +20452,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "Clear();\r\nContainerClear(&numKeyboardContainer1);"
+              "Code": "SP_Resf_Espeto_F1 = 10 * GetNumberTextArea(textAreaSpResfEspetoF1Buffer);\r\nSP_Resf_Interno_F1 = 10 * GetNumberTextArea(textAreaSpResfInternoF1Buffer);\r\nSP_Resfriar_Sonda = 10 * GetNumberTextArea(textAreaSpResfriarSondaBuffer);\r\nSP_SONDA_RESF_CAMARA = 10 * GetNumberTextArea(textAreaSpSondaResfCamaraBuffer);\r\nDiferencial_Resfriar_Tempo = 10 * GetNumberTextArea(textAreaDiferencialResfriarTempoBuffer);\r\nPorc_Resf_preset_tempo_F1F2 = GetNumberTextArea(textAreaPorcResfPresetTempoF1F2Buffer);\r\n\r\nClear();\r\nContainerClear(&numKeyboardContainer1);"
             }
           },
           {
@@ -26476,6 +26731,32 @@
             },
             "Action": {
               "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "cancela_higiene",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelCancelarHigiene"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "#include <AT_module.hpp>",
+              "Code": "Clear();\r\nSoundBuzzerOn(25);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_); \r\nWriteModbus485(\"10242\", 2);\r\n\r\nUpdateModbus485(\"645\", 0, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 3, _INT_);\r\nWriteModbus485(\"10322\", 1);"
+            }
+          },
+          {
+            "InteractionName": "cancela_higiene_1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "cancela_higiene"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "HIGIENE"
             }
           }
         ],

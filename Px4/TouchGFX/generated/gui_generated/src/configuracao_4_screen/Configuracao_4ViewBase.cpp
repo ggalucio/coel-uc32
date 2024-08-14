@@ -140,8 +140,8 @@ void Configuracao_4ViewBase::setupScreen()
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);
-    Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);
+    Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);
+    Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
 
 }
 
@@ -203,7 +203,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital2Inverter
         //When buttonWithLabelLogicaEntradaDigita2Inverter clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, -1, _INT_, 0);
+        logica_entrada_digital2 = -1;
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital2Normal)
@@ -211,7 +212,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital2Normal
         //When buttonWithLabelLogicaEntradaDigital2Normal clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);
+        logica_entrada_digital2 = 1;
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital2Desabilitar)
@@ -219,7 +221,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital2Desabilitar
         //When buttonWithLabelLogicaEntradaDigital2Desabilitar clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 0, _INT_, 0);
+        logica_entrada_digital2 = 0;
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital1Inverter)
@@ -227,7 +230,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital1Inverter
         //When buttonWithLabelLogicaEntradaDigital1Inverter clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, -1, _INT_, 0);
+        logica_entrada_digital1 = -1;
+        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital1Normal)
@@ -235,7 +239,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital1Normal
         //When buttonWithLabelLogicaEntradaDigital1Normal clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);
+        logica_entrada_digital1 = 1;
+        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);
         SoundBuzzerOn(25);
     }
 }

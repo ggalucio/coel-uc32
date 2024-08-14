@@ -195,11 +195,11 @@ void Configuracao_5ViewBase::setupScreen()
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);
-    Update(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);
-    
+    Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, timer_alarme_externo_SP_MINUTOS, _INT_, 0);
     Update(&textAreaHAW8214, textAreaHAW8214Buffer, "Alarme de Tensao", 20);
     Update(&textAreaHAW8235, textAreaHAW8235Buffer, "Consultar manual", 20);
+    Update(&toggleButtonFlagHabDesabTeclaRedial, flag_hab_desab_Tecla_REDIAL);
+    ReadWriteModbus485(&textArea1410299, textArea1410299Buffer, "10299", 2, _FP_32BIT_, ONCE);
 
 }
 
@@ -264,6 +264,8 @@ void Configuracao_5ViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    timer_alarme_externo_SP_MINUTOS = GetNumberTextArea(textAreaTimerAlarmeExternoSpMinutosBuffer);
+    
     Clear();
     ContainerClear(&numKeyboardContainer1);
     ContainerClear(&keyboardContainer21);
@@ -297,6 +299,7 @@ void Configuracao_5ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //FlagHabDesabTeclaRedial
         //When toggleButtonFlagHabDesabTeclaRedial clicked execute C++ code
         //Execute C++ code
+        flag_hab_desab_Tecla_REDIAL = toggleButtonFlagHabDesabTeclaRedial.getState();
         SoundBuzzerOn(25);
     }
 }
@@ -338,7 +341,7 @@ void Configuracao_5ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410299
         //When flexButton1410299 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

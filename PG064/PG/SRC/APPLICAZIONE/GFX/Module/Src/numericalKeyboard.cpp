@@ -227,7 +227,7 @@ double GetNumericalKeyboardValue(touchgfx::TextArea **area, touchgfx::Unicode::U
 
 uint8_t CredentialSuccess(){
 	uint16_t pwd = atoi(numValue);
-	return pwd == 5000 ? 1 : 0;
+	return pwd == 123 ? 1 : 0;
 }
 
 void GetRangeValues(double* min, double *max, DataType* dataType,  RTCType* rtc, uint8_t* decimal){

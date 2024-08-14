@@ -222,12 +222,12 @@ void Configuracao_7ViewBase::setupScreen()
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);
-    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);
-    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);
-    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);
-    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);
+    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, SP_Resf_Espeto_F1 / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, SP_Resf_Interno_F1 / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, SP_Resfriar_Sonda / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, SP_SONDA_RESF_CAMARA / 10, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, Diferencial_Resfriar_Tempo / 10, _FP_32BIT_, 1);
+    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, Porc_Resf_preset_tempo_F1F2, _FP_32BIT_, 0);
 
 }
 
@@ -283,6 +283,13 @@ void Configuracao_7ViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    SP_Resf_Espeto_F1 = 10 * GetNumberTextArea(textAreaSpResfEspetoF1Buffer);
+    SP_Resf_Interno_F1 = 10 * GetNumberTextArea(textAreaSpResfInternoF1Buffer);
+    SP_Resfriar_Sonda = 10 * GetNumberTextArea(textAreaSpResfriarSondaBuffer);
+    SP_SONDA_RESF_CAMARA = 10 * GetNumberTextArea(textAreaSpSondaResfCamaraBuffer);
+    Diferencial_Resfriar_Tempo = 10 * GetNumberTextArea(textAreaDiferencialResfriarTempoBuffer);
+    Porc_Resf_preset_tempo_F1F2 = GetNumberTextArea(textAreaPorcResfPresetTempoF1F2Buffer);
+    
     Clear();
     ContainerClear(&numKeyboardContainer1);
 }

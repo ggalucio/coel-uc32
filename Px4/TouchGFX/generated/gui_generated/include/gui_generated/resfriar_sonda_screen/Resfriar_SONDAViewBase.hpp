@@ -28,6 +28,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -41,6 +42,7 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box boxFundo;
     touchgfx::Box boxProcessOff;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::Box boxFundoAzul;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox2;
@@ -52,7 +54,8 @@ protected:
     touchgfx::TextArea textAreaTitle;
     touchgfx::Button buttonCancelarProcesso;
     touchgfx::ToggleButton toggleButtonFlagConservarSN;
-    touchgfx::ToggleButton toggleButtonFlagResfriarHardSoft;
+    touchgfx::Image imageSoft;
+    touchgfx::Image imageHard;
     touchgfx::Image image1;
     touchgfx::Image image2;
     touchgfx::Image image3;
