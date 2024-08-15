@@ -90,6 +90,7 @@ void RESET_FABRICAViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void RESET_FABRICAViewBase::tearDownScreen()

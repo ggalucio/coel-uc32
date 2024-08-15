@@ -91,6 +91,7 @@ void refine_senha_secretoViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void refine_senha_secretoViewBase::tearDownScreen()

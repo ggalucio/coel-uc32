@@ -216,10 +216,10 @@ void Configuracao_3ViewBase::setupScreen()
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    ReadWriteModbus485(&textArea1410291, textArea1410291Buffer, "10291", 1, _FP_32BIT_, ONCE);
-    ReadWriteModbus485(&textArea1410248, textArea1410248Buffer, "10248", 1, _FP_32BIT_, ONCE);
-    ReadWriteModbus485(&textArea1410249, textArea1410249Buffer, "10249", 1, _FP_32BIT_, ONCE);
-    ReadWriteModbus485(&textArea1410250, textArea1410250Buffer, "10250", 1, _FP_32BIT_, ONCE);
+    ReadWriteModbus485(&textArea1410291, textArea1410291Buffer, "10291", 1, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410248, textArea1410248Buffer, "10248", 1, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410249, textArea1410249Buffer, "10249", 1, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410250, textArea1410250Buffer, "10250", 1, _DOUBLE_, ONCE);
     Update(&toggleButtonHSW4, HSW4);
     Update(&textAreaSenhaGravada, textAreaSenhaGravadaBuffer, Senha_Gravada, _INT_, 0);
 
@@ -270,6 +270,7 @@ void Configuracao_3ViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Configuracao_3ViewBase::tearDownScreen()
@@ -338,7 +339,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410250
         //When flexButton1410250 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410250, textArea1410250Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -352,7 +353,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410249
         //When flexButton1410249 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410249, textArea1410249Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -366,7 +367,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410248
         //When flexButton1410248 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410248, textArea1410248Buffer, -30.0, 30.0, _DOUBLE_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -380,7 +381,7 @@ void Configuracao_3ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410291
         //When flexButton1410291 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410291, textArea1410291Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

@@ -218,6 +218,7 @@ void Receita_TemperaturaViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Receita_TemperaturaViewBase::tearDownScreen()

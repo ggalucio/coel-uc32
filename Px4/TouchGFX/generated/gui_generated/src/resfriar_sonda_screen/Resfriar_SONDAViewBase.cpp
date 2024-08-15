@@ -336,7 +336,7 @@ void Resfriar_SONDAViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
     		writeModbus("645", 0);		// Controlador em modo Stand-by
     	}
     	
-    	flag_Conservar_ANDAMENTO = 0;		// Zera flag_conservar_andamento
+    	flag_Conservar_ANDAMENTO = false;		// Zera flag_conservar_andamento
     
     	Timer_buzzer_ON = 1;			// inicia Timer_Buzzer
     }
@@ -373,7 +373,7 @@ void Resfriar_SONDAViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
-    
+    W_1_4553 = imageStatusPorta.isVisible();
     
     Update(&textAreaSpResfHardEspetoDisplay, textAreaSpResfHardEspetoDisplayBuffer, SP_Resf_Hard_Espeto_display / 10, _DOUBLE_, 1);
     Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);

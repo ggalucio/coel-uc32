@@ -287,6 +287,7 @@ void Receitas_X_EDITViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Receitas_X_EDITViewBase::tearDownScreen()

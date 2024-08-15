@@ -121,9 +121,18 @@ extern bool HSW4;
 extern bool reset_fabrica;
 extern bool cancelar_processo_SIM;
 extern double xbar_zero;
-extern double W_HDW5000;
 extern bool flag_Conservar_ANDAMENTO;
 extern double Status_Conservar;
 extern double Receita_Cong_Resf_ATUAL;
+extern double Status_Porta;
+extern bool flag_porta;
+extern double Temperatura_Receita_ATUAL;
+extern double W_HDW5000;
+extern bool W_1_4553;
+extern double W_1_4554;
+extern double W_1_4515;
+extern double W_1_410242;
+extern double W_1_410282;
+extern double W_1_4645;
 
 #endif /* GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_ */

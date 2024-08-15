@@ -107,6 +107,7 @@ void Degelo_ConfirmarViewBase::handleTickEvent()
     	textArea1.setVisible(true);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Degelo_ConfirmarViewBase::tearDownScreen()

@@ -131,6 +131,7 @@ void Receita_confirmViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
     
     if (countCycleBlink > 1000)
     {

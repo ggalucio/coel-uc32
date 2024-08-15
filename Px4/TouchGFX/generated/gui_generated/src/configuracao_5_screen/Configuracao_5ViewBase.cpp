@@ -201,7 +201,7 @@ void Configuracao_5ViewBase::setupScreen()
     Update(&textAreaHAW8214, textAreaHAW8214Buffer, "Alarme de Tensao", 20);
     Update(&textAreaHAW8235, textAreaHAW8235Buffer, "Consultar manual", 20);
     Update(&toggleButtonFlagHabDesabTeclaRedial, flag_hab_desab_Tecla_REDIAL);
-    ReadWriteModbus485(&textArea1410299, textArea1410299Buffer, "10299", 2, _FP_32BIT_, ONCE);
+    ReadWriteModbus485(&textArea1410299, textArea1410299Buffer, "10299", 2, _DOUBLE_, ONCE);
 
 }
 
@@ -259,6 +259,7 @@ void Configuracao_5ViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Configuracao_5ViewBase::tearDownScreen()
@@ -343,7 +344,7 @@ void Configuracao_5ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410299
         //When flexButton1410299 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _DOUBLE_, 2, 0);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

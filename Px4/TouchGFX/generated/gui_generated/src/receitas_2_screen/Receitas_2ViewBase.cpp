@@ -228,6 +228,7 @@ void Receitas_2ViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Receitas_2ViewBase::tearDownScreen()

@@ -27,6 +27,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -84,12 +85,14 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Conservar_CongelarViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Conservar_CongelarViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
     touchgfx::Callback<Conservar_CongelarViewBase> cANCELAR_PROCESSO1NaoCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
     void cANCELAR_PROCESSO1NaoCallbackHandler();
 
 };

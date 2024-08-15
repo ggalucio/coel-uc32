@@ -113,6 +113,7 @@ void HIGIENE_CONFIRMARViewBase::handleTickEvent()
     	textAreaStatusPortaAberta.setVisible(false); 
     }
     invalidate();
+    W_1_4553 = buttonStartHigiene.isVisible();
 }
 
 void HIGIENE_CONFIRMARViewBase::tearDownScreen()

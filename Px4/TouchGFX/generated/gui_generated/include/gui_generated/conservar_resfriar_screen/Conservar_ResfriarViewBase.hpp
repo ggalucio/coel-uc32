@@ -27,6 +27,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -45,6 +46,7 @@ protected:
     touchgfx::Image imageVazio_1;
     touchgfx::Image imageLogo;
     touchgfx::Box boxProcessOff;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox1;
     touchgfx::Box boxFundoAzul2;

@@ -137,6 +137,7 @@ void HIGIENEViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void HIGIENEViewBase::tearDownScreen()

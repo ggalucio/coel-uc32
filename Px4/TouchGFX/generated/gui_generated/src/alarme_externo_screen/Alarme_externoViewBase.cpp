@@ -104,6 +104,7 @@ void Alarme_externoViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Alarme_externoViewBase::tearDownScreen()

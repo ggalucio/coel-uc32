@@ -278,6 +278,7 @@ void Configuracao_7ViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Configuracao_7ViewBase::tearDownScreen()

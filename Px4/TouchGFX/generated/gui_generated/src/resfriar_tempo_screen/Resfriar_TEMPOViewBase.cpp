@@ -349,7 +349,7 @@ void Resfriar_TEMPOViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
     		writeModbus("645", 0);		// Controlador em modo Stand-by
     	}
     	
-    	flag_Conservar_ANDAMENTO = 0;		// Zera flag_conservar_andamento
+    	flag_Conservar_ANDAMENTO = false;		// Zera flag_conservar_andamento
     
     	Timer_buzzer_ON = 1;			// inicia Timer_Buzzer
     }
@@ -386,7 +386,7 @@ void Resfriar_TEMPOViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
-    
+    W_1_4553 = imageStatusPorta.isVisible();
     
     Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
     Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);

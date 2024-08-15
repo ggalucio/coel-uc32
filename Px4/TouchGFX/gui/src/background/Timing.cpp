@@ -15,18 +15,16 @@ void Cycle50()
 	Timer_Degelo_COUNT_MINUTOS = Timer_degelo_COUNT / 6; 		// Transforma contagem decorrido em minutos
 	Timer_higiene_MIN = Timer_higiene_COUNT / 6;  				// Transforma contagem decorrido em minutos
 
-	/*
-	if @W_1:4553=1
+	if (W_1_4553)
 	{
-		@Status_Porta=1
-		@flag_porta = true
+		Status_Porta = 1;
+		flag_porta = true;
 	}
 	else
 	{
-		@Status_Porta=0
-		@flag_porta = false
+		Status_Porta = 0;
+		flag_porta = false;
 	}
-	*/
 }
 
 void Cycle500()
@@ -34,7 +32,7 @@ void Cycle500()
 	// Monitoramento de estado da entrada digital 2
 	int a;
 
-	//a = logica_entrada_digital2 * @W_1:4554 			// Compara logica da entrada digital2 com o valor lido da dig2 do controlador
+	a = logica_entrada_digital2 * (int)W_1_4554; 		// Compara logica da entrada digital2 com o valor lido da dig2 do controlador
 
 	if (a != 0 && flag_alarme_externo_andamento == 0)	// se logica_entrada2 <> status Dig2 and alarme_externo_andamento=0 (indica que estava sem alarme)
 		flag_alarme_externo = 1;						// bit flag de alarme ativo
@@ -48,11 +46,11 @@ void Cycle25()
 	int a, b, c, d, spi1, spe1, spi2, spe2;
 
 	if (Status_tecla_Congela == 1 || Status_tecla_Congela == 3){
-		//b = SignedInt16("@W_1:4515")			' b = valor Pr3
+		b = (uint16_t)W_1_4515;						// b = valor Pr3
 	}
 	else{
-		//c = SignedInt16("@W_1:4515")							' c = valor Pr3
-		//d = SignedInt16("@Temperatura_Receita_ATUAL")			' d = Temperatura_receita_ATUAL
+		c = (uint16_t)W_1_4515;						// c = valor Pr3
+		d = (uint16_t)Temperatura_Receita_ATUAL;	// d = Temperatura_receita_ATUAL
 	}
 
 
