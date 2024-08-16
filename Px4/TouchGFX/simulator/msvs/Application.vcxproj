@@ -150,8 +150,8 @@
     <ClCompile Include="..\..\gui\src\containers\keyboardContainer2.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\keyboardContainer2Base.cpp"/>
     <ClCompile Include="..\..\gui\src\background\Timing.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\leituraContinuaModbusContainer.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\leituraContinuaModbusContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\TimingApplication.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\TimingApplicationBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -432,8 +432,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\keyboardContainer2Base.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\modbus_address\Address.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\background\Timing.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\leituraContinuaModbusContainer.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\leituraContinuaModbusContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\TimingApplication.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\TimingApplicationBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

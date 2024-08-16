@@ -247,6 +247,7 @@ void Configuracao_6ViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
+    ClearOthers();
     ContainerClear(&numKeyboardContainer1);
 }
 
@@ -305,7 +306,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410294
         //When flexButton1410294 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -319,7 +320,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410295
         //When flexButton1410295 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -333,7 +334,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410279
         //When flexButton1410279 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

@@ -294,6 +294,7 @@ void Configuracao_7ViewBase::tearDownScreen()
     Porc_Resf_preset_tempo_F1F2 = GetNumberTextArea(textAreaPorcResfPresetTempoF1F2Buffer);
     
     Clear();
+    ClearOthers();
     ContainerClear(&numKeyboardContainer1);
 }
 

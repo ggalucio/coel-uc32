@@ -131,8 +131,11 @@ extern double W_HDW5000;
 extern bool W_1_4553;
 extern double W_1_4554;
 extern double W_1_4515;
+extern double W_1_4512;
 extern double W_1_410242;
 extern double W_1_410282;
 extern double W_1_4645;
+
+extern int addressModbusRS458;
 
 #endif /* GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_ */

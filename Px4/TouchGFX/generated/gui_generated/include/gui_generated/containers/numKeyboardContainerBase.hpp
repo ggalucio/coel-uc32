@@ -6,6 +6,7 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
@@ -35,6 +36,10 @@ public:
     void setValidRangeCallback(touchgfx::GenericCallback<>& callback)
     {
         this->ValidRangeCallback = &callback;
+    }
+    void setEnterCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->EnterCallback = &callback;
     }
 
     /*
@@ -73,10 +78,18 @@ protected:
             this->ValidRangeCallback->execute();
         }
     }
+    virtual void emitEnterCallback()
+    {
+        if (EnterCallback && EnterCallback->isValid())
+        {
+            this->EnterCallback->execute();
+        }
+    }
 
     /*
      * Member Declarations
      */
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > backgroundFlexButton;
     touchgfx::Box backgroundBox;
     touchgfx::Box keyboardBox;
     touchgfx::BoxWithBorder textBox;
@@ -121,6 +134,7 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<numKeyboardContainerBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<numKeyboardContainerBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Custom Trigger Callback Declarations
@@ -128,11 +142,13 @@ private:
     touchgfx::GenericCallback<>* HideKeypadTriggerCallback;
     touchgfx::GenericCallback<>* OutOfRangeCallback;
     touchgfx::GenericCallback<>* ValidRangeCallback;
+    touchgfx::GenericCallback<>* EnterCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

@@ -7,6 +7,7 @@
 
 #include "gui/global/var.hpp"
 
+
 uint8_t selectedRecipeListPage			= 0;
 uint8_t selectedRecipeItem				= 0;
 int countCycleBlink						= 0;
@@ -128,6 +129,9 @@ double W_HDW5000						= 0;
 bool W_1_4553							= false;
 double W_1_4554							= 0;
 double W_1_4515							= 0;
-extern double W_1_410242				= 0;
-extern double W_1_410282				= 0;
-extern double W_1_4645					= 0;
+double W_1_4512							= 0;
+double W_1_410242						= 0;
+double W_1_410282						= 0;
+double W_1_4645							= 0;
+
+int addressModbusRS458					= 0;
