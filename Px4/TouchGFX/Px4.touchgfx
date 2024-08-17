@@ -19362,7 +19362,7 @@
             "Name": "textAreaTitle",
             "X": 5,
             "Y": 8,
-            "Width": 167,
+            "Width": 219,
             "Height": 37,
             "Visible": true,
             "LockPosition": true,
@@ -19469,10 +19469,14 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
             "Name": "textAreaStatusHigiene",
             "X": 360,
             "Y": 14,
-            "Width": 108,
+            "Width": 0,
             "Height": 25,
             "Visible": true,
             "LockPosition": true,
@@ -19554,6 +19558,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "Finalizar_higiene",
+            "Type": "CustomContainerInstance",
+            "Name": "finalizar_higiene1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -19565,7 +19584,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddbackgroundContainer(this);\r\nW_HDW5000 = 45;\r\n\r\n// Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_);\r\nWriteModbus485(\"10242\", 1);\r\n\r\nUpdateModbus485(\"645\", 1, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 11, _INT_);\r\nWriteModbus485(\"10322\", 1);"
+              "Code": "\r\n\r\nAddbackgroundContainer(this); \r\n\r\nW_HDW5000 = 45;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_);\r\nWriteModbus485(\"10242\", 1);\r\n\r\nUpdateModbus485(\"645\", 1, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 11, _INT_);\r\nWriteModbus485(\"10322\", 1);\r\n\r\ntimer_higiene_ON = true;\r\n\r\nstatus_higiene = true;\r\n\r\nUpdate(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, \"OPERANDO...\", 20);"
             }
           },
           {
@@ -19588,7 +19607,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\nW_1_4553 = imageStatusPorta.isVisible();"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nW_1_4553 = imageStatusPorta.isVisible();\r\n\r\nUpdate(&textAreaTimerHigieneMin, textAreaTimerHigieneMinBuffer, Timer_higiene_MIN, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_higiene_COUNT, _INT_, 0);\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (status_higiene)\r\n\t\tVisibilityTextArea(&textAreaStatusHigiene, textAreaStatusHigiene.isVisible());\r\n\telse\r\n\t\tUpdate(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, \"Finalizado!\", 20);\r\n}\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -19605,15 +19624,27 @@
           },
           {
             "InteractionName": "HigieneConfirma",
-            "HasCompletedTrigger": false,
+            "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerClicked",
               "TriggerComponent": "buttonFinalizarHigiene"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "HIGIENE_CONFIRMAR"
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&finalizar_higiene1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "cancelar_higiene",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "Finalizar_higiene cancelar_higiene happens",
+              "TriggerComponent": "finalizar_higiene1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\nSoundBuzzerOn(25);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_); \r\nWriteModbus485(\"10242\", 2);\r\n\r\nUpdateModbus485(\"645\", 0, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 3, _INT_);\r\nWriteModbus485(\"10322\", 1);\r\n\r\nstatus_higiene = false;\r\n\r\nTimer_higiene_MIN = 0;\r\nTimer_higiene_COUNT = 0; "
             }
           }
         ],
@@ -26970,16 +27001,15 @@
             }
           },
           {
-            "InteractionName": "cancela_higiene",
+            "InteractionName": "cancela_higiene_sim",
             "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerClicked",
               "TriggerComponent": "buttonWithLabelCancelarHigiene"
             },
             "Action": {
-              "Type": "ActionExecuteCode",
-              "Includes": "#include <AT_module.hpp>",
-              "Code": "Clear();\r\nSoundBuzzerOn(25);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_); \r\nWriteModbus485(\"10242\", 2);\r\n\r\nUpdateModbus485(\"645\", 0, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 3, _INT_);\r\nWriteModbus485(\"10322\", 1);"
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "Finalizar_higiene cancelar_higiene happens"
             }
           },
           {
@@ -26987,13 +27017,32 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerInteractionCompleted",
-              "InteractionToTriggerOn": "cancela_higiene"
+              "InteractionToTriggerOn": "cancela_higiene_sim"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "HIGIENE"
+              "ActionComponent": "HIGIENE_CONFIRMAR"
             }
+          },
+          {
+            "InteractionName": "cancela_higiente_nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelNao"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "#include <AT_module.hpp>",
+              "Code": "ContainerVisibility(this, false);\r\nSoundBuzzerOn(25);"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "cancelar_higiene",
+            "HasValue": false
           }
         ],
         "CustomActions": [
@@ -30778,6 +30827,10 @@
         "IsResource": false
       },
       {
+        "TextEntryId": "SingleUseId4100",
+        "IsResource": false
+      },
+      {
         "TextEntryId": "SingleUseId4166",
         "IsResource": false
       },
@@ -30839,10 +30892,6 @@
       },
       {
         "TextEntryId": "SingleUseId4181",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId4100",
         "IsResource": false
       }
     ],

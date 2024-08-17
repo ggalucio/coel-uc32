@@ -9,7 +9,8 @@
 
 
 Finalizar_higieneBase::Finalizar_higieneBase() :
-    buttonCallback(this, &Finalizar_higieneBase::buttonCallbackHandler)
+    buttonCallback(this, &Finalizar_higieneBase::buttonCallbackHandler),
+    cancelar_higieneCallback(0)
 {
     setWidth(480);
     setHeight(272);
@@ -25,6 +26,7 @@ Finalizar_higieneBase::Finalizar_higieneBase() :
     buttonWithLabelNao.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3987));
     buttonWithLabelNao.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelNao.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelNao.setAction(buttonCallback);
 
     buttonWithLabelCancelarHigiene.setXY(86, 184);
     buttonWithLabelCancelarHigiene.setBitmaps(touchgfx::Bitmap(BITMAP_R3_ID), touchgfx::Bitmap(BITMAP_R4_ID));
@@ -57,27 +59,25 @@ void Finalizar_higieneBase::init()
 
 void Finalizar_higieneBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonWithLabelCancelarHigiene)
+    if (&src == &buttonWithLabelNao)
     {
-        //cancela_higiene
-        //When buttonWithLabelCancelarHigiene clicked execute C++ code
+        //cancela_higiente_nao
+        //When buttonWithLabelNao clicked execute C++ code
         //Execute C++ code
-        Clear();
+        ContainerVisibility(this, false);
         SoundBuzzerOn(25);
-        
-        UpdateModbus485("10242", 999, _INT_); 
-        WriteModbus485("10242", 2);
-        
-        UpdateModbus485("645", 0, _INT_);
-        WriteModbus485("645", 1);
-        
-        UpdateModbus485("10322", 3, _INT_);
-        WriteModbus485("10322", 1);
+    }
+    else if (&src == &buttonWithLabelCancelarHigiene)
+    {
+        //cancela_higiene_sim
+        //When buttonWithLabelCancelarHigiene clicked emit cancelar_higiene callback
+        //Emit callback
+        emitCancelar_higieneCallback();
 
         //cancela_higiene_1
-        //When cancela_higiene completed change screen to HIGIENE
-        //Go to HIGIENE with no screen transition
-        application().gotoHIGIENEScreenNoTransition();
+        //When cancela_higiene_sim completed change screen to HIGIENE_CONFIRMAR
+        //Go to HIGIENE_CONFIRMAR with no screen transition
+        application().gotoHIGIENE_CONFIRMARScreenNoTransition();
     }
 }
 
