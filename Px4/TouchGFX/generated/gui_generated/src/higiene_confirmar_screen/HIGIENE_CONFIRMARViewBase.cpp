@@ -32,12 +32,6 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     textAreaStatusPortaFechada.setLinespacing(0);
     textAreaStatusPortaFechada.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3961));
 
-    textAreaStatusPortaAberta.setXY(51, 90);
-    textAreaStatusPortaAberta.setVisible(false);
-    textAreaStatusPortaAberta.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
-    textAreaStatusPortaAberta.setLinespacing(0);
-    textAreaStatusPortaAberta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
-
     textAreaStatusPortaAberta.setXY(56, 90);
     textAreaStatusPortaAberta.setVisible(false);
     textAreaStatusPortaAberta.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));

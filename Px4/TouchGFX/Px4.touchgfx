@@ -19080,30 +19080,6 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "textAreaStatusPortaAberta",
-            "X": 51,
-            "Y": 90,
-            "Width": 302,
-            "Height": 147,
-            "Visible": false,
-            "LockPosition": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Type": "TextArea",
-            "TextId": "SingleUseId4100",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 0,
-              "Green": 255,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textAreaStatusPortaAberta",
             "X": 56,
             "Y": 90,
             "Width": 302,
@@ -30802,10 +30778,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId4100",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId4166",
         "IsResource": false
       },
@@ -30871,10 +30843,6 @@
       },
       {
         "TextEntryId": "SingleUseId4100",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId4101",
         "IsResource": false
       }
     ],
