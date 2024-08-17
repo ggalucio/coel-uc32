@@ -48,6 +48,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaTimerHigieneMin;
     touchgfx::TextArea textAreaStatusHigiene;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -56,6 +58,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerHigieneMinBuffer[TEXTAREATIMERHIGIENEMIN_SIZE];
     static const uint16_t TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerCongelarDecorridoCountBuffer[TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

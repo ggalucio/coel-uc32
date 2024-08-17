@@ -4,6 +4,7 @@
 #include <gui_generated/tela_inicial_screen/Tela_InicialViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include "BitmapDatabase.hpp"
+#include <texts/TextKeysAndLanguages.hpp>
 
 Tela_InicialViewBase::Tela_InicialViewBase() :
     buttonCallback(this, &Tela_InicialViewBase::buttonCallbackHandler),
@@ -62,6 +63,19 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
     numKeyboardContainerPwd1.setCredentialFailedCallback(numKeyboardContainerPwd1CredentialFailedCallback);
     numKeyboardContainerPwd1.setCancelTriggerCallback(numKeyboardContainerPwd1CancelTriggerCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4181).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4180));
+
     add(__background);
     add(boxFundo);
     add(imageLogo);
@@ -74,12 +88,24 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
     add(buttonSolicitacaoSenah);
     add(solicitar_senha1);
     add(numKeyboardContainerPwd1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Tela_InicialViewBase::setupScreen()
 {
     solicitar_senha1.initialize();
     numKeyboardContainerPwd1.initialize();
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    W_HDW5000 = 0;
+    
+    Clear();
+    AddbackgroundContainer(this);
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+
 }
 
 //Called when the screen transition ends
@@ -89,6 +115,11 @@ void Tela_InicialViewBase::afterTransition()
     //When screen transition ends execute C++ code
     //Execute C++ code
     SoundBuzzerOn(25);
+
+    //LaunchPasswordKeyboard
+    //When screen transition ends call LaunchNumericalKeyboard on numKeyboardContainerPwd1
+    //Call LaunchNumericalKeyboard
+    numKeyboardContainerPwd1.LaunchNumericalKeyboard();
 }
 
 void Tela_InicialViewBase::solicitar_senha1CancelarCallbackHandler()
@@ -113,10 +144,9 @@ void Tela_InicialViewBase::solicitar_senha1DigitarCallbackHandler()
 void Tela_InicialViewBase::numKeyboardContainerPwd1CredentialSuccessCallbackHandler()
 {
     //CredentialSuccess
-    //When numKeyboardContainerPwd1 CredentialSuccess execute C++ code
-    //Execute C++ code
-    ContainerVisibility(&numKeyboardContainerPwd1, false);
-    SoundBuzzerOn(25);
+    //When numKeyboardContainerPwd1 CredentialSuccess change screen to Configuracao
+    //Go to Configuracao with no screen transition
+    application().gotoConfiguracaoScreenNoTransition();
 }
 
 void Tela_InicialViewBase::numKeyboardContainerPwd1CredentialFailedCallbackHandler()
@@ -138,7 +168,15 @@ void Tela_InicialViewBase::numKeyboardContainerPwd1CancelTriggerCallbackHandler(
 
 void Tela_InicialViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
 }
 
 void Tela_InicialViewBase::tearDownScreen()
@@ -146,6 +184,8 @@ void Tela_InicialViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    LogoutUser();
+    
     Clear();
     ClearOthers();
     ContainerClear(&numKeyboardContainerPwd1);
@@ -153,10 +193,7 @@ void Tela_InicialViewBase::tearDownScreen()
 
 void Tela_InicialViewBase::launchPasswordKeyboard()
 {
-    //LaunchPasswordKeyboard
-    //When launchPasswordKeyboard is called call LaunchNumericalKeyboard on numKeyboardContainerPwd1
-    //Call LaunchNumericalKeyboard
-    numKeyboardContainerPwd1.LaunchNumericalKeyboard();
+
 }
 
 void Tela_InicialViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -206,8 +243,9 @@ void Tela_InicialViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&
     else if (&src == &buttonSolicitacaoSenah)
     {
         //SolicitacaoSenha
-        //When buttonSolicitacaoSenah clicked change screen to Configuracao
-        //Go to Configuracao with no screen transition
-        application().gotoConfiguracaoScreenNoTransition();
+        //When buttonSolicitacaoSenah clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&numKeyboardContainerPwd1, !UserIsLogged());
+        SoundBuzzerOn(25);
     }
 }

@@ -151,6 +151,19 @@ Congelar_SONDAViewBase::Congelar_SONDAViewBase() :
     cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
     cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4108).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4107));
+
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
@@ -180,6 +193,8 @@ Congelar_SONDAViewBase::Congelar_SONDAViewBase() :
     add(textAreaTimerCongelarDecorridoCount);
     add(textAreaCongelarSondaSp);
     add(cANCELAR_PROCESSO1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Congelar_SONDAViewBase::setupScreen()
@@ -188,9 +203,19 @@ void Congelar_SONDAViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);
+    AddbackgroundContainer(this);
+    W_HDW5000 = 2; 
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    ReadWriteModbus485(&textArea14515, textArea14515Buffer, "515", 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _DOUBLE_, REPEAT);
+    
+    // Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);
     Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);
-    Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
+    // Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
     
     Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);
     Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
@@ -233,6 +258,14 @@ void Congelar_SONDAViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
+    
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;

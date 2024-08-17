@@ -63,6 +63,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaTimerDegeloCountMinutos;
     touchgfx::TextAreaWithOneWildcard textArea1410270;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -77,6 +79,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerDegeloCountMinutosBuffer[TEXTAREATIMERDEGELOCOUNTMINUTOS_SIZE];
     static const uint16_t TEXTAREA1410270_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410270Buffer[TEXTAREA1410270_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

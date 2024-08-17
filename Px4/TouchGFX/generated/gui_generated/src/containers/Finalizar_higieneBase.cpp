@@ -5,8 +5,11 @@
 #include <touchgfx/Color.hpp>
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
+#include <AT_module.hpp>
 
-Finalizar_higieneBase::Finalizar_higieneBase()
+
+Finalizar_higieneBase::Finalizar_higieneBase() :
+    buttonCallback(this, &Finalizar_higieneBase::buttonCallbackHandler)
 {
     setWidth(480);
     setHeight(272);
@@ -28,6 +31,7 @@ Finalizar_higieneBase::Finalizar_higieneBase()
     buttonWithLabelCancelarHigiene.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3988));
     buttonWithLabelCancelarHigiene.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelCancelarHigiene.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelCancelarHigiene.setAction(buttonCallback);
 
     textAreaMensagem.setXY(96, 62);
     textAreaMensagem.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -49,5 +53,31 @@ void Finalizar_higieneBase::initialize()
 void Finalizar_higieneBase::init()
 {
 
+}
+
+void Finalizar_higieneBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelCancelarHigiene)
+    {
+        //cancela_higiene
+        //When buttonWithLabelCancelarHigiene clicked execute C++ code
+        //Execute C++ code
+        Clear();
+        SoundBuzzerOn(25);
+        
+        UpdateModbus485("10242", 999, _INT_); 
+        WriteModbus485("10242", 2);
+        
+        UpdateModbus485("645", 0, _INT_);
+        WriteModbus485("645", 1);
+        
+        UpdateModbus485("10322", 3, _INT_);
+        WriteModbus485("10322", 1);
+
+        //cancela_higiene_1
+        //When cancela_higiene completed change screen to HIGIENE
+        //Go to HIGIENE with no screen transition
+        application().gotoHIGIENEScreenNoTransition();
+    }
 }
 

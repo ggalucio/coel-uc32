@@ -166,6 +166,19 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4164).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4163));
+
     add(__background);
     add(boxFundo);
     add(boxVermelho2);
@@ -195,6 +208,8 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
     add(flexButtonSpResfInternoF1);
     add(flexButtonSpResfEspetoF1);
     add(numKeyboardContainer1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Configuracao_7ViewBase::setupScreen()
@@ -203,12 +218,18 @@ void Configuracao_7ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, 15.0, _FP_32BIT_, 1);
-    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, -25.0, _FP_32BIT_, 1);
-    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, 2.0, _FP_32BIT_, 1);
-    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, 0.0, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, 3.0, _FP_32BIT_, 1);
-    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, 6, _FP_32BIT_, 0);
+    W_HDW5000 = 47;
+    
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, SP_Resf_Espeto_F1 / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, SP_Resf_Interno_F1 / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, SP_Resfriar_Sonda / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, SP_SONDA_RESF_CAMARA / 10, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, Diferencial_Resfriar_Tempo / 10, _FP_32BIT_, 1);
+    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, Porc_Resf_preset_tempo_F1F2, _FP_32BIT_, 0);
 
 }
 
@@ -248,7 +269,16 @@ void Configuracao_7ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
 
 void Configuracao_7ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Configuracao_7ViewBase::tearDownScreen()
@@ -256,7 +286,15 @@ void Configuracao_7ViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    SP_Resf_Espeto_F1 = 10 * GetNumberTextArea(textAreaSpResfEspetoF1Buffer);
+    SP_Resf_Interno_F1 = 10 * GetNumberTextArea(textAreaSpResfInternoF1Buffer);
+    SP_Resfriar_Sonda = 10 * GetNumberTextArea(textAreaSpResfriarSondaBuffer);
+    SP_SONDA_RESF_CAMARA = 10 * GetNumberTextArea(textAreaSpSondaResfCamaraBuffer);
+    Diferencial_Resfriar_Tempo = 10 * GetNumberTextArea(textAreaDiferencialResfriarTempoBuffer);
+    Porc_Resf_preset_tempo_F1F2 = GetNumberTextArea(textAreaPorcResfPresetTempoF1F2Buffer);
+    
     Clear();
+    ClearOthers();
     ContainerClear(&numKeyboardContainer1);
 }
 

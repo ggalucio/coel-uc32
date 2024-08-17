@@ -97,6 +97,19 @@ Configuracao_4ViewBase::Configuracao_4ViewBase() :
     textAreaLogicaEntradaDigital1.setWildcard(textAreaLogicaEntradaDigital1Buffer);
     textAreaLogicaEntradaDigital1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3741));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4148).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4147));
+
     add(__background);
     add(boxFundo);
     add(boxWithBorder1);
@@ -113,6 +126,8 @@ Configuracao_4ViewBase::Configuracao_4ViewBase() :
     add(buttonWithLabelLogicaEntradaDigital1Normal);
     add(textAreaLogicaEntradaDigital2);
     add(textAreaLogicaEntradaDigital1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Configuracao_4ViewBase::setupScreen()
@@ -121,8 +136,13 @@ void Configuracao_4ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);
-    Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);
+    W_HDW5000 = 36;
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);
+    Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
 
 }
 
@@ -137,7 +157,16 @@ void Configuracao_4ViewBase::afterTransition()
 
 void Configuracao_4ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Configuracao_4ViewBase::tearDownScreen()
@@ -146,6 +175,7 @@ void Configuracao_4ViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
+    ClearOthers();
 }
 
 void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -176,7 +206,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital2Inverter
         //When buttonWithLabelLogicaEntradaDigita2Inverter clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, -1, _INT_, 0);
+        logica_entrada_digital2 = -1;
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital2Normal)
@@ -184,7 +215,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital2Normal
         //When buttonWithLabelLogicaEntradaDigital2Normal clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 1, _INT_, 0);
+        logica_entrada_digital2 = 1;
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital2Desabilitar)
@@ -192,7 +224,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital2Desabilitar
         //When buttonWithLabelLogicaEntradaDigital2Desabilitar clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, 0, _INT_, 0);
+        logica_entrada_digital2 = 0;
+        Update(&textAreaLogicaEntradaDigital2, textAreaLogicaEntradaDigital2Buffer, logica_entrada_digital2, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital1Inverter)
@@ -200,7 +233,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital1Inverter
         //When buttonWithLabelLogicaEntradaDigital1Inverter clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, -1, _INT_, 0);
+        logica_entrada_digital1 = -1;
+        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelLogicaEntradaDigital1Normal)
@@ -208,7 +242,8 @@ void Configuracao_4ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //LogicaEntradaDigital1Normal
         //When buttonWithLabelLogicaEntradaDigital1Normal clicked execute C++ code
         //Execute C++ code
-        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, 1, _INT_, 0);
+        logica_entrada_digital1 = 1;
+        Update(&textAreaLogicaEntradaDigital1, textAreaLogicaEntradaDigital1Buffer, logica_entrada_digital1, _INT_, 0);
         SoundBuzzerOn(25);
     }
 }

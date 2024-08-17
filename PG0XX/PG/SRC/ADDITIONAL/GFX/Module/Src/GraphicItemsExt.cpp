@@ -10,8 +10,10 @@
 #include "cstddef"
 
 //#include <AT_module.hpp>
+#include <gui/containers/TimingApplication.hpp>
 #include <stdlib.h>
 
+TimingApplication* pTimingApplication = NULL;
 
 int nCounterItems = 0;
 int nObjectCounterItems = 0;
@@ -24,6 +26,12 @@ JobOtherItem		jobOtherItem[10];
 void ClearItemsExt(){
 	nObjectCounterItems = 0;
 	nJobOtherItems = 0;
+
+	if (pTimingApplication !=  NULL){
+		pTimingApplication->finalize();
+		delete pTimingApplication;
+		pTimingApplication = NULL;
+	}
 }
 
 double ArrayCharToDouble(char* src){
@@ -125,6 +133,19 @@ void RefreshTextAreaCounting(){
 		if (objectCounterItem[i].DigitalClock != NULL)
 			RefreshDigitalClock(objectCounterItem[i].DigitalClock, value);
 	}
+}
+
+void AddContainer(touchgfx::Screen* screen)
+{
+	if (pTimingApplication != NULL)
+		return;
+
+	pTimingApplication = new TimingApplication();
+	pTimingApplication->setXY(0, 0);
+	pTimingApplication->setVisible(false);
+
+	screen->addDrawable(*pTimingApplication);
+	pTimingApplication->initialize();
 }
 
 void AddCounter(CountingMode countingMode, uint64_t seconds){

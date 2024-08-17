@@ -112,6 +112,19 @@ Receitas_1ViewBase::Receitas_1ViewBase() :
     textAreaReceita4Desc.setWildcard(textAreaReceita4DescBuffer);
     textAreaReceita4Desc.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3890));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4138).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4137));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -133,6 +146,8 @@ Receitas_1ViewBase::Receitas_1ViewBase() :
     add(textAreaReceita2Desc);
     add(textAreaReceita3Desc);
     add(textAreaReceita4Desc);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
     radioButtonGroup1.add(radioButtonMuneroReceita1);
     radioButtonGroup1.add(radioButtonMuneroReceita2);
     radioButtonGroup1.add(radioButtonMuneroReceita3);
@@ -146,6 +161,13 @@ void Receitas_1ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 19;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     SelectJob(0);
     ReadJobName(&textAreaReceita1Desc, textAreaReceita1DescBuffer, 20);
     
@@ -193,7 +215,16 @@ void Receitas_1ViewBase::afterTransition()
 
 void Receitas_1ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Receitas_1ViewBase::tearDownScreen()

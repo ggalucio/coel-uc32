@@ -143,6 +143,19 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4154).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4153));
+
     add(__background);
     add(boxFundo);
     add(boxWithBorder1);
@@ -167,6 +180,8 @@ Configuracao_5ViewBase::Configuracao_5ViewBase() :
     add(flexButtonTimerAlarmeExternoSpMinutos);
     add(keyboardContainer21);
     add(numKeyboardContainer1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Configuracao_5ViewBase::setupScreen()
@@ -176,11 +191,16 @@ void Configuracao_5ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, 1, _INT_, 0);
-    Update(&textArea1410299, textArea1410299Buffer, 0.0, _FP_32BIT_, 2);
+    W_HDW5000 = 39;
     
+    Clear();
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    Update(&textAreaTimerAlarmeExternoSpMinutos, textAreaTimerAlarmeExternoSpMinutosBuffer, timer_alarme_externo_SP_MINUTOS, _INT_, 0);
     Update(&textAreaHAW8214, textAreaHAW8214Buffer, "Alarme de Tensao", 20);
     Update(&textAreaHAW8235, textAreaHAW8235Buffer, "Consultar manual", 20);
+    Update(&toggleButtonFlagHabDesabTeclaRedial, flag_hab_desab_Tecla_REDIAL);
+    ReadWriteModbus485(&textArea1410299, textArea1410299Buffer, "10299", 2, _DOUBLE_, ONCE);
 
 }
 
@@ -229,7 +249,16 @@ void Configuracao_5ViewBase::keyboardContainer21HideKeyboardCallbackHandler()
 
 void Configuracao_5ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Configuracao_5ViewBase::tearDownScreen()
@@ -237,7 +266,10 @@ void Configuracao_5ViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    timer_alarme_externo_SP_MINUTOS = GetNumberTextArea(textAreaTimerAlarmeExternoSpMinutosBuffer);
+    
     Clear();
+    ClearOthers();
     ContainerClear(&numKeyboardContainer1);
     ContainerClear(&keyboardContainer21);
 }
@@ -270,6 +302,7 @@ void Configuracao_5ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //FlagHabDesabTeclaRedial
         //When toggleButtonFlagHabDesabTeclaRedial clicked execute C++ code
         //Execute C++ code
+        flag_hab_desab_Tecla_REDIAL = toggleButtonFlagHabDesabTeclaRedial.getState();
         SoundBuzzerOn(25);
     }
 }
@@ -311,7 +344,7 @@ void Configuracao_5ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410299
         //When flexButton1410299 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _FP_32BIT_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410299, textArea1410299Buffer, 0.00, 99.0, _DOUBLE_, 2, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

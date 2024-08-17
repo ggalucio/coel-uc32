@@ -6,6 +6,7 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
@@ -65,6 +66,7 @@ protected:
     /*
      * Member Declarations
      */
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > backgroundFlexButton;
     touchgfx::Box backgroundBox;
     touchgfx::Box keyboardBox;
     touchgfx::BoxWithBorder textBox;
@@ -117,6 +119,7 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<keyboardContainer2Base, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<keyboardContainer2Base, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
 
     /*
      * Custom Trigger Callback Declarations
@@ -127,6 +130,7 @@ private:
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

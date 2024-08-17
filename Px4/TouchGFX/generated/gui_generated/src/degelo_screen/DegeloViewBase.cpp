@@ -124,6 +124,19 @@ DegeloViewBase::DegeloViewBase() :
     cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
     cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4130).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4129));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -148,6 +161,8 @@ DegeloViewBase::DegeloViewBase() :
     add(textAreaTimerDegeloCountMinutos);
     add(textArea1410270);
     add(cANCELAR_PROCESSO1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void DegeloViewBase::setupScreen()
@@ -156,6 +171,13 @@ void DegeloViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 14;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     Update(&textArea14513, textArea14513Buffer, 0, _DOUBLE_, 1);
     Update(&textArea1410272, textArea1410272Buffer, 0, _DOUBLE_, 1);
     Update(&textAreaTimerDegeloCountMinutos, textAreaTimerDegeloCountMinutosBuffer, 0, _DOUBLE_, 1);
@@ -197,6 +219,14 @@ void DegeloViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
+    
     if (countCycleBlink > 1000)
     {
     	countCycleBlink = 0;

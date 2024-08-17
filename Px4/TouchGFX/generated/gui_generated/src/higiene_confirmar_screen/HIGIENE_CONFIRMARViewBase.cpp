@@ -5,6 +5,8 @@
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
+#include <AT_module.hpp>
+
 
 HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonCallback(this, &HIGIENE_CONFIRMARViewBase::buttonCallbackHandler)
@@ -24,10 +26,17 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     textAreaTitle.setLinespacing(0);
     textAreaTitle.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3960));
 
-    textAreaStatusPorta.setXY(42, 110);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3961));
+    textAreaStatusPortaFechada.setXY(42, 110);
+    textAreaStatusPortaFechada.setVisible(false);
+    textAreaStatusPortaFechada.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    textAreaStatusPortaFechada.setLinespacing(0);
+    textAreaStatusPortaFechada.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3961));
+
+    textAreaStatusPortaAberta.setXY(51, 90);
+    textAreaStatusPortaAberta.setVisible(false);
+    textAreaStatusPortaAberta.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
+    textAreaStatusPortaAberta.setLinespacing(0);
+    textAreaStatusPortaAberta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
 
     textAreaStatusPortaAberta.setXY(56, 90);
     textAreaStatusPortaAberta.setVisible(false);
@@ -48,7 +57,7 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     status_porta.setVisible(false);
     status_porta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     status_porta.setLinespacing(0);
-    status_portaBuffer[0] = 0;
+    Unicode::snprintf(status_portaBuffer, STATUS_PORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4102).getText());
     status_porta.setWildcard(status_portaBuffer);
     status_porta.resizeToCurrentText();
     status_porta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4101));
@@ -57,7 +66,7 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     add(boxFundo);
     add(boxFundoAzul);
     add(textAreaTitle);
-    add(textAreaStatusPorta);
+    add(textAreaStatusPortaFechada);
     add(textAreaStatusPortaAberta);
     add(buttonStartHigiene);
     add(buttonTelaInicial);
@@ -68,6 +77,16 @@ void HIGIENE_CONFIRMARViewBase::setupScreen()
 {
 
     //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 44;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&status_porta, status_portaBuffer, "553", 0, _INT_, REPEAT);
+
+    //script_screen_HIGIENE
     //When screen transition begins execute C++ code
     //Execute C++ code
     Clear();
@@ -93,14 +112,15 @@ void HIGIENE_CONFIRMARViewBase::handleTickEvent()
     
     if ((touchgfx::Unicode::atoi(status_portaBuffer)) == 1){
     	buttonStartHigiene.setVisible(true);
-    	textAreaStatusPorta.setVisible(false);
+    	textAreaStatusPortaFechada.setVisible(false);
     	textAreaStatusPortaAberta.setVisible(true); 
     }else{
     	buttonStartHigiene.setVisible(false);
-    	textAreaStatusPorta.setVisible(true);
+    	textAreaStatusPortaFechada.setVisible(true);
     	textAreaStatusPortaAberta.setVisible(false); 
     }
     invalidate();
+    W_1_4553 = buttonStartHigiene.isVisible();
 }
 
 void HIGIENE_CONFIRMARViewBase::tearDownScreen()
@@ -116,7 +136,7 @@ void HIGIENE_CONFIRMARViewBase::buttonCallbackHandler(const touchgfx::AbstractBu
 {
     if (&src == &buttonStartHigiene)
     {
-        //start_higiene
+        //start_higiente
         //When buttonStartHigiene clicked change screen to HIGIENE
         //Go to HIGIENE with no screen transition
         application().gotoHIGIENEScreenNoTransition();

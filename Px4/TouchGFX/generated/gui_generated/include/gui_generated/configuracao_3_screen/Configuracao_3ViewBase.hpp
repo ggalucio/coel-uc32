@@ -15,6 +15,7 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class Configuracao_3ViewBase : public touchgfx::View<Configuracao_3Presenter>
 {
@@ -55,7 +56,7 @@ protected:
     touchgfx::Button buttonConfiguracao4;
     touchgfx::Button buttonConfiguracao2;
     touchgfx::ToggleButton toggleButtonHSW4;
-    touchgfx::TextAreaWithOneWildcard textArea1410275;
+    touchgfx::TextAreaWithOneWildcard textAreaSenhaGravada;
     touchgfx::TextAreaWithOneWildcard textArea1410250;
     touchgfx::TextAreaWithOneWildcard textArea1410249;
     touchgfx::TextAreaWithOneWildcard textArea1410248;
@@ -66,12 +67,14 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410248;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410291;
     numKeyboardContainer numKeyboardContainer1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREA1410275_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1410275Buffer[TEXTAREA1410275_SIZE];
+    static const uint16_t TEXTAREASENHAGRAVADA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaSenhaGravadaBuffer[TEXTAREASENHAGRAVADA_SIZE];
     static const uint16_t TEXTAREA1410250_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410250Buffer[TEXTAREA1410250_SIZE];
     static const uint16_t TEXTAREA1410249_SIZE = 10;
@@ -80,6 +83,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1410248Buffer[TEXTAREA1410248_SIZE];
     static const uint16_t TEXTAREA1410291_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410291Buffer[TEXTAREA1410291_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -91,6 +96,7 @@ private:
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1OutOfRangeCallback;
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1ValidRangeCallback;
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+    touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1EnterCallback;
 
     /*
      * Callback Handler Declarations
@@ -100,6 +106,7 @@ private:
     void numKeyboardContainer1OutOfRangeCallbackHandler();
     void numKeyboardContainer1ValidRangeCallbackHandler();
     void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
+    void numKeyboardContainer1EnterCallbackHandler();
 
 };
 

@@ -12,6 +12,7 @@
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class refine_senha_secretoViewBase : public touchgfx::View<refine_senha_secretoPresenter>
 {
@@ -41,12 +42,16 @@ protected:
     touchgfx::BoxWithBorder boxWithBorder1;
     touchgfx::Button buttonTelaInicial;
     touchgfx::TextAreaWithOneWildcard textAreaSenhaGravada;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREASENHAGRAVADA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSenhaGravadaBuffer[TEXTAREASENHAGRAVADA_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

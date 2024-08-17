@@ -12,6 +12,8 @@
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class ResfriarViewBase : public touchgfx::View<ResfriarPresenter>
@@ -47,7 +49,15 @@ protected:
     touchgfx::Button buttonFlagResfriarSondaTempo;
     touchgfx::Button buttonTelaInicial;
     touchgfx::ToggleButton toggleButtonFlagResfriarHardSoft;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
     touchgfx::RadioButtonGroup<2> radioButtonGroup1;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

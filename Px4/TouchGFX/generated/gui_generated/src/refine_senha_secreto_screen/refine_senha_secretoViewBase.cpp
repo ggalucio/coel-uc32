@@ -34,16 +34,41 @@ refine_senha_secretoViewBase::refine_senha_secretoViewBase()
     textAreaSenhaGravada.setWildcard(textAreaSenhaGravadaBuffer);
     textAreaSenhaGravada.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3931));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4150).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4149));
+
     add(__background);
     add(boxFundo);
     add(textAreaTitle);
     add(boxWithBorder1);
     add(buttonTelaInicial);
     add(textAreaSenhaGravada);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void refine_senha_secretoViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 37;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 
@@ -58,7 +83,16 @@ void refine_senha_secretoViewBase::afterTransition()
 
 void refine_senha_secretoViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void refine_senha_secretoViewBase::tearDownScreen()

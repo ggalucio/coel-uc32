@@ -93,6 +93,9 @@ public:
     // Configuracao_6
     void gotoConfiguracao_6ScreenNoTransition();
 
+    // RESET_FABRICA
+    void gotoRESET_FABRICAScreenNoTransition();
+
     // HIGIENE_CONFIRMAR
     void gotoHIGIENE_CONFIRMARScreenNoTransition();
 
@@ -184,6 +187,9 @@ protected:
 
     // Configuracao_6
     void gotoConfiguracao_6ScreenNoTransitionImpl();
+
+    // RESET_FABRICA
+    void gotoRESET_FABRICAScreenNoTransitionImpl();
 
     // HIGIENE_CONFIRMAR
     void gotoHIGIENE_CONFIRMARScreenNoTransitionImpl();

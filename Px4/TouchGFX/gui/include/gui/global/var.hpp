@@ -117,5 +117,29 @@ extern double timer_higiene_ON;
 extern bool Timer_Degelo_OUT;
 extern bool Timer_alarme_externo_OUT;
 extern bool timer_higiene_OUT;
+extern bool HSW4;
+extern bool reset_fabrica;
+extern bool cancelar_processo_SIM;
+extern double xbar_zero;
+extern bool flag_Conservar_ANDAMENTO;
+extern double Status_Conservar;
+extern bool Receita_Cong_Resf_ATUAL;
+extern double Status_Porta;
+extern bool flag_porta;
+extern double Temperatura_Receita_ATUAL;
+
+extern double Tempo_Receita_ATUAL;
+extern bool Receita_Hard_Soft_ATUAL;
+
+extern double W_HDW5000;
+extern bool W_1_4553;
+extern double W_1_4554;
+extern double W_1_4515;
+extern double W_1_4512;
+extern double W_1_410242;
+extern double W_1_410282;
+extern double W_1_4645;
+
+extern int addressModbusRS458;
 
 #endif /* GUI_INCLUDE_GUI_GLOBAL_VAR_HPP_ */

@@ -16,6 +16,7 @@
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <gui/containers/keyboardContainer2.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class Configuracao_5ViewBase : public touchgfx::View<Configuracao_5Presenter>
 {
@@ -63,6 +64,8 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTimerAlarmeExternoSpMinutos;
     keyboardContainer2 keyboardContainer21;
     numKeyboardContainer numKeyboardContainer1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -75,6 +78,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaHAW8214Buffer[TEXTAREAHAW8214_SIZE];
     static const uint16_t TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerAlarmeExternoSpMinutosBuffer[TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

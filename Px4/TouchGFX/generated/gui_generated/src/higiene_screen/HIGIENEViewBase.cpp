@@ -65,6 +65,19 @@ HIGIENEViewBase::HIGIENEViewBase() :
     textAreaTimerCongelarDecorridoCount.setWildcard(textAreaTimerCongelarDecorridoCountBuffer);
     textAreaTimerCongelarDecorridoCount.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3974));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4162).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4161));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -77,10 +90,31 @@ HIGIENEViewBase::HIGIENEViewBase() :
     add(textAreaTimerHigieneMin);
     add(textAreaStatusHigiene);
     add(textAreaTimerCongelarDecorridoCount);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void HIGIENEViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 45;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    UpdateModbus485("10242", 999, _INT_);
+    WriteModbus485("10242", 1);
+    
+    UpdateModbus485("645", 1, _INT_);
+    WriteModbus485("645", 1);
+    
+    UpdateModbus485("10322", 11, _INT_);
+    WriteModbus485("10322", 1);
 
 }
 
@@ -95,7 +129,16 @@ void HIGIENEViewBase::afterTransition()
 
 void HIGIENEViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void HIGIENEViewBase::tearDownScreen()
@@ -111,7 +154,7 @@ void HIGIENEViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
     if (&src == &buttonFinalizarHigiene)
     {
-        //Interaction1
+        //HigieneConfirma
         //When buttonFinalizarHigiene clicked change screen to HIGIENE_CONFIRMAR
         //Go to HIGIENE_CONFIRMAR with no screen transition
         application().gotoHIGIENE_CONFIRMARScreenNoTransition();

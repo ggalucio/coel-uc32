@@ -14,6 +14,8 @@ extern "C"{
 	#include "../GFX/Module/Inc/enumerators_ext.h"
 }
 
+
+void 		(*pAddContainer)(touchgfx::Screen* screen);
 void		(*pAddCounter)(CountingMode countingMode, uint64_t seconds);
 void		(*pAddTextAreaCounterItem)(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int id);
 void		(*pAddDigitalClockCounterItem)(touchgfx::DigitalClock* digitalClock, int id);

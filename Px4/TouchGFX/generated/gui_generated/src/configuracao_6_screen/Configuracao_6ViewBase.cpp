@@ -131,6 +131,19 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4158).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4157));
+
     add(__background);
     add(boxFundo);
     add(boxVerde4);
@@ -155,6 +168,8 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
     add(flexButton1410295);
     add(flexButton1410279);
     add(numKeyboardContainer1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Configuracao_6ViewBase::setupScreen()
@@ -163,9 +178,21 @@ void Configuracao_6ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textArea1410279, textArea1410279Buffer, 10.0, _FP_32BIT_, 2);
-    Update(&textArea1410295, textArea1410295Buffer, 10.03, _FP_32BIT_, 2);
-    Update(&textArea1410294, textArea1410294Buffer, 0, _INT_, 2);
+    W_HDW5000 = 42;
+    
+    Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    ReadWriteModbus485(&textArea1410279, textArea1410279Buffer, "10279", 2, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410295, textArea1410295Buffer, "10295", 2, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410294, textArea1410294Buffer, "10294", 0, _INT_, ONCE);
+    
+    
+    ButtonModbus485(&toggleButton14102650, "102650", BITMAP_A5_ID, BITMAP_A6_ID);
+    
+    Update(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);
+    Update(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);
 
 }
 
@@ -205,7 +232,16 @@ void Configuracao_6ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
 
 void Configuracao_6ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Configuracao_6ViewBase::tearDownScreen()
@@ -214,6 +250,7 @@ void Configuracao_6ViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
+    ClearOthers();
     ContainerClear(&numKeyboardContainer1);
 }
 
@@ -245,6 +282,7 @@ void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //DegeloProcessoAutomatico
         //When toggleButtonDegeloProcessoAutomatico clicked execute C++ code
         //Execute C++ code
+        degelo_processo_automatico = toggleButtonDegeloProcessoAutomatico.getState();
         SoundBuzzerOn(25);
     }
     else if (&src == &toggleButton14102650)
@@ -252,6 +290,7 @@ void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //ADDR14102650
         //When toggleButton14102650 clicked execute C++ code
         //Execute C++ code
+        SetBitModbusRS485("10265.0", toggleButton14102650.getState() ? 1 : 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &toggleButtonDegeloPortaAberta)
@@ -259,6 +298,7 @@ void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //DegeloPortaAberta
         //When toggleButtonDegeloPortaAberta clicked execute C++ code
         //Execute C++ code
+        degelo_porta_aberta = toggleButtonDegeloPortaAberta.getState();
         SoundBuzzerOn(25);
     }
 }
@@ -270,7 +310,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410294
         //When flexButton1410294 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -284,7 +324,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410295
         //When flexButton1410295 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -298,7 +338,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410279
         //When flexButton1410279 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _FP_32BIT_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

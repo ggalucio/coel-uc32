@@ -11,7 +11,8 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     flexButtonCallback(this, &Configuracao_2ViewBase::flexButtonCallbackHandler),
     numKeyboardContainer1OutOfRangeCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
     numKeyboardContainer1ValidRangeCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
-    numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler)
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler),
+    numKeyboardContainer1EnterCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1EnterCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -191,6 +192,20 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
+    numKeyboardContainer1.setEnterCallback(numKeyboardContainer1EnterCallback);
+
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4134).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4133));
 
     add(__background);
     add(boxFundo);
@@ -226,6 +241,8 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     add(flexButtonDiferencialConservarCongelar);
     add(flexButtonSpConservarCongelar);
     add(numKeyboardContainer1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Configuracao_2ViewBase::setupScreen()
@@ -234,13 +251,18 @@ void Configuracao_2ViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, -25.0, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, 3.0, _FP_32BIT_, 1);
-    Update(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, 3.0, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, 2.0, _FP_32BIT_, 1);
-    Update(&textArea1410272, textArea1410272Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410275, textArea1410275Buffer, 0.0, _FP_32BIT_, 1);
-    Update(&textArea1410270, textArea1410270Buffer, 10.0, _FP_32BIT_, 2);
+    W_HDW5000 = 17;
+    
+    Clear();
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, SP_Conservar_Congelar / 10, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, Diferencial_Conservar_COngelar / 10, _FP_32BIT_, 1);
+    Update(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, SP_Conservar_Resfriar / 10, _FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, Diferencial_Conservar_Resfriar / 10, _FP_32BIT_, 1);
+    ReadWriteModbus485(&textArea1410272, textArea1410272Buffer, "10272", 1, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410275, textArea1410275Buffer, "10275", 1, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410270, textArea1410270Buffer, "10270", 2, _DOUBLE_, ONCE);
 
 }
 
@@ -278,9 +300,39 @@ void Configuracao_2ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
     SoundBuzzerOn(25);
 }
 
+void Configuracao_2ViewBase::numKeyboardContainer1EnterCallbackHandler()
+{
+    //Enterkeyboard
+    //When numKeyboardContainer1 Enter execute C++ code
+    //Execute C++ code
+    double value = 0;
+    
+    if (addressModbusRS458 == 10272)
+    {
+    	UpdateModbus485("10272", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);
+    	WriteModbus485("10272", 2);
+    	Wait(100);
+    }
+    
+    if (addressModbusRS458 == 10275)
+    {
+    	UpdateModbus485("10275", (value = GetNumberTextArea(textArea1410275Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);
+    	WriteModbus485("10275", 2);
+    	Wait(100);
+    }
+}
+
 void Configuracao_2ViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    double value = 0.0;
+    if ((value = GetNumberTextArea(textArea1410272Buffer)) > 3276.7) Update(&textArea1410272, textArea1410272Buffer, GetFormatToNegative(value, 16), _DOUBLE_, 1);
+    if ((value = GetNumberTextArea(textArea1410275Buffer)) > 3276.7) Update(&textArea1410275, textArea1410275Buffer, GetFormatToNegative(value, 16), _DOUBLE_, 1);
+    
+    imageStatusPorta.setVisible(touchgfx::Unicode::atoi(textAreaStatusPortaBuffer) == 1 ? true : false);
+    invalidate();
 }
 
 void Configuracao_2ViewBase::tearDownScreen()
@@ -288,7 +340,13 @@ void Configuracao_2ViewBase::tearDownScreen()
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
+    SP_Conservar_Congelar = 10 * GetNumberTextArea(textAreaSpConservarCongelarBuffer);
+    Diferencial_Conservar_COngelar = 10 * GetNumberTextArea(textAreaDiferencialConservarCongelarBuffer);
+    SP_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaSpConservarResfriarBuffer);
+    Diferencial_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaDiferencialConservarResfriarBuffer);
+    
     Clear();
+    ClearOthers();
     ContainerClear(&numKeyboardContainer1);
 }
 
@@ -324,7 +382,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410270
         //When flexButton1410270 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _FP_32BIT_, 2, 0);
+        AddNumKeyboardReferenceRS485(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 2, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -338,7 +396,8 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410275
         //When flexButton1410275 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
+        addressModbusRS458 = 10275;
+        AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -352,7 +411,8 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410272
         //When flexButton1410272 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _FP_32BIT_, 1, 0);
+        addressModbusRS458 = 10272;
+        AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 1);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

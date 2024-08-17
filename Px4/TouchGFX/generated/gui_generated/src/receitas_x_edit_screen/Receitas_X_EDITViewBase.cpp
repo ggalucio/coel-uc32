@@ -107,11 +107,11 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     box3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 0));
     containerTemperatura.add(box3);
 
-    textArea1_2_1_1.setXY(104, 12);
-    textArea1_2_1_1.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
-    textArea1_2_1_1.setLinespacing(0);
-    textArea1_2_1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
-    containerTemperatura.add(textArea1_2_1_1);
+    textArea1_2_1_C.setXY(104, 10);
+    textArea1_2_1_C.setColor(touchgfx::Color::getColorFromRGB(128, 128, 128));
+    textArea1_2_1_C.setLinespacing(0);
+    textArea1_2_1_C.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4098));
+    containerTemperatura.add(textArea1_2_1_C);
 
     textAreaTemperaturaReceita.setPosition(1, 4, 91, 34);
     textAreaTemperaturaReceita.setColor(touchgfx::Color::getColorFromRGB(0, 0, 128));
@@ -167,6 +167,19 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4144).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4143));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -190,6 +203,8 @@ Receitas_X_EDITViewBase::Receitas_X_EDITViewBase() :
     add(containerTempo);
     add(keyboardContainer21);
     add(numKeyboardContainer1);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Receitas_X_EDITViewBase::setupScreen()
@@ -199,6 +214,11 @@ void Receitas_X_EDITViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    AddbackgroundContainer(this);
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     AddJob(&textAreaTempoReceitaX, textAreaTempoReceitaXBuffer, 1, _INT_, 0);
     AddJob(&textAreaTemperaturaReceita, textAreaTemperaturaReceitaBuffer, 2, _FP_32BIT_, 1);
     AddJob(&toggleButtonRXTimeTemp, 3);
@@ -259,7 +279,16 @@ void Receitas_X_EDITViewBase::numKeyboardContainer1ValidRangeCallbackHandler()
 
 void Receitas_X_EDITViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Receitas_X_EDITViewBase::tearDownScreen()

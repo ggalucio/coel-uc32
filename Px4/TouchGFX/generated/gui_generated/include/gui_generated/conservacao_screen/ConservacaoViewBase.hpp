@@ -12,6 +12,7 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class ConservacaoViewBase : public touchgfx::View<ConservacaoPresenter>
@@ -28,6 +29,7 @@ public:
     virtual void tearDownScreen();
     virtual void Conservar_Congelar();
     virtual void Conservar_Resfriar();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -47,7 +49,15 @@ protected:
     touchgfx::RadioButton radioButtonStatusConservar1;
     touchgfx::Button buttonFlagConservarCongResf;
     touchgfx::Button buttonTelaInicial;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
     touchgfx::RadioButtonGroup<2> radioButtonGroup1;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

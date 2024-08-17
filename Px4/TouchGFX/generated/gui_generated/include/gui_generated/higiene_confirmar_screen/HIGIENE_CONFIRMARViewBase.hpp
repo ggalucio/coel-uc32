@@ -11,6 +11,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <AT_module.hpp>
 
 class HIGIENE_CONFIRMARViewBase : public touchgfx::View<HIGIENE_CONFIRMARPresenter>
 {
@@ -38,7 +39,7 @@ protected:
     touchgfx::Box boxFundo;
     touchgfx::Box boxFundoAzul;
     touchgfx::TextArea textAreaTitle;
-    touchgfx::TextArea textAreaStatusPorta;
+    touchgfx::TextArea textAreaStatusPortaFechada;
     touchgfx::TextArea textAreaStatusPortaAberta;
     touchgfx::Button buttonStartHigiene;
     touchgfx::Button buttonTelaInicial;

@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Image.hpp>
 
 class Configuracao_4ViewBase : public touchgfx::View<Configuracao_4Presenter>
 {
@@ -52,6 +53,8 @@ protected:
     touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigital1Normal;
     touchgfx::TextAreaWithOneWildcard textAreaLogicaEntradaDigital2;
     touchgfx::TextAreaWithOneWildcard textAreaLogicaEntradaDigital1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -60,6 +63,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaLogicaEntradaDigital2Buffer[TEXTAREALOGICAENTRADADIGITAL2_SIZE];
     static const uint16_t TEXTAREALOGICAENTRADADIGITAL1_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaLogicaEntradaDigital1Buffer[TEXTAREALOGICAENTRADADIGITAL1_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

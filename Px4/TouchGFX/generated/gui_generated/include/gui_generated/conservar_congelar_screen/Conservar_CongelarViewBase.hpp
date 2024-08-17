@@ -27,6 +27,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -45,6 +46,7 @@ protected:
     touchgfx::Image imageVazio_1;
     touchgfx::Image imageLogo;
     touchgfx::Box boxProcessOff;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox1;
     touchgfx::Box boxFundoAzul2;
@@ -60,6 +62,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea14512;
     touchgfx::TextAreaWithOneWildcard textArea1410242;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -72,6 +76,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea14512Buffer[TEXTAREA14512_SIZE];
     static const uint16_t TEXTAREA1410242_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410242Buffer[TEXTAREA1410242_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

@@ -139,6 +139,19 @@ Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
     textArea14512.setWildcard(textArea14512Buffer);
     textArea14512.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3958));
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4156).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4155));
+
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
@@ -167,10 +180,22 @@ Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
     add(textArea14515);
     add(textAreaTemperaturaReceitaAtual);
     add(textArea14512);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
 }
 
 void Receita_TemperaturaViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 40;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 
@@ -185,7 +210,16 @@ void Receita_TemperaturaViewBase::afterTransition()
 
 void Receita_TemperaturaViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Receita_TemperaturaViewBase::tearDownScreen()

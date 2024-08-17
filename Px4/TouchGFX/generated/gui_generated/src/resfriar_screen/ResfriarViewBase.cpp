@@ -47,6 +47,19 @@ ResfriarViewBase::ResfriarViewBase() :
     toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
     toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4122).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4121));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -56,6 +69,8 @@ ResfriarViewBase::ResfriarViewBase() :
     add(buttonFlagResfriarSondaTempo);
     add(buttonTelaInicial);
     add(toggleButtonFlagResfriarHardSoft);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
     radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
@@ -67,6 +82,13 @@ void ResfriarViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 10;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
     if (Status_tecla_Congela == 3)
     	Update(&radioButtonStatusTeclaCongela0, true);
     
@@ -89,7 +111,16 @@ void ResfriarViewBase::afterTransition()
 
 void ResfriarViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void ResfriarViewBase::tearDownScreen()

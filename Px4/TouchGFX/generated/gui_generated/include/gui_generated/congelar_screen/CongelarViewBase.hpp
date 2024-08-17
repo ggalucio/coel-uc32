@@ -11,6 +11,8 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class CongelarViewBase : public touchgfx::View<CongelarPresenter>
@@ -45,7 +47,15 @@ protected:
     touchgfx::RadioButton radioButtonStatusTeclaCongela1;
     touchgfx::Button buttonFlagCongelarSonda;
     touchgfx::Button buttonTelaInicial;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
     touchgfx::RadioButtonGroup<2> radioButtonGroup1;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

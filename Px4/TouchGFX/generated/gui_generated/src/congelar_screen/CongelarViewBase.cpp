@@ -43,6 +43,19 @@ CongelarViewBase::CongelarViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4106).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4105));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -51,6 +64,8 @@ CongelarViewBase::CongelarViewBase() :
     add(radioButtonStatusTeclaCongela1);
     add(buttonFlagCongelarSonda);
     add(buttonTelaInicial);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
     radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
@@ -58,6 +73,14 @@ CongelarViewBase::CongelarViewBase() :
 
 void CongelarViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    Clear();
+    AddbackgroundContainer(this);
+    W_HDW5000 = 1;
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
 
 }
 
@@ -72,7 +95,17 @@ void CongelarViewBase::afterTransition()
 
 void CongelarViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void CongelarViewBase::tearDownScreen()

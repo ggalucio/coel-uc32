@@ -28,6 +28,7 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
+    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -41,6 +42,7 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box boxFundo;
     touchgfx::Box boxProcessOff;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::Box boxFundoAzul;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox2;
@@ -52,7 +54,8 @@ protected:
     touchgfx::TextArea textAreaTitle;
     touchgfx::Button buttonCancelarProcesso;
     touchgfx::ToggleButton toggleButtonFlagConservarSN;
-    touchgfx::ToggleButton toggleButtonFlagResfriarHardSoft;
+    touchgfx::Image imageSoft;
+    touchgfx::Image imageHard;
     touchgfx::Image image1;
     touchgfx::Image image2;
     touchgfx::Image image3;
@@ -67,13 +70,15 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::TextAreaWithOneWildcard textAreaSpResfHardEspetoDisplay;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREAFLAGPROCESSOANDAMENTO_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaFlagProcessoAndamentoBuffer[TEXTAREAFLAGPROCESSOANDAMENTO_SIZE];
-    static const uint16_t TEXTAREA14515_SIZE = 10;
+    static const uint16_t TEXTAREA14515_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textArea14515Buffer[TEXTAREA14515_SIZE];
     static const uint16_t TEXTAREATIMERCOUNTMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerCountMinutosBuffer[TEXTAREATIMERCOUNTMINUTOS_SIZE];
@@ -85,6 +90,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerCongelarDecorridoCountBuffer[TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE];
     static const uint16_t TEXTAREASPRESFHARDESPETODISPLAY_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpResfHardEspetoDisplayBuffer[TEXTAREASPRESFHARDESPETODISPLAY_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

@@ -46,6 +46,19 @@ ConservacaoViewBase::ConservacaoViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
+    imageStatusPorta.setXY(200, 0);
+    imageStatusPorta.setVisible(false);
+    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+
+    textAreaStatusPorta.setXY(98, 13);
+    textAreaStatusPorta.setVisible(false);
+    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textAreaStatusPorta.setLinespacing(0);
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4116).getText());
+    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
+    textAreaStatusPorta.resizeToCurrentText();
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4115));
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -55,6 +68,8 @@ ConservacaoViewBase::ConservacaoViewBase() :
     add(radioButtonStatusConservar1);
     add(buttonFlagConservarCongResf);
     add(buttonTelaInicial);
+    add(imageStatusPorta);
+    add(textAreaStatusPorta);
     radioButtonGroup1.add(radioButtonStatusConservar0);
     radioButtonGroup1.add(radioButtonStatusConservar1);
     radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
@@ -62,6 +77,22 @@ ConservacaoViewBase::ConservacaoViewBase() :
 
 void ConservacaoViewBase::setupScreen()
 {
+
+    //ScreenTransitionBegins
+    //When screen transition begins execute C++ code
+    //Execute C++ code
+    AddbackgroundContainer(this);
+    W_HDW5000 = 7;
+    
+    // Clear();
+    
+    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    
+    if (Status_Conservar == 1)
+    	Update(&radioButtonStatusConservar0, true);
+    
+    if (Status_Conservar == 2)
+    	Update(&radioButtonStatusConservar1, true);
 
 }
 
@@ -71,12 +102,22 @@ void ConservacaoViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    SoundBuzzerOn(25);
+    if (Status_Conservar != 1 && Status_Conservar != 2)
+    	SoundBuzzerOn(25);
 }
 
 void ConservacaoViewBase::handleTickEvent()
 {
-
+    //HandleTickEvent
+    //When handleTickEvent is called execute C++ code
+    //Execute C++ code
+    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
+    	imageStatusPorta.setVisible(true);
+    }else{
+    	imageStatusPorta.setVisible(false);
+    }
+    invalidate();
+    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void ConservacaoViewBase::tearDownScreen()
@@ -104,6 +145,16 @@ void ConservacaoViewBase::Conservar_Resfriar()
     application().gotoConservar_ResfriarScreenNoTransition();
 }
 
+void ConservacaoViewBase::writeModbus(char const* address, double value)
+{
+    //WriteModbus
+    //When writeModbus is called execute C++ code
+    //Execute C++ code
+    UpdateModbus485(address, value, _INT_);
+    WriteModbus485(address, 1);
+    Wait(50);
+}
+
 void ConservacaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
     if (&src == &buttonFlagConservarCongResf)
@@ -111,14 +162,44 @@ void ConservacaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
         //Avancar
         //When buttonFlagConservarCongResf clicked execute C++ code
         //Execute C++ code
-        if (radioButtonStatusConservar0.getSelected())
-        {
+        if (Status_tecla_Congela == 0){				// Se Modo Receita_Temperatura
+        	if (Receita_Cong_Resf_ATUAL == 0){		// Modo COngelar da Receita
+        		Status_tecla_Congela = 2;
+        	}
+        	if (Receita_Cong_Resf_ATUAL == 1){		// Modo Resfriar da Receita
+        		Status_tecla_Congela = 4;
+        	}
+        }
+        
+        
+        if (flag_transicao_Conservar == 1){					// Entra automaticamente em Conservar de Congelar ou Resfriar
+        	if (Status_tecla_Congela == 1 || Status_tecla_Congela == 2)
+        		Status_Conservar = 1;					// COnservar_COngelar			
+        	else									// @Status_tecla_Congela=3 or @Status_tecla_Congela=4
+        		Status_Conservar = 2;					// COnservar_resfriar
+        }
+        
+        flag_transicao_Conservar = false;				// zera bit transição
+        
+        
+        if (Status_Conservar == 1){					// if COnservar_Congelar=1
+        	W_HDW5000 = 8;						// vai para tela Conservar_COngelar
+        	writeModbus("10242", SP_Conservar_Congelar);		// SP= Conservar Congelar 
+        	writeModbus("10282", Diferencial_Conservar_COngelar);	// Diferencial rd
+        	writeModbus("645", 1);					// Controlador em modo COntrole
         	Conservar_Congelar();
         }
-        else if (radioButtonStatusConservar1.getSelected())
-        {
+        else{
+        	W_HDW5000 = 9;						// vai para tela Conservar_COngelar
+        	writeModbus("10242", SP_Conservar_Resfriar);		// SP= COnservar Resfriar
+        	writeModbus("10282", Diferencial_Conservar_Resfriar);	// Diferencial rd=3ºC
+        	writeModbus("645", 1);					// Controlador em modo COntrole
         	Conservar_Resfriar();
         }
+        
+        flag_Conservar_ANDAMENTO = true;		// flag_conservar_ANDAMENTO=1
+        
+        flag_Conservar_Cong_Resf = false; 	// zera bit
     }
     else if (&src == &buttonTelaInicial)
     {
@@ -136,6 +217,7 @@ void ConservacaoViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abs
         //Congelar
         //When radioButtonStatusConservar0 selected execute C++ code
         //Execute C++ code
+        Status_Conservar = 1;
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonStatusConservar1)
@@ -143,6 +225,7 @@ void ConservacaoViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abs
         //Resfriar
         //When radioButtonStatusConservar1 selected execute C++ code
         //Execute C++ code
+        Status_Conservar = 2;
         SoundBuzzerOn(25);
     }
 }

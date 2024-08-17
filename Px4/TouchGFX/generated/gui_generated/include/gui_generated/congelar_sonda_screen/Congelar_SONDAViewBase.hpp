@@ -67,6 +67,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::TextAreaWithOneWildcard textAreaCongelarSondaSp;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
+    touchgfx::Image imageStatusPorta;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
 
     /*
      * Wildcard Buffers
@@ -85,6 +87,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerCongelarDecorridoCountBuffer[TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE];
     static const uint16_t TEXTAREACONGELARSONDASP_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaCongelarSondaSpBuffer[TEXTAREACONGELARSONDASP_SIZE];
+    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
