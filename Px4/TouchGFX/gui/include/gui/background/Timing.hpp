@@ -13,11 +13,15 @@ extern "C" void Cycle500(void);
 extern "C" void Cycle25(void);
 extern "C" void TIMER_1S(void);
 extern "C" void TIMER_10S(void);
+extern "C" void TimeCongelarDecorridoOutCheck(void);
+extern "C" void FlagCongelarTempoCheck(void);
 
 void Cycle50(void);
 void Cycle500(void);
 void Cycle25(void);
 void TIMER_1S(void);
 void TIMER_10S(void);
+void TimeCongelarDecorridoOutCheck(void);
+void FlagCongelarTempoCheck(void);
 
 #endif /* GUI_INCLUDE_GUI_BACKGROUND_TIMING_HPP_ */

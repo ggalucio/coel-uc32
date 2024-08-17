@@ -57,7 +57,7 @@ HIGIENEViewBase::HIGIENEViewBase() :
     textAreaStatusHigiene.setXY(360, 14);
     textAreaStatusHigiene.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textAreaStatusHigiene.setLinespacing(0);
-    textAreaStatusHigieneBuffer[0] = 0;
+    Unicode::snprintf(textAreaStatusHigieneBuffer, TEXTAREASTATUSHIGIENE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4181).getText());
     textAreaStatusHigiene.setWildcard(textAreaStatusHigieneBuffer);
     textAreaStatusHigiene.resizeToCurrentText();
     textAreaStatusHigiene.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3973));

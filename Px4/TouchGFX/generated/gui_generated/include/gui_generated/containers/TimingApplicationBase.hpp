@@ -10,6 +10,7 @@
 #include <AT_module.hpp>
 #include <AT_module_ext.hpp>
 #include <gui/global/var.hpp>
+#include <gui/modbus_address/Address.hpp>
 
 class TimingApplicationBase : public touchgfx::Container
 {
@@ -23,6 +24,11 @@ public:
      */
     virtual void init();
     virtual void finalize();
+    virtual void TimerBuzzerOutTrue();
+    virtual void TimeCongelarDecorridoOutCheck();
+    virtual void FlagCongelarTempoCheck();
+    virtual void goToTelaCongelarTempo();
+    virtual void goToTelaResfriarTempo();
     virtual void cycle50();
     virtual void cycle500();
     virtual void cycle25();

@@ -137,5 +137,6 @@ double W_1_4512							= 0;
 double W_1_410242						= 0;
 double W_1_410282						= 0;
 double W_1_4645							= 0;
+bool flag_congelar_Tempo                = 0;
 
 int addressModbusRS458					= 0;

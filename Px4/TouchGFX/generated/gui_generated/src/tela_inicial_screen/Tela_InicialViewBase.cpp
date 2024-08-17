@@ -71,10 +71,10 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
     textAreaStatusPorta.setVisible(false);
     textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4181).getText());
+    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4180).getText());
     textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
     textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4180));
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4179));
 
     add(__background);
     add(boxFundo);

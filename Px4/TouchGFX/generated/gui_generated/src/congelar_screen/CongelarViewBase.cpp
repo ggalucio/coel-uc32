@@ -146,14 +146,18 @@ void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
         
         
         
-            UpdateModbus485( MA_SP_SONDA_CONGELAR_CAMARA, SP_SONDA_CONGELAR_CAMARA, _INT2_);    //W_1_410242 = SP_SONDA_CONGELAR_CAMARA; // SP = SP_SONDA_CONGELAR_CAMARA
-            WriteModbus485(MA_SP_SONDA_CONGELAR_CAMARA, 1);
-            Wait(50);
+            UpdateModbus485( w_1_410242, SP_SONDA_CONGELAR_CAMARA, _INT2_);    //W_1_410242 = SP_SONDA_CONGELAR_CAMARA; // SP = SP_SONDA_CONGELAR_CAMARA
+            WriteModbus485(w_1_410242, 1);
+            Wait(100);
         
-            UpdateModbus485( MA_Diferencial_Congelar_tempo, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC
-            WriteModbus485(MA_Diferencial_Congelar_tempo, 1);
-            Wait(50);
+            UpdateModbus485( w_1_410282, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC
+            WriteModbus485(w_1_410282, 1);
+            Wait(100);
+            
             //W_1_4645 = 1;                // Controlador em modo Controle
+            UpdateModbus485( w_1_4645, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC
+            WriteModbus485(w_1_4645, 1);
+            Wait(100);
         
             Timer_Congelar_DECORRIDO_SP = 99999; // SP Timer- Inf
         
@@ -169,7 +173,7 @@ void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
         } else { // tela de Congelar SELECT TEMPO
             flag_alarm_receita_vazia = false; // zera bit flag alarme de tempo Zero
             // trocar a tela para a tela de Congelar SELECT TEMPO
-            //W_HDW5000 = 4;               // Tela Select Tempo
+            // W_HDW5000 = 4;               // Tela Select Tempo
             goToCongelarSelectTempo();
         }
     }

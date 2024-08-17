@@ -139,6 +139,9 @@ extern double W_1_4512;
 extern double W_1_410242;
 extern double W_1_410282;
 extern double W_1_4645;
+extern bool flag_congelar_Tempo;
+
+extern int addressModbusRS458;
 
 extern int addressModbusRS458;
 

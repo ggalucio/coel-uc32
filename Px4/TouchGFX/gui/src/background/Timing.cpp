@@ -38,3 +38,13 @@ void TIMER_10S()
 	if (pTimingApplication != NULL)
 		pTimingApplication->timer_10S();
 }
+
+void TimeCongelarDecorridoOutCheck(){
+	if (pTimingApplication != NULL)
+		pTimingApplication->TimeCongelarDecorridoOutCheck();
+}
+
+void FlagCongelarTempoCheck(){
+	if (pTimingApplication != NULL)
+		pTimingApplication->FlagCongelarTempoCheck();
+}

@@ -10,9 +10,11 @@
 
 #include <stdint.h>
 
-#define MA_SP_SONDA_CONGELAR_CAMARA "242"
-#define MA_Diferencial_Congelar_tempo "282"
-#define MA_Controlador_em_modo_Controle "4645"
+// Congelar cicle
+#define  w_1_410242 "10242"
+#define  w_1_410282 "10282"
+#define  w_1_4645 "645"
+#define  w_1_410323 "10323"
 
 
 #endif /* GUI_INCLUDE_GUI_MODBUS_ADDRESS_ADDRESS_HPP_ */

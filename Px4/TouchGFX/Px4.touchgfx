@@ -359,7 +359,7 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId4180",
+            "TextId": "SingleUseId4179",
             "TextRotation": "0",
             "Color": {
               "Red": 0,
@@ -370,14 +370,14 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId4181",
+              "TextId": "SingleUseId4180",
               "UseBuffer": true,
               "BufferSize": 10
             },
             "Name": "textAreaStatusPorta",
             "X": 98,
             "Y": 13,
-            "Width": 13,
+            "Width": 0,
             "Height": 25,
             "Visible": false,
             "LockPosition": true,
@@ -905,7 +905,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "// MODO SONDA\r\n\r\nif (Status_tecla_Congela) { // if tela de Congelar SONDA\r\n\r\n\r\n\r\n    UpdateModbus485( MA_SP_SONDA_CONGELAR_CAMARA, SP_SONDA_CONGELAR_CAMARA, _INT2_);    //W_1_410242 = SP_SONDA_CONGELAR_CAMARA; // SP = SP_SONDA_CONGELAR_CAMARA\r\n    WriteModbus485(MA_SP_SONDA_CONGELAR_CAMARA, 1);\r\n    Wait(50);\r\n\r\n    UpdateModbus485( MA_Diferencial_Congelar_tempo, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC\r\n    WriteModbus485(MA_Diferencial_Congelar_tempo, 1);\r\n    Wait(50);\r\n    //W_1_4645 = 1;                // Controlador em modo Controle\r\n\r\n    Timer_Congelar_DECORRIDO_SP = 99999; // SP Timer- Inf\r\n\r\n    Timer_Congelar_DECORRIDO_ON = 1; // START Timer Tempo_Congelar_DECORRIDO_ON\r\n    flag_Processo_ANDAMENTO = 1;     // Flag Processo_ANDAMENTO = TRUE\r\n\r\n    Timer_delay_ON = true;          // Start Timer Delay\r\n\r\n    // trocar a tela para a tela de Congelar SONDA\r\n    //W_HDW5000 = 2;               // Altera para tela de SONDA \r\n    goToCongelarSonda();\r\n\r\n} else { // tela de Congelar SELECT TEMPO\r\n    flag_alarm_receita_vazia = false; // zera bit flag alarme de tempo Zero\r\n    // trocar a tela para a tela de Congelar SELECT TEMPO\r\n    //W_HDW5000 = 4;               // Tela Select Tempo\r\n    goToCongelarSelectTempo();\r\n}"
+              "Code": "// MODO SONDA\r\n\r\nif (Status_tecla_Congela) { // if tela de Congelar SONDA\r\n\r\n\r\n\r\n    UpdateModbus485( w_1_410242, SP_SONDA_CONGELAR_CAMARA, _INT2_);    //W_1_410242 = SP_SONDA_CONGELAR_CAMARA; // SP = SP_SONDA_CONGELAR_CAMARA\r\n    WriteModbus485(w_1_410242, 1);\r\n    Wait(100);\r\n\r\n    UpdateModbus485( w_1_410282, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC\r\n    WriteModbus485(w_1_410282, 1);\r\n    Wait(100);\r\n    \r\n    //W_1_4645 = 1;                // Controlador em modo Controle\r\n    UpdateModbus485( w_1_4645, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC\r\n    WriteModbus485(w_1_4645, 1);\r\n    Wait(100);\r\n\r\n    Timer_Congelar_DECORRIDO_SP = 99999; // SP Timer- Inf\r\n\r\n    Timer_Congelar_DECORRIDO_ON = 1; // START Timer Tempo_Congelar_DECORRIDO_ON\r\n    flag_Processo_ANDAMENTO = 1;     // Flag Processo_ANDAMENTO = TRUE\r\n\r\n    Timer_delay_ON = true;          // Start Timer Delay\r\n\r\n    // trocar a tela para a tela de Congelar SONDA\r\n    //W_HDW5000 = 2;               // Altera para tela de SONDA \r\n    goToCongelarSonda();\r\n\r\n} else { // tela de Congelar SELECT TEMPO\r\n    flag_alarm_receita_vazia = false; // zera bit flag alarme de tempo Zero\r\n    // trocar a tela para a tela de Congelar SELECT TEMPO\r\n    // W_HDW5000 = 4;               // Tela Select Tempo\r\n    goToCongelarSelectTempo();\r\n}"
             }
           },
           {
@@ -10424,7 +10424,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "double value = 0;\r\n\r\nif (addressModbusRS458 == 10272)\r\n{\r\n\tUpdateModbus485(\"10272\", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\tWriteModbus485(\"10272\", 2);\r\n\tWait(100);\r\n}\r\n\r\nif (addressModbusRS458 == 10275)\r\n{\r\n\tUpdateModbus485(\"10275\", (value = GetNumberTextArea(textArea1410275Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\tWriteModbus485(\"10275\", 2);\r\n\tWait(100);\r\n}"
+              "Code": "double value = 0;\r\n\r\nif (addressModbusRS458 == 10272)\r\n{\r\n\t//UpdateModbus485(\"10272\", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\t//WriteModbus485(\"10272\", 2);\r\n\r\n\tWriteModbus485(&textArea1410272, textArea1410272Buffer, \"10272\", 1);\r\n\tWriteModbus485(\"10272\", 2);\r\n\tWait(100);\r\n}\r\n\r\nif (addressModbusRS458 == 10275)\r\n{\r\n\tUpdateModbus485(\"10275\", (value = GetNumberTextArea(textArea1410275Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\tWriteModbus485(\"10275\", 2);\r\n\tWait(100);\r\n}"
             }
           }
         ],
@@ -19362,7 +19362,7 @@
             "Name": "textAreaTitle",
             "X": 5,
             "Y": 8,
-            "Width": 219,
+            "Width": 167,
             "Height": 37,
             "Visible": true,
             "LockPosition": true,
@@ -19470,13 +19470,14 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Wildcard1": {
+              "TextId": "SingleUseId4181",
               "UseBuffer": true,
               "BufferSize": 20
             },
             "Name": "textAreaStatusHigiene",
             "X": 360,
             "Y": 14,
-            "Width": 0,
+            "Width": 108,
             "Height": 25,
             "Visible": true,
             "LockPosition": true,
@@ -27492,7 +27493,7 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId4179",
+              "TextId": "SingleUseId4182",
               "UseBuffer": true,
               "BufferSize": 10
             },
@@ -27528,7 +27529,7 @@
             "Name": "textArea645",
             "X": 0,
             "Y": 50,
-            "Width": 13,
+            "Width": 86,
             "Height": 25,
             "Visible": true,
             "LockPosition": false,
@@ -27779,6 +27780,68 @@
               "Type": "ActionExecuteCode",
               "Code": "UpdateModbus485(address, value, _INT_);\r\nWriteModbus485(address, 1);\r\nWait(50);"
             }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call TimingApplication TimerBuzzerOutTrue"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "\tif (!flag_Conservar_S_N) {\r\n\t    UpdateModbus485( w_1_410242, 999, _INT2_);    // @W_1:410242 = 999\tSP = 99.9ºC\r\n\t    WriteModbus485( w_1_410242, 1);\r\n\t    Wait(100);\r\n\r\n\t    UpdateModbus485( w_1_4645, 0, _INT2_);    // @W_1:4645 = 0\t\tControlador em Stand-By\r\n\t    WriteModbus485( w_1_4645, 1);\r\n\t    Wait(100);\r\n\t}\r\n\r\n\r\n\tUpdateModbus485( w_1_410323, 0, _INT2_);  //@W_1:410323 = 0\t\t\t\t OUT4 = oF\r\n\tWriteModbus485( w_1_410323, 1);\r\n\tWait(100);\r\n\r\n\tTimer_BUzzer_OUT =0; \t\t// Zera bi Timer_Buzzer_out\r\n\r\n\tTimer_buzzer_ON = 0;\t\t// Finalize Timer_Buzzer\r\n\r\n\tHard_Resf_fase_numero = 0;\r\n\r\n\txBeep_once = 0;"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call TimingApplication TimeCongelarDecorridoOutCheck"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "\tif (Timer_Congelar_DECORRIDO_OUT) {\r\n\t\tif(flag_Conservar_S_N) {\r\n\t\t\tflag_transicao_Conservar = 1;\r\n\t\t\tflag_Conservar_Cong_Resf = 1;\r\n\t\t}\r\n\t\tflag_Processo_ANDAMENTO = 0; //Zera flag_PROCESSO_ANDAMENTO\r\n\t\tTimer_Congelar_DECORRIDO_ON = 0; //Zera bit Timer_decorrido_ON\r\n\r\n\t\tTimer_buzzer_ON = 1; //inicia Timer_Buzzer\r\n\r\n\t\tTimer_delay_OUT = 0; //Zera Timer_delay_OUT\r\n\r\n\r\n\t\tTimer_Congelar_DECORRIDO_OUT = 0; //Zera bit Timer_decorrido_OUT\r\n\t}"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call TimingApplication FlagCongelarTempoCheck"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "if( flag_congelar_Tempo ) {\r\n    Timer_Congelar_DECORRIDO_OUT = 0;\t\t\t// Zera bit Timer_decorrido_OUT\r\n\r\n\r\n    if (Status_tecla_Congela == 2) \t{\t\t// tela de COngelar TEMPO\r\n        if (Timer_SP_MINUTOS == 0) {\r\n            flag_alarm_receita_vazia = 1;\t\t\t// flag alarm de timer em valor 0\r\n        } else\t{\t\t\t\t\t\t\t\t\t\t// Tela Congelar Tempo\r\n            Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS*6; \t// TRansforma SP minutos em seg10\r\n        \r\n            Timer_Congelar_DECORRIDO_ON = 1;\t\t\t// START Timer TEmpo_COngelar_DECORRIDO_ON\r\n            flag_Processo_ANDAMENTO = 1;\t\t\t\t// Flag PRocesso_ANDAMENTO = TRUE\r\n\r\n            //@W_1:410242 = @SP_Congelar_Tempo\t\t\t// SP=-40\r\n            UpdateModbus485( w_1_410242, SP_Congelar_Tempo, _INT2_);    \r\n            WriteModbus485( w_1_410242, 1);\r\n            Wait(100);\r\n            \r\n            //@W_1:410282 = @Diferencial_Congelar_tempo\t// Diferencial rd=3ºC\r\n            UpdateModbus485( w_1_410282, Diferencial_Congelar_tempo, _INT2_);   \r\n            WriteModbus485( w_1_410282, 1);\r\n            Wait(100);\r\n            \r\n            //@W_1:4645 = 1\t\t\t\t\t\t\t\t// Controlador em modo COntrole\r\n            UpdateModbus485( w_1_4645, 1, _INT2_);    \r\n            WriteModbus485( w_1_4645, 1);\r\n            Wait(100);\r\n            //@W_HDW5000 = 3\t\r\n            goToTelaCongelarTempo();\t\t\t\t\t\t\t\t\t// Tela Congelar Tempo\r\n        }\r\n    }\r\n\r\n    if (Status_tecla_Congela == 4) { \t\t\t//tela de Resfriar TEMPO\r\n        if (Timer_SP_MINUTOS_Resfriar == 0) {\r\n            flag_alarm_receita_vazia = 1;\t\t\t// flag alarm de timer em valor 0\r\n        } else {\r\n\r\n            if (flag_Resfriar_HARD_SOFT==0) {\t\t\t\t// if SOFT\r\n                // @W_1:410242 = @SP_Resfriar_Tempo_SOFT\t\t' SP_Controlador = SP Resfriar SOFT\r\n                \r\n                //@W_1:410242 = @SP_SONDA_RESF_CAMARA\r\n                UpdateModbus485( w_1_410242, SP_SONDA_RESF_CAMARA, _INT2_);  \r\n                WriteModbus485( w_1_410242, 1);\r\n                Wait(100);\r\n                \r\n                SP_Resf_Hard_Interno_display = SP_Resfriar_Tempo_SOFT;\r\n                \r\n                //@W_1:410282 = @Diferencial_Resfriar_Tempo\t// Diferencial rd\r\n                UpdateModbus485( w_1_410282, Diferencial_Resfriar_Tempo, _INT2_); \r\n                WriteModbus485( w_1_410282, 1);\r\n                Wait(100);\r\n\r\n            } else { // if HARD\r\n                // '@W_1:410242 = @SP_Resfriar_Tempo_HARD\t\t' SP_Controlador = SP Resfriar HARD \r\n\r\n                Hard_Resf_fase_numero = 1; // Resfriamento por etapas - Etapa =1\r\n\r\n                Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;\r\n                Dif_Resf_Hard_F2 = Dif_Resf_Hard_F1;\r\n\r\n                // @W_1:410242 = @SP_Resf_Interno_F1\r\n                UpdateModbus485( w_1_410242, SP_Resf_Interno_F1, _INT2_);  \r\n                WriteModbus485( w_1_410242, 1);\r\n                Wait(100);\r\n\r\n                // @W_1:410282 = @Dif_Resf_Hard_F1\t\t' Diferencial de controle para modo Delicado Sonda\r\n                UpdateModbus485( w_1_410282, Dif_Resf_Hard_F1, _INT2_);  \r\n                WriteModbus485( w_1_410282, 1);\r\n                Wait(100); \r\n\r\n\r\n                SP_Resf_Hard_Interno_display =  SP_Resf_Interno_F1;\r\n                            \r\n                Preset_Resf_Tempo_F1 = Timer_SP_MINUTOS_Resfriar*6; // transforma Sp minutos em seg*10\r\n                Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 * Porc_Resf_preset_tempo_F1F2;\r\n                Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 /10;\r\n\r\n                Preset_Resf_Tempo_F2 = Timer_SP_MINUTOS_Resfriar*6 - Preset_Resf_Tempo_F1;\r\n\r\n                SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;\r\n                xBeep_once = 0; \t\r\n            }\r\n            \r\n            Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS_Resfriar*6; \t// TRansforma SP minutos em seg10\r\n            // @W_1:4645 = 1\t\t\t\t\t\t\t\t' Controlador em modo COntrole\r\n        \r\n\r\n            Timer_Congelar_DECORRIDO_ON = 1;\t\t\t\t// START Timer TEmpo_COngelar_DECORRIDO_ON\r\n            flag_Processo_ANDAMENTO = 1;\t\t\t    // Flag PRocesso_ANDAMENTO = TRUE\r\n            // @W_HDW5000 = 13\t\t\t\t\t\t\t\t// tela de Resfriar TEMPO\r\n            goToTelaResfriarTempo();\r\n        }\r\n    }\r\n\r\n\r\n    flag_congelar_Tempo = 0;\r\n}"
+            }
+          },
+          {
+            "InteractionName": "Interaction5",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call TimingApplication goToTelaCongelarTempo"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Congelar_TEMPO"
+            }
+          },
+          {
+            "InteractionName": "Interaction6",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerWhen",
+              "ActionCustomTypeName": "Call TimingApplication goToTelaResfriarTempo"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Resfriar_TEMPO"
+            }
           }
         ],
         "CustomActions": [
@@ -27788,6 +27851,26 @@
           },
           {
             "Name": "finalize",
+            "HasValue": false
+          },
+          {
+            "Name": "TimerBuzzerOutTrue",
+            "HasValue": false
+          },
+          {
+            "Name": "TimeCongelarDecorridoOutCheck",
+            "HasValue": false
+          },
+          {
+            "Name": "FlagCongelarTempoCheck",
+            "HasValue": false
+          },
+          {
+            "Name": "goToTelaCongelarTempo",
+            "HasValue": false
+          },
+          {
+            "Name": "goToTelaResfriarTempo",
             "HasValue": false
           },
           {
@@ -27822,7 +27905,7 @@
         "Y": 0,
         "Width": 480,
         "Height": 272,
-        "Includes": "#include <AT_module.hpp>\r\n#include <AT_module_ext.hpp>\r\n\r\n#include <gui/global/var.hpp>"
+        "Includes": "#include <AT_module.hpp>\r\n#include <AT_module_ext.hpp>\r\n\r\n#include <gui/global/var.hpp>\r\n#include <gui/modbus_address/Address.hpp>"
       }
     ],
     "TextEntries": [
@@ -30263,10 +30346,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId3973",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId3974",
         "IsResource": false
       },
@@ -30573,6 +30652,14 @@
       {
         "TextEntryId": "SingleUseId4102",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4103",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId4104",
+        "IsResource": true
       },
       {
         "TextEntryId": "SingleUseId4105",
@@ -30883,6 +30970,10 @@
         "IsResource": false
       },
       {
+        "TextEntryId": "SingleUseId3973",
+        "IsResource": false
+      },
+      {
         "TextEntryId": "SingleUseId4179",
         "IsResource": false
       },
@@ -30892,6 +30983,10 @@
       },
       {
         "TextEntryId": "SingleUseId4181",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4182",
         "IsResource": false
       }
     ],
