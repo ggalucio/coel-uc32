@@ -188,6 +188,9 @@ void Configuracao_6ViewBase::setupScreen()
     ReadWriteModbus485(&textArea1410295, textArea1410295Buffer, "10295", 2, _DOUBLE_, ONCE);
     ReadWriteModbus485(&textArea1410294, textArea1410294Buffer, "10294", 0, _INT_, ONCE);
     
+    
+    ButtonModbus485(&toggleButton14102650, "102650", BITMAP_A5_ID, BITMAP_A6_ID);
+    
     Update(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);
     Update(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);
 
@@ -287,6 +290,7 @@ void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //ADDR14102650
         //When toggleButton14102650 clicked execute C++ code
         //Execute C++ code
+        SetBitModbusRS485("10265.0", toggleButton14102650.getState() ? 1 : 0);
         SoundBuzzerOn(25);
     }
     else if (&src == &toggleButtonDegeloPortaAberta)

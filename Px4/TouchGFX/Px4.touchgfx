@@ -10424,7 +10424,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "double value = 0;\r\n\r\nif (addressModbusRS458 == 10272)\r\n{\r\n\t//UpdateModbus485(\"10272\", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\t//WriteModbus485(\"10272\", 2);\r\n\r\n\tWriteModbus485(&textArea1410272, textArea1410272Buffer, \"10272\", 1);\r\n\tWriteModbus485(\"10272\", 2);\r\n\tWait(100);\r\n}\r\n\r\nif (addressModbusRS458 == 10275)\r\n{\r\n\tUpdateModbus485(\"10275\", (value = GetNumberTextArea(textArea1410275Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\tWriteModbus485(\"10275\", 2);\r\n\tWait(100);\r\n}"
+              "Code": "double value = 0;\r\n\r\nif (addressModbusRS458 == 10272)\r\n{\r\n\tUpdateModbus485(\"10272\", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\tWriteModbus485(\"10272\", 2);\r\n\tWait(100);\r\n}\r\n\r\nif (addressModbusRS458 == 10275)\r\n{\r\n\tUpdateModbus485(\"10275\", (value = GetNumberTextArea(textArea1410275Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);\r\n\tWriteModbus485(\"10275\", 2);\r\n\tWait(100);\r\n}"
             }
           }
         ],
@@ -15028,7 +15028,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (ReadJobData(1, _INT_)== 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\r\n\t/*\r\n\tTempo_Receita_ATUAL = ReadJobData(1, _INT_);\t\r\n\tReceita_Cong_Resf_ATUAL = ReadJobData(1, _INT_);\r\n\tReceita_Hard_Soft_ATUAL = ReadJobData(1, _INT_);\r\n\r\n\tReceita_Conserv_ATUAL = ReadJobData(1, _INT_);\r\n\tTemperatura_Receita_ATUAL = ReadJobData(2, _INT_);\r\n\r\n\tReceita_time_temp_ATUAL = ReadJobData(1, _INT_);\r\n\t*/\r\n\t\r\n\tif (ReadJobData(4, _INT_) == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
+              "Code": "if (ReadJobData(1, _INT_)== 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\t/*\r\n\tTempo_Receita_ATUAL = ReadJobData(1, _INT_);\t\r\n\tReceita_Cong_Resf_ATUAL = ReadJobData(4, _INT_);\r\n\tReceita_Hard_Soft_ATUAL = ReadJobData(6, _INT_) ? true : false;\r\n\r\n\tReceita_Conserv_ATUAL = ReadJobData(7, _INT_);\r\n\tTemperatura_Receita_ATUAL = ReadJobData(2, _INT_);\r\n\r\n\tReceita_time_temp_ATUAL = ReadJobData(3, _INT_);\r\n\t*/\r\n\t\r\n\tif (ReadJobData(4, _INT_) == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
             }
           },
           {
@@ -18491,7 +18491,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "W_HDW5000 = 42;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410279, textArea1410279Buffer, \"10279\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410295, textArea1410295Buffer, \"10295\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410294, textArea1410294Buffer, \"10294\", 0, _INT_, ONCE);\r\n\r\nUpdate(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);\r\nUpdate(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);"
+              "Code": "W_HDW5000 = 42;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410279, textArea1410279Buffer, \"10279\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410295, textArea1410295Buffer, \"10295\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410294, textArea1410294Buffer, \"10294\", 0, _INT_, ONCE);\r\n\r\n\r\nButtonModbus485(&toggleButton14102650, \"102650\", BITMAP_A5_ID, BITMAP_A6_ID);\r\n\r\nUpdate(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);\r\nUpdate(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);"
             }
           },
           {
@@ -18625,7 +18625,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "SetBitModbusRS485(\"10265.0\", toggleButton14102650.getState() ? 1 : 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18800,8 +18800,8 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Pressed": "setON2s.png",
-            "Released": "setOFF2s.png",
+            "Pressed": "resetOn.png",
+            "Released": "resetOff.png",
             "Alpha": 255,
             "TextId": "SingleUseId3790",
             "ReleasedColor": {

@@ -309,10 +309,7 @@ void Configuracao_2ViewBase::numKeyboardContainer1EnterCallbackHandler()
     
     if (addressModbusRS458 == 10272)
     {
-    	//UpdateModbus485("10272", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);
-    	//WriteModbus485("10272", 2);
-    
-    	WriteModbus485(&textArea1410272, textArea1410272Buffer, "10272", 1);
+    	UpdateModbus485("10272", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);
     	WriteModbus485("10272", 2);
     	Wait(100);
     }
