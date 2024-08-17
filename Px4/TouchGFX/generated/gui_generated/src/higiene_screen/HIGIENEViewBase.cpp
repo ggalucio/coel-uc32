@@ -7,7 +7,8 @@
 #include "BitmapDatabase.hpp"
 
 HIGIENEViewBase::HIGIENEViewBase() :
-    buttonCallback(this, &HIGIENEViewBase::buttonCallbackHandler)
+    buttonCallback(this, &HIGIENEViewBase::buttonCallbackHandler),
+    finalizar_higiene1Cancelar_higieneCallback(this, &HIGIENEViewBase::finalizar_higiene1Cancelar_higieneCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -56,6 +57,9 @@ HIGIENEViewBase::HIGIENEViewBase() :
     textAreaStatusHigiene.setXY(360, 14);
     textAreaStatusHigiene.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textAreaStatusHigiene.setLinespacing(0);
+    textAreaStatusHigieneBuffer[0] = 0;
+    textAreaStatusHigiene.setWildcard(textAreaStatusHigieneBuffer);
+    textAreaStatusHigiene.resizeToCurrentText();
     textAreaStatusHigiene.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3973));
 
     textAreaTimerCongelarDecorridoCount.setPosition(328, 97, 56, 18);
@@ -78,6 +82,10 @@ HIGIENEViewBase::HIGIENEViewBase() :
     textAreaStatusPorta.resizeToCurrentText();
     textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4161));
 
+    finalizar_higiene1.setXY(0, 0);
+    finalizar_higiene1.setVisible(false);
+    finalizar_higiene1.setCancelar_higieneCallback(finalizar_higiene1Cancelar_higieneCallback);
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -92,18 +100,22 @@ HIGIENEViewBase::HIGIENEViewBase() :
     add(textAreaTimerCongelarDecorridoCount);
     add(imageStatusPorta);
     add(textAreaStatusPorta);
+    add(finalizar_higiene1);
 }
 
 void HIGIENEViewBase::setupScreen()
 {
-
+    finalizar_higiene1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
+    
+    
+    AddbackgroundContainer(this); 
+    
     W_HDW5000 = 45;
     
-    // Clear();
+    Clear();
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
@@ -115,6 +127,12 @@ void HIGIENEViewBase::setupScreen()
     
     UpdateModbus485("10322", 11, _INT_);
     WriteModbus485("10322", 1);
+    
+    timer_higiene_ON = true;
+    
+    status_higiene = true;
+    
+    Update(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, "OPERANDO...", 20);
 
 }
 
@@ -125,6 +143,29 @@ void HIGIENEViewBase::afterTransition()
     //When screen transition ends execute C++ code
     //Execute C++ code
     SoundBuzzerOn(25);
+}
+
+void HIGIENEViewBase::finalizar_higiene1Cancelar_higieneCallbackHandler()
+{
+    //cancelar_higiene
+    //When finalizar_higiene1 cancelar_higiene execute C++ code
+    //Execute C++ code
+    Clear();
+    SoundBuzzerOn(25);
+    
+    UpdateModbus485("10242", 999, _INT_); 
+    WriteModbus485("10242", 2);
+    
+    UpdateModbus485("645", 0, _INT_);
+    WriteModbus485("645", 1);
+    
+    UpdateModbus485("10322", 3, _INT_);
+    WriteModbus485("10322", 1);
+    
+    status_higiene = false;
+    
+    Timer_higiene_MIN = 0;
+    Timer_higiene_COUNT = 0;
 }
 
 void HIGIENEViewBase::handleTickEvent()
@@ -138,7 +179,22 @@ void HIGIENEViewBase::handleTickEvent()
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
+    
     W_1_4553 = imageStatusPorta.isVisible();
+    
+    Update(&textAreaTimerHigieneMin, textAreaTimerHigieneMinBuffer, Timer_higiene_MIN, _INT_, 0);
+    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_higiene_COUNT, _INT_, 0);
+    
+    if (countCycleBlink > 1000)
+    {
+    	countCycleBlink = 0;
+    	
+    	if (status_higiene)
+    		VisibilityTextArea(&textAreaStatusHigiene, textAreaStatusHigiene.isVisible());
+    	else
+    		Update(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, "Finalizado!", 20);
+    }
+    countCycleBlink += 16;
 }
 
 void HIGIENEViewBase::tearDownScreen()
@@ -155,8 +211,9 @@ void HIGIENEViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     if (&src == &buttonFinalizarHigiene)
     {
         //HigieneConfirma
-        //When buttonFinalizarHigiene clicked change screen to HIGIENE_CONFIRMAR
-        //Go to HIGIENE_CONFIRMAR with no screen transition
-        application().gotoHIGIENE_CONFIRMARScreenNoTransition();
+        //When buttonFinalizarHigiene clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&finalizar_higiene1, true);
+        SoundBuzzerOn(25);
     }
 }

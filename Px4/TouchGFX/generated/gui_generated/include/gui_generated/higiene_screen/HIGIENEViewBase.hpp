@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/Finalizar_higiene.hpp>
 
 class HIGIENEViewBase : public touchgfx::View<HIGIENEPresenter>
 {
@@ -46,16 +47,19 @@ protected:
     touchgfx::Image image3;
     touchgfx::TextArea textAreaLabel2;
     touchgfx::TextAreaWithOneWildcard textAreaTimerHigieneMin;
-    touchgfx::TextArea textAreaStatusHigiene;
+    touchgfx::TextAreaWithOneWildcard textAreaStatusHigiene;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::Image imageStatusPorta;
     touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Finalizar_higiene finalizar_higiene1;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREATIMERHIGIENEMIN_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerHigieneMinBuffer[TEXTAREATIMERHIGIENEMIN_SIZE];
+    static const uint16_t TEXTAREASTATUSHIGIENE_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaStatusHigieneBuffer[TEXTAREASTATUSHIGIENE_SIZE];
     static const uint16_t TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerCongelarDecorridoCountBuffer[TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE];
     static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
@@ -67,11 +71,13 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<HIGIENEViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<HIGIENEViewBase> finalizar_higiene1Cancelar_higieneCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void finalizar_higiene1Cancelar_higieneCallbackHandler();
 
 };
 

@@ -19,6 +19,14 @@ public:
     virtual void initialize();
 
     /*
+     * Custom Trigger Callback Setters
+     */
+    void setCancelar_higieneCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->cancelar_higieneCallback = &callback;
+    }
+
+    /*
      * Custom Actions
      */
     virtual void init();
@@ -26,6 +34,17 @@ public:
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
+    }
+
+    /*
+     * Custom Trigger Emitters
+     */
+    virtual void emitCancelar_higieneCallback()
+    {
+        if (cancelar_higieneCallback && cancelar_higieneCallback->isValid())
+        {
+            this->cancelar_higieneCallback->execute();
+        }
     }
 
     /*
@@ -43,6 +62,11 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Finalizar_higieneBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Custom Trigger Callback Declarations
+     */
+    touchgfx::GenericCallback<>* cancelar_higieneCallback;
 
     /*
      * Callback Handler Declarations

@@ -6,6 +6,8 @@
 
 using namespace touchgfx;
 
+extern bool status_higiene;
+
 class HIGIENEView;
 
 class HIGIENEPresenter : public touchgfx::Presenter, public ModelListener
