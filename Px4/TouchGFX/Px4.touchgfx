@@ -27765,16 +27765,6 @@
             }
           },
           {
-            "InteractionName": "Interaction4",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "Type": "TriggerNone"
-            },
-            "Action": {
-              "Type": "ActionNone"
-            }
-          },
-          {
             "InteractionName": "Interaction5",
             "HasCompletedTrigger": false,
             "Trigger": {
