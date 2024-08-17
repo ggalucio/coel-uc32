@@ -24,17 +24,17 @@ public:
      */
     virtual void init();
     virtual void finalize();
+    virtual void TimerBuzzerOutTrue();
+    virtual void TimeCongelarDecorridoOutCheck();
+    virtual void FlagCongelarTempoCheck();
+    virtual void goToTelaCongelarTempo();
+    virtual void goToTelaResfriarTempo();
     virtual void cycle50();
     virtual void cycle500();
     virtual void cycle25();
     virtual void timer_1S();
     virtual void timer_10S();
     virtual void writeModbus(char const* address, double value);
-    virtual void TimerBuzzerOutTrue();
-    virtual void TimeCongelarDecorridoOutCheck();
-    virtual void FlagCongelarTempoCheck();
-    virtual void goToTelaCongelarTempo();
-    virtual void goToTelaResfriarTempo();
 
 protected:
     FrontendApplication& application() {

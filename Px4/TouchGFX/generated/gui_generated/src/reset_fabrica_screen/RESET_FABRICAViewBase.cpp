@@ -26,7 +26,7 @@ RESET_FABRICAViewBase::RESET_FABRICAViewBase() :
     buttonConfiguracao.setAction(buttonCallback);
 
     buttonWithLabelResetFabrica.setXY(177, 196);
-    buttonWithLabelResetFabrica.setBitmaps(touchgfx::Bitmap(BITMAP_SETOFF2S_ID), touchgfx::Bitmap(BITMAP_SETON2S_ID));
+    buttonWithLabelResetFabrica.setBitmaps(touchgfx::Bitmap(BITMAP_RESETOFF_ID), touchgfx::Bitmap(BITMAP_RESETON_ID));
     buttonWithLabelResetFabrica.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3790));
     buttonWithLabelResetFabrica.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelResetFabrica.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));

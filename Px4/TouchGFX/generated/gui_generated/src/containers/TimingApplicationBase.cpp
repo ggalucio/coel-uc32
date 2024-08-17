@@ -12,15 +12,15 @@ TimingApplicationBase::TimingApplicationBase()
     textArea512.setXY(0, 125);
     textArea512.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea512.setLinespacing(0);
-    textArea512Buffer[0] = 0;
+    Unicode::snprintf(textArea512Buffer, TEXTAREA512_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4182).getText());
     textArea512.setWildcard(textArea512Buffer);
     textArea512.resizeToCurrentText();
-    textArea512.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4176));
+    textArea512.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4178));
 
     textArea645.setXY(0, 50);
     textArea645.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea645.setLinespacing(0);
-    textArea645Buffer[0] = 0;
+    Unicode::snprintf(textArea645Buffer, TEXTAREA645_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4177).getText());
     textArea645.setWildcard(textArea645Buffer);
     textArea645.resizeToCurrentText();
     textArea645.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4176));
@@ -96,6 +96,177 @@ void TimingApplicationBase::init()
 void TimingApplicationBase::finalize()
 {
 
+}
+
+void TimingApplicationBase::TimerBuzzerOutTrue()
+{
+    //Interaction1
+    //When TimerBuzzerOutTrue is called execute C++ code
+    //Execute C++ code
+    	if (!flag_Conservar_S_N) {
+    	    UpdateModbus485( w_1_410242, 999, _INT2_);    // @W_1:410242 = 999	SP = 99.9ºC
+    	    WriteModbus485( w_1_410242, 1);
+    	    Wait(100);
+    
+    	    UpdateModbus485( w_1_4645, 0, _INT2_);    // @W_1:4645 = 0		Controlador em Stand-By
+    	    WriteModbus485( w_1_4645, 1);
+    	    Wait(100);
+    	}
+    
+    
+    	UpdateModbus485( w_1_410323, 0, _INT2_);  //@W_1:410323 = 0				 OUT4 = oF
+    	WriteModbus485( w_1_410323, 1);
+    	Wait(100);
+    
+    	Timer_BUzzer_OUT =0; 		// Zera bi Timer_Buzzer_out
+    
+    	Timer_buzzer_ON = 0;		// Finalize Timer_Buzzer
+    
+    	Hard_Resf_fase_numero = 0;
+    
+    	xBeep_once = 0;
+}
+
+void TimingApplicationBase::TimeCongelarDecorridoOutCheck()
+{
+    //Interaction2
+    //When TimeCongelarDecorridoOutCheck is called execute C++ code
+    //Execute C++ code
+    	if (Timer_Congelar_DECORRIDO_OUT) {
+    		if(flag_Conservar_S_N) {
+    			flag_transicao_Conservar = 1;
+    			flag_Conservar_Cong_Resf = 1;
+    		}
+    		flag_Processo_ANDAMENTO = 0; //Zera flag_PROCESSO_ANDAMENTO
+    		Timer_Congelar_DECORRIDO_ON = 0; //Zera bit Timer_decorrido_ON
+    
+    		Timer_buzzer_ON = 1; //inicia Timer_Buzzer
+    
+    		Timer_delay_OUT = 0; //Zera Timer_delay_OUT
+    
+    
+    		Timer_Congelar_DECORRIDO_OUT = 0; //Zera bit Timer_decorrido_OUT
+    	}
+}
+
+void TimingApplicationBase::FlagCongelarTempoCheck()
+{
+    //Interaction3
+    //When FlagCongelarTempoCheck is called execute C++ code
+    //Execute C++ code
+    if( flag_congelar_Tempo ) {
+        Timer_Congelar_DECORRIDO_OUT = 0;			// Zera bit Timer_decorrido_OUT
+    
+    
+        if (Status_tecla_Congela == 2) 	{		// tela de COngelar TEMPO
+            if (Timer_SP_MINUTOS == 0) {
+                flag_alarm_receita_vazia = 1;			// flag alarm de timer em valor 0
+            } else	{										// Tela Congelar Tempo
+                Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS*6; 	// TRansforma SP minutos em seg10
+            
+                Timer_Congelar_DECORRIDO_ON = 1;			// START Timer TEmpo_COngelar_DECORRIDO_ON
+                flag_Processo_ANDAMENTO = 1;				// Flag PRocesso_ANDAMENTO = TRUE
+    
+                //@W_1:410242 = @SP_Congelar_Tempo			// SP=-40
+                UpdateModbus485( w_1_410242, SP_Congelar_Tempo, _INT2_);    
+                WriteModbus485( w_1_410242, 1);
+                Wait(100);
+                
+                //@W_1:410282 = @Diferencial_Congelar_tempo	// Diferencial rd=3ºC
+                UpdateModbus485( w_1_410282, Diferencial_Congelar_tempo, _INT2_);   
+                WriteModbus485( w_1_410282, 1);
+                Wait(100);
+                
+                //@W_1:4645 = 1								// Controlador em modo COntrole
+                UpdateModbus485( w_1_4645, 1, _INT2_);    
+                WriteModbus485( w_1_4645, 1);
+                Wait(100);
+                //@W_HDW5000 = 3	
+                goToTelaCongelarTempo();									// Tela Congelar Tempo
+            }
+        }
+    
+        if (Status_tecla_Congela == 4) { 			//tela de Resfriar TEMPO
+            if (Timer_SP_MINUTOS_Resfriar == 0) {
+                flag_alarm_receita_vazia = 1;			// flag alarm de timer em valor 0
+            } else {
+    
+                if (flag_Resfriar_HARD_SOFT==0) {				// if SOFT
+                    // @W_1:410242 = @SP_Resfriar_Tempo_SOFT		' SP_Controlador = SP Resfriar SOFT
+                    
+                    //@W_1:410242 = @SP_SONDA_RESF_CAMARA
+                    UpdateModbus485( w_1_410242, SP_SONDA_RESF_CAMARA, _INT2_);  
+                    WriteModbus485( w_1_410242, 1);
+                    Wait(100);
+                    
+                    SP_Resf_Hard_Interno_display = SP_Resfriar_Tempo_SOFT;
+                    
+                    //@W_1:410282 = @Diferencial_Resfriar_Tempo	// Diferencial rd
+                    UpdateModbus485( w_1_410282, Diferencial_Resfriar_Tempo, _INT2_); 
+                    WriteModbus485( w_1_410282, 1);
+                    Wait(100);
+    
+                } else { // if HARD
+                    // '@W_1:410242 = @SP_Resfriar_Tempo_HARD		' SP_Controlador = SP Resfriar HARD 
+    
+                    Hard_Resf_fase_numero = 1; // Resfriamento por etapas - Etapa =1
+    
+                    Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;
+                    Dif_Resf_Hard_F2 = Dif_Resf_Hard_F1;
+    
+                    // @W_1:410242 = @SP_Resf_Interno_F1
+                    UpdateModbus485( w_1_410242, SP_Resf_Interno_F1, _INT2_);  
+                    WriteModbus485( w_1_410242, 1);
+                    Wait(100);
+    
+                    // @W_1:410282 = @Dif_Resf_Hard_F1		' Diferencial de controle para modo Delicado Sonda
+                    UpdateModbus485( w_1_410282, Dif_Resf_Hard_F1, _INT2_);  
+                    WriteModbus485( w_1_410282, 1);
+                    Wait(100); 
+    
+    
+                    SP_Resf_Hard_Interno_display =  SP_Resf_Interno_F1;
+                                
+                    Preset_Resf_Tempo_F1 = Timer_SP_MINUTOS_Resfriar*6; // transforma Sp minutos em seg*10
+                    Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 * Porc_Resf_preset_tempo_F1F2;
+                    Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 /10;
+    
+                    Preset_Resf_Tempo_F2 = Timer_SP_MINUTOS_Resfriar*6 - Preset_Resf_Tempo_F1;
+    
+                    SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;
+                    xBeep_once = 0; 	
+                }
+                
+                Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS_Resfriar*6; 	// TRansforma SP minutos em seg10
+                // @W_1:4645 = 1								' Controlador em modo COntrole
+            
+    
+                Timer_Congelar_DECORRIDO_ON = 1;				// START Timer TEmpo_COngelar_DECORRIDO_ON
+                flag_Processo_ANDAMENTO = 1;			    // Flag PRocesso_ANDAMENTO = TRUE
+                // @W_HDW5000 = 13								// tela de Resfriar TEMPO
+                goToTelaResfriarTempo();
+            }
+        }
+    
+    
+        flag_congelar_Tempo = 0;
+    }
+}
+
+void TimingApplicationBase::goToTelaCongelarTempo()
+{
+    //Interaction5
+    //When goToTelaCongelarTempo is called change screen to Congelar_TEMPO
+    //Go to Congelar_TEMPO with no screen transition
+    application().gotoCongelar_TEMPOScreenNoTransition();
+}
+
+void TimingApplicationBase::goToTelaResfriarTempo()
+{
+    //Interaction6
+    //When goToTelaResfriarTempo is called change screen to Resfriar_TEMPO
+    //Go to Resfriar_TEMPO with no screen transition
+    application().gotoResfriar_TEMPOScreenNoTransition();
 }
 
 void TimingApplicationBase::cycle50()
@@ -279,10 +450,9 @@ void TimingApplicationBase::timer_1S()
     //Execute C++ code
     	// TIMER BUZZER
     	if (Timer_buzzer_ON == 1){
-    		if (Timer_Buzzer_COUNT >= Timer_buzzer_SP - 1){
+    		if (Timer_Buzzer_COUNT >= Timer_buzzer_SP - 1)
     			Timer_BUzzer_OUT = true;
-                        TimerBuzzerOutTrue();
-                 } else
+    		else
     			Timer_Buzzer_COUNT = Timer_Buzzer_COUNT + 1;
     	}
     	else
@@ -393,176 +563,5 @@ void TimingApplicationBase::writeModbus(char const* address, double value)
     UpdateModbus485(address, value, _INT_);
     WriteModbus485(address, 1);
     Wait(50);
-}
-
-void TimingApplicationBase::TimerBuzzerOutTrue()
-{
-    //Interaction1
-    //When TimerBuzzerOutTrue is called execute C++ code
-    //Execute C++ code
-    	if (!flag_Conservar_S_N) {
-    	    UpdateModbus485( w_1_410242, 999, _INT2_);    // @W_1:410242 = 999	SP = 99.9ºC
-    	    WriteModbus485( w_1_410242, 1);
-    	    Wait(100);
-    
-    	    UpdateModbus485( w_1_4645, 0, _INT2_);    // @W_1:4645 = 0		Controlador em Stand-By
-    	    WriteModbus485( w_1_4645, 1);
-    	    Wait(100);
-    	}
-    
-    
-    	UpdateModbus485( w_1_410323, 0, _INT2_);  //@W_1:410323 = 0				 OUT4 = oF
-    	WriteModbus485( w_1_410323, 1);
-    	Wait(100);
-    
-    	Timer_BUzzer_OUT =0; 		// Zera bi Timer_Buzzer_out
-    
-    	Timer_buzzer_ON = 0;		// Finalize Timer_Buzzer
-    
-    	Hard_Resf_fase_numero = 0;
-    
-    	xBeep_once = 0;
-}
-
-void TimingApplicationBase::TimeCongelarDecorridoOutCheck()
-{
-    //Interaction2
-    //When TimeCongelarDecorridoOutCheck is called execute C++ code
-    //Execute C++ code
-    	if (Timer_Congelar_DECORRIDO_OUT) {
-    		if(flag_Conservar_S_N) {
-    			flag_transicao_Conservar = 1;
-    			flag_Conservar_Cong_Resf = 1;
-    		}
-    		flag_Processo_ANDAMENTO = 0; //Zera flag_PROCESSO_ANDAMENTO
-    		Timer_Congelar_DECORRIDO_ON = 0; //Zera bit Timer_decorrido_ON
-    
-    		Timer_buzzer_ON = 1; //inicia Timer_Buzzer
-    
-    		Timer_delay_OUT = 0; //Zera Timer_delay_OUT
-    
-    
-    		Timer_Congelar_DECORRIDO_OUT = 0; //Zera bit Timer_decorrido_OUT
-    	}
-}
-
-void TimingApplicationBase::FlagCongelarTempoCheck()
-{
-    //Interaction3
-    //When FlagCongelarTempoCheck is called execute C++ code
-    //Execute C++ code
-    if( flag_congelar_Tempo ) {
-        Timer_Congelar_DECORRIDO_OUT = 0;			// Zera bit Timer_decorrido_OUT
-    
-    
-        if (Status_tecla_Congela == 2) 	{		// tela de COngelar TEMPO
-            if (Timer_SP_MINUTOS == 0) {
-                flag_alarm_receita_vazia = 1;			// flag alarm de timer em valor 0
-            } else	{										// Tela Congelar Tempo
-                Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS*6; 	// TRansforma SP minutos em seg10
-            
-                Timer_Congelar_DECORRIDO_ON = 1;			// START Timer TEmpo_COngelar_DECORRIDO_ON
-                flag_Processo_ANDAMENTO = 1;				// Flag PRocesso_ANDAMENTO = TRUE
-    
-                //@W_1:410242 = @SP_Congelar_Tempo			// SP=-40
-                UpdateModbus485( w_1_410242, SP_Congelar_Tempo, _INT2_);    
-                WriteModbus485( w_1_410242, 1);
-                Wait(100);
-                
-                //@W_1:410282 = @Diferencial_Congelar_tempo	// Diferencial rd=3ºC
-                UpdateModbus485( w_1_410282, Diferencial_Congelar_tempo, _INT2_);   
-                WriteModbus485( w_1_410282, 1);
-                Wait(100);
-                
-                //@W_1:4645 = 1								// Controlador em modo COntrole
-                UpdateModbus485( w_1_4645, 1, _INT2_);    
-                WriteModbus485( w_1_4645, 1);
-                Wait(100);
-                //@W_HDW5000 = 3	
-                goToTelaCongelarTempo();									// Tela Congelar Tempo
-            }
-        }
-    
-        if (Status_tecla_Congela == 4) { 			//tela de Resfriar TEMPO
-            if (Timer_SP_MINUTOS_Resfriar == 0) {
-                flag_alarm_receita_vazia = 1;			// flag alarm de timer em valor 0
-            } else {
-    
-                if (flag_Resfriar_HARD_SOFT==0) {				// if SOFT
-                    // @W_1:410242 = @SP_Resfriar_Tempo_SOFT		' SP_Controlador = SP Resfriar SOFT
-                    
-                    //@W_1:410242 = @SP_SONDA_RESF_CAMARA
-                    UpdateModbus485( w_1_410242, SP_SONDA_RESF_CAMARA, _INT2_);  
-                    WriteModbus485( w_1_410242, 1);
-                    Wait(100);
-                    
-                    SP_Resf_Hard_Interno_display = SP_Resfriar_Tempo_SOFT;
-                    
-                    //@W_1:410282 = @Diferencial_Resfriar_Tempo	// Diferencial rd
-                    UpdateModbus485( w_1_410282, Diferencial_Resfriar_Tempo, _INT2_); 
-                    WriteModbus485( w_1_410282, 1);
-                    Wait(100);
-    
-                } else { // if HARD
-                    // '@W_1:410242 = @SP_Resfriar_Tempo_HARD		' SP_Controlador = SP Resfriar HARD 
-    
-                    Hard_Resf_fase_numero = 1; // Resfriamento por etapas - Etapa =1
-    
-                    Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;
-                    Dif_Resf_Hard_F2 = Dif_Resf_Hard_F1;
-    
-                    // @W_1:410242 = @SP_Resf_Interno_F1
-                    UpdateModbus485( w_1_410242, SP_Resf_Interno_F1, _INT2_);  
-                    WriteModbus485( w_1_410242, 1);
-                    Wait(100);
-    
-                    // @W_1:410282 = @Dif_Resf_Hard_F1		' Diferencial de controle para modo Delicado Sonda
-                    UpdateModbus485( w_1_410282, Dif_Resf_Hard_F1, _INT2_);  
-                    WriteModbus485( w_1_410282, 1);
-                    Wait(100); 
-    
-    
-                    SP_Resf_Hard_Interno_display =  SP_Resf_Interno_F1;
-                                
-                    Preset_Resf_Tempo_F1 = Timer_SP_MINUTOS_Resfriar*6; // transforma Sp minutos em seg*10
-                    Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 * Porc_Resf_preset_tempo_F1F2;
-                    Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 /10;
-    
-                    Preset_Resf_Tempo_F2 = Timer_SP_MINUTOS_Resfriar*6 - Preset_Resf_Tempo_F1;
-    
-                    SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;
-                    xBeep_once = 0; 	
-                }
-                
-                Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS_Resfriar*6; 	// TRansforma SP minutos em seg10
-                // @W_1:4645 = 1								' Controlador em modo COntrole
-            
-    
-                Timer_Congelar_DECORRIDO_ON = 1;				// START Timer TEmpo_COngelar_DECORRIDO_ON
-                flag_Processo_ANDAMENTO = 1;			    // Flag PRocesso_ANDAMENTO = TRUE
-                // @W_HDW5000 = 13								// tela de Resfriar TEMPO
-                goToTelaResfriarTempo();
-            }
-        }
-    
-    
-        flag_congelar_Tempo = 0;
-    }
-}
-
-void TimingApplicationBase::goToTelaCongelarTempo()
-{
-    //Interaction5
-    //When goToTelaCongelarTempo is called change screen to Congelar_TEMPO
-    //Go to Congelar_TEMPO with no screen transition
-    application().gotoCongelar_TEMPOScreenNoTransition();
-}
-
-void TimingApplicationBase::goToTelaResfriarTempo()
-{
-    //Interaction6
-    //When goToTelaResfriarTempo is called change screen to Resfriar_TEMPO
-    //Go to Resfriar_TEMPO with no screen transition
-    application().gotoResfriar_TEMPOScreenNoTransition();
 }
 

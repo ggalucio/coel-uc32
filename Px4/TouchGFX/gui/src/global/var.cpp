@@ -121,10 +121,14 @@ bool cancelar_processo_SIM				= false;
 double xbar_zero						= 0;
 bool flag_Conservar_ANDAMENTO			= false;
 double Status_Conservar					= 0;
-double Receita_Cong_Resf_ATUAL			= 0;
+bool Receita_Cong_Resf_ATUAL			= false;
 double Status_Porta						= 0;
 bool flag_porta							= false;
 double Temperatura_Receita_ATUAL		= 0;
+
+double Tempo_Receita_ATUAL				= 0;
+bool Receita_Hard_Soft_ATUAL			= false;
+
 double W_HDW5000						= 0;
 bool W_1_4553							= false;
 double W_1_4554							= 0;

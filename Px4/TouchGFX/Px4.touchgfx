@@ -359,7 +359,7 @@
           },
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId4177",
+            "TextId": "SingleUseId4179",
             "TextRotation": "0",
             "Color": {
               "Red": 0,
@@ -370,6 +370,7 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Wildcard1": {
+              "TextId": "SingleUseId4180",
               "UseBuffer": true,
               "BufferSize": 10
             },
@@ -15027,7 +15028,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if (ReadJobData(1, _INT_)== 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\r\n\t/*\r\n\tTempo_Receita_ATUAL = ReadJobData(1, _INT_);\t\r\n\tReceita_Cong_Resf_ATUAL = ReadJobData(1, _INT_);\r\n\tReceita_Hard_Soft_ATUAL = ReadJobData(1, _INT_);\r\n\r\n\tReceita_Conserv_ATUAL = ReadJobData(1, _INT_);\r\n\tTemperatura_Receita_ATUAL = ReadJobData(2, _INT_);\r\n\r\n\tReceita_time_temp_ATUAL = ReadJobData(1, _INT_);\r\n\t*/\r\n\t\r\n\tif (ReadJobData(4, _INT_) == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
+              "Code": "if (ReadJobData(1, _INT_)== 0.0)\r\n{\r\n\tisZeroValue = true;\r\n\tSoundBuzzerOn(25);\r\n}\r\nelse\r\n{\r\n\t/*\r\n\tTempo_Receita_ATUAL = ReadJobData(1, _INT_);\t\r\n\tReceita_Cong_Resf_ATUAL = ReadJobData(4, _INT_);\r\n\tReceita_Hard_Soft_ATUAL = ReadJobData(6, _INT_) ? true : false;\r\n\r\n\tReceita_Conserv_ATUAL = ReadJobData(7, _INT_);\r\n\tTemperatura_Receita_ATUAL = ReadJobData(2, _INT_);\r\n\r\n\tReceita_time_temp_ATUAL = ReadJobData(3, _INT_);\r\n\t*/\r\n\t\r\n\tif (ReadJobData(4, _INT_) == 0)\r\n\t\tCongelar_TEMPO();\r\n\telse\r\n\t\tResfriar_TEMPO();\r\n}"
             }
           },
           {
@@ -18490,7 +18491,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "W_HDW5000 = 42;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410279, textArea1410279Buffer, \"10279\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410295, textArea1410295Buffer, \"10295\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410294, textArea1410294Buffer, \"10294\", 0, _INT_, ONCE);\r\n\r\nUpdate(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);\r\nUpdate(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);"
+              "Code": "W_HDW5000 = 42;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nReadWriteModbus485(&textArea1410279, textArea1410279Buffer, \"10279\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410295, textArea1410295Buffer, \"10295\", 2, _DOUBLE_, ONCE);\r\nReadWriteModbus485(&textArea1410294, textArea1410294Buffer, \"10294\", 0, _INT_, ONCE);\r\n\r\n\r\nButtonModbus485(&toggleButton14102650, \"102650\", BITMAP_A5_ID, BITMAP_A6_ID);\r\n\r\nUpdate(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);\r\nUpdate(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);"
             }
           },
           {
@@ -18624,7 +18625,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "SoundBuzzerOn(25);"
+              "Code": "SetBitModbusRS485(\"10265.0\", toggleButton14102650.getState() ? 1 : 0);\r\nSoundBuzzerOn(25);"
             }
           },
           {
@@ -18799,8 +18800,8 @@
           },
           {
             "Type": "ButtonWithLabel",
-            "Pressed": "setON2s.png",
-            "Released": "setOFF2s.png",
+            "Pressed": "resetOn.png",
+            "Released": "resetOff.png",
             "Alpha": 255,
             "TextId": "SingleUseId3790",
             "ReleasedColor": {
@@ -19079,7 +19080,7 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "textAreaStatusPortaAberta",
-            "X": 51,
+            "X": 56,
             "Y": 90,
             "Width": 302,
             "Height": 147,
@@ -19468,6 +19469,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId4181",
+              "UseBuffer": true,
+              "BufferSize": 20
+            },
             "Name": "textAreaStatusHigiene",
             "X": 360,
             "Y": 14,
@@ -19553,6 +19559,21 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "CustomContainerDefinitionName": "Finalizar_higiene",
+            "Type": "CustomContainerInstance",
+            "Name": "finalizar_higiene1",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "LockPosition": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -19564,7 +19585,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "AddbackgroundContainer(this);\r\nW_HDW5000 = 45;\r\n\r\n// Clear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_);\r\nWriteModbus485(\"10242\", 1);\r\n\r\nUpdateModbus485(\"645\", 1, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 11, _INT_);\r\nWriteModbus485(\"10322\", 1);"
+              "Code": "\r\n\r\nAddbackgroundContainer(this); \r\n\r\nW_HDW5000 = 45;\r\n\r\nClear();\r\n\r\nReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, \"553\", 0, _INT_, REPEAT);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_);\r\nWriteModbus485(\"10242\", 1);\r\n\r\nUpdateModbus485(\"645\", 1, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 11, _INT_);\r\nWriteModbus485(\"10322\", 1);\r\n\r\ntimer_higiene_ON = true;\r\n\r\nstatus_higiene = true;\r\n\r\nUpdate(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, \"OPERANDO...\", 20);"
             }
           },
           {
@@ -19587,7 +19608,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\nW_1_4553 = imageStatusPorta.isVisible();"
+              "Code": "if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){\r\n\timageStatusPorta.setVisible(true);\r\n}else{\r\n\timageStatusPorta.setVisible(false);\r\n}\r\ninvalidate();\r\n\r\nW_1_4553 = imageStatusPorta.isVisible();\r\n\r\nUpdate(&textAreaTimerHigieneMin, textAreaTimerHigieneMinBuffer, Timer_higiene_MIN, _INT_, 0);\r\nUpdate(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_higiene_COUNT, _INT_, 0);\r\n\r\nif (countCycleBlink > 1000)\r\n{\r\n\tcountCycleBlink = 0;\r\n\t\r\n\tif (status_higiene)\r\n\t\tVisibilityTextArea(&textAreaStatusHigiene, textAreaStatusHigiene.isVisible());\r\n\telse\r\n\t\tUpdate(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, \"Finalizado!\", 20);\r\n}\r\ncountCycleBlink += 16;"
             }
           },
           {
@@ -19604,15 +19625,27 @@
           },
           {
             "InteractionName": "HigieneConfirma",
-            "HasCompletedTrigger": false,
+            "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerClicked",
               "TriggerComponent": "buttonFinalizarHigiene"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "HIGIENE_CONFIRMAR"
+              "Type": "ActionExecuteCode",
+              "Code": "ContainerVisibility(&finalizar_higiene1, true);\r\nSoundBuzzerOn(25);"
+            }
+          },
+          {
+            "InteractionName": "cancelar_higiene",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerCustom",
+              "TriggerCustomTypeName": "Finalizar_higiene cancelar_higiene happens",
+              "TriggerComponent": "finalizar_higiene1"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Code": "Clear();\r\nSoundBuzzerOn(25);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_); \r\nWriteModbus485(\"10242\", 2);\r\n\r\nUpdateModbus485(\"645\", 0, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 3, _INT_);\r\nWriteModbus485(\"10322\", 1);\r\n\r\nstatus_higiene = false;\r\n\r\nTimer_higiene_MIN = 0;\r\nTimer_higiene_COUNT = 0; "
             }
           }
         ],
@@ -26969,16 +27002,15 @@
             }
           },
           {
-            "InteractionName": "cancela_higiene",
+            "InteractionName": "cancela_higiene_sim",
             "HasCompletedTrigger": true,
             "Trigger": {
               "Type": "TriggerClicked",
               "TriggerComponent": "buttonWithLabelCancelarHigiene"
             },
             "Action": {
-              "Type": "ActionExecuteCode",
-              "Includes": "#include <AT_module.hpp>",
-              "Code": "Clear();\r\nSoundBuzzerOn(25);\r\n\r\nUpdateModbus485(\"10242\", 999, _INT_); \r\nWriteModbus485(\"10242\", 2);\r\n\r\nUpdateModbus485(\"645\", 0, _INT_);\r\nWriteModbus485(\"645\", 1);\r\n\r\nUpdateModbus485(\"10322\", 3, _INT_);\r\nWriteModbus485(\"10322\", 1);"
+              "Type": "ActionEmit",
+              "TriggerCustomTypeName": "Finalizar_higiene cancelar_higiene happens"
             }
           },
           {
@@ -26986,13 +27018,32 @@
             "HasCompletedTrigger": false,
             "Trigger": {
               "Type": "TriggerInteractionCompleted",
-              "InteractionToTriggerOn": "cancela_higiene"
+              "InteractionToTriggerOn": "cancela_higiene_sim"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "HIGIENE"
+              "ActionComponent": "HIGIENE_CONFIRMAR"
             }
+          },
+          {
+            "InteractionName": "cancela_higiente_nao",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabelNao"
+            },
+            "Action": {
+              "Type": "ActionExecuteCode",
+              "Includes": "#include <AT_module.hpp>",
+              "Code": "ContainerVisibility(this, false);\r\nSoundBuzzerOn(25);"
+            }
+          }
+        ],
+        "CustomTriggers": [
+          {
+            "Name": "cancelar_higiene",
+            "HasValue": false
           }
         ],
         "CustomActions": [
@@ -27431,7 +27482,7 @@
         "Components": [
           {
             "Type": "TextArea",
-            "TextId": "SingleUseId4176",
+            "TextId": "SingleUseId4178",
             "TextRotation": "0",
             "Color": {
               "Red": 0,
@@ -27442,13 +27493,14 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Wildcard1": {
+              "TextId": "SingleUseId4182",
               "UseBuffer": true,
               "BufferSize": 10
             },
             "Name": "textArea512",
             "X": 0,
             "Y": 125,
-            "Width": 0,
+            "Width": 13,
             "Height": 25,
             "Visible": true,
             "LockPosition": false,
@@ -27470,13 +27522,14 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Wildcard1": {
+              "TextId": "SingleUseId4177",
               "UseBuffer": true,
               "BufferSize": 10
             },
             "Name": "textArea645",
             "X": 0,
             "Y": 50,
-            "Width": 0,
+            "Width": 86,
             "Height": 25,
             "Visible": true,
             "LockPosition": false,
@@ -27701,7 +27754,7 @@
             },
             "Action": {
               "Type": "ActionExecuteCode",
-              "Code": "\t// TIMER BUZZER\r\n\tif (Timer_buzzer_ON == 1){\r\n\t\tif (Timer_Buzzer_COUNT >= Timer_buzzer_SP - 1){\r\n\t\t\tTimer_BUzzer_OUT = true;\r\n                    TimerBuzzerOutTrue();\r\n             } else\r\n\t\t\tTimer_Buzzer_COUNT = Timer_Buzzer_COUNT + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_Buzzer_COUNT = 0;\r\n\r\n\t// TIMER BUZZER DEGELO\r\n\tif (Timer_buzzer_DEG_ON == 1){\r\n\t\tif (Timer_Buzzer_DEG_COUNT >= Timer_buzzer_SP - 1)\r\n\t\t\tTimer_BUzzer_DEG_OUT = true;\r\n\t\telse\r\n\t\t\tTimer_Buzzer_DEG_COUNT = Timer_Buzzer_DEG_COUNT + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_Buzzer_DEG_COUNT = 0;\r\n\r\n\t// TIMER DELAY\r\n\tif (Timer_delay_ON == 1){\r\n\t\tif (Timer_Delay_COUNT >= Timer_Delay_SP - 1)\r\n\t\t\tTimer_delay_OUT = true;\r\n\t\telse\r\n\t\t\tTimer_Delay_COUNT = Timer_Delay_COUNT  + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_Delay_COUNT = 0;\r\n\r\n\t// TImer Degelo Delay\r\n\tif (Timer_degelo_delay_ON == 1){\r\n\t\tif (Timer_degelo_delay_COUNT >= Timer_degelo_delay_SP - 1)\r\n\t\t\tTimer_degelo_delay_OUT = true;\r\n\t\telse\r\n\t\t\tTimer_degelo_delay_COUNT = Timer_degelo_delay_COUNT + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_degelo_delay_COUNT = 0;\r\n\r\n\t// VERIFICA TIMERS 10 SEG PARA RESET\r\n\r\n\t// TIMER DEGELO\r\n\tif (Timer_Degelo_CONTROL == 0)\r\n\t\tTimer_degelo_COUNT  = 0;\r\n\r\n\t// TIMER PROCESSO DECORRIDO\r\n\tif (Timer_Congelar_DECORRIDO_ON == 0)\r\n\t\tTimer_Congelar_DECORRIDO_COUNT = 0;\r\n\r\n\t// TIMER ALARME EXTERNO\r\n\tif (Timer_alarme_externo_ON == 0)\r\n\t\tTimer_Alarme_externo_COUNT = 0;\r\n\r\n\t// TIMER HIGIENE\r\n\tif (timer_higiene_ON == 0)\r\n\t\tTimer_higiene_COUNT = 0;"
+              "Code": "\t// TIMER BUZZER\r\n\tif (Timer_buzzer_ON == 1){\r\n\t\tif (Timer_Buzzer_COUNT >= Timer_buzzer_SP - 1)\r\n\t\t\tTimer_BUzzer_OUT = true;\r\n\t\telse\r\n\t\t\tTimer_Buzzer_COUNT = Timer_Buzzer_COUNT + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_Buzzer_COUNT = 0;\r\n\r\n\t// TIMER BUZZER DEGELO\r\n\tif (Timer_buzzer_DEG_ON == 1){\r\n\t\tif (Timer_Buzzer_DEG_COUNT >= Timer_buzzer_SP - 1)\r\n\t\t\tTimer_BUzzer_DEG_OUT = true;\r\n\t\telse\r\n\t\t\tTimer_Buzzer_DEG_COUNT = Timer_Buzzer_DEG_COUNT + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_Buzzer_DEG_COUNT = 0;\r\n\r\n\t// TIMER DELAY\r\n\tif (Timer_delay_ON == 1){\r\n\t\tif (Timer_Delay_COUNT >= Timer_Delay_SP - 1)\r\n\t\t\tTimer_delay_OUT = true;\r\n\t\telse\r\n\t\t\tTimer_Delay_COUNT = Timer_Delay_COUNT  + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_Delay_COUNT = 0;\r\n\r\n\t// TImer Degelo Delay\r\n\tif (Timer_degelo_delay_ON == 1){\r\n\t\tif (Timer_degelo_delay_COUNT >= Timer_degelo_delay_SP - 1)\r\n\t\t\tTimer_degelo_delay_OUT = true;\r\n\t\telse\r\n\t\t\tTimer_degelo_delay_COUNT = Timer_degelo_delay_COUNT + 1;\r\n\t}\r\n\telse\r\n\t\tTimer_degelo_delay_COUNT = 0;\r\n\r\n\t// VERIFICA TIMERS 10 SEG PARA RESET\r\n\r\n\t// TIMER DEGELO\r\n\tif (Timer_Degelo_CONTROL == 0)\r\n\t\tTimer_degelo_COUNT  = 0;\r\n\r\n\t// TIMER PROCESSO DECORRIDO\r\n\tif (Timer_Congelar_DECORRIDO_ON == 0)\r\n\t\tTimer_Congelar_DECORRIDO_COUNT = 0;\r\n\r\n\t// TIMER ALARME EXTERNO\r\n\tif (Timer_alarme_externo_ON == 0)\r\n\t\tTimer_Alarme_externo_COUNT = 0;\r\n\r\n\t// TIMER HIGIENE\r\n\tif (timer_higiene_ON == 0)\r\n\t\tTimer_higiene_COUNT = 0;"
             }
           },
           {
@@ -27801,6 +27854,26 @@
             "HasValue": false
           },
           {
+            "Name": "TimerBuzzerOutTrue",
+            "HasValue": false
+          },
+          {
+            "Name": "TimeCongelarDecorridoOutCheck",
+            "HasValue": false
+          },
+          {
+            "Name": "FlagCongelarTempoCheck",
+            "HasValue": false
+          },
+          {
+            "Name": "goToTelaCongelarTempo",
+            "HasValue": false
+          },
+          {
+            "Name": "goToTelaResfriarTempo",
+            "HasValue": false
+          },
+          {
             "Name": "cycle50",
             "HasValue": false
           },
@@ -27825,26 +27898,6 @@
             "Name": "writeModbus",
             "HasValue": true,
             "ValueType": "char const* address, double"
-          },
-          {
-            "Name": "TimerBuzzerOutTrue",
-            "HasValue": false
-          },
-          {
-            "Name": "TimeCongelarDecorridoOutCheck",
-            "HasValue": false
-          },
-          {
-            "Name": "FlagCongelarTempoCheck",
-            "HasValue": false
-          },
-          {
-            "Name": "goToTelaCongelarTempo",
-            "HasValue": false
-          },
-          {
-            "Name": "goToTelaResfriarTempo",
-            "HasValue": false
           }
         ],
         "Name": "TimingApplication",
@@ -30293,10 +30346,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId3973",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId3974",
         "IsResource": false
       },
@@ -30914,6 +30963,30 @@
       },
       {
         "TextEntryId": "SingleUseId4177",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4178",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3973",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4179",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4180",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4181",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4182",
         "IsResource": false
       }
     ],

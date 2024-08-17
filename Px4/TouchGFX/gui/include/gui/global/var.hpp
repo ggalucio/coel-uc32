@@ -123,10 +123,14 @@ extern bool cancelar_processo_SIM;
 extern double xbar_zero;
 extern bool flag_Conservar_ANDAMENTO;
 extern double Status_Conservar;
-extern double Receita_Cong_Resf_ATUAL;
+extern bool Receita_Cong_Resf_ATUAL;
 extern double Status_Porta;
 extern bool flag_porta;
 extern double Temperatura_Receita_ATUAL;
+
+extern double Tempo_Receita_ATUAL;
+extern bool Receita_Hard_Soft_ATUAL;
+
 extern double W_HDW5000;
 extern bool W_1_4553;
 extern double W_1_4554;
@@ -136,6 +140,8 @@ extern double W_1_410242;
 extern double W_1_410282;
 extern double W_1_4645;
 extern bool flag_congelar_Tempo;
+
+extern int addressModbusRS458;
 
 extern int addressModbusRS458;
 
