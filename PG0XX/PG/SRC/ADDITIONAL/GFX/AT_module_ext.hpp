@@ -15,10 +15,12 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/containers/clock/DigitalClock.hpp>
 #include <touchgfx/containers/progress_indicators/LineProgress.hpp>
+#include <touchgfx/Screen.hpp>
 
 #include <Module/Inc/enumerators_ext.h>
 
 void ClearOthers(void);
+void AddbackgroundContainer(touchgfx::Screen* screen);
 
 // DIGITAL CLOCK
 void Decrease(touchgfx::DigitalClock* digitalClock);
@@ -40,6 +42,8 @@ void Update(touchgfx::Unicode::UnicodeChar* buffer, const char* src, uint16_t ds
 void Update(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, char* src, uint16_t dstSize);
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer, uint16_t dstSize);
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer);
+double GetFormatToNegative(double value, uint8_t bits);
+bool SetFormatToNegative(touchgfx::Unicode::UnicodeChar* buffer, uint8_t bits);
 
 // COUNTER
 void AddNewCounter(uint64_t time);

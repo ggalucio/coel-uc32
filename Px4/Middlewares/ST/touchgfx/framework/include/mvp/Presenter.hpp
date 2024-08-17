@@ -36,6 +36,7 @@ public:
      */
     virtual void activate()
     {
+
     }
 
     /**
@@ -46,6 +47,7 @@ public:
      */
     virtual void deactivate()
     {
+
     }
 
     /** Finalizes an instance of the Presenter class. */

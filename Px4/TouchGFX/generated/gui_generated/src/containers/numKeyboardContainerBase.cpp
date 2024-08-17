@@ -10,12 +10,19 @@
 
 numKeyboardContainerBase::numKeyboardContainerBase() :
     buttonCallback(this, &numKeyboardContainerBase::buttonCallbackHandler),
+    flexButtonCallback(this, &numKeyboardContainerBase::flexButtonCallbackHandler),
     HideKeypadTriggerCallback(0),
     OutOfRangeCallback(0),
-    ValidRangeCallback(0)
+    ValidRangeCallback(0),
+    EnterCallback(0)
 {
     setWidth(480);
     setHeight(272);
+    backgroundFlexButton.setBoxWithBorderPosition(0, 0, 480, 272);
+    backgroundFlexButton.setBorderSize(5);
+    backgroundFlexButton.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    backgroundFlexButton.setPosition(0, 0, 480, 272);
+
     backgroundBox.setPosition(0, 0, 480, 272);
     backgroundBox.setColor(touchgfx::Color::getColorFromRGB(69, 69, 69));
 
@@ -180,6 +187,7 @@ numKeyboardContainerBase::numKeyboardContainerBase() :
     errTxt.setLinespacing(0);
     errTxt.setTypedText(touchgfx::TypedText(T_RESOURCEOUTOFRANGEID));
 
+    add(backgroundFlexButton);
     add(backgroundBox);
     add(keyboardBox);
     add(textBox);
@@ -353,6 +361,11 @@ void numKeyboardContainerBase::buttonCallbackHandler(const touchgfx::AbstractBut
         //Execute C++ code
         UpdateNumKeyboardReference(ValidRangeCallback, OutOfRangeCallback);
         SoundBuzzerOn(25);
+
+        //EmitEnter
+        //When OkBtnClicked completed execute C++ code
+        //Execute C++ code
+        if (!(this->isVisible())) emitEnterCallback();
     }
     else if (&src == &signBtn)
     {
@@ -370,5 +383,9 @@ void numKeyboardContainerBase::buttonCallbackHandler(const touchgfx::AbstractBut
         AddNumKeyboard('<');
         SoundBuzzerOn(25);
     }
+}
+
+void numKeyboardContainerBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
 }
 

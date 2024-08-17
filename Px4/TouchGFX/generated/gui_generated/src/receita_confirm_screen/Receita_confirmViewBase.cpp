@@ -89,9 +89,10 @@ void Receita_confirmViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    AddbackgroundContainer(this);
     W_HDW5000 = 34;
     
-    Clear();
+    // Clear();
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
@@ -190,6 +191,18 @@ void Receita_confirmViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         }
         else
         {
+        
+        	/*
+        	Tempo_Receita_ATUAL = ReadJobData(1, _INT_);	
+        	Receita_Cong_Resf_ATUAL = ReadJobData(1, _INT_);
+        	Receita_Hard_Soft_ATUAL = ReadJobData(1, _INT_);
+        
+        	Receita_Conserv_ATUAL = ReadJobData(1, _INT_);
+        	Temperatura_Receita_ATUAL = ReadJobData(2, _INT_);
+        
+        	Receita_time_temp_ATUAL = ReadJobData(1, _INT_);
+        	*/
+        	
         	if (ReadJobData(4, _INT_) == 0)
         		Congelar_TEMPO();
         	else

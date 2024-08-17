@@ -96,6 +96,7 @@ private:
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1OutOfRangeCallback;
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1ValidRangeCallback;
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+    touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1EnterCallback;
 
     /*
      * Callback Handler Declarations
@@ -105,6 +106,7 @@ private:
     void numKeyboardContainer1OutOfRangeCallbackHandler();
     void numKeyboardContainer1ValidRangeCallbackHandler();
     void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
+    void numKeyboardContainer1EnterCallbackHandler();
 
 };
 

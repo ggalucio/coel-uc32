@@ -71,10 +71,10 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
     textAreaStatusPorta.setVisible(false);
     textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4104).getText());
+    textAreaStatusPortaBuffer[0] = 0;
     textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
     textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4103));
+    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4177));
 
     add(__background);
     add(boxFundo);
@@ -102,6 +102,7 @@ void Tela_InicialViewBase::setupScreen()
     W_HDW5000 = 0;
     
     Clear();
+    AddbackgroundContainer(this);
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
 
@@ -170,14 +171,12 @@ void Tela_InicialViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
-    
     if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
     	imageStatusPorta.setVisible(true);
     }else{
     	imageStatusPorta.setVisible(false);
     }
     invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void Tela_InicialViewBase::tearDownScreen()

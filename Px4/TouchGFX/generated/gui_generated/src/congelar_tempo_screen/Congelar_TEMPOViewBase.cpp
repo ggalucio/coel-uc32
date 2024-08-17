@@ -195,9 +195,10 @@ void Congelar_TEMPOViewBase::setupScreen()
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
+    AddbackgroundContainer(this);
     W_HDW5000 = 3;
     
-    Clear();
+    // Clear();
     
     ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     

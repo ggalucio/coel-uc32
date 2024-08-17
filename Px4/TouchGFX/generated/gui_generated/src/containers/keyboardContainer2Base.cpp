@@ -10,10 +10,16 @@
 
 keyboardContainer2Base::keyboardContainer2Base() :
     buttonCallback(this, &keyboardContainer2Base::buttonCallbackHandler),
+    flexButtonCallback(this, &keyboardContainer2Base::flexButtonCallbackHandler),
     HideKeyboardCallback(0)
 {
     setWidth(480);
     setHeight(272);
+    backgroundFlexButton.setBoxWithBorderPosition(0, 0, 480, 272);
+    backgroundFlexButton.setBorderSize(5);
+    backgroundFlexButton.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    backgroundFlexButton.setPosition(0, 0, 480, 272);
+
     backgroundBox.setPosition(0, 0, 480, 272);
     backgroundBox.setColor(touchgfx::Color::getColorFromRGB(69, 69, 69));
 
@@ -268,6 +274,7 @@ keyboardContainer2Base::keyboardContainer2Base() :
     keyNumBtn.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
     keyNumBtn.setAction(buttonCallback);
 
+    add(backgroundFlexButton);
     add(backgroundBox);
     add(keyboardBox);
     add(textBox);
@@ -616,5 +623,9 @@ void keyboardContainer2Base::buttonCallbackHandler(const touchgfx::AbstractButto
         //Execute C++ code
         KeyboardNumPressed();
     }
+}
+
+void keyboardContainer2Base::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
 }
 

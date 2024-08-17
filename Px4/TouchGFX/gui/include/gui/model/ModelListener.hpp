@@ -5,15 +5,17 @@
 
 #include <gui/modbus_address/Address.hpp>
 #include <gui/global/var.hpp>
+#include <gui/containers/TimingApplication.hpp>
 #include <AT_module.hpp>
 #include <AT_module_ext.hpp>
+
+extern TimingApplication* pTimingApplication;
 
 class ModelListener
 {
 public:
-    ModelListener() : model(0) {}
-    
-    virtual ~ModelListener() {}
+    ModelListener() : model(0){}
+    virtual ~ModelListener(){}
 
     void bind(Model* m)
     {

@@ -17,6 +17,7 @@ extern void Cycle500(void);
 extern void Cycle25(void);
 extern void TIMER_1S(void);
 extern void TIMER_10S(void);
+extern void FlagCongelarTempoCheck(void);
 
 extern void RefreshTimerCounter(void);
 
@@ -79,6 +80,20 @@ void IdleTaskTIMER_10S(void const * argument){
 	}
 }
 
+void IdleTaskFlagCongelarTempoCheck(void const * argument){
+	while(1){
+		osDelay(200);
+		FlagCongelarTempoCheck();
+	}
+}
+
+void IdleTaskTimeCongelarDecorridoOutCheck(void const * argument){
+	while(1){
+		osDelay(200);
+		TimeCongelarDecorridoOutCheck();
+	}
+}
+
 void InitTaskExt(){
 	// IDLE TASK 1
 	osThreadDef(idleTaskBuzzer, IdleTaskBuzzer, osPriorityIdle, 0, 128);
@@ -94,9 +109,13 @@ void InitTaskExt(){
 	osThreadDef(idleTaskCycle25, IdleTaskCycle25, osPriorityIdle, 0, 128);
 	osThreadDef(idleTaskTIMER_1S, IdleTaskTIMER_1S, osPriorityIdle, 0, 128);
 	osThreadDef(idleTaskTIMER_10S, IdleTaskTIMER_10S, osPriorityIdle, 0, 128);
+	osThreadDef(idleTaskFlagCongelarTempoCheck, IdleTaskFlagCongelarTempoCheck, osPriorityIdle, 0, 128);
+	osThreadDef(idleTaskTimeCongelarDecorridoOutCheck, IdleTaskTimeCongelarDecorridoOutCheck, osPriorityIdle, 0, 128);
 	osThreadCreate(osThread(idleTaskCycle50), NULL);
 	osThreadCreate(osThread(idleTaskCycle500), NULL);
 	osThreadCreate(osThread(idleTaskCycle25), NULL);
 	osThreadCreate(osThread(idleTaskTIMER_1S), NULL);
 	osThreadCreate(osThread(idleTaskTIMER_10S), NULL);
+	osThreadCreate(osThread(idleTaskFlagCongelarTempoCheck), NULL);
+	osThreadCreate(osThread(idleTaskTimeCongelarDecorridoOutCheck), NULL);
 }

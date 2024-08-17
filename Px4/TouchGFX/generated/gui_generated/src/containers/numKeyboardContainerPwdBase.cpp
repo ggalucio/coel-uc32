@@ -10,12 +10,18 @@
 
 numKeyboardContainerPwdBase::numKeyboardContainerPwdBase() :
     buttonCallback(this, &numKeyboardContainerPwdBase::buttonCallbackHandler),
+    flexButtonCallback(this, &numKeyboardContainerPwdBase::flexButtonCallbackHandler),
     CancelTriggerCallback(0),
     CredentialSuccessCallback(0),
     CredentialFailedCallback(0)
 {
     setWidth(480);
     setHeight(272);
+    backgroundFlexButton.setBoxWithBorderPosition(0, 0, 480, 272);
+    backgroundFlexButton.setBorderSize(5);
+    backgroundFlexButton.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    backgroundFlexButton.setPosition(0, 0, 480, 272);
+
     backgroundBox.setPosition(0, 0, 480, 272);
     backgroundBox.setColor(touchgfx::Color::getColorFromRGB(69, 69, 69));
 
@@ -154,6 +160,7 @@ numKeyboardContainerPwdBase::numKeyboardContainerPwdBase() :
     errTxt.setLinespacing(0);
     errTxt.setTypedText(touchgfx::TypedText(T_RESOURCEERRPWDID));
 
+    add(backgroundFlexButton);
     add(backgroundBox);
     add(keyboardBox);
     add(textBox);
@@ -332,5 +339,9 @@ void numKeyboardContainerPwdBase::buttonCallbackHandler(const touchgfx::Abstract
         AddNumKeyboard('<');
         SoundBuzzerOn(25);
     }
+}
+
+void numKeyboardContainerPwdBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
 }
 

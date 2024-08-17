@@ -10,10 +10,16 @@
 
 #include <touchgfx/Color.hpp>
 #include <cstdio>
+#include <math.h>
 
 void ClearOthers(){
 	if (pClearItemsExt)
 		(*pClearItemsExt)();
+}
+
+void AddbackgroundContainer(touchgfx::Screen* screen){
+	if (pAddContainer)
+		(*pAddContainer)(screen);
 }
 
 /****************************************** DIGITAL CLOCK *****************************************************************/
@@ -159,6 +165,23 @@ double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer){
 	return GetNumberTextArea(buffer, 10);
 }
 
+double GetFormatToNegative(double value, uint8_t bits){
+	double maxRange = pow(2, bits);
+	return value > (maxRange / 20.0) ?  (10.0 * value - maxRange) / 10.0 : value;
+}
+
+bool SetFormatToNegative(touchgfx::Unicode::UnicodeChar* buffer, uint8_t bits){
+	double value = GetNumberTextArea(buffer);
+	if (value < 0.0){
+		double maxRange = pow(2, bits);
+		value = maxRange - 10 * abs(value);
+		touchgfx::Unicode::snprintf(buffer, 10, "%d", (int)value);
+		return true;
+	}
+
+	return true;
+}
+
 /*****************************************************************************************************************************/
 
 /************************************************ COUNTER ********************************************************************/
@@ -273,3 +296,4 @@ void TickElapsedOthers(){
 	if (pRefreshRunExt)
 		(*pRefreshRunExt)();
 }
+
