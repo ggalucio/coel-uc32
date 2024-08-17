@@ -523,6 +523,8 @@
 "TouchGFX/generated/images/src/image_recipe.o"
 "TouchGFX/generated/images/src/image_refriaraa.o"
 "TouchGFX/generated/images/src/image_reset.o"
+"TouchGFX/generated/images/src/image_resetOff.o"
+"TouchGFX/generated/images/src/image_resetOn.o"
 "TouchGFX/generated/images/src/image_resfriar.o"
 "TouchGFX/generated/images/src/image_s1s.o"
 "TouchGFX/generated/images/src/image_s2s.o"
