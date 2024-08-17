@@ -417,7 +417,7 @@ KEEP extern const uint32_t indicesIt[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     1533, // T_SingleUseId3751
     2538, // T_SingleUseId3752
     636, // T_SingleUseId3753
-    1401, // T_SingleUseId3754
+    1370, // T_SingleUseId3754
     1164, // T_SingleUseId3755
     1370, // T_SingleUseId3756
     581, // T_SingleUseId3757

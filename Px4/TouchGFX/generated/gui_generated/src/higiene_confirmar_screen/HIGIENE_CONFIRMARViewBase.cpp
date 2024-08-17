@@ -38,6 +38,12 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     textAreaStatusPortaAberta.setLinespacing(0);
     textAreaStatusPortaAberta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
 
+    textAreaStatusPortaAberta.setXY(56, 90);
+    textAreaStatusPortaAberta.setVisible(false);
+    textAreaStatusPortaAberta.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
+    textAreaStatusPortaAberta.setLinespacing(0);
+    textAreaStatusPortaAberta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4100));
+
     buttonStartHigiene.setXY(406, 208);
     buttonStartHigiene.setVisible(false);
     buttonStartHigiene.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
