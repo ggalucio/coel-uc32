@@ -26,6 +26,7 @@ Receita_Info_resumoBase::Receita_Info_resumoBase() :
     box4.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
     textAreaLabelC.setXY(294, 96);
+    textAreaLabelC.setVisible(false);
     textAreaLabelC.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textAreaLabelC.setLinespacing(0);
     textAreaLabelC.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4099));
@@ -110,64 +111,31 @@ void Receita_Info_resumoBase::initialize()
 
 }
 
-void Receita_Info_resumoBase::init()
+void Receita_Info_resumoBase::start()
 {
-    //Initialize
-    //When init is called execute C++ code
+    //Start
+    //When start is called execute C++ code
     //Execute C++ code
-    AddJob(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, 255, _INT_, 0);
+    Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, numero_receita, _INT_, 0);
     
-    if (ReadJobData(3, _INT_) == 0)
+    if(!Receita_time_temp_ATUAL)
     {
-    	AddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 1, _INT_, 0);
+    	Update(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, Tempo_Receita_ATUAL, _DOUBLE_, 0);
     	VisibilityTextArea(&textAreaLabelMin, true);
     	VisibilityTextArea(&textAreaLabelC, false);
-    	VisibilityImage(&imageTime, true);
-    	VisibilityImage(&imageTemp, false);
     }
     else
     {
-    	AddJob(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, 2, _FP_32BIT_, 1);
+    	Update(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, Temperatura_Receita_ATUAL, _DOUBLE_, 1);
     	VisibilityTextArea(&textAreaLabelMin, false);
     	VisibilityTextArea(&textAreaLabelC, true);
-    	VisibilityImage(&imageTime, false);
-    	VisibilityImage(&imageTemp, true);
     }
     
-    if (ReadJobData(4, _INT_) == 0)
-    {
-    	VisibilityImage(&imageCong, true);
-    	VisibilityImage(&imageResf, false);
-    	ContainerVisibility(&containerSoftHard, false);
-    }
-    else
-    {
-    	VisibilityImage(&imageCong, false);
-    	VisibilityImage(&imageResf, true);
-    	ContainerVisibility(&containerSoftHard, true);
-    }
-    
-    if (ReadJobData(6, _INT_) == 0)
-    {
-    	VisibilityImage(&imageSoft, true);
-    	VisibilityImage(&imageHard, false);
-    }
-    else
-    {
-    	VisibilityImage(&imageSoft, false);
-    	VisibilityImage(&imageHard, true);
-    }
-    
-    if (ReadJobData(7, _INT_) == 0)
-    {
-    	VisibilityImage(&imageCsOff, true);
-    	VisibilityImage(&imageCsOn, false);
-    }
-    else
-    {
-    	VisibilityImage(&imageCsOff, false);
-    	VisibilityImage(&imageCsOn, true);
-    }
+    VisibilityImage(&imageTime, !Receita_time_temp_ATUAL);
+    VisibilityImage(&imageCong, !Receita_Cong_Resf_ATUAL);
+    VisibilityImage(&imageSoft, !Receita_Hard_Soft_ATUAL);
+    VisibilityImage(&imageCsOff, !Receita_Conserv_ATUAL);
+    ContainerVisibility(&containerSoftHard, Receita_Cong_Resf_ATUAL);
 }
 
 void Receita_Info_resumoBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)

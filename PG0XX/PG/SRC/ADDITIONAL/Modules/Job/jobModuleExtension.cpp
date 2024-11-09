@@ -14,6 +14,7 @@ void AddJobDataToUpdate(int idx, double value, uint8_t length){
 		pJobModule->AddJobDataToUpdate(idx, value, length);
 }
 
+
 uint32_t ReadJobData(int idx){
 	if (pJobModule)
 		return pJobModule->ReadJobData(idx);

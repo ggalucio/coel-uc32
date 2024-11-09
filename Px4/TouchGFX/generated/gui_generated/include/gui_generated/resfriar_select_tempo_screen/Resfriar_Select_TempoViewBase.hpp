@@ -13,7 +13,10 @@
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class Resfriar_Select_TempoViewBase : public touchgfx::View<Resfriar_Select_TempoPresenter>
 {
@@ -25,9 +28,7 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void Resfriar_TEMPO();
     virtual void afterTransition();
 
 protected:
@@ -51,16 +52,16 @@ protected:
     touchgfx::TextArea textAreaTempoZero;
     touchgfx::Button buttonFlagCongelarTempo;
     touchgfx::Button buttonResfriar;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTempo;
+    numKeyboardContainer numKeyboardContainer1;
+    Background background1;
+    Timer timerCycle1s;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREATIMERSPMINUTOSRESFRIAR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerSpMinutosResfriarBuffer[TEXTAREATIMERSPMINUTOSRESFRIAR_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -68,11 +69,23 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Resfriar_Select_TempoViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Resfriar_Select_TempoViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Resfriar_Select_TempoViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Resfriar_Select_TempoViewBase> numKeyboardContainer1ValidRangeCallback;
+    touchgfx::Callback<Resfriar_Select_TempoViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+    touchgfx::Callback<Resfriar_Select_TempoViewBase, double> numKeyboardContainer1EnterCallback;
+    touchgfx::Callback<Resfriar_Select_TempoViewBase> timerCycle1sTickCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
+    void numKeyboardContainer1EnterCallbackHandler(double value);
+    void timerCycle1sTickCallbackHandler();
 
 };
 

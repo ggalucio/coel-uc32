@@ -11,9 +11,10 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     flexButtonCallback(this, &Configuracao_2ViewBase::flexButtonCallbackHandler),
     numKeyboardContainer1OutOfRangeCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
     numKeyboardContainer1ValidRangeCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
-    numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler),
-    numKeyboardContainer1EnterCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1EnterCallbackHandler)
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_2ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler)
 {
+
+    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -21,58 +22,100 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     boxFundo.setPosition(0, 0, 480, 272);
     boxFundo.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
-    boxVermelho3.setPosition(66, 226, 78, 29);
+    boxVermelho3.setPosition(51, 237, 78, 29);
     boxVermelho3.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
 
-    boxVermelho2.setPosition(66, 192, 78, 29);
+    boxVermelho2.setPosition(51, 205, 78, 29);
     boxVermelho2.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
 
-    boxVermelho.setPosition(66, 158, 78, 29);
+    boxVermelho.setPosition(51, 172, 78, 29);
     boxVermelho.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
 
-    boxVerde4.setPosition(66, 117, 78, 29);
+    boxVerde4.setPosition(51, 123, 78, 29);
     boxVerde4.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
 
-    boxVerde3.setPosition(66, 83, 78, 29);
+    boxVerde3.setPosition(51, 91, 78, 29);
     boxVerde3.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
 
-    boxVerde2.setPosition(66, 49, 78, 29);
+    boxVerde2.setPosition(51, 59, 78, 29);
     boxVerde2.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
 
-    boxVerde.setPosition(66, 15, 78, 29);
+    boxVerde.setPosition(51, 27, 78, 29);
     boxVerde.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
 
-    textAreaLabel1.setXY(151, 23);
+    textAreaSubTitulo.setXY(209, 153);
+    textAreaSubTitulo.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    textAreaSubTitulo.setLinespacing(0);
+    textAreaSubTitulo.setTypedText(touchgfx::TypedText(T_SINGLEUSEID5450));
+
+    line1.setPosition(47, 157, 162, 15);
+    line1Painter.setColor(touchgfx::Color::getColorFromRGB(255, 168, 168));
+    line1.setPainter(line1Painter);
+    line1.setStart(5, 5);
+    line1.setEnd(150, 5);
+    line1.setLineWidth(4);
+    line1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    line1_1.setPosition(277, 156, 159, 15);
+    line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(255, 168, 168));
+    line1_1.setPainter(line1_1Painter);
+    line1_1.setStart(5, 5);
+    line1_1.setEnd(150, 5);
+    line1_1.setLineWidth(4);
+    line1_1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    textAreaSubTitulo_1.setXY(182, 6);
+    textAreaSubTitulo_1.setColor(touchgfx::Color::getColorFromRGB(0, 184, 0));
+    textAreaSubTitulo_1.setLinespacing(0);
+    textAreaSubTitulo_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID5451));
+
+    line1_2.setPosition(46, 9, 130, 16);
+    line1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 184, 0));
+    line1_2.setPainter(line1_2Painter);
+    line1_2.setStart(5, 5);
+    line1_2.setEnd(125, 5);
+    line1_2.setLineWidth(4);
+    line1_2.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    line1_2_1.setPosition(306, 9, 130, 16);
+    line1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 184, 0));
+    line1_2_1.setPainter(line1_2_1Painter);
+    line1_2_1.setStart(5, 5);
+    line1_2_1.setEnd(125, 5);
+    line1_2_1.setLineWidth(4);
+    line1_2_1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    textAreaLabel1.setXY(136, 32);
     textAreaLabel1.setColor(touchgfx::Color::getColorFromRGB(0, 184, 0));
     textAreaLabel1.setLinespacing(0);
     textAreaLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3690));
 
-    textAreaLabel2.setXY(151, 57);
+    textAreaLabel2.setXY(136, 63);
     textAreaLabel2.setColor(touchgfx::Color::getColorFromRGB(0, 184, 0));
     textAreaLabel2.setLinespacing(0);
     textAreaLabel2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3691));
 
-    textAreaLabel3.setXY(151, 91);
+    textAreaLabel3.setXY(136, 96);
     textAreaLabel3.setColor(touchgfx::Color::getColorFromRGB(0, 184, 0));
     textAreaLabel3.setLinespacing(0);
     textAreaLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3692));
 
-    textAreaLabel4.setXY(151, 125);
+    textAreaLabel4.setXY(136, 127);
     textAreaLabel4.setColor(touchgfx::Color::getColorFromRGB(0, 184, 0));
     textAreaLabel4.setLinespacing(0);
     textAreaLabel4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3693));
 
-    textAreaLabel5.setXY(151, 159);
+    textAreaLabel5.setXY(136, 177);
     textAreaLabel5.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     textAreaLabel5.setLinespacing(0);
     textAreaLabel5.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3703));
 
-    textAreaLabel6.setXY(151, 193);
+    textAreaLabel6.setXY(136, 210);
     textAreaLabel6.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     textAreaLabel6.setLinespacing(0);
     textAreaLabel6.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3704));
 
-    textAreaLabel7.setXY(151, 234);
+    textAreaLabel7.setXY(136, 242);
     textAreaLabel7.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     textAreaLabel7.setLinespacing(0);
     textAreaLabel7.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3705));
@@ -89,49 +132,49 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     buttonConfiguracao.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR2_ID), touchgfx::Bitmap(BITMAP_VOLTAR2_ID));
     buttonConfiguracao.setAction(buttonCallback);
 
-    textArea1410270.setPosition(66, 226, 78, 29);
+    textArea1410270.setPosition(51, 237, 78, 29);
     textArea1410270.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1410270.setLinespacing(0);
     Unicode::snprintf(textArea1410270Buffer, TEXTAREA1410270_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3707).getText());
     textArea1410270.setWildcard(textArea1410270Buffer);
     textArea1410270.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3706));
 
-    textArea1410275.setPosition(66, 192, 78, 29);
+    textArea1410275.setPosition(51, 205, 78, 29);
     textArea1410275.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1410275.setLinespacing(0);
     Unicode::snprintf(textArea1410275Buffer, TEXTAREA1410275_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3709).getText());
     textArea1410275.setWildcard(textArea1410275Buffer);
     textArea1410275.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3708));
 
-    textArea1410272.setPosition(66, 158, 78, 29);
+    textArea1410272.setPosition(51, 172, 78, 29);
     textArea1410272.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1410272.setLinespacing(0);
     Unicode::snprintf(textArea1410272Buffer, TEXTAREA1410272_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3711).getText());
     textArea1410272.setWildcard(textArea1410272Buffer);
     textArea1410272.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3710));
 
-    textAreaDiferencialConservarResfriar.setPosition(66, 117, 78, 29);
+    textAreaDiferencialConservarResfriar.setPosition(51, 123, 78, 29);
     textAreaDiferencialConservarResfriar.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaDiferencialConservarResfriar.setLinespacing(0);
     Unicode::snprintf(textAreaDiferencialConservarResfriarBuffer, TEXTAREADIFERENCIALCONSERVARRESFRIAR_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3696).getText());
     textAreaDiferencialConservarResfriar.setWildcard(textAreaDiferencialConservarResfriarBuffer);
     textAreaDiferencialConservarResfriar.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3695));
 
-    textAreaSpConservarResfriar.setPosition(66, 83, 78, 29);
+    textAreaSpConservarResfriar.setPosition(51, 91, 78, 29);
     textAreaSpConservarResfriar.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaSpConservarResfriar.setLinespacing(0);
     Unicode::snprintf(textAreaSpConservarResfriarBuffer, TEXTAREASPCONSERVARRESFRIAR_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3698).getText());
     textAreaSpConservarResfriar.setWildcard(textAreaSpConservarResfriarBuffer);
     textAreaSpConservarResfriar.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3697));
 
-    textAreaDiferencialConservarCongelar.setPosition(66, 49, 78, 29);
+    textAreaDiferencialConservarCongelar.setPosition(51, 58, 78, 29);
     textAreaDiferencialConservarCongelar.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaDiferencialConservarCongelar.setLinespacing(0);
     Unicode::snprintf(textAreaDiferencialConservarCongelarBuffer, TEXTAREADIFERENCIALCONSERVARCONGELAR_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3700).getText());
     textAreaDiferencialConservarCongelar.setWildcard(textAreaDiferencialConservarCongelarBuffer);
     textAreaDiferencialConservarCongelar.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3699));
 
-    textAreaSpConservarCongelar.setPosition(66, 15, 78, 29);
+    textAreaSpConservarCongelar.setPosition(51, 26, 78, 29);
     textAreaSpConservarCongelar.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaSpConservarCongelar.setLinespacing(0);
     Unicode::snprintf(textAreaSpConservarCongelarBuffer, TEXTAREASPCONSERVARCONGELAR_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3702).getText());
@@ -141,49 +184,49 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     flexButton1410270.setBoxWithBorderPosition(0, 0, 78, 29);
     flexButton1410270.setBorderSize(5);
     flexButton1410270.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1410270.setPosition(66, 226, 78, 29);
+    flexButton1410270.setPosition(51, 237, 78, 29);
     flexButton1410270.setAlpha(0);
     flexButton1410270.setAction(flexButtonCallback);
 
     flexButton1410275.setBoxWithBorderPosition(0, 0, 78, 29);
     flexButton1410275.setBorderSize(5);
     flexButton1410275.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1410275.setPosition(66, 192, 78, 29);
+    flexButton1410275.setPosition(51, 205, 78, 29);
     flexButton1410275.setAlpha(0);
     flexButton1410275.setAction(flexButtonCallback);
 
     flexButton1410272.setBoxWithBorderPosition(0, 0, 78, 29);
     flexButton1410272.setBorderSize(5);
     flexButton1410272.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1410272.setPosition(66, 158, 78, 29);
+    flexButton1410272.setPosition(51, 172, 78, 29);
     flexButton1410272.setAlpha(0);
     flexButton1410272.setAction(flexButtonCallback);
 
     flexButtonDiferencialConservarResfriar.setBoxWithBorderPosition(0, 0, 78, 29);
     flexButtonDiferencialConservarResfriar.setBorderSize(5);
     flexButtonDiferencialConservarResfriar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButtonDiferencialConservarResfriar.setPosition(66, 117, 78, 29);
+    flexButtonDiferencialConservarResfriar.setPosition(51, 123, 78, 29);
     flexButtonDiferencialConservarResfriar.setAlpha(0);
     flexButtonDiferencialConservarResfriar.setAction(flexButtonCallback);
 
     flexButtonSpConservarResfriar.setBoxWithBorderPosition(0, 0, 78, 29);
     flexButtonSpConservarResfriar.setBorderSize(5);
     flexButtonSpConservarResfriar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButtonSpConservarResfriar.setPosition(66, 83, 78, 29);
+    flexButtonSpConservarResfriar.setPosition(51, 91, 78, 29);
     flexButtonSpConservarResfriar.setAlpha(0);
     flexButtonSpConservarResfriar.setAction(flexButtonCallback);
 
     flexButtonDiferencialConservarCongelar.setBoxWithBorderPosition(0, 0, 78, 29);
     flexButtonDiferencialConservarCongelar.setBorderSize(5);
     flexButtonDiferencialConservarCongelar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButtonDiferencialConservarCongelar.setPosition(66, 49, 78, 29);
+    flexButtonDiferencialConservarCongelar.setPosition(51, 59, 78, 29);
     flexButtonDiferencialConservarCongelar.setAlpha(0);
     flexButtonDiferencialConservarCongelar.setAction(flexButtonCallback);
 
     flexButtonSpConservarCongelar.setBoxWithBorderPosition(0, 0, 78, 29);
     flexButtonSpConservarCongelar.setBorderSize(5);
     flexButtonSpConservarCongelar.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButtonSpConservarCongelar.setPosition(66, 15, 78, 29);
+    flexButtonSpConservarCongelar.setPosition(51, 26, 78, 29);
     flexButtonSpConservarCongelar.setAlpha(0);
     flexButtonSpConservarCongelar.setAction(flexButtonCallback);
 
@@ -192,20 +235,8 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
-    numKeyboardContainer1.setEnterCallback(numKeyboardContainer1EnterCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4134).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4133));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -216,6 +247,12 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     add(boxVerde3);
     add(boxVerde2);
     add(boxVerde);
+    add(textAreaSubTitulo);
+    add(line1);
+    add(line1_1);
+    add(textAreaSubTitulo_1);
+    add(line1_2);
+    add(line1_2_1);
     add(textAreaLabel1);
     add(textAreaLabel2);
     add(textAreaLabel3);
@@ -241,28 +278,26 @@ Configuracao_2ViewBase::Configuracao_2ViewBase() :
     add(flexButtonDiferencialConservarCongelar);
     add(flexButtonSpConservarCongelar);
     add(numKeyboardContainer1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void Configuracao_2ViewBase::setupScreen()
 {
     numKeyboardContainer1.initialize();
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    W_HDW5000 = 17;
-    
     Clear();
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
     
-    Update(&textAreaSpConservarCongelar, textAreaSpConservarCongelarBuffer, SP_Conservar_Congelar / 10, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialConservarCongelar, textAreaDiferencialConservarCongelarBuffer, Diferencial_Conservar_COngelar / 10, _FP_32BIT_, 1);
-    Update(&textAreaSpConservarResfriar, textAreaSpConservarResfriarBuffer, SP_Conservar_Resfriar / 10, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialConservarResfriar, textAreaDiferencialConservarResfriarBuffer, Diferencial_Conservar_Resfriar / 10, _FP_32BIT_, 1);
-    ReadWriteModbus485(&textArea1410272, textArea1410272Buffer, "10272", 1, _DOUBLE_, ONCE);
-    ReadWriteModbus485(&textArea1410275, textArea1410275Buffer, "10275", 1, _DOUBLE_, ONCE);
-    ReadWriteModbus485(&textArea1410270, textArea1410270Buffer, "10270", 2, _DOUBLE_, ONCE);
+    ReadWriteModbus485(&textArea1410272, textArea1410272Buffer, 10272, 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(&textArea1410275, textArea1410275Buffer, 10275, 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(&textArea1410270, textArea1410270Buffer, 10270, 2, _DOUBLE_, REPEAT);
+    
+    Update(&textAreaSpConservarCongelar,		textAreaSpConservarCongelarBuffer,		SP_Conservar_Congelar / 10,		_FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarCongelar,	textAreaDiferencialConservarCongelarBuffer,	Diferencial_Conservar_COngelar / 10,	_FP_32BIT_, 1);
+    Update(&textAreaSpConservarResfriar,		textAreaSpConservarResfriarBuffer,		SP_Conservar_Resfriar / 10,		_FP_32BIT_, 1);
+    Update(&textAreaDiferencialConservarResfriar,	textAreaDiferencialConservarResfriarBuffer,	Diferencial_Conservar_Resfriar / 10,	_FP_32BIT_, 1);
 
 }
 
@@ -300,57 +335,17 @@ void Configuracao_2ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
     SoundBuzzerOn(25);
 }
 
-void Configuracao_2ViewBase::numKeyboardContainer1EnterCallbackHandler()
-{
-    //Enterkeyboard
-    //When numKeyboardContainer1 Enter execute C++ code
-    //Execute C++ code
-    double value = 0;
-    
-    if (addressModbusRS458 == 10272)
-    {
-    	//UpdateModbus485("10272", (value = GetNumberTextArea(textArea1410272Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);
-    	//WriteModbus485("10272", 2);
-    
-    	WriteModbus485(&textArea1410272, textArea1410272Buffer, "10272", 1);
-    	WriteModbus485("10272", 2);
-    	Wait(100);
-    }
-    
-    if (addressModbusRS458 == 10275)
-    {
-    	UpdateModbus485("10275", (value = GetNumberTextArea(textArea1410275Buffer)) < 0.0 ? value + 65536.0 : value, _DOUBLE_);
-    	WriteModbus485("10275", 2);
-    	Wait(100);
-    }
-}
-
-void Configuracao_2ViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    double value = 0.0;
-    if ((value = GetNumberTextArea(textArea1410272Buffer)) > 3276.7) Update(&textArea1410272, textArea1410272Buffer, GetFormatToNegative(value, 16), _DOUBLE_, 1);
-    if ((value = GetNumberTextArea(textArea1410275Buffer)) > 3276.7) Update(&textArea1410275, textArea1410275Buffer, GetFormatToNegative(value, 16), _DOUBLE_, 1);
-    
-    imageStatusPorta.setVisible(touchgfx::Unicode::atoi(textAreaStatusPortaBuffer) == 1 ? true : false);
-    invalidate();
-}
-
 void Configuracao_2ViewBase::tearDownScreen()
 {
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
-    SP_Conservar_Congelar = 10 * GetNumberTextArea(textAreaSpConservarCongelarBuffer);
-    Diferencial_Conservar_COngelar = 10 * GetNumberTextArea(textAreaDiferencialConservarCongelarBuffer);
-    SP_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaSpConservarResfriarBuffer);
-    Diferencial_Conservar_Resfriar = 10 * GetNumberTextArea(textAreaDiferencialConservarResfriarBuffer);
+    SP_Conservar_Congelar		= 10 * GetNumberTextArea(textAreaSpConservarCongelarBuffer);
+    Diferencial_Conservar_COngelar	= 10 * GetNumberTextArea(textAreaDiferencialConservarCongelarBuffer);
+    SP_Conservar_Resfriar		= 10 * GetNumberTextArea(textAreaSpConservarResfriarBuffer);
+    Diferencial_Conservar_Resfriar	= 10 * GetNumberTextArea(textAreaDiferencialConservarResfriarBuffer);
     
     Clear();
-    ClearOthers();
-    ContainerClear(&numKeyboardContainer1);
 }
 
 void Configuracao_2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -385,7 +380,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410270
         //When flexButton1410270 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 2, 1);
+        AddNumKeyboardReferenceRS485(&textArea1410270, textArea1410270Buffer, 0.0, 655.35, _DOUBLE_, 2, 1, 10270);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -399,8 +394,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410275
         //When flexButton1410275 clicked execute C++ code
         //Execute C++ code
-        addressModbusRS458 = 10275;
-        AddNumKeyboardReference(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 1);
+        AddNumKeyboardReferenceRS485(&textArea1410275, textArea1410275Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 1, 10275);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -414,8 +408,7 @@ void Configuracao_2ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410272
         //When flexButton1410272 clicked execute C++ code
         //Execute C++ code
-        addressModbusRS458 = 10272;
-        AddNumKeyboardReference(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 1);
+        AddNumKeyboardReferenceRS485(&textArea1410272, textArea1410272Buffer, -3276.8, 3276.7, _DOUBLE_, 1, 1, 10272);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

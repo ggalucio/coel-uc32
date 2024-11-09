@@ -365,7 +365,7 @@ void numKeyboardContainerBase::buttonCallbackHandler(const touchgfx::AbstractBut
         //EmitEnter
         //When OkBtnClicked completed execute C++ code
         //Execute C++ code
-        if (!(this->isVisible())) emitEnterCallback();
+        if (!(this->isVisible())) emitEnterCallback(GetNumberTextArea(valTxtBuffer, VALTXT_SIZE));
     }
     else if (&src == &signBtn)
     {

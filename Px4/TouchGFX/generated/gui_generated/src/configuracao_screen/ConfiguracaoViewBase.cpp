@@ -32,22 +32,22 @@ ConfiguracaoViewBase::ConfiguracaoViewBase() :
     boxAzul.setPosition(26, 41, 78, 29);
     boxAzul.setColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
 
-    textAreaLabel1.setXY(111, 41);
+    textAreaLabel1.setXY(111, 46);
     textAreaLabel1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
     textAreaLabel1.setLinespacing(0);
     textAreaLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3679));
 
-    textAreaLabel2.setXY(111, 81);
+    textAreaLabel2.setXY(111, 87);
     textAreaLabel2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
     textAreaLabel2.setLinespacing(0);
     textAreaLabel2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3682));
 
-    textAreaLabel3.setXY(111, 120);
+    textAreaLabel3.setXY(111, 125);
     textAreaLabel3.setColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
     textAreaLabel3.setLinespacing(0);
     textAreaLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3685));
 
-    textAreaLabel4.setXY(111, 159);
+    textAreaLabel4.setXY(111, 162);
     textAreaLabel4.setColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
     textAreaLabel4.setLinespacing(0);
     textAreaLabel4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3688));
@@ -131,18 +131,7 @@ ConfiguracaoViewBase::ConfiguracaoViewBase() :
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4114).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4113));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -167,25 +156,20 @@ ConfiguracaoViewBase::ConfiguracaoViewBase() :
     add(flexButtonSpSondaCongelarCamara);
     add(flexButtonCongelarSondaSp);
     add(numKeyboardContainer1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void ConfiguracaoViewBase::setupScreen()
 {
     numKeyboardContainer1.initialize();
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    W_HDW5000 = 6;
-    Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, CONGELAR_SONDA_SP / 10, _FP_32BIT_, 1);
-    Update(&textAreaSpSondaCongelarCamara, textAreaSpSondaCongelarCamaraBuffer, SP_SONDA_CONGELAR_CAMARA / 10, _FP_32BIT_, 1);
-    Update(&textAreaSpCongelarTempo, textAreaSpCongelarTempoBuffer, SP_Congelar_Tempo / 10, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialCongelarTempo, textAreaDiferencialCongelarTempoBuffer, Diferencial_Congelar_tempo / 10, _FP_32BIT_, 1);
+    Update(&textAreaCongelarSondaSp,			textAreaCongelarSondaSpBuffer,		CONGELAR_SONDA_SP / 10,		_FP_32BIT_, 1);
+    Update(&textAreaSpSondaCongelarCamara,		textAreaSpSondaCongelarCamaraBuffer,	SP_SONDA_CONGELAR_CAMARA / 10,	_FP_32BIT_, 1);
+    Update(&textAreaSpCongelarTempo,			textAreaSpCongelarTempoBuffer,		SP_Congelar_Tempo / 10,		_FP_32BIT_, 1);
+    Update(&textAreaDiferencialCongelarTempo,	textAreaDiferencialCongelarTempoBuffer,	Diferencial_Congelar_tempo / 10,	_FP_32BIT_, 1);
 
 }
 
@@ -195,8 +179,7 @@ void ConfiguracaoViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    //SoundBuzzerOn(25);
-    ContainerVisibility(&numKeyboardContainer1, false);
+    SoundBuzzerOn(25);
 }
 
 void ConfiguracaoViewBase::numKeyboardContainer1OutOfRangeCallbackHandler()
@@ -224,33 +207,17 @@ void ConfiguracaoViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler
     SoundBuzzerOn(25);
 }
 
-void ConfiguracaoViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-}
-
 void ConfiguracaoViewBase::tearDownScreen()
 {
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
-    CONGELAR_SONDA_SP = 10 * GetNumberTextArea(textAreaCongelarSondaSpBuffer);
-    SP_SONDA_CONGELAR_CAMARA = 10 * GetNumberTextArea(textAreaSpSondaCongelarCamaraBuffer);
-    SP_Congelar_Tempo = 10 * GetNumberTextArea(textAreaSpCongelarTempoBuffer);
-    Diferencial_Congelar_tempo = 10 * GetNumberTextArea(textAreaDiferencialCongelarTempoBuffer);
+    CONGELAR_SONDA_SP		= 10 * GetNumberTextArea(textAreaCongelarSondaSpBuffer);
+    SP_SONDA_CONGELAR_CAMARA	= 10 * GetNumberTextArea(textAreaSpSondaCongelarCamaraBuffer);
+    SP_Congelar_Tempo		= 10 * GetNumberTextArea(textAreaSpCongelarTempoBuffer);
+    Diferencial_Congelar_tempo	= 10 * GetNumberTextArea(textAreaDiferencialCongelarTempoBuffer);
     
     Clear();
-    ClearOthers();
-    ContainerClear(&numKeyboardContainer1);
 }
 
 void ConfiguracaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)

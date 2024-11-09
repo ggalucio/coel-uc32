@@ -4,7 +4,6 @@
 #include <gui_generated/tela_inicial_screen/Tela_InicialViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include "BitmapDatabase.hpp"
-#include <texts/TextKeysAndLanguages.hpp>
 
 Tela_InicialViewBase::Tela_InicialViewBase() :
     buttonCallback(this, &Tela_InicialViewBase::buttonCallbackHandler),
@@ -21,30 +20,33 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
     boxFundo.setPosition(0, 0, 480, 272);
     boxFundo.setColor(touchgfx::Color::getColorFromRGB(235, 237, 239));
 
+    box1.setPosition(6, 199, 468, 2);
+    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+
     imageLogo.setXY(28, 13);
     imageLogo.setBitmap(touchgfx::Bitmap(BITMAP_LOGOCOEL_ID));
 
-    buttonCongelar.setXY(28, 63);
+    buttonCongelar.setXY(75, 57);
     buttonCongelar.setBitmaps(touchgfx::Bitmap(BITMAP_CONGELAR_ID), touchgfx::Bitmap(BITMAP_CONGELAR_ID));
     buttonCongelar.setAction(buttonCallback);
 
-    buttonConcervar.setXY(28, 133);
+    buttonConcervar.setXY(75, 127);
     buttonConcervar.setBitmaps(touchgfx::Bitmap(BITMAP_CONSERVAR_ID), touchgfx::Bitmap(BITMAP_CONSERVAR_ID));
     buttonConcervar.setAction(buttonCallback);
 
-    buttonReceitas.setXY(28, 204);
+    buttonReceitas.setXY(75, 212);
     buttonReceitas.setBitmaps(touchgfx::Bitmap(BITMAP_RECEITAS_ID), touchgfx::Bitmap(BITMAP_RECEITAS_ID));
     buttonReceitas.setAction(buttonCallback);
 
-    buttonResfriar.setXY(177, 63);
+    buttonResfriar.setXY(264, 57);
     buttonResfriar.setBitmaps(touchgfx::Bitmap(BITMAP_RESFRIAR_ID), touchgfx::Bitmap(BITMAP_RESFRIAR_ID));
     buttonResfriar.setAction(buttonCallback);
 
-    buttonDegelo.setXY(177, 133);
+    buttonDegelo.setXY(264, 127);
     buttonDegelo.setBitmaps(touchgfx::Bitmap(BITMAP_DEGELO_ID), touchgfx::Bitmap(BITMAP_DEGELO_ID));
     buttonDegelo.setAction(buttonCallback);
 
-    buttonHigiene.setXY(179, 204);
+    buttonHigiene.setXY(266, 212);
     buttonHigiene.setBitmaps(touchgfx::Bitmap(BITMAP_HIGIENE_ID), touchgfx::Bitmap(BITMAP_HIGIENE_ID));
     buttonHigiene.setAction(buttonCallback);
 
@@ -63,21 +65,11 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
     numKeyboardContainerPwd1.setCredentialFailedCallback(numKeyboardContainerPwd1CredentialFailedCallback);
     numKeyboardContainerPwd1.setCancelTriggerCallback(numKeyboardContainerPwd1CancelTriggerCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4180).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4179));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
+    add(box1);
     add(imageLogo);
     add(buttonCongelar);
     add(buttonConcervar);
@@ -88,23 +80,23 @@ Tela_InicialViewBase::Tela_InicialViewBase() :
     add(buttonSolicitacaoSenah);
     add(solicitar_senha1);
     add(numKeyboardContainerPwd1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void Tela_InicialViewBase::setupScreen()
 {
     solicitar_senha1.initialize();
     numKeyboardContainerPwd1.initialize();
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    W_HDW5000 = 0;
+    WriteModbus485(10322, 1);
+    WriteModbus485(10323, 1);
     
-    Clear();
-    AddbackgroundContainer(this);
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    WriteModbus485(10242, 1);
+    WriteModbus485(645, 1);
+    WriteModbus485(641, 1);
 
 }
 
@@ -166,19 +158,6 @@ void Tela_InicialViewBase::numKeyboardContainerPwd1CancelTriggerCallbackHandler(
     SoundBuzzerOn(25);
 }
 
-void Tela_InicialViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-}
-
 void Tela_InicialViewBase::tearDownScreen()
 {
     //TearDownScreen
@@ -187,7 +166,6 @@ void Tela_InicialViewBase::tearDownScreen()
     LogoutUser();
     
     Clear();
-    ClearOthers();
     ContainerClear(&numKeyboardContainerPwd1);
 }
 

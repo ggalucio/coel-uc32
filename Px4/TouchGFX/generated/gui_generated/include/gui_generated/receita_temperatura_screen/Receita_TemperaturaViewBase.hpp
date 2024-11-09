@@ -14,6 +14,9 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/CANCELAR_PROCESSO.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class Receita_TemperaturaViewBase : public touchgfx::View<Receita_TemperaturaPresenter>
 {
@@ -25,7 +28,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void afterTransition();
 
@@ -40,6 +42,7 @@ protected:
     touchgfx::Box __background;
     touchgfx::Box boxFundo;
     touchgfx::Box boxProcessOff;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::Box boxFundoAzul;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox2;
@@ -60,13 +63,15 @@ protected:
     touchgfx::TextArea textAreaLabel3;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCountMinutos;
     touchgfx::TextAreaWithOneWildcard textAreaTempoEstimadoReceitaTemprat;
-    touchgfx::TextArea textAreaFlagProcessoAndamento;
+    touchgfx::TextAreaWithOneWildcard textAreaFlagProcessoAndamento;
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::TextAreaWithOneWildcard textArea14515;
     touchgfx::TextAreaWithOneWildcard textAreaTemperaturaReceitaAtual;
     touchgfx::TextAreaWithOneWildcard textArea14512;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    CANCELAR_PROCESSO cANCELAR_PROCESSO1;
+    Background background1;
+    Timer timerCycle1s;
+    Timer timerCycle10;
 
     /*
      * Wildcard Buffers
@@ -75,6 +80,8 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerCountMinutosBuffer[TEXTAREATIMERCOUNTMINUTOS_SIZE];
     static const uint16_t TEXTAREATEMPOESTIMADORECEITATEMPRAT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTempoEstimadoReceitaTempratBuffer[TEXTAREATEMPOESTIMADORECEITATEMPRAT_SIZE];
+    static const uint16_t TEXTAREAFLAGPROCESSOANDAMENTO_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textAreaFlagProcessoAndamentoBuffer[TEXTAREAFLAGPROCESSOANDAMENTO_SIZE];
     static const uint16_t TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerCongelarDecorridoCountBuffer[TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE];
     static const uint16_t TEXTAREA14515_SIZE = 10;
@@ -83,10 +90,26 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTemperaturaReceitaAtualBuffer[TEXTAREATEMPERATURARECEITAATUAL_SIZE];
     static const uint16_t TEXTAREA14512_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea14512Buffer[TEXTAREA14512_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Receita_TemperaturaViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Receita_TemperaturaViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
+    touchgfx::Callback<Receita_TemperaturaViewBase> cANCELAR_PROCESSO1NaoCallback;
+    touchgfx::Callback<Receita_TemperaturaViewBase> timerCycle1sTickCallback;
+    touchgfx::Callback<Receita_TemperaturaViewBase> timerCycle10TickCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
+    void cANCELAR_PROCESSO1NaoCallbackHandler();
+    void timerCycle1sTickCallbackHandler();
+    void timerCycle10TickCallbackHandler();
 
 };
 

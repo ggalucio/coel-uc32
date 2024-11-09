@@ -3,24 +3,15 @@
 /*********************************************************************************/
 #include <gui_generated/inicializacao_screen/InicializacaoViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include "BitmapDatabase.hpp"
 
-InicializacaoViewBase::InicializacaoViewBase()
+InicializacaoViewBase::InicializacaoViewBase() :
+    aguardarCounter(0)
 {
 
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    boxFundo.setPosition(0, 0, 480, 272);
-    boxFundo.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-
-    scalableImageLogo.setBitmap(touchgfx::Bitmap(BITMAP_TELA_INICIAL_COEL_ID));
-    scalableImageLogo.setPosition(80, 16, 321, 241);
-    scalableImageLogo.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
-
     add(__background);
-    add(boxFundo);
-    add(scalableImageLogo);
 }
 
 void InicializacaoViewBase::setupScreen()
@@ -33,28 +24,34 @@ void InicializacaoViewBase::setupScreen()
 
 }
 
+//Handles delays
+void InicializacaoViewBase::handleTickEvent()
+{
+    if(aguardarCounter > 0)
+    {
+        aguardarCounter--;
+        if(aguardarCounter == 0)
+        {
+            //TelaInicial
+            //When Aguardar completed change screen to Tela_Inicial
+            //Go to Tela_Inicial with no screen transition
+            application().gotoTela_InicialScreenNoTransition();
+        }
+    }
+}
+
 //Called when the screen transition ends
 void InicializacaoViewBase::afterTransition()
 {
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    SoundBuzzerOn(25);
-}
+    flag_Inicilizar_APLICACAO = true;
 
-void InicializacaoViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    
-    if (countTicksEventInicializacao < 3000)
-    	countTicksEventInicializacao += 16;
-    else
-    {
-    	initialize();
-    	inicialScreen();
-    }
+    //Aguardar
+    //When ScreenTransitionEnds completed delay
+    //Delay for 5000 ms (300 Ticks)
+    aguardarCounter = AGUARDAR_DURATION;
 }
 
 void InicializacaoViewBase::tearDownScreen()
@@ -63,161 +60,4 @@ void InicializacaoViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void InicializacaoViewBase::inicialScreen()
-{
-    //InicialScreen
-    //When inicialScreen is called change screen to Tela_Inicial
-    //Go to Tela_Inicial with no screen transition
-    application().gotoTela_InicialScreenNoTransition();
-}
-
-void InicializacaoViewBase::initialize()
-{
-    //Initialize
-    //When initialize is called execute C++ code
-    //Execute C++ code
-    
-    
-    // Inicialização Controlador
-    
-    writeModbus("10242", 999);	// SP = 99.9ºC
-    writeModbus("641", 0);	// Degelo OFF
-    writeModbus("645", 0);	// Inicializa controlador em Stand-by
-    
-    
-    // Inicializações gerais
-    
-    W_HSW9 = 1; 					// Desativa msg de timeout
-    
-    
-    Timer_Congelar_DECORRIDO_ON = 0;		// Timer_Congelar_decorrido_ON
-    Timer_Congelar_DECORRIDO_OUT = 0;		// Timer_Congelar_decorrido_OUT
-    
-    Timer_buzzer_SP = 4;			// Timer Buzzer 4seg
-    W_HAW8000 = 0;				// Timer_Congelar_COUNT = 0
-    Timer_COUNT_MINUTOS = 0;			// Timer_Congelar_COUNT_minutos = 0
-    
-    Timer_Delay_SP = 1;				// Timer Delay SP
-    
-    Timer_Degelo_SP = 9999;			// Timer SP
-    Timer_degelo_delay_SP = 5;			// Timer_degelo_delay_SP = 1 seg
-    
-    
-    
-    writeModbus("10322", 3);	// oo3 = Fn
-    writeModbus("10323", 0);	// Inicia OUT4 = oF
-    
-    
-    
-    numero_receita = 1; 	// Inicia na Receita 1
-    
-    
-    
-    if (initial_value == 0) 
-    {
-    	Status_tecla_Congela = 1;			// MODO CONGELAR SONDA
-    	Timer_SP_MINUTOS = 1;			// Inicia com timer em 1 min CONGELAR TEMPO
-    	Timer_SP_MINUTOS_Resfriar = 1;		// Inicia com timer em 1 min RESFRIAR TEMPO
-    	
-    	
-    	SP_Conservar_Congelar =-250;		// SP Conservar_Congelar=-25ºC		
-    	Diferencial_Conservar_COngelar = 30;	// Diferencial_conservar_Congelar
-    
-    	SP_Conservar_Resfriar = 30; 		// Setpoiint Conservar_resfriar = 3.0
-    	Diferencial_Conservar_Resfriar = 20; 	// Diferencial_conservar_resfriar=2.0
-    
-    	CONGELAR_SONDA_SP =- 180;			// SP modo COngelar SONDA
-    
-    	SP_Congelar_Tempo = -400;			// SP congelar TEmpo
-    	Diferencial_Congelar_tempo = 30;		// Diferencial congelar Tempo
-    
-    	SP_Resfriar_Sonda = 20; 			// SP Resfriar modo SOnda = 2.0ºC
-    
-    	SP_Resfriar_Tempo_SOFT = -200;		// SP Tempo SOFT
-    	SP_Resfriar_Tempo_HARD = -400;		// SP Tempo HARD
-    	Diferencial_Resfriar_Tempo = 30;		// Diferencial Tempo = 2.0ºC
-    	
-    	logica_entrada_digital1 = 1;		// Logica da entrada digital (1 normal / -1 invertido)
-    	logica_entrada_digital2 = 1;		// Logica da entrada digital (1 normal / -1 invertido)
-    	
-    	
-    	writeModbus("10294", 1);		// Ventilador ligado durante Degelo
-    	writeModbus("10256", 1);		// i.F1 = Door Open "1"
-    
-    //	writeModbus("10299", 2);		// P.od = Start delay Compressor protection disabled
-    	writeModbus("10256", 2);		// i.F1 = Entrada Digital 1 > Porta com parada ventilador (NA = porta fechada)
-    	writeModbus("10258", 5);		// i.F2 = Entrada Digital 2 > Alarme externo com desativação das saídas
-    	
-    	writeModbus("324", 0);		// Desativa buzzer do controlador
-    
-    	timer_alarme_externo_SP_MINUTOS = 1;	// Tempo de retorno do alarme externi (min)
-    	Timer_Alarme_externo_SP = timer_alarme_externo_SP_MINUTOS * 6;	// Retorno do alarme em 1 minuto
-    	
-    	
-    	//W_HAW8214 = "Alarme de Tensao"		// Descrição do alarme externo
-    	//W_HAW8235 = "Consultar manual"
-    
-    	flag_hab_desab_Tecla_REDIAL = 0;		// Tecla Redial desabilitado
-    
-    	writeModbus("10255", 5);			// i.p4 = Entrada Digital 4
-    
-    	Senha_Gravada = 123;			// Senha Inicial = 123
-    
-    	writeModbus("10294", 0);			// Ventilador desligado durante o degelo
-    	degelo_porta_aberta = false;		// degelo entra independente da porta
-    	writeModbus("10265.0", 1); 			// Degelo por gas quente
-    	degelo_processo_automatico = false;	// após término do degelo, Não inicia ultimo processo automaticamente
-    	writeModbus("10270", 1000);			// Duração do degelo 10.00 minutos
-    	writeModbus("10279", 1000);			// Duração do pós degelo (gotejamento) 10.00 minutos
-    	writeModbus("10295", 1003);			// Retardo para ativação do evaporador após o degelo 10 minutos e 3 segundos
-    
-    	SP_SONDA_CONGELAR_CAMARA = -250;		// Setpoint da Camara no modo CONGELAR Sonda
-    	SP_SONDA_RESF_CAMARA = 0;			// Setpoint da Camara no modo RESFRIAR Sonda 
-    
-    	SP_Resf_Interno_F1 = -250;				// SP interno de resfriamento modo HARD - FAse 1
-    	Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;	// Diferencial interno de resfriamento modo HARD - FAse 1
-    	SP_Resf_Espeto_F1 = 150;				// SP ESpeto de resfriamento modo HARD - Troca FAse 1 para Fase 2	
-    
-    	SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;	// SP interno de resfriamento modo HARD - FAse 1
-    	Dif_Resf_Hard_F2 = Diferencial_Resfriar_Tempo;	// Diferencial interno de resfriamento modo HARD - FAse 1	
-    	SP_Resf_Espeto_F2 = SP_Resfriar_Sonda;		// SP ESpeto de resfriamento modo HARD - Finalização
-    
-    	Porc_Resf_preset_tempo_F1F2 = 6;   		// Porcentagem /10 do tempo total do ciclo de refriamento 60% fase 1 > 40% fase 2
-    
-    	// RECEITA
-    	Tempo_receita_1 = 120;
-    	Tempo_receita_2 = 120;
-    	Tempo_receita_3 = 120;
-    	Tempo_receita_4 = 120;
-    	Tempo_receita_5 = 120;
-    	Tempo_receita_6 = 120;
-    	Tempo_receita_7 = 120;
-    	Tempo_receita_8 = 120;
-    	Tempo_receita_9 = 120;
-    	Tempo_receita_10 = 120;
-    	Tempo_receita_11 = 120;
-    	Tempo_receita_12 = 120;
-    
-    // Inicializar mensagem "sem receita"
-    	
-    }
-    
-    // Inicialização Controlador
-    
-    writeModbus("10242", 999);	// SP = 99.9ºC
-    writeModbus("641", 0);	// Degelo OFF
-    writeModbus("645", 0);	// Inicializa controlador em Stand-by
-}
-
-void InicializacaoViewBase::writeModbus(char const* address, double value)
-{
-    //WriteModbus
-    //When writeModbus is called execute C++ code
-    //Execute C++ code
-    UpdateModbus485(address, value, _INT_);
-    WriteModbus485(address, 1);
-    Wait(50);
 }

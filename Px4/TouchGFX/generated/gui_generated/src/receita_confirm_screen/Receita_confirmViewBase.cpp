@@ -48,7 +48,8 @@ Receita_confirmViewBase::Receita_confirmViewBase() :
     buttonWithLabelRecitas1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelRecitas1.setAction(buttonCallback);
 
-    textAreaFlagAlarmReceitaVazia.setXY(38, 129);
+    textAreaFlagAlarmReceitaVazia.setXY(29, 129);
+    textAreaFlagAlarmReceitaVazia.setVisible(false);
     textAreaFlagAlarmReceitaVazia.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     textAreaFlagAlarmReceitaVazia.setLinespacing(0);
     textAreaFlagAlarmReceitaVazia.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3929));
@@ -57,18 +58,7 @@ Receita_confirmViewBase::Receita_confirmViewBase() :
     receita_Info_resumo1.setVisible(false);
     receita_Info_resumo1.setFecharCallback(receita_Info_resumo1FecharCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4146).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4145));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -79,27 +69,23 @@ Receita_confirmViewBase::Receita_confirmViewBase() :
     add(buttonWithLabelRecitas1);
     add(textAreaFlagAlarmReceitaVazia);
     add(receita_Info_resumo1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void Receita_confirmViewBase::setupScreen()
 {
     receita_Info_resumo1.initialize();
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 34;
+    Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer, numero_receita, _INT_, 0);
     
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    Update(&textAreaNumeroReceita, textAreaNumeroReceitaBuffer,  ReadJobData(255, _INT_), _INT_, 0);
-    VisibilityTextArea(&textAreaFlagAlarmReceitaVazia, false);
-    countCycleBlink = 0;
-    isZeroValue = false;
+
+    //StartReceitaInfoResumo
+    //When ScreenTransitionBegins completed call start on receita_Info_resumo1
+    //Call start
+    receita_Info_resumo1.start();
 
 }
 
@@ -126,22 +112,7 @@ void Receita_confirmViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-    
-    if (countCycleBlink > 1000)
-    {
-    	countCycleBlink = 0;
-    	if (isZeroValue)
-    		VisibilityTextArea(&textAreaFlagAlarmReceitaVazia, !textAreaFlagAlarmReceitaVazia.isVisible());
-    }
-    
-    countCycleBlink += 16;
+    VisibilityTextArea(&textAreaFlagAlarmReceitaVazia, flag_alarm_receita_vazia && GetStateBlink());
 }
 
 void Receita_confirmViewBase::tearDownScreen()
@@ -150,23 +121,6 @@ void Receita_confirmViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void Receita_confirmViewBase::Congelar_TEMPO()
-{
-    //CongelarTEMPO
-    //When Congelar_TEMPO is called change screen to Congelar_TEMPO
-    //Go to Congelar_TEMPO with no screen transition
-    application().gotoCongelar_TEMPOScreenNoTransition();
-}
-
-void Receita_confirmViewBase::Resfriar_TEMPO()
-{
-    //ResfriarTEMPO
-    //When Resfriar_TEMPO is called change screen to Resfriar_TEMPO
-    //Go to Resfriar_TEMPO with no screen transition
-    application().gotoResfriar_TEMPOScreenNoTransition();
 }
 
 void Receita_confirmViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -184,29 +138,7 @@ void Receita_confirmViewBase::buttonCallbackHandler(const touchgfx::AbstractButt
         //Sim
         //When buttonWithLabelFlagStartReceita clicked execute C++ code
         //Execute C++ code
-        if (ReadJobData(1, _INT_)== 0.0)
-        {
-        	isZeroValue = true;
-        	SoundBuzzerOn(25);
-        }
-        else
-        {
-        	/*
-        	Tempo_Receita_ATUAL = ReadJobData(1, _INT_);	
-        	Receita_Cong_Resf_ATUAL = ReadJobData(4, _INT_);
-        	Receita_Hard_Soft_ATUAL = ReadJobData(6, _INT_) ? true : false;
-        
-        	Receita_Conserv_ATUAL = ReadJobData(7, _INT_);
-        	Temperatura_Receita_ATUAL = ReadJobData(2, _INT_);
-        
-        	Receita_time_temp_ATUAL = ReadJobData(3, _INT_);
-        	*/
-        	
-        	if (ReadJobData(4, _INT_) == 0)
-        		Congelar_TEMPO();
-        	else
-        		Resfriar_TEMPO();
-        }
+        flag_START_RECEITA = true;
     }
     else if (&src == &buttonWithLabelRecitas1)
     {

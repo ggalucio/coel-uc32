@@ -12,10 +12,16 @@
 
 extern "C"{
 	#include "../GFX/Module/Inc/enumerators_ext.h"
+	#include "../GFX/Module/Inc/enumerators.h"
 }
 
+void		(*pAddNumberMemory)(double* value);
+void		(*pResetMemory)(void);
+double		(*pReadMemory)(int id);
+void		(*pWriteMemory)(int id, double value);
+void 		(*pReadArraySRAM)(int id, char* array, int length);
+void 		(*pWriteArraySRAM)(int id, char* array, int length);
 
-void 		(*pAddContainer)(touchgfx::Screen* screen);
 void		(*pAddCounter)(CountingMode countingMode, uint64_t seconds);
 void		(*pAddTextAreaCounterItem)(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int id);
 void		(*pAddDigitalClockCounterItem)(touchgfx::DigitalClock* digitalClock, int id);
@@ -28,5 +34,6 @@ void		(*pRefreshRunExt)(void);
 
 double		(*pArrayCharToDouble)(char* src);
 uint16_t	(*pUnicodeCharToArrayChar)(touchgfx::Unicode::UnicodeChar* buffer, char* dst, uint16_t maxbytes);
+uint8_t		(*pStateBlink)(void);
 
 #endif /* GFX_MODULE_MODULEPLUSEXT_HPP_ */

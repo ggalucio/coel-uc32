@@ -6,7 +6,10 @@
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
 
-Finalizar_DegeloBase::Finalizar_DegeloBase()
+Finalizar_DegeloBase::Finalizar_DegeloBase() :
+    buttonCallback(this, &Finalizar_DegeloBase::buttonCallbackHandler),
+    cancelarProcessoCallback(0),
+    naoCallback(0)
 {
     setWidth(480);
     setHeight(272);
@@ -22,12 +25,14 @@ Finalizar_DegeloBase::Finalizar_DegeloBase()
     buttonWithLabelNao.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3979));
     buttonWithLabelNao.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelNao.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelNao.setAction(buttonCallback);
 
     buttonWithLabelCancelarDegeloSim.setXY(86, 184);
     buttonWithLabelCancelarDegeloSim.setBitmaps(touchgfx::Bitmap(BITMAP_R3_ID), touchgfx::Bitmap(BITMAP_R4_ID));
     buttonWithLabelCancelarDegeloSim.setLabelText(touchgfx::TypedText(T_SINGLEUSEID3980));
     buttonWithLabelCancelarDegeloSim.setLabelColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelCancelarDegeloSim.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    buttonWithLabelCancelarDegeloSim.setAction(buttonCallback);
 
     textAreaMensagem.setXY(140, 62);
     textAreaMensagem.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -49,5 +54,23 @@ void Finalizar_DegeloBase::initialize()
 void Finalizar_DegeloBase::init()
 {
 
+}
+
+void Finalizar_DegeloBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabelNao)
+    {
+        //Nao
+        //When buttonWithLabelNao clicked emit nao callback
+        //Emit callback
+        emitNaoCallback();
+    }
+    else if (&src == &buttonWithLabelCancelarDegeloSim)
+    {
+        //CancelarProcesso
+        //When buttonWithLabelCancelarDegeloSim clicked emit cancelarProcesso callback
+        //Emit callback
+        emitCancelarProcessoCallback();
+    }
 }
 

@@ -46,18 +46,7 @@ Alarme_externoViewBase::Alarme_externoViewBase()
     textAreaFlagAlarmeExternoAndamento.setLinespacing(0);
     textAreaFlagAlarmeExternoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3939));
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4152).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4151));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -66,22 +55,18 @@ Alarme_externoViewBase::Alarme_externoViewBase()
     add(textAreaHAW8235);
     add(textAreaTimerAlarmeExternoCount);
     add(textAreaFlagAlarmeExternoAndamento);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void Alarme_externoViewBase::setupScreen()
 {
-
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 38;
-    
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    Update(&textAreaDescricaoAlarmeExterno, textAreaDescricaoAlarmeExternoBuffer, W_HAW8214, 20);
+    Update(&textAreaHAW8235, textAreaHAW8235Buffer, W_HAW8235, 20);
+    Update(&textAreaTimerAlarmeExternoCount, textAreaTimerAlarmeExternoCountBuffer, 0, _INT_, 0);
 
 }
 
@@ -99,13 +84,8 @@ void Alarme_externoViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
+    VisibilityTextArea(&textAreaFlagAlarmeExternoAndamento, flag_alarme_externo_andamento && GetStateBlink());
+    Update(&textAreaTimerAlarmeExternoCount, textAreaTimerAlarmeExternoCountBuffer, Timer_Alarme_externo_COUNT, _INT_, 0);
 }
 
 void Alarme_externoViewBase::tearDownScreen()
@@ -114,5 +94,4 @@ void Alarme_externoViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
 }

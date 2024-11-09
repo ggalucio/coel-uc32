@@ -12,7 +12,10 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/Button.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <gui/containers/numKeyboardContainer.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class Congelar_select_TEMPOViewBase : public touchgfx::View<Congelar_select_TEMPOPresenter>
 {
@@ -24,9 +27,7 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void Congelar_TEMPO();
     virtual void afterTransition();
 
 protected:
@@ -49,16 +50,16 @@ protected:
     touchgfx::TextArea textAreaTempoZero;
     touchgfx::Button buttonAvancar;
     touchgfx::Button buttonVoltar;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTempo;
+    numKeyboardContainer numKeyboardContainer1;
+    Background background1;
+    Timer timerCycle1s;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREATIMERSPMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerSpMinutosBuffer[TEXTAREATIMERSPMINUTOS_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -66,11 +67,23 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Congelar_select_TEMPOViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Congelar_select_TEMPOViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<Congelar_select_TEMPOViewBase> numKeyboardContainer1OutOfRangeCallback;
+    touchgfx::Callback<Congelar_select_TEMPOViewBase> numKeyboardContainer1ValidRangeCallback;
+    touchgfx::Callback<Congelar_select_TEMPOViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
+    touchgfx::Callback<Congelar_select_TEMPOViewBase, double> numKeyboardContainer1EnterCallback;
+    touchgfx::Callback<Congelar_select_TEMPOViewBase> timerCycle1sTickCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void numKeyboardContainer1OutOfRangeCallbackHandler();
+    void numKeyboardContainer1ValidRangeCallbackHandler();
+    void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
+    void numKeyboardContainer1EnterCallbackHandler(double value);
+    void timerCycle1sTickCallbackHandler();
 
 };
 

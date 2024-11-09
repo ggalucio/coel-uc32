@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <gui/containers/Finalizar_higiene.hpp>
+#include <gui/containers/Background.hpp>
 
 class HIGIENEViewBase : public touchgfx::View<HIGIENEPresenter>
 {
@@ -52,6 +53,7 @@ protected:
     touchgfx::Image imageStatusPorta;
     touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
     Finalizar_higiene finalizar_higiene1;
+    Background background1;
 
     /*
      * Wildcard Buffers

@@ -6,7 +6,12 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
 
-Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
+Receita_TemperaturaViewBase::Receita_TemperaturaViewBase() :
+    buttonCallback(this, &Receita_TemperaturaViewBase::buttonCallbackHandler),
+    cANCELAR_PROCESSO1CancelarProcessoCallback(this, &Receita_TemperaturaViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler),
+    cANCELAR_PROCESSO1NaoCallback(this, &Receita_TemperaturaViewBase::cANCELAR_PROCESSO1NaoCallbackHandler),
+    timerCycle1sTickCallback(this, &Receita_TemperaturaViewBase::timerCycle1sTickCallbackHandler),
+    timerCycle10TickCallback(this, &Receita_TemperaturaViewBase::timerCycle10TickCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -17,6 +22,10 @@ Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
 
     boxProcessOff.setPosition(5, 64, 392, 196);
     boxProcessOff.setColor(touchgfx::Color::getColorFromRGB(241, 241, 242));
+
+    boxFlagProcessoAndamento.setPosition(5, 64, 392, 196);
+    boxFlagProcessoAndamento.setVisible(false);
+    boxFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(243, 120, 54));
 
     boxFundoAzul.setPosition(0, 0, 480, 53);
     boxFundoAzul.setColor(touchgfx::Color::getColorFromRGB(243, 120, 54));
@@ -61,9 +70,11 @@ Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
 
     buttonCancelarProcesso.setXY(406, 64);
     buttonCancelarProcesso.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
+    buttonCancelarProcesso.setAction(buttonCallback);
 
     toggleButtonFlagConservarSN.setXY(405, 208);
     toggleButtonFlagConservarSN.setBitmaps(touchgfx::Bitmap(BITMAP_CSVOFF_ID), touchgfx::Bitmap(BITMAP_CSVON_ID));
+    toggleButtonFlagConservarSN.setAction(buttonCallback);
 
     imageVazio.setXY(406, 136);
     imageVazio.setBitmap(touchgfx::Bitmap(BITMAP_VAZIO_ID));
@@ -106,9 +117,11 @@ Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
     textAreaTempoEstimadoReceitaTemprat.setWildcard(textAreaTempoEstimadoReceitaTempratBuffer);
     textAreaTempoEstimadoReceitaTemprat.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3949));
 
-    textAreaFlagProcessoAndamento.setXY(360, 14);
+    textAreaFlagProcessoAndamento.setPosition(316, 14, 157, 31);
     textAreaFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textAreaFlagProcessoAndamento.setLinespacing(0);
+    Unicode::snprintf(textAreaFlagProcessoAndamentoBuffer, TEXTAREAFLAGPROCESSOANDAMENTO_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID5420).getText());
+    textAreaFlagProcessoAndamento.setWildcard(textAreaFlagProcessoAndamentoBuffer);
     textAreaFlagProcessoAndamento.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3951));
 
     textAreaTimerCongelarDecorridoCount.setPosition(328, 165, 56, 18);
@@ -135,26 +148,29 @@ Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
     textArea14512.setPosition(328, 102, 56, 18);
     textArea14512.setColor(touchgfx::Color::getColorFromRGB(243, 120, 54));
     textArea14512.setLinespacing(0);
-    Unicode::snprintf(textArea14512Buffer, TEXTAREA14512_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3959).getText());
+    Unicode::snprintf(textArea14512Buffer, TEXTAREA14512_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID5439).getText());
     textArea14512.setWildcard(textArea14512Buffer);
     textArea14512.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3958));
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+    cANCELAR_PROCESSO1.setXY(0, 0);
+    cANCELAR_PROCESSO1.setVisible(false);
+    cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
+    cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4156).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4155));
+    background1.setXY(0, 0);
+
+    timerCycle1s.setXY(0, 0);
+    timerCycle1s.setVisible(false);
+    timerCycle1s.setTickCallback(timerCycle1sTickCallback);
+
+    timerCycle10.setXY(0, 0);
+    timerCycle10.setVisible(false);
+    timerCycle10.setTickCallback(timerCycle10TickCallback);
 
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
+    add(boxFlagProcessoAndamento);
     add(boxFundoAzul);
     add(boxWithBorderBox3);
     add(boxWithBorderBox2);
@@ -180,22 +196,35 @@ Receita_TemperaturaViewBase::Receita_TemperaturaViewBase()
     add(textArea14515);
     add(textAreaTemperaturaReceitaAtual);
     add(textArea14512);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(cANCELAR_PROCESSO1);
+    add(background1);
+    add(timerCycle1s);
+    add(timerCycle10);
 }
 
 void Receita_TemperaturaViewBase::setupScreen()
 {
-
+    cANCELAR_PROCESSO1.initialize();
+    background1.initialize();
+    timerCycle1s.initialize();
+    timerCycle10.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 40;
+    flag_recuperar_leitura_begin = false;
     
-    // Clear();
+    ReadWriteModbus485(512, 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(515, 1, _DOUBLE_, REPEAT);
     
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    Update(&textAreaTempoEstimadoReceitaTemprat, textAreaTempoEstimadoReceitaTempratBuffer, Tempo_Estimado_Receita_Temperat, _INT_, 0);
+    Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
+    Update(&toggleButtonFlagConservarSN, flag_Conservar_S_N);
+    
+    timerCycle1s.setWaitTime(1000);
+    timerCycle1s.start();
+    
+    timerCycle10.setWaitTime(100);
+    timerCycle10.start();
 
 }
 
@@ -208,18 +237,56 @@ void Receita_TemperaturaViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
-void Receita_TemperaturaViewBase::handleTickEvent()
+void Receita_TemperaturaViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
 {
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
+    //CancelarProcessoSim
+    //When cANCELAR_PROCESSO1 cancelarProcesso execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
+    cancelar_processo_SIM = true;
+}
+
+void Receita_TemperaturaViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
+{
+    //Nao
+    //When cANCELAR_PROCESSO1 nao execute C++ code
+    //Execute C++ code
+    ContainerVisibility(&cANCELAR_PROCESSO1, false);
+    SoundBuzzerOn(25);
+}
+
+void Receita_TemperaturaViewBase::timerCycle1sTickCallbackHandler()
+{
+    //Cycle_1s
+    //When timerCycle1s tick execute C++ code
+    //Execute C++ code
+    VisibilityTextArea(&textAreaFlagProcessoAndamento, !flag_Processo_ANDAMENTO || !textAreaFlagProcessoAndamento.isVisible());;
+}
+
+void Receita_TemperaturaViewBase::timerCycle10TickCallbackHandler()
+{
+    //Cycle_100ms
+    //When timerCycle10 tick execute C++ code
+    //Execute C++ code
+    if (flag_recuperar_leitura_begin)
+    {
+    	ReadWriteModbus485(512, 1, _DOUBLE_, REPEAT);
+    	ReadWriteModbus485(515, 1, _DOUBLE_, REPEAT);
+    	Wait(50);
+    
+    	flag_recuperar_leitura_begin = false;
     }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
+    else
+    {
+    	VisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);
+    
+    	Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, flag_Processo_ANDAMENTO ? (char*)"OPERANDO..." : (char*)"Finalizado!", 20);
+    	Update(&textAreaTemperaturaReceitaAtual, textAreaTemperaturaReceitaAtualBuffer, Temperatura_Receita_ATUAL / 10.0, _DOUBLE_, 1);
+    	Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
+    	Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
+    
+    	W_1_4512 = 10.0 * ReadBufferModbus485(512);
+    	W_1_4515 = 10.0 * ReadBufferModbus485(515);
+    }
 }
 
 void Receita_TemperaturaViewBase::tearDownScreen()
@@ -228,5 +295,24 @@ void Receita_TemperaturaViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
+}
+
+void Receita_TemperaturaViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonCancelarProcesso)
+    {
+        //Voltar
+        //When buttonCancelarProcesso clicked execute C++ code
+        //Execute C++ code
+        ContainerVisibility(&cANCELAR_PROCESSO1, true);
+        SoundBuzzerOn(25);
+    }
+    else if (&src == &toggleButtonFlagConservarSN)
+    {
+        //CSV
+        //When toggleButtonFlagConservarSN clicked execute C++ code
+        //Execute C++ code
+        flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();
+        SoundBuzzerOn(25);
+    }
 }

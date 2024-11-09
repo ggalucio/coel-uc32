@@ -34,6 +34,7 @@ RTCType rtcType;
 void (*pUpdater)(uint16_t address, double value, uint8_t dataType);
 
 bool firstPress;
+uint16_t accessKey = 123;
 
 void RefreshNum(){
 	if(textArea != NULL && textBuffer != NULL){
@@ -227,7 +228,7 @@ double GetNumericalKeyboardValue(touchgfx::TextArea **area, touchgfx::Unicode::U
 
 uint8_t CredentialSuccess(){
 	uint16_t pwd = atoi(numValue);
-	return pwd == 123 ? 1 : 0;
+	return pwd == accessKey ? 1 : 0;
 }
 
 void GetRangeValues(double* min, double *max, DataType* dataType,  RTCType* rtc, uint8_t* decimal){
@@ -236,4 +237,8 @@ void GetRangeValues(double* min, double *max, DataType* dataType,  RTCType* rtc,
 	*dataType = type;
 	*rtc = rtcType;
 	*decimal = decData;
+}
+
+void SetAccessKey(uint16_t key){
+	accessKey = key;
 }

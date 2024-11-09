@@ -36,6 +36,7 @@ ResfriarViewBase::ResfriarViewBase() :
     radioButtonStatusTeclaCongela1.setDeselectionEnabled(false);
 
     buttonFlagResfriarSondaTempo.setXY(406, 208);
+    buttonFlagResfriarSondaTempo.setVisible(false);
     buttonFlagResfriarSondaTempo.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
     buttonFlagResfriarSondaTempo.setAction(buttonCallback);
 
@@ -47,18 +48,7 @@ ResfriarViewBase::ResfriarViewBase() :
     toggleButtonFlagResfriarHardSoft.setBitmaps(touchgfx::Bitmap(BITMAP_SOFT_ID), touchgfx::Bitmap(BITMAP_HARD_ID));
     toggleButtonFlagResfriarHardSoft.setAction(buttonCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4122).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4121));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -69,8 +59,7 @@ ResfriarViewBase::ResfriarViewBase() :
     add(buttonFlagResfriarSondaTempo);
     add(buttonTelaInicial);
     add(toggleButtonFlagResfriarHardSoft);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
     radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
@@ -78,23 +67,16 @@ ResfriarViewBase::ResfriarViewBase() :
 
 void ResfriarViewBase::setupScreen()
 {
-
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 10;
+    WriteModbus485(10282, 1);
+    WriteModbus485(10242, 1);
+    WriteModbus485(645, 1);
     
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    if (Status_tecla_Congela == 3)
-    	Update(&radioButtonStatusTeclaCongela0, true);
-    
-    if (Status_tecla_Congela == 4)
-    	Update(&radioButtonStatusTeclaCongela1, true);
-    
+    if (Status_tecla_Congela == 3) Update(&radioButtonStatusTeclaCongela0, true);
+    if (Status_tecla_Congela == 4) Update(&radioButtonStatusTeclaCongela1, true);
     Update(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);
 
 }
@@ -106,21 +88,10 @@ void ResfriarViewBase::afterTransition()
     //When screen transition ends execute C++ code
     //Execute C++ code
     if (Status_tecla_Congela != 3 && Status_tecla_Congela != 4)
+    {
+    	ButtonVisibility(&buttonFlagResfriarSondaTempo, false);
     	SoundBuzzerOn(25);
-}
-
-void ResfriarViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
     }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void ResfriarViewBase::tearDownScreen()
@@ -129,23 +100,6 @@ void ResfriarViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void ResfriarViewBase::Resfriar_SONDA()
-{
-    //ResfriarSONDA
-    //When Resfriar_SONDA is called change screen to Resfriar_SONDA
-    //Go to Resfriar_SONDA with no screen transition
-    application().gotoResfriar_SONDAScreenNoTransition();
-}
-
-void ResfriarViewBase::Resfriar_Select_Tempo()
-{
-    //ResfriarSelectTempo
-    //When Resfriar_Select_Tempo is called change screen to Resfriar_Select_Tempo
-    //Go to Resfriar_Select_Tempo with no screen transition
-    application().gotoResfriar_Select_TempoScreenNoTransition();
 }
 
 void ResfriarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -155,58 +109,7 @@ void ResfriarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
         //Avancar
         //When buttonFlagResfriarSondaTempo clicked execute C++ code
         //Execute C++ code
-        // MODO SONDA
-        if (Status_tecla_Congela == 3)
-        {
-        	if (flag_Resfriar_HARD_SOFT == false) // SE MODO SOFT
-        	{
-        		UpdateModbus485("242", SP_SONDA_RESF_CAMARA , _INT_);		// SP = RESF MODO SSONDA
-        		WriteModbus485("242", 1);
-        		Wait(50);
-        
-        		UpdateModbus485("282", Diferencial_Resfriar_Tempo , _INT_);	// Diferencial rd
-        		WriteModbus485("282", 1);
-        		Wait(50);
-        
-        		SP_Resf_Hard_Interno_display = SP_SONDA_RESF_CAMARA;
-        		SP_Resf_Hard_Espeto_display = SP_Resfriar_Sonda;
-        	}
-        	else
-        	{
-        		Hard_Resf_fase_numero = 1;					// Resfriamento por etapas - Etapa =1		
-        		Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;
-        		Dif_Resf_Hard_F2 = Dif_Resf_Hard_F1;
-        
-        		UpdateModbus485("242", SP_Resf_Interno_F1 , _INT_);	// SP X34 = SP_Interno_F1_controle
-        		WriteModbus485("242", 1);
-        		Wait(50);
-        
-        		UpdateModbus485("282", Dif_Resf_Hard_F1 , _INT_);	// Diferencial de controle para modo Delicado Sonda
-        		WriteModbus485("282", 1);
-        		Wait(50);
-        
-        		SP_Resf_Espeto_F2 = SP_Resfriar_Sonda;
-        		SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;	
-        	}
-        	
-        	Timer_Congelar_DECORRIDO_SP = 99999;	// SP Timer- Inf	
-        	Timer_Congelar_DECORRIDO_ON = 1;		// START Timer TEmpo_REsfriar_DECORRIDO_ON
-        	flag_Processo_ANDAMENTO = 1;		// Flag PRocesso_ANDAMENTO = TRUE
-        	Timer_delay_ON = 1;				// Start Timer Delay
-        
-        	UpdateModbus485("645", 1 , _INT_);		// Controlador em modo COntrole
-        	WriteModbus485("645", 1);
-        	Wait(50);	
-        
-        	Resfriar_SONDA();				// Altera para tela de Resfriar SONDA
-        }
-        
-        //  MODO Tempo
-        if (Status_tecla_Congela == 4)
-        {
-        	flag_alarm_receita_vazia = 0;		// zera bit flag alarme de tempo Zero
-        	Resfriar_Select_Tempo();			// Tela Resfriar modo Tempo
-        }
+        flag_resfriar_Sonda_tempo = true;
     }
     else if (&src == &buttonTelaInicial)
     {
@@ -232,6 +135,7 @@ void ResfriarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //ModoSonda
         //When radioButtonStatusTeclaCongela0 selected execute C++ code
         //Execute C++ code
+        ButtonVisibility(&buttonFlagResfriarSondaTempo, true);
         Status_tecla_Congela = 3;
         SoundBuzzerOn(25);
     }
@@ -240,6 +144,7 @@ void ResfriarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //ModoTempo
         //When radioButtonStatusTeclaCongela1 selected execute C++ code
         //Execute C++ code
+        ButtonVisibility(&buttonFlagResfriarSondaTempo, true);
         Status_tecla_Congela = 4;
         SoundBuzzerOn(25);
     }

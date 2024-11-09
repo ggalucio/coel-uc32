@@ -13,6 +13,8 @@
 
 #include "Module/Inc/taskManagerOthers.h"
 
+uint8_t RefreshAllTasks(void);
+
 void WriteJobEnable(void);
 
 osThreadId touchDriverTaskHandle;
@@ -122,12 +124,23 @@ void IdleTask(void const * argument){
 	}
 }
 
+void TouchGFXTask(void const * argument){
+	while(1){
+		osDelay(50);
+		RefreshAllTasks();
+	}
+}
+
 
 void InitTasks(){
 	InitModules();
 	SetJobCallback(WriteJobEnable);
 
 	MX_TouchGFX_Init();
+
+	// TASK PROCESS
+	osThreadDef(touchGFXTask, TouchGFXTask, osPriorityIdle, 0, 128);
+	osThreadCreate(osThread(touchGFXTask), NULL);
 
 	// IDLE TASK
 	osThreadDef(idleTask, IdleTask, osPriorityIdle, 0, 128);

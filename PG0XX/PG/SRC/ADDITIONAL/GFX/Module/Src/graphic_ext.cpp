@@ -7,6 +7,7 @@
 
 #include "../Inc/graphic_ext.hpp"
 #include "../Inc/GraphicItemsExt.hpp"
+#include "../Modules/Sram/sram.hpp"
 
 #include <touchgfx/widgets/TextArea.hpp>
 
@@ -14,7 +15,6 @@ extern "C"{
 	#include "../GFX/Module/Inc/enumerators_ext.h"
 }
 
-extern void		(*pAddContainer)(touchgfx::Screen* screen);
 extern void		(*pAddCounter)(CountingMode countingMode, uint64_t seconds);
 extern void		(*pAddTextAreaCounterItem)(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int id);
 extern void 	(*pAddDigitalClockCounterItem)(touchgfx::DigitalClock* digitalClock, int id);
@@ -27,10 +27,10 @@ extern void		(*pRefreshRunExt)(void);
 
 extern double	(*pArrayCharToDouble)(char* src);
 extern uint16_t (*pUnicodeCharToArrayChar)(touchgfx::Unicode::UnicodeChar* buffer, char* dst, uint16_t maxbytes);
+extern uint8_t	(*pStateBlink)(void);
 
 void InitGraphicModulePtrExt(){
-
-	pAddContainer				= AddContainer;
+	InitSRAM();
 
 	pAddCounter					= AddCounter;
 	pAddTextAreaCounterItem		= AddTextAreaCounterItem;
@@ -46,4 +46,5 @@ void InitGraphicModulePtrExt(){
 
 	pAddJobButton				= AddJobItem;
 	pUpdateJobItemsOthers		= UpdateJobItemsOthers;
+	pStateBlink					= StateBlink;
 }

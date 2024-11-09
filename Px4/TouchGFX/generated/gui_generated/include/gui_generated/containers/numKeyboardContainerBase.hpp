@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <AT_module_ext.hpp>
 #include <AT_module.hpp>
 
 class numKeyboardContainerBase : public touchgfx::Container
@@ -37,7 +38,7 @@ public:
     {
         this->ValidRangeCallback = &callback;
     }
-    void setEnterCallback(touchgfx::GenericCallback<>& callback)
+    void setEnterCallback(touchgfx::GenericCallback<double>& callback)
     {
         this->EnterCallback = &callback;
     }
@@ -78,11 +79,11 @@ protected:
             this->ValidRangeCallback->execute();
         }
     }
-    virtual void emitEnterCallback()
+    virtual void emitEnterCallback(double value)
     {
         if (EnterCallback && EnterCallback->isValid())
         {
-            this->EnterCallback->execute();
+            this->EnterCallback->execute(value);
         }
     }
 
@@ -142,7 +143,7 @@ private:
     touchgfx::GenericCallback<>* HideKeypadTriggerCallback;
     touchgfx::GenericCallback<>* OutOfRangeCallback;
     touchgfx::GenericCallback<>* ValidRangeCallback;
-    touchgfx::GenericCallback<>* EnterCallback;
+    touchgfx::GenericCallback<double>* EnterCallback;
 
     /*
      * Callback Handler Declarations

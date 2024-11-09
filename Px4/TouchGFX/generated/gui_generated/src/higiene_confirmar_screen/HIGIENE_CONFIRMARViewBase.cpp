@@ -5,8 +5,6 @@
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include "BitmapDatabase.hpp"
-#include <AT_module.hpp>
-
 
 HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonCallback(this, &HIGIENE_CONFIRMARViewBase::buttonCallbackHandler)
@@ -47,14 +45,7 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
-    status_porta.setXY(5, 64);
-    status_porta.setVisible(false);
-    status_porta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    status_porta.setLinespacing(0);
-    Unicode::snprintf(status_portaBuffer, STATUS_PORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4102).getText());
-    status_porta.setWildcard(status_portaBuffer);
-    status_porta.resizeToCurrentText();
-    status_porta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4101));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -64,28 +55,16 @@ HIGIENE_CONFIRMARViewBase::HIGIENE_CONFIRMARViewBase() :
     add(textAreaStatusPortaAberta);
     add(buttonStartHigiene);
     add(buttonTelaInicial);
-    add(status_porta);
+    add(background1);
 }
 
 void HIGIENE_CONFIRMARViewBase::setupScreen()
 {
-
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 44;
-    
-    // Clear();
-    
-    ReadWriteModbus485(&status_porta, status_portaBuffer, "553", 0, _INT_, REPEAT);
-
-    //script_screen_HIGIENE
-    //When screen transition begins execute C++ code
-    //Execute C++ code
-    Clear();
-    
-    ReadWriteModbus485(&status_porta, status_portaBuffer, "553", 0, _INT_, REPEAT);
+    //
 
 }
 
@@ -103,18 +82,9 @@ void HIGIENE_CONFIRMARViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
-    
-    if ((touchgfx::Unicode::atoi(status_portaBuffer)) == 1){
-    	buttonStartHigiene.setVisible(true);
-    	textAreaStatusPortaFechada.setVisible(false);
-    	textAreaStatusPortaAberta.setVisible(true); 
-    }else{
-    	buttonStartHigiene.setVisible(false);
-    	textAreaStatusPortaFechada.setVisible(true);
-    	textAreaStatusPortaAberta.setVisible(false); 
-    }
-    invalidate();
-    W_1_4553 = buttonStartHigiene.isVisible();
+    VisibilityTextArea(&textAreaStatusPortaFechada, Status_Porta == 0 ? true : false);
+    VisibilityTextArea(&textAreaStatusPortaAberta, Status_Porta != 0 ? true : false);
+    ButtonVisibility(&buttonStartHigiene, Status_Porta != 0 ? true : false);
 }
 
 void HIGIENE_CONFIRMARViewBase::tearDownScreen()
@@ -123,17 +93,16 @@ void HIGIENE_CONFIRMARViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
 }
 
 void HIGIENE_CONFIRMARViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
     if (&src == &buttonStartHigiene)
     {
-        //start_higiente
-        //When buttonStartHigiene clicked change screen to HIGIENE
-        //Go to HIGIENE with no screen transition
-        application().gotoHIGIENEScreenNoTransition();
+        //Avancar
+        //When buttonStartHigiene clicked execute C++ code
+        //Execute C++ code
+        start_higiene = true;
     }
     else if (&src == &buttonTelaInicial)
     {

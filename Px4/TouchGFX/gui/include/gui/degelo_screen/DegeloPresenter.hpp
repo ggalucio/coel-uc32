@@ -6,6 +6,8 @@
 
 using namespace touchgfx;
 
+extern int tickCountCycle100;
+
 class DegeloView;
 
 class DegeloPresenter : public touchgfx::Presenter, public ModelListener

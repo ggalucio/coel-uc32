@@ -12,7 +12,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <gui/containers/Solicitar_senha.hpp>
 #include <gui/containers/numKeyboardContainerPwd.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/Background.hpp>
 
 class Tela_InicialViewBase : public touchgfx::View<Tela_InicialPresenter>
 {
@@ -24,7 +24,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void launchPasswordKeyboard();
     virtual void afterTransition();
@@ -39,6 +38,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box boxFundo;
+    touchgfx::Box box1;
     touchgfx::Image imageLogo;
     touchgfx::Button buttonCongelar;
     touchgfx::Button buttonConcervar;
@@ -49,14 +49,7 @@ protected:
     touchgfx::Button buttonSolicitacaoSenah;
     Solicitar_senha solicitar_senha1;
     numKeyboardContainerPwd numKeyboardContainerPwd1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
-
-    /*
-     * Wildcard Buffers
-     */
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
+    Background background1;
 
 private:
 

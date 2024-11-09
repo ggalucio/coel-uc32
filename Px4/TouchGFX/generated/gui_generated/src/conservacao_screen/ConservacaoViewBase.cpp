@@ -39,6 +39,7 @@ ConservacaoViewBase::ConservacaoViewBase() :
     radioButtonStatusConservar1.setDeselectionEnabled(false);
 
     buttonFlagConservarCongResf.setXY(406, 208);
+    buttonFlagConservarCongResf.setVisible(false);
     buttonFlagConservarCongResf.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
     buttonFlagConservarCongResf.setAction(buttonCallback);
 
@@ -46,18 +47,7 @@ ConservacaoViewBase::ConservacaoViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4116).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4115));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -68,8 +58,7 @@ ConservacaoViewBase::ConservacaoViewBase() :
     add(radioButtonStatusConservar1);
     add(buttonFlagConservarCongResf);
     add(buttonTelaInicial);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
     radioButtonGroup1.add(radioButtonStatusConservar0);
     radioButtonGroup1.add(radioButtonStatusConservar1);
     radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
@@ -77,22 +66,16 @@ ConservacaoViewBase::ConservacaoViewBase() :
 
 void ConservacaoViewBase::setupScreen()
 {
-
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 7;
+    WriteModbus485(10282, 1);
+    WriteModbus485(10242, 1);
+    WriteModbus485(645, 1);
     
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    if (Status_Conservar == 1)
-    	Update(&radioButtonStatusConservar0, true);
-    
-    if (Status_Conservar == 2)
-    	Update(&radioButtonStatusConservar1, true);
+    if (Status_Conservar == 1) Update(&radioButtonStatusConservar0, true);
+    if (Status_Conservar == 2) Update(&radioButtonStatusConservar1, true);
 
 }
 
@@ -103,21 +86,10 @@ void ConservacaoViewBase::afterTransition()
     //When screen transition ends execute C++ code
     //Execute C++ code
     if (Status_Conservar != 1 && Status_Conservar != 2)
+    {
+    	ButtonVisibility(&buttonFlagConservarCongResf, false);
     	SoundBuzzerOn(25);
-}
-
-void ConservacaoViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
     }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void ConservacaoViewBase::tearDownScreen()
@@ -126,33 +98,6 @@ void ConservacaoViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void ConservacaoViewBase::Conservar_Congelar()
-{
-    //ConservarCongelar
-    //When Conservar_Congelar is called change screen to Conservar_Congelar
-    //Go to Conservar_Congelar with no screen transition
-    application().gotoConservar_CongelarScreenNoTransition();
-}
-
-void ConservacaoViewBase::Conservar_Resfriar()
-{
-    //ConservarResfriar
-    //When Conservar_Resfriar is called change screen to Conservar_Resfriar
-    //Go to Conservar_Resfriar with no screen transition
-    application().gotoConservar_ResfriarScreenNoTransition();
-}
-
-void ConservacaoViewBase::writeModbus(char const* address, double value)
-{
-    //WriteModbus
-    //When writeModbus is called execute C++ code
-    //Execute C++ code
-    UpdateModbus485(address, value, _INT_);
-    WriteModbus485(address, 1);
-    Wait(50);
 }
 
 void ConservacaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -162,44 +107,7 @@ void ConservacaoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
         //Avancar
         //When buttonFlagConservarCongResf clicked execute C++ code
         //Execute C++ code
-        if (Status_tecla_Congela == 0){				// Se Modo Receita_Temperatura
-        	if (Receita_Cong_Resf_ATUAL == 0){		// Modo COngelar da Receita
-        		Status_tecla_Congela = 2;
-        	}
-        	if (Receita_Cong_Resf_ATUAL == 1){		// Modo Resfriar da Receita
-        		Status_tecla_Congela = 4;
-        	}
-        }
-        
-        
-        if (flag_transicao_Conservar == 1){					// Entra automaticamente em Conservar de Congelar ou Resfriar
-        	if (Status_tecla_Congela == 1 || Status_tecla_Congela == 2)
-        		Status_Conservar = 1;					// COnservar_COngelar			
-        	else									// @Status_tecla_Congela=3 or @Status_tecla_Congela=4
-        		Status_Conservar = 2;					// COnservar_resfriar
-        }
-        
-        flag_transicao_Conservar = false;				// zera bit transição
-        
-        
-        if (Status_Conservar == 1){					// if COnservar_Congelar=1
-        	W_HDW5000 = 8;						// vai para tela Conservar_COngelar
-        	writeModbus("10242", SP_Conservar_Congelar);		// SP= Conservar Congelar 
-        	writeModbus("10282", Diferencial_Conservar_COngelar);	// Diferencial rd
-        	writeModbus("645", 1);					// Controlador em modo COntrole
-        	Conservar_Congelar();
-        }
-        else{
-        	W_HDW5000 = 9;						// vai para tela Conservar_COngelar
-        	writeModbus("10242", SP_Conservar_Resfriar);		// SP= COnservar Resfriar
-        	writeModbus("10282", Diferencial_Conservar_Resfriar);	// Diferencial rd=3ºC
-        	writeModbus("645", 1);					// Controlador em modo COntrole
-        	Conservar_Resfriar();
-        }
-        
-        flag_Conservar_ANDAMENTO = true;		// flag_conservar_ANDAMENTO=1
-        
-        flag_Conservar_Cong_Resf = false; 	// zera bit
+        flag_Conservar_Cong_Resf = true;
     }
     else if (&src == &buttonTelaInicial)
     {
@@ -217,6 +125,7 @@ void ConservacaoViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abs
         //Congelar
         //When radioButtonStatusConservar0 selected execute C++ code
         //Execute C++ code
+        ButtonVisibility(&buttonFlagConservarCongResf, true);
         Status_Conservar = 1;
         SoundBuzzerOn(25);
     }
@@ -225,6 +134,7 @@ void ConservacaoViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abs
         //Resfriar
         //When radioButtonStatusConservar1 selected execute C++ code
         //Execute C++ code
+        ButtonVisibility(&buttonFlagConservarCongResf, true);
         Status_Conservar = 2;
         SoundBuzzerOn(25);
     }

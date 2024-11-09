@@ -78,8 +78,41 @@ public:
     // Receitas_3
     void gotoReceitas_3ScreenNoTransition();
 
-    // Receitas_X_EDIT
-    void gotoReceitas_X_EDITScreenNoTransition();
+    // Receitas_1_EDIT
+    void gotoReceitas_1_EDITScreenNoTransition();
+
+    // Receitas_2_EDIT
+    void gotoReceitas_2_EDITScreenNoTransition();
+
+    // Receitas_3_EDIT
+    void gotoReceitas_3_EDITScreenNoTransition();
+
+    // Receitas_4_EDIT
+    void gotoReceitas_4_EDITScreenNoTransition();
+
+    // Receitas_5_EDIT
+    void gotoReceitas_5_EDITScreenNoTransition();
+
+    // Receitas_6_EDIT
+    void gotoReceitas_6_EDITScreenNoTransition();
+
+    // Receitas_7_EDIT
+    void gotoReceitas_7_EDITScreenNoTransition();
+
+    // Receitas_8_EDIT
+    void gotoReceitas_8_EDITScreenNoTransition();
+
+    // Receitas_9_EDIT
+    void gotoReceitas_9_EDITScreenNoTransition();
+
+    // Receitas_10_EDIT
+    void gotoReceitas_10_EDITScreenNoTransition();
+
+    // Receitas_11_EDIT
+    void gotoReceitas_11_EDITScreenNoTransition();
+
+    // Receitas_12_EDIT
+    void gotoReceitas_12_EDITScreenNoTransition();
 
     // Receita_confirm
     void gotoReceita_confirmScreenNoTransition();
@@ -87,8 +120,17 @@ public:
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransition();
 
+    // refine_senha_secreto
+    void gotorefine_senha_secretoScreenNoTransition();
+
+    // Alarme_externo
+    void gotoAlarme_externoScreenNoTransition();
+
     // Configuracao_5
     void gotoConfiguracao_5ScreenNoTransition();
+
+    // Receita_Temperatura
+    void gotoReceita_TemperaturaScreenNoTransition();
 
     // Configuracao_6
     void gotoConfiguracao_6ScreenNoTransition();
@@ -104,6 +146,9 @@ public:
 
     // Configuracao_7
     void gotoConfiguracao_7ScreenNoTransition();
+
+    // TELA_PRETA
+    void gotoTELA_PRETAScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
@@ -173,8 +218,41 @@ protected:
     // Receitas_3
     void gotoReceitas_3ScreenNoTransitionImpl();
 
-    // Receitas_X_EDIT
-    void gotoReceitas_X_EDITScreenNoTransitionImpl();
+    // Receitas_1_EDIT
+    void gotoReceitas_1_EDITScreenNoTransitionImpl();
+
+    // Receitas_2_EDIT
+    void gotoReceitas_2_EDITScreenNoTransitionImpl();
+
+    // Receitas_3_EDIT
+    void gotoReceitas_3_EDITScreenNoTransitionImpl();
+
+    // Receitas_4_EDIT
+    void gotoReceitas_4_EDITScreenNoTransitionImpl();
+
+    // Receitas_5_EDIT
+    void gotoReceitas_5_EDITScreenNoTransitionImpl();
+
+    // Receitas_6_EDIT
+    void gotoReceitas_6_EDITScreenNoTransitionImpl();
+
+    // Receitas_7_EDIT
+    void gotoReceitas_7_EDITScreenNoTransitionImpl();
+
+    // Receitas_8_EDIT
+    void gotoReceitas_8_EDITScreenNoTransitionImpl();
+
+    // Receitas_9_EDIT
+    void gotoReceitas_9_EDITScreenNoTransitionImpl();
+
+    // Receitas_10_EDIT
+    void gotoReceitas_10_EDITScreenNoTransitionImpl();
+
+    // Receitas_11_EDIT
+    void gotoReceitas_11_EDITScreenNoTransitionImpl();
+
+    // Receitas_12_EDIT
+    void gotoReceitas_12_EDITScreenNoTransitionImpl();
 
     // Receita_confirm
     void gotoReceita_confirmScreenNoTransitionImpl();
@@ -182,8 +260,17 @@ protected:
     // Configuracao_4
     void gotoConfiguracao_4ScreenNoTransitionImpl();
 
+    // refine_senha_secreto
+    void gotorefine_senha_secretoScreenNoTransitionImpl();
+
+    // Alarme_externo
+    void gotoAlarme_externoScreenNoTransitionImpl();
+
     // Configuracao_5
     void gotoConfiguracao_5ScreenNoTransitionImpl();
+
+    // Receita_Temperatura
+    void gotoReceita_TemperaturaScreenNoTransitionImpl();
 
     // Configuracao_6
     void gotoConfiguracao_6ScreenNoTransitionImpl();
@@ -199,6 +286,9 @@ protected:
 
     // Configuracao_7
     void gotoConfiguracao_7ScreenNoTransitionImpl();
+
+    // TELA_PRETA
+    void gotoTELA_PRETAScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

@@ -7,13 +7,10 @@
 
 #include "../Inc/GraphicItemsExt.hpp"
 #include "../Modules/Job/jobModuleExtension.hpp"
-#include "cstddef"
-
-//#include <AT_module.hpp>
-#include <gui/containers/TimingApplication.hpp>
 #include <stdlib.h>
 
-TimingApplication* pTimingApplication = NULL;
+bool stateBlink = false;
+bool blockWriting = false;
 
 int nCounterItems = 0;
 int nObjectCounterItems = 0;
@@ -26,12 +23,6 @@ JobOtherItem		jobOtherItem[10];
 void ClearItemsExt(){
 	nObjectCounterItems = 0;
 	nJobOtherItems = 0;
-
-	if (pTimingApplication !=  NULL){
-		pTimingApplication->finalize();
-		delete pTimingApplication;
-		pTimingApplication = NULL;
-	}
 }
 
 double ArrayCharToDouble(char* src){
@@ -41,13 +32,18 @@ double ArrayCharToDouble(char* src){
 		return 0.0;
 	else
 		return value;
+	return 0.0;
 }
+
+
 uint16_t UnicodeCharToArrayChar(touchgfx::Unicode::UnicodeChar* buffer, char* dst, uint16_t maxbytes){
 	if((buffer == NULL) || (maxbytes == 0))
 		return 0;
 
 	uint16_t nbytes = 0;
-	uint8_t* utf8 = new uint8_t[maxbytes];
+	//uint8_t* utf8 = new uint8_t[maxbytes];
+	uint8_t utf8[maxbytes];
+
 	touchgfx::Unicode::toUTF8(buffer, utf8, maxbytes);
 
 	bool null = false;
@@ -64,7 +60,13 @@ uint16_t UnicodeCharToArrayChar(touchgfx::Unicode::UnicodeChar* buffer, char* ds
 			dst[index] = '\0';
 	}
 
+	//delete utf8;
+
 	return nbytes;
+}
+
+uint8_t StateBlink(){
+	return stateBlink ? 0xff : 0x00;
 }
 
 bool IncreaseCounting(CounterItem* item){
@@ -135,18 +137,6 @@ void RefreshTextAreaCounting(){
 	}
 }
 
-void AddContainer(touchgfx::Screen* screen)
-{
-	if (pTimingApplication != NULL)
-		return;
-
-	pTimingApplication = new TimingApplication();
-	pTimingApplication->setXY(0, 0);
-	pTimingApplication->setVisible(false);
-
-	screen->addDrawable(*pTimingApplication);
-	pTimingApplication->initialize();
-}
 
 void AddCounter(CountingMode countingMode, uint64_t seconds){
 	if (nCounterItems == 20)
@@ -224,7 +214,9 @@ void CountersRemoveAll(){
 
 void RefreshTimerCounter(){
 	RefreshCounting();
+	stateBlink = !stateBlink;
 }
+
 
 void RefreshRunExt(){
 	/* Refreshing TextArea Counting */

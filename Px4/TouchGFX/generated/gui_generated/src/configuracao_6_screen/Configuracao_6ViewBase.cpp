@@ -14,47 +14,117 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
     numKeyboardContainer1HideKeypadTriggerCallback(this, &Configuracao_6ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler)
 {
 
+    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
+
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
     boxFundo.setPosition(0, 0, 480, 272);
     boxFundo.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 
-    boxVerde4.setPosition(72, 117, 66, 29);
+    boxVerde4.setPosition(49, 141, 66, 29);
     boxVerde4.setColor(touchgfx::Color::getColorFromRGB(125, 0, 255));
 
-    boxVerde3.setPosition(72, 83, 66, 29);
+    boxVerde3.setPosition(49, 173, 66, 29);
     boxVerde3.setColor(touchgfx::Color::getColorFromRGB(125, 0, 255));
 
-    boxVerde2.setPosition(72, 49, 66, 29);
+    boxVerde2.setPosition(47, 93, 66, 29);
     boxVerde2.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
 
-    textAreaLabel1.setXY(151, 16);
+    textAreaSubTitulo_1.setXY(167, 209);
+    textAreaSubTitulo_1.setColor(touchgfx::Color::getColorFromRGB(0, 128, 0));
+    textAreaSubTitulo_1.setLinespacing(0);
+    textAreaSubTitulo_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID5460));
+
+    line1_2.setPosition(46, 213, 121, 15);
+    line1_2Painter.setColor(touchgfx::Color::getColorFromRGB(130, 224, 130));
+    line1_2.setPainter(line1_2Painter);
+    line1_2.setStart(5, 5);
+    line1_2.setEnd(112, 5);
+    line1_2.setLineWidth(4);
+    line1_2.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    line1_1_1.setPosition(314, 212, 119, 16);
+    line1_1_1Painter.setColor(touchgfx::Color::getColorFromRGB(130, 224, 130));
+    line1_1_1.setPainter(line1_1_1Painter);
+    line1_1_1.setStart(6, 5);
+    line1_1_1.setEnd(112, 5);
+    line1_1_1.setLineWidth(4);
+    line1_1_1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    textAreaSubTitulo_1_1.setXY(208, 3);
+    textAreaSubTitulo_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 128, 0));
+    textAreaSubTitulo_1_1.setLinespacing(0);
+    textAreaSubTitulo_1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID5461));
+
+    line1_2_1.setPosition(46, 7, 162, 15);
+    line1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(130, 224, 130));
+    line1_2_1.setPainter(line1_2_1Painter);
+    line1_2_1.setStart(5, 5);
+    line1_2_1.setEnd(150, 5);
+    line1_2_1.setLineWidth(4);
+    line1_2_1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    line1_1_1_1.setPosition(277, 6, 158, 16);
+    line1_1_1_1Painter.setColor(touchgfx::Color::getColorFromRGB(130, 224, 130));
+    line1_1_1_1.setPainter(line1_1_1_1Painter);
+    line1_1_1_1.setStart(6, 5);
+    line1_1_1_1.setEnd(149, 5);
+    line1_1_1_1.setLineWidth(4);
+    line1_1_1_1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    textAreaSubTitulo_2.setXY(191, 120);
+    textAreaSubTitulo_2.setColor(touchgfx::Color::getColorFromRGB(125, 0, 255));
+    textAreaSubTitulo_2.setLinespacing(0);
+    textAreaSubTitulo_2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID5462));
+
+    line1_3.setPosition(46, 125, 145, 15);
+    line1_3Painter.setColor(touchgfx::Color::getColorFromRGB(191, 157, 227));
+    line1_3.setPainter(line1_3Painter);
+    line1_3.setStart(5, 5);
+    line1_3.setEnd(134, 5);
+    line1_3.setLineWidth(4);
+    line1_3.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    line1_1_2.setPosition(292, 124, 143, 16);
+    line1_1_2Painter.setColor(touchgfx::Color::getColorFromRGB(191, 157, 227));
+    line1_1_2.setPainter(line1_1_2Painter);
+    line1_1_2.setStart(5, 5);
+    line1_1_2.setEnd(133, 5);
+    line1_1_2.setLineWidth(4);
+    line1_1_2.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    textArea1.setXY(295, 142);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID5463));
+
+    textAreaLabel1.setXY(123, 63);
     textAreaLabel1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaLabel1.setLinespacing(0);
     textAreaLabel1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3755));
 
-    textAreaLabel2.setXY(151, 50);
+    textAreaLabel2.setXY(123, 93);
     textAreaLabel2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaLabel2.setLinespacing(0);
     textAreaLabel2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3756));
 
-    textAreaLabel3.setXY(151, 84);
+    textAreaLabel3.setXY(127, 178);
     textAreaLabel3.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaLabel3.setLinespacing(0);
     textAreaLabel3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3757));
 
-    textAreaLabel4.setXY(151, 118);
+    textAreaLabel4.setXY(127, 146);
     textAreaLabel4.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaLabel4.setLinespacing(0);
     textAreaLabel4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3758));
 
-    textAreaLabel6.setXY(151, 193);
+    textAreaLabel6.setXY(127, 234);
     textAreaLabel6.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaLabel6.setLinespacing(0);
     textAreaLabel6.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3759));
 
-    textAreaLabel7.setXY(151, 165);
+    textAreaLabel7.setXY(127, 33);
     textAreaLabel7.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaLabel7.setLinespacing(0);
     textAreaLabel7.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3760));
@@ -71,33 +141,33 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
     buttonConfiguracao5.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR2_ID), touchgfx::Bitmap(BITMAP_VOLTAR2_ID));
     buttonConfiguracao5.setAction(buttonCallback);
 
-    toggleButtonDegeloProcessoAutomatico.setXY(72, 193);
+    toggleButtonDegeloProcessoAutomatico.setXY(49, 228);
     toggleButtonDegeloProcessoAutomatico.setBitmaps(touchgfx::Bitmap(BITMAP_A3_ID), touchgfx::Bitmap(BITMAP_A4_ID));
     toggleButtonDegeloProcessoAutomatico.setAction(buttonCallback);
 
-    toggleButton14102650.setXY(72, 156);
+    toggleButton14102650.setXY(48, 22);
     toggleButton14102650.setBitmaps(touchgfx::Bitmap(BITMAP_A5_ID), touchgfx::Bitmap(BITMAP_A6_ID));
     toggleButton14102650.setAction(buttonCallback);
 
-    toggleButtonDegeloPortaAberta.setXY(70, 11);
+    toggleButtonDegeloPortaAberta.setXY(45, 55);
     toggleButtonDegeloPortaAberta.setBitmaps(touchgfx::Bitmap(BITMAP_B3_ID), touchgfx::Bitmap(BITMAP_B4_ID));
     toggleButtonDegeloPortaAberta.setAction(buttonCallback);
 
-    textArea1410294.setPosition(66, 117, 78, 29);
+    textArea1410294.setPosition(49, 141, 66, 29);
     textArea1410294.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1410294.setLinespacing(0);
     Unicode::snprintf(textArea1410294Buffer, TEXTAREA1410294_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3762).getText());
     textArea1410294.setWildcard(textArea1410294Buffer);
     textArea1410294.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3761));
 
-    textArea1410295.setPosition(66, 83, 78, 29);
+    textArea1410295.setPosition(49, 173, 66, 29);
     textArea1410295.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1410295.setLinespacing(0);
     Unicode::snprintf(textArea1410295Buffer, TEXTAREA1410295_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3764).getText());
     textArea1410295.setWildcard(textArea1410295Buffer);
     textArea1410295.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3763));
 
-    textArea1410279.setPosition(66, 49, 78, 29);
+    textArea1410279.setPosition(47, 93, 66, 29);
     textArea1410279.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1410279.setLinespacing(0);
     Unicode::snprintf(textArea1410279Buffer, TEXTAREA1410279_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3766).getText());
@@ -107,21 +177,21 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
     flexButton1410294.setBoxWithBorderPosition(0, 0, 66, 29);
     flexButton1410294.setBorderSize(5);
     flexButton1410294.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1410294.setPosition(72, 117, 66, 29);
+    flexButton1410294.setPosition(49, 141, 66, 29);
     flexButton1410294.setAlpha(0);
     flexButton1410294.setAction(flexButtonCallback);
 
     flexButton1410295.setBoxWithBorderPosition(0, 0, 66, 28);
     flexButton1410295.setBorderSize(5);
     flexButton1410295.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1410295.setPosition(72, 84, 66, 28);
+    flexButton1410295.setPosition(49, 174, 66, 28);
     flexButton1410295.setAlpha(0);
     flexButton1410295.setAction(flexButtonCallback);
 
     flexButton1410279.setBoxWithBorderPosition(0, 0, 66, 28);
     flexButton1410279.setBorderSize(5);
     flexButton1410279.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1410279.setPosition(72, 50, 66, 28);
+    flexButton1410279.setPosition(46, 93, 66, 28);
     flexButton1410279.setAlpha(0);
     flexButton1410279.setAction(flexButtonCallback);
 
@@ -131,24 +201,23 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4158).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4157));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
     add(boxVerde4);
     add(boxVerde3);
     add(boxVerde2);
+    add(textAreaSubTitulo_1);
+    add(line1_2);
+    add(line1_1_1);
+    add(textAreaSubTitulo_1_1);
+    add(line1_2_1);
+    add(line1_1_1_1);
+    add(textAreaSubTitulo_2);
+    add(line1_3);
+    add(line1_1_2);
+    add(textArea1);
     add(textAreaLabel1);
     add(textAreaLabel2);
     add(textAreaLabel3);
@@ -168,31 +237,26 @@ Configuracao_6ViewBase::Configuracao_6ViewBase() :
     add(flexButton1410295);
     add(flexButton1410279);
     add(numKeyboardContainer1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void Configuracao_6ViewBase::setupScreen()
 {
     numKeyboardContainer1.initialize();
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    W_HDW5000 = 42;
-    
     Clear();
     
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    ReadWriteModbus485(&textArea1410279, textArea1410279Buffer, 10279, 2, _DOUBLE_, REPEAT);
+    //ReadWriteModbus485(&textArea1410295, textArea1410295Buffer, 10295, 2, _DOUBLE_, REPEAT);
     
-    ReadWriteModbus485(&textArea1410279, textArea1410279Buffer, "10279", 2, _DOUBLE_, ONCE);
-    ReadWriteModbus485(&textArea1410295, textArea1410295Buffer, "10295", 2, _DOUBLE_, ONCE);
-    ReadWriteModbus485(&textArea1410294, textArea1410294Buffer, "10294", 0, _INT_, ONCE);
+    //ReadWriteModbus485(&textArea1410294, textArea1410294Buffer, 10294, 0, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(10265, REPEAT);
     
-    
-    ButtonModbus485(&toggleButton14102650, "102650", BITMAP_A5_ID, BITMAP_A6_ID);
-    
-    Update(&toggleButtonDegeloPortaAberta, degelo_porta_aberta);
-    Update(&toggleButtonDegeloProcessoAutomatico, degelo_processo_automatico);
+    Update(&toggleButtonDegeloPortaAberta,		degelo_porta_aberta);
+    Update(&toggleButtonDegeloProcessoAutomatico,	degelo_processo_automatico);
 
 }
 
@@ -230,28 +294,12 @@ void Configuracao_6ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
     SoundBuzzerOn(25);
 }
 
-void Configuracao_6ViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-}
-
 void Configuracao_6ViewBase::tearDownScreen()
 {
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-    ContainerClear(&numKeyboardContainer1);
 }
 
 void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -283,6 +331,7 @@ void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //When toggleButtonDegeloProcessoAutomatico clicked execute C++ code
         //Execute C++ code
         degelo_processo_automatico = toggleButtonDegeloProcessoAutomatico.getState();
+        WriteMemory(53, degelo_processo_automatico);
         SoundBuzzerOn(25);
     }
     else if (&src == &toggleButton14102650)
@@ -299,6 +348,7 @@ void Configuracao_6ViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //When toggleButtonDegeloPortaAberta clicked execute C++ code
         //Execute C++ code
         degelo_porta_aberta = toggleButtonDegeloPortaAberta.getState();
+        WriteMemory(52, degelo_porta_aberta);
         SoundBuzzerOn(25);
     }
 }
@@ -310,7 +360,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410294
         //When flexButton1410294 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _INT_, 0, 1);
+        AddNumKeyboardReferenceRS485(&textArea1410294, textArea1410294Buffer, 0.0, 9.0, _DOUBLE_, 0, 1, 10294);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -324,7 +374,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410295
         //When flexButton1410295 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 1);
+        AddNumKeyboardReferenceRS485(&textArea1410295, textArea1410295Buffer, 0.00, 99.59, _DOUBLE_, 2, 1, 10295);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 
@@ -338,7 +388,7 @@ void Configuracao_6ViewBase::flexButtonCallbackHandler(const touchgfx::AbstractB
         //ADDR1410279
         //When flexButton1410279 clicked execute C++ code
         //Execute C++ code
-        AddNumKeyboardReferenceRS485(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 1);
+        AddNumKeyboardReferenceRS485(&textArea1410279, textArea1410279Buffer, 0.00, 99.59, _DOUBLE_, 2, 1, 10279);
         ContainerVisibility(&numKeyboardContainer1, true);
         SoundBuzzerOn(25);
 

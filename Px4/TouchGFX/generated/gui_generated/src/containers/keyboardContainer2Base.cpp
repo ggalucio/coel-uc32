@@ -11,7 +11,8 @@
 keyboardContainer2Base::keyboardContainer2Base() :
     buttonCallback(this, &keyboardContainer2Base::buttonCallbackHandler),
     flexButtonCallback(this, &keyboardContainer2Base::flexButtonCallbackHandler),
-    HideKeyboardCallback(0)
+    HideKeyboardCallback(0),
+    EnterCallback(0)
 {
     setWidth(480);
     setHeight(272);
@@ -603,6 +604,11 @@ void keyboardContainer2Base::buttonCallbackHandler(const touchgfx::AbstractButto
         //When OkBtnPressed completed emit HideKeyboard callback
         //Emit callback
         emitHideKeyboardCallback();
+
+        //EmitEnter
+        //When OkBtnPressed completed execute C++ code
+        //Execute C++ code
+        if (!(this->isVisible())) emitEnterCallback();
     }
     else if (&src == &cancelBtn)
     {

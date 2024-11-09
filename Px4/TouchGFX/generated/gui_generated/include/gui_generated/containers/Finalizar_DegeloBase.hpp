@@ -18,6 +18,18 @@ public:
     virtual void initialize();
 
     /*
+     * Custom Trigger Callback Setters
+     */
+    void setCancelarProcessoCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->cancelarProcessoCallback = &callback;
+    }
+    void setNaoCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->naoCallback = &callback;
+    }
+
+    /*
      * Custom Actions
      */
     virtual void init();
@@ -25,6 +37,24 @@ public:
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
+    }
+
+    /*
+     * Custom Trigger Emitters
+     */
+    virtual void emitCancelarProcessoCallback()
+    {
+        if (cancelarProcessoCallback && cancelarProcessoCallback->isValid())
+        {
+            this->cancelarProcessoCallback->execute();
+        }
+    }
+    virtual void emitNaoCallback()
+    {
+        if (naoCallback && naoCallback->isValid())
+        {
+            this->naoCallback->execute();
+        }
     }
 
     /*
@@ -37,6 +67,22 @@ protected:
     touchgfx::TextArea textAreaMensagem;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Finalizar_DegeloBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Custom Trigger Callback Declarations
+     */
+    touchgfx::GenericCallback<>* cancelarProcessoCallback;
+    touchgfx::GenericCallback<>* naoCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

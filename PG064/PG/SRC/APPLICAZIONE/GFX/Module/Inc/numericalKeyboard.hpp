@@ -22,5 +22,6 @@ void 	RemoveNumericalKeyboard();
 double  GetNumericalKeyboardValue(touchgfx::TextArea **area, touchgfx::Unicode::UnicodeChar** buff, DataType* dataType,  uint8_t* decimal, uint8_t* update, void (**pUpdateModbus)(uint16_t address, double value, uint8_t dataType), uint16_t* address);
 uint8_t CredentialSuccess();
 
+void	SetAccessKey(uint16_t key);
 
 #endif /* MODULES_NUMERICALKEYBOARD_NUMERICALKEYBOARD_HPP_ */

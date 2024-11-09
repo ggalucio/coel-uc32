@@ -15,6 +15,8 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <gui/containers/CANCELAR_PROCESSO.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class Resfriar_SONDAViewBase : public touchgfx::View<Resfriar_SONDAPresenter>
 {
@@ -26,9 +28,7 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -70,8 +70,9 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaTimerCongelarDecorridoCount;
     touchgfx::TextAreaWithOneWildcard textAreaSpResfHardEspetoDisplay;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
+    Timer timerCycle1s;
+    Timer timerCycle10;
 
     /*
      * Wildcard Buffers
@@ -90,8 +91,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaTimerCongelarDecorridoCountBuffer[TEXTAREATIMERCONGELARDECORRIDOCOUNT_SIZE];
     static const uint16_t TEXTAREASPRESFHARDESPETODISPLAY_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpResfHardEspetoDisplayBuffer[TEXTAREASPRESFHARDESPETODISPLAY_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -101,6 +100,8 @@ private:
     touchgfx::Callback<Resfriar_SONDAViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Resfriar_SONDAViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
     touchgfx::Callback<Resfriar_SONDAViewBase> cANCELAR_PROCESSO1NaoCallback;
+    touchgfx::Callback<Resfriar_SONDAViewBase> timerCycle1sTickCallback;
+    touchgfx::Callback<Resfriar_SONDAViewBase> timerCycle10TickCallback;
 
     /*
      * Callback Handler Declarations
@@ -108,6 +109,8 @@ private:
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
     void cANCELAR_PROCESSO1NaoCallbackHandler();
+    void timerCycle1sTickCallbackHandler();
+    void timerCycle10TickCallbackHandler();
 
 };
 

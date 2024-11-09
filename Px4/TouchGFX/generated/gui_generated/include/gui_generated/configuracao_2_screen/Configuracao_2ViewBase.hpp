@@ -9,11 +9,13 @@
 #include <gui/configuracao_2_screen/Configuracao_2Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <gui/containers/Background.hpp>
 
 class Configuracao_2ViewBase : public touchgfx::View<Configuracao_2Presenter>
 {
@@ -25,7 +27,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void afterTransition();
 
@@ -46,6 +47,16 @@ protected:
     touchgfx::Box boxVerde3;
     touchgfx::Box boxVerde2;
     touchgfx::Box boxVerde;
+    touchgfx::TextArea textAreaSubTitulo;
+    touchgfx::Line line1;
+    touchgfx::PainterRGB565 line1Painter;
+    touchgfx::Line line1_1;
+    touchgfx::PainterRGB565 line1_1Painter;
+    touchgfx::TextArea textAreaSubTitulo_1;
+    touchgfx::Line line1_2;
+    touchgfx::PainterRGB565 line1_2Painter;
+    touchgfx::Line line1_2_1;
+    touchgfx::PainterRGB565 line1_2_1Painter;
     touchgfx::TextArea textAreaLabel1;
     touchgfx::TextArea textAreaLabel2;
     touchgfx::TextArea textAreaLabel3;
@@ -71,8 +82,7 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonDiferencialConservarCongelar;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSpConservarCongelar;
     numKeyboardContainer numKeyboardContainer1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
 
     /*
      * Wildcard Buffers
@@ -91,8 +101,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaDiferencialConservarCongelarBuffer[TEXTAREADIFERENCIALCONSERVARCONGELAR_SIZE];
     static const uint16_t TEXTAREASPCONSERVARCONGELAR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaSpConservarCongelarBuffer[TEXTAREASPCONSERVARCONGELAR_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -104,7 +112,6 @@ private:
     touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1OutOfRangeCallback;
     touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1ValidRangeCallback;
     touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
-    touchgfx::Callback<Configuracao_2ViewBase> numKeyboardContainer1EnterCallback;
 
     /*
      * Callback Handler Declarations
@@ -114,8 +121,12 @@ private:
     void numKeyboardContainer1OutOfRangeCallbackHandler();
     void numKeyboardContainer1ValidRangeCallbackHandler();
     void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
-    void numKeyboardContainer1EnterCallbackHandler();
 
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 7200;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // CONFIGURACAO_2VIEWBASE_HPP

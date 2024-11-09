@@ -9,7 +9,9 @@
 Congelar_SONDAViewBase::Congelar_SONDAViewBase() :
     buttonCallback(this, &Congelar_SONDAViewBase::buttonCallbackHandler),
     cANCELAR_PROCESSO1CancelarProcessoCallback(this, &Congelar_SONDAViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler),
-    cANCELAR_PROCESSO1NaoCallback(this, &Congelar_SONDAViewBase::cANCELAR_PROCESSO1NaoCallbackHandler)
+    cANCELAR_PROCESSO1NaoCallback(this, &Congelar_SONDAViewBase::cANCELAR_PROCESSO1NaoCallbackHandler),
+    timerCycle1sTickCallback(this, &Congelar_SONDAViewBase::timerCycle1sTickCallbackHandler),
+    timerCycle10TickCallback(this, &Congelar_SONDAViewBase::timerCycle10TickCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -23,6 +25,10 @@ Congelar_SONDAViewBase::Congelar_SONDAViewBase() :
 
     boxFundoAzul.setPosition(0, 0, 480, 53);
     boxFundoAzul.setColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
+
+    boxFlagProcessoAndamento.setPosition(5, 64, 392, 196);
+    boxFlagProcessoAndamento.setVisible(false);
+    boxFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
 
     boxWithBorderBox3.setPosition(66, 133, 324, 57);
     boxWithBorderBox3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -151,23 +157,21 @@ Congelar_SONDAViewBase::Congelar_SONDAViewBase() :
     cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
     cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+    background1.setXY(0, 0);
 
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4108).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4107));
+    timerCycle1s.setXY(0, 0);
+    timerCycle1s.setVisible(false);
+    timerCycle1s.setTickCallback(timerCycle1sTickCallback);
+
+    timerCycle10.setXY(0, 0);
+    timerCycle10.setVisible(false);
+    timerCycle10.setTickCallback(timerCycle10TickCallback);
 
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
     add(boxFundoAzul);
+    add(boxFlagProcessoAndamento);
     add(boxWithBorderBox3);
     add(boxWithBorderBox2);
     add(boxWithBorderBox1);
@@ -193,37 +197,35 @@ Congelar_SONDAViewBase::Congelar_SONDAViewBase() :
     add(textAreaTimerCongelarDecorridoCount);
     add(textAreaCongelarSondaSp);
     add(cANCELAR_PROCESSO1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
+    add(timerCycle1s);
+    add(timerCycle10);
 }
 
 void Congelar_SONDAViewBase::setupScreen()
 {
     cANCELAR_PROCESSO1.initialize();
+    background1.initialize();
+    timerCycle1s.initialize();
+    timerCycle10.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 2; 
+    flag_recuperar_leitura_begin = false;
     
-    // Clear();
+    ReadWriteModbus485(512, 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(515, 1, _DOUBLE_, REPEAT);
     
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    ReadWriteModbus485(&textArea14515, textArea14515Buffer, "515", 1, _DOUBLE_, REPEAT);
-    ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _DOUBLE_, REPEAT);
-    
-    // Update(&textArea14515, textArea14515Buffer, 0, _DOUBLE_, 1);
-    Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, 0, _DOUBLE_, 1);
-    // Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
-    
-    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);
-    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
-    
-    Update(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, 0, _INT_, 0);
-    
+    Update(&textAreaTempoEstimadoCongelarSonda, textAreaTempoEstimadoCongelarSondaBuffer, Tempo_estimado_Congelar_SONDA, _INT_, 0);
+    Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, CONGELAR_SONDA_SP / 10.0, _DOUBLE_, 1);
     Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
-    countCycleBlink = 0;
+    Update(&toggleButtonFlagConservarSN, flag_Conservar_S_N);
+    
+    timerCycle1s.setWaitTime(1000);
+    timerCycle1s.start();
+    
+    timerCycle10.setWaitTime(100);
+    timerCycle10.start();
 
 }
 
@@ -238,10 +240,10 @@ void Congelar_SONDAViewBase::afterTransition()
 
 void Congelar_SONDAViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
 {
-    //CancelarProcesso
-    //When cANCELAR_PROCESSO1 cancelarProcesso change screen to Congelar
-    //Go to Congelar with no screen transition
-    application().gotoCongelarScreenNoTransition();
+    //CancelarProcessoSim
+    //When cANCELAR_PROCESSO1 cancelarProcesso execute C++ code
+    //Execute C++ code
+    cancelar_processo_SIM = true;
 }
 
 void Congelar_SONDAViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
@@ -253,26 +255,42 @@ void Congelar_SONDAViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
     SoundBuzzerOn(25);
 }
 
-void Congelar_SONDAViewBase::handleTickEvent()
+void Congelar_SONDAViewBase::timerCycle1sTickCallbackHandler()
 {
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
+    //Cycle_1s
+    //When timerCycle1s tick execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-    
-    if (countCycleBlink > 1000)
+    VisibilityTextArea(&textAreaFlagProcessoAndamento, !flag_Processo_ANDAMENTO || !textAreaFlagProcessoAndamento.isVisible());
+}
+
+void Congelar_SONDAViewBase::timerCycle10TickCallbackHandler()
+{
+    //Cycle_100ms
+    //When timerCycle10 tick execute C++ code
+    //Execute C++ code
+    if (flag_recuperar_leitura_begin)
     {
-    	countCycleBlink = 0;
-    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    	ReadWriteModbus485(512, 1, _DOUBLE_, REPEAT);
+    	ReadWriteModbus485(515, 1, _DOUBLE_, REPEAT);
+    	Wait(50);
+    	
+    	flag_recuperar_leitura_begin = false;
     }
+    else
+    {
+    	VisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);
     
-    countCycleBlink += 16;
+    	Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, flag_Processo_ANDAMENTO ? (char*)"OPERANDO..." : (char*)"Finalizado!", 20);
+    	Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
+    	Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
+    	Update(&textAreaCongelarSondaSp, textAreaCongelarSondaSpBuffer, CONGELAR_SONDA_SP / 10.0, _DOUBLE_, 1);	
+    
+    	W_1_4512 = 10.0 * ReadBufferModbus485(512);	// Temperatura interna.
+    	W_1_4515 = 10.0 * ReadBufferModbus485(515);	// Temperatura de produto.
+    
+    	Update(&textArea14512, textArea14512Buffer, W_1_4512 / 10.0, _DOUBLE_, 1);
+    	Update(&textArea14515, textArea14515Buffer, W_1_4515 / 10.0, _DOUBLE_, 1);
+    }
 }
 
 void Congelar_SONDAViewBase::tearDownScreen()
@@ -281,8 +299,6 @@ void Congelar_SONDAViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-    ContainerClear(&cANCELAR_PROCESSO1);
 }
 
 void Congelar_SONDAViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -300,6 +316,7 @@ void Congelar_SONDAViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //CSV
         //When toggleButtonFlagConservarSN clicked execute C++ code
         //Execute C++ code
+        flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();
         SoundBuzzerOn(25);
     }
 }

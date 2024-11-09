@@ -36,6 +36,7 @@ CongelarViewBase::CongelarViewBase() :
     radioButtonStatusTeclaCongela1.setDeselectionEnabled(false);
 
     buttonFlagCongelarSonda.setXY(406, 208);
+    buttonFlagCongelarSonda.setVisible(false);
     buttonFlagCongelarSonda.setBitmaps(touchgfx::Bitmap(BITMAP_AVANCE_ID), touchgfx::Bitmap(BITMAP_AVANCEON_ID));
     buttonFlagCongelarSonda.setAction(buttonCallback);
 
@@ -43,18 +44,7 @@ CongelarViewBase::CongelarViewBase() :
     buttonTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonTelaInicial.setAction(buttonCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4106).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4105));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -64,8 +54,7 @@ CongelarViewBase::CongelarViewBase() :
     add(radioButtonStatusTeclaCongela1);
     add(buttonFlagCongelarSonda);
     add(buttonTelaInicial);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela0);
     radioButtonGroup1.add(radioButtonStatusTeclaCongela1);
     radioButtonGroup1.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
@@ -73,14 +62,16 @@ CongelarViewBase::CongelarViewBase() :
 
 void CongelarViewBase::setupScreen()
 {
-
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    Clear();
-    AddbackgroundContainer(this);
-    W_HDW5000 = 1;
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    WriteModbus485(10282, 1);
+    WriteModbus485(10242, 1);
+    WriteModbus485(645, 1);
+    
+    if (Status_tecla_Congela == 1) Update(&radioButtonStatusTeclaCongela0, true);
+    if (Status_tecla_Congela == 2) Update(&radioButtonStatusTeclaCongela1, true);
 
 }
 
@@ -90,22 +81,11 @@ void CongelarViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    SoundBuzzerOn(25);
-}
-
-void CongelarViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
+    if (Status_tecla_Congela != 1 && Status_tecla_Congela != 2)
+    {
+    	ButtonVisibility(&buttonFlagCongelarSonda, false);
+    	SoundBuzzerOn(25);
     }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
 }
 
 void CongelarViewBase::tearDownScreen()
@@ -114,23 +94,6 @@ void CongelarViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void CongelarViewBase::goToCongelarSonda()
-{
-    //interactionGoToCongelarSonda
-    //When goToCongelarSonda is called change screen to Congelar_SONDA
-    //Go to Congelar_SONDA with no screen transition
-    application().gotoCongelar_SONDAScreenNoTransition();
-}
-
-void CongelarViewBase::goToCongelarSelectTempo()
-{
-    //interactionGoToCongelarSelectTempo
-    //When goToCongelarSelectTempo is called change screen to Congelar_select_TEMPO
-    //Go to Congelar_select_TEMPO with no screen transition
-    application().gotoCongelar_select_TEMPOScreenNoTransition();
 }
 
 void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -140,42 +103,7 @@ void CongelarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
         //Avancar
         //When buttonFlagCongelarSonda clicked execute C++ code
         //Execute C++ code
-        // MODO SONDA
-        
-        if (Status_tecla_Congela) { // if tela de Congelar SONDA
-        
-        
-        
-            UpdateModbus485( w_1_410242, SP_SONDA_CONGELAR_CAMARA, _INT2_);    //W_1_410242 = SP_SONDA_CONGELAR_CAMARA; // SP = SP_SONDA_CONGELAR_CAMARA
-            WriteModbus485(w_1_410242, 1);
-            Wait(100);
-        
-            UpdateModbus485( w_1_410282, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC
-            WriteModbus485(w_1_410282, 1);
-            Wait(100);
-            
-            //W_1_4645 = 1;                // Controlador em modo Controle
-            UpdateModbus485( w_1_4645, Diferencial_Congelar_tempo, _INT2_);    //W_1_410282 = Diferencial_Congelar_tempo; // Diferencial rd=3ºC
-            WriteModbus485(w_1_4645, 1);
-            Wait(100);
-        
-            Timer_Congelar_DECORRIDO_SP = 99999; // SP Timer- Inf
-        
-            Timer_Congelar_DECORRIDO_ON = 1; // START Timer Tempo_Congelar_DECORRIDO_ON
-            flag_Processo_ANDAMENTO = 1;     // Flag Processo_ANDAMENTO = TRUE
-        
-            Timer_delay_ON = true;          // Start Timer Delay
-        
-            // trocar a tela para a tela de Congelar SONDA
-            //W_HDW5000 = 2;               // Altera para tela de SONDA 
-            goToCongelarSonda();
-        
-        } else { // tela de Congelar SELECT TEMPO
-            flag_alarm_receita_vazia = false; // zera bit flag alarme de tempo Zero
-            // trocar a tela para a tela de Congelar SELECT TEMPO
-            // W_HDW5000 = 4;               // Tela Select Tempo
-            goToCongelarSelectTempo();
-        }
+        flag_congelar_SONDA = true;
     }
     else if (&src == &buttonTelaInicial)
     {
@@ -193,15 +121,17 @@ void CongelarViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abstra
         //ModoSonda
         //When radioButtonStatusTeclaCongela0 selected execute C++ code
         //Execute C++ code
+        ButtonVisibility(&buttonFlagCongelarSonda, true);
+        Status_tecla_Congela = 1;
         SoundBuzzerOn(25);
-        Status_tecla_Congela = true;
     }
     else if (&src == &radioButtonStatusTeclaCongela1)
     {
         //ModoTempo
         //When radioButtonStatusTeclaCongela1 selected execute C++ code
         //Execute C++ code
+        ButtonVisibility(&buttonFlagCongelarSonda, true);
+        Status_tecla_Congela = 2;
         SoundBuzzerOn(25);
-        Status_tecla_Congela = false;
     }
 }

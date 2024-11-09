@@ -8,19 +8,80 @@
 #include "AT_module_ext.hpp"
 #include "Module/modulePlusExt.hpp"
 
+#include <AT_module.hpp>
+
 #include <touchgfx/Color.hpp>
 #include <cstdio>
 #include <math.h>
 
+extern void ClearArray();
+
 void ClearOthers(){
+	ClearArray();
+
 	if (pClearItemsExt)
 		(*pClearItemsExt)();
 }
 
-void AddbackgroundContainer(touchgfx::Screen* screen){
-	if (pAddContainer)
-		(*pAddContainer)(screen);
+bool GetStateBlink(){
+	if (pStateBlink)
+		return (*pStateBlink)() != 0 ? true : false;
+
+	return false;
 }
+
+uint32_t refCountModel = 0;
+uint32_t countTickModel = 0;
+bool triggerCall = false;
+bool startTickCount = false;
+
+void ResetTickCount(uint32_t ms){
+	if(!startTickCount && ms > 0){
+		refCountModel = ms;
+		startTickCount = true;
+		triggerCall = false;
+	}
+}
+bool FireSingleCall(){
+	if (triggerCall){
+		triggerCall = false;
+		return true;
+	}
+	return false;
+}
+
+double max(double value, double maxValue){
+	return value > maxValue ? maxValue : value;
+}
+
+double min(double value, double minValue){
+	return value < minValue ? minValue : value;
+}
+
+double minmax(double value, double minValue, double maxValue){
+	return max(min(value, minValue), maxValue);
+}
+
+
+int32_t ConvertFromUint16(double value) {
+    uint16_t input = (uint16_t)value;
+    return input > 32768 ? (int32_t)input - 65536 : (int32_t)input;
+}
+
+uint16_t ConvertToUint16(double value){
+	int32_t input = (int32_t)value;
+	return input < 0 ? (uint16_t)(input + 65536) : (uint16_t)input;
+	return 0;
+}
+
+/************************************************ GRAPHIC ********************************************************************/
+
+void RefreshItem(touchgfx::Drawable* object){
+	if (object != NULL)
+		object->invalidate();
+}
+
+/**************************************************************************************************************************/
 
 /****************************************** DIGITAL CLOCK *****************************************************************/
 
@@ -76,8 +137,7 @@ void Update(touchgfx::DigitalClock* digitalClock, uint8_t hour, uint8_t minute, 
 }
 
 void RefreshDigitalClock(touchgfx::DigitalClock* digitalClock){
-	if (digitalClock)
-		digitalClock->invalidate();
+	RefreshItem(digitalClock);
 }
 
 void VisibilityDigitalClock(touchgfx::DigitalClock* digitalClock, bool visibility){
@@ -123,8 +183,7 @@ void SetRangeLineProgress(touchgfx::LineProgress* lineProgress, int minVal, int 
 }
 
 void RefreshLineProgress(touchgfx::LineProgress* lineProgress){
-	if (lineProgress)
-		lineProgress->invalidate();
+	RefreshItem(lineProgress);
 }
 
 void VisibilityLineProgress(touchgfx::LineProgress* lineProgress, bool visibility){
@@ -149,37 +208,28 @@ void Update(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer
 	}
 }
 
+void CopyTextArea(char* dst, touchgfx::Unicode::UnicodeChar* src, uint16_t dstSize){
+	if (pUnicodeCharToArrayChar)
+		(*pUnicodeCharToArrayChar)(src, dst, dstSize);
+}
+
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer,  uint16_t dstSize){
+	double value = 0.0;
 	if (pUnicodeCharToArrayChar){
 		if (pArrayCharToDouble){
-			char* p = new char[dstSize];
+			//char* p = new char[dstSize];
+			char p[dstSize];
 			if ((*pUnicodeCharToArrayChar)(buffer, p, dstSize) > 0){
-				return (*pArrayCharToDouble)(p);
+				value = (*pArrayCharToDouble)(p);
 			}
+			//delete p;
 		}
 	}
-	return 0;
+	return value;
 }
 
 double GetNumberTextArea(touchgfx::Unicode::UnicodeChar* buffer){
 	return GetNumberTextArea(buffer, 10);
-}
-
-double GetFormatToNegative(double value, uint8_t bits){
-	double maxRange = pow(2, bits);
-	return value > (maxRange / 20.0) ?  (10.0 * value - maxRange) / 10.0 : value;
-}
-
-bool SetFormatToNegative(touchgfx::Unicode::UnicodeChar* buffer, uint8_t bits){
-	double value = GetNumberTextArea(buffer);
-	if (value < 0.0){
-		double maxRange = pow(2, bits);
-		value = maxRange - 10 * abs(value);
-		touchgfx::Unicode::snprintf(buffer, 10, "%d", (int)value);
-		return true;
-	}
-
-	return true;
 }
 
 /*****************************************************************************************************************************/
@@ -237,6 +287,15 @@ void Update(touchgfx::ToggleButton* toggleButton, bool state){
 	}
 }
 
+void TouchButton(touchgfx::Button* button, bool enable){
+	if (button){
+		if (button->isTouchable() != enable){
+			button->setTouchable(enable);
+			button->invalidate();
+		}
+	}
+}
+
 /*****************************************************************************************************************************/
 
 /************************************************ BOX ************************************************************************/
@@ -279,6 +338,54 @@ void UpdateJobsOthers(){
 
 /*****************************************************************************************************************************/
 
+/************************************************ SRAM ***********************************************************************/
+
+void AddLocalNumberMemory(double* value){
+	if (pAddNumberMemory)
+		(*pAddNumberMemory)(value);
+}
+
+double ReadMemory(int id){
+	if (pReadMemory)
+		return (*pReadMemory)(id);
+
+	return 0.0;
+}
+
+bool GetBooleanMemory(int id){
+	return (int)(ReadMemory(id)) != 0 ? true : false;
+}
+
+void ReadDataMemory(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int id, uint8_t decimal){
+	Update(textArea, buffer, ReadMemory(id), _DOUBLE_, decimal);
+}
+
+void ReadDataMemory(char* dst, int id, int length){
+	if (pReadArraySRAM)
+		(*pReadArraySRAM)(id, dst, length);
+}
+
+void WriteMemory(int id, double value){
+	if (pWriteMemory)
+		(*pWriteMemory)(id, value);
+}
+
+void WriteMemory(int id, touchgfx::Unicode::UnicodeChar* buffer){
+	WriteMemory(id, GetNumberTextArea(buffer));
+}
+
+void WriteMemory(int id, char* src, int length){
+	if (pWriteArraySRAM)
+		(*pWriteArraySRAM)(id, src, length);
+}
+
+void ResetDataMemory(){
+	if (pResetMemory)
+		(*pResetMemory)();
+}
+
+/*****************************************************************************************************************************/
+
 /************************************************ IMAGE **********************************************************************/
 
 void VisibilityImage(touchgfx::Image* image, bool visibility){
@@ -293,7 +400,21 @@ void VisibilityImage(touchgfx::Image* image, bool visibility){
 /*****************************************************************************************************************************/
 
 void TickElapsedOthers(){
+	if (startTickCount){
+		if (refCountModel > 0){
+			if (countTickModel < refCountModel)
+				countTickModel += 16;
+			else{
+				countTickModel = 0;
+				startTickCount = false;
+				triggerCall = true;
+			}
+		}
+	}
+
 	if (pRefreshRunExt)
 		(*pRefreshRunExt)();
 }
+
+/*****************************************************************************************************************************/
 

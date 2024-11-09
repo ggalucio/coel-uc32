@@ -54,8 +54,30 @@
 #include <gui/receitas_2_screen/Receitas_2Presenter.hpp>
 #include <gui/receitas_3_screen/Receitas_3View.hpp>
 #include <gui/receitas_3_screen/Receitas_3Presenter.hpp>
-#include <gui/receitas_x_edit_screen/Receitas_X_EDITView.hpp>
-#include <gui/receitas_x_edit_screen/Receitas_X_EDITPresenter.hpp>
+#include <gui/receitas_1_edit_screen/Receitas_1_EDITView.hpp>
+#include <gui/receitas_1_edit_screen/Receitas_1_EDITPresenter.hpp>
+#include <gui/receitas_2_edit_screen/Receitas_2_EDITView.hpp>
+#include <gui/receitas_2_edit_screen/Receitas_2_EDITPresenter.hpp>
+#include <gui/receitas_3_edit_screen/Receitas_3_EDITView.hpp>
+#include <gui/receitas_3_edit_screen/Receitas_3_EDITPresenter.hpp>
+#include <gui/receitas_4_edit_screen/Receitas_4_EDITView.hpp>
+#include <gui/receitas_4_edit_screen/Receitas_4_EDITPresenter.hpp>
+#include <gui/receitas_5_edit_screen/Receitas_5_EDITView.hpp>
+#include <gui/receitas_5_edit_screen/Receitas_5_EDITPresenter.hpp>
+#include <gui/receitas_6_edit_screen/Receitas_6_EDITView.hpp>
+#include <gui/receitas_6_edit_screen/Receitas_6_EDITPresenter.hpp>
+#include <gui/receitas_7_edit_screen/Receitas_7_EDITView.hpp>
+#include <gui/receitas_7_edit_screen/Receitas_7_EDITPresenter.hpp>
+#include <gui/receitas_8_edit_screen/Receitas_8_EDITView.hpp>
+#include <gui/receitas_8_edit_screen/Receitas_8_EDITPresenter.hpp>
+#include <gui/receitas_9_edit_screen/Receitas_9_EDITView.hpp>
+#include <gui/receitas_9_edit_screen/Receitas_9_EDITPresenter.hpp>
+#include <gui/receitas_10_edit_screen/Receitas_10_EDITView.hpp>
+#include <gui/receitas_10_edit_screen/Receitas_10_EDITPresenter.hpp>
+#include <gui/receitas_11_edit_screen/Receitas_11_EDITView.hpp>
+#include <gui/receitas_11_edit_screen/Receitas_11_EDITPresenter.hpp>
+#include <gui/receitas_12_edit_screen/Receitas_12_EDITView.hpp>
+#include <gui/receitas_12_edit_screen/Receitas_12_EDITPresenter.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmView.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmPresenter.hpp>
 #include <gui/configuracao_4_screen/Configuracao_4View.hpp>
@@ -80,6 +102,8 @@
 #include <gui/configuracao_7_screen/Configuracao_7Presenter.hpp>
 #include <gui/tela_preta_screen/TELA_PRETAView.hpp>
 #include <gui/tela_preta_screen/TELA_PRETAPresenter.hpp>
+#include <gui/monitormodbusscreen_screen/MonitorModbusScreenView.hpp>
+#include <gui/monitormodbusscreen_screen/MonitorModbusScreenPresenter.hpp>
 
 
 /**
@@ -123,7 +147,18 @@ public:
             touchgfx::meta::TypeList< Receitas_1View,
             touchgfx::meta::TypeList< Receitas_2View,
             touchgfx::meta::TypeList< Receitas_3View,
-            touchgfx::meta::TypeList< Receitas_X_EDITView,
+            touchgfx::meta::TypeList< Receitas_1_EDITView,
+            touchgfx::meta::TypeList< Receitas_2_EDITView,
+            touchgfx::meta::TypeList< Receitas_3_EDITView,
+            touchgfx::meta::TypeList< Receitas_4_EDITView,
+            touchgfx::meta::TypeList< Receitas_5_EDITView,
+            touchgfx::meta::TypeList< Receitas_6_EDITView,
+            touchgfx::meta::TypeList< Receitas_7_EDITView,
+            touchgfx::meta::TypeList< Receitas_8_EDITView,
+            touchgfx::meta::TypeList< Receitas_9_EDITView,
+            touchgfx::meta::TypeList< Receitas_10_EDITView,
+            touchgfx::meta::TypeList< Receitas_11_EDITView,
+            touchgfx::meta::TypeList< Receitas_12_EDITView,
             touchgfx::meta::TypeList< Receita_confirmView,
             touchgfx::meta::TypeList< Configuracao_4View,
             touchgfx::meta::TypeList< refine_senha_secretoView,
@@ -136,7 +171,8 @@ public:
             touchgfx::meta::TypeList< HIGIENEView,
             touchgfx::meta::TypeList< Configuracao_7View,
             touchgfx::meta::TypeList< TELA_PRETAView,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+            touchgfx::meta::TypeList< MonitorModbusScreenView,
+            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -169,7 +205,18 @@ public:
             touchgfx::meta::TypeList< Receitas_1Presenter,
             touchgfx::meta::TypeList< Receitas_2Presenter,
             touchgfx::meta::TypeList< Receitas_3Presenter,
-            touchgfx::meta::TypeList< Receitas_X_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_1_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_2_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_3_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_4_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_5_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_6_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_7_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_8_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_9_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_10_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_11_EDITPresenter,
+            touchgfx::meta::TypeList< Receitas_12_EDITPresenter,
             touchgfx::meta::TypeList< Receita_confirmPresenter,
             touchgfx::meta::TypeList< Configuracao_4Presenter,
             touchgfx::meta::TypeList< refine_senha_secretoPresenter,
@@ -182,7 +229,8 @@ public:
             touchgfx::meta::TypeList< HIGIENEPresenter,
             touchgfx::meta::TypeList< Configuracao_7Presenter,
             touchgfx::meta::TypeList< TELA_PRETAPresenter,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+            touchgfx::meta::TypeList< MonitorModbusScreenPresenter,
+            touchgfx::meta::Nil > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**

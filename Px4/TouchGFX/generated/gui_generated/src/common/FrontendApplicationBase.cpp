@@ -51,8 +51,30 @@
 #include <gui/receitas_2_screen/Receitas_2Presenter.hpp>
 #include <gui/receitas_3_screen/Receitas_3View.hpp>
 #include <gui/receitas_3_screen/Receitas_3Presenter.hpp>
-#include <gui/receitas_x_edit_screen/Receitas_X_EDITView.hpp>
-#include <gui/receitas_x_edit_screen/Receitas_X_EDITPresenter.hpp>
+#include <gui/receitas_1_edit_screen/Receitas_1_EDITView.hpp>
+#include <gui/receitas_1_edit_screen/Receitas_1_EDITPresenter.hpp>
+#include <gui/receitas_2_edit_screen/Receitas_2_EDITView.hpp>
+#include <gui/receitas_2_edit_screen/Receitas_2_EDITPresenter.hpp>
+#include <gui/receitas_3_edit_screen/Receitas_3_EDITView.hpp>
+#include <gui/receitas_3_edit_screen/Receitas_3_EDITPresenter.hpp>
+#include <gui/receitas_4_edit_screen/Receitas_4_EDITView.hpp>
+#include <gui/receitas_4_edit_screen/Receitas_4_EDITPresenter.hpp>
+#include <gui/receitas_5_edit_screen/Receitas_5_EDITView.hpp>
+#include <gui/receitas_5_edit_screen/Receitas_5_EDITPresenter.hpp>
+#include <gui/receitas_6_edit_screen/Receitas_6_EDITView.hpp>
+#include <gui/receitas_6_edit_screen/Receitas_6_EDITPresenter.hpp>
+#include <gui/receitas_7_edit_screen/Receitas_7_EDITView.hpp>
+#include <gui/receitas_7_edit_screen/Receitas_7_EDITPresenter.hpp>
+#include <gui/receitas_8_edit_screen/Receitas_8_EDITView.hpp>
+#include <gui/receitas_8_edit_screen/Receitas_8_EDITPresenter.hpp>
+#include <gui/receitas_9_edit_screen/Receitas_9_EDITView.hpp>
+#include <gui/receitas_9_edit_screen/Receitas_9_EDITPresenter.hpp>
+#include <gui/receitas_10_edit_screen/Receitas_10_EDITView.hpp>
+#include <gui/receitas_10_edit_screen/Receitas_10_EDITPresenter.hpp>
+#include <gui/receitas_11_edit_screen/Receitas_11_EDITView.hpp>
+#include <gui/receitas_11_edit_screen/Receitas_11_EDITPresenter.hpp>
+#include <gui/receitas_12_edit_screen/Receitas_12_EDITView.hpp>
+#include <gui/receitas_12_edit_screen/Receitas_12_EDITPresenter.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmView.hpp>
 #include <gui/receita_confirm_screen/Receita_confirmPresenter.hpp>
 #include <gui/configuracao_4_screen/Configuracao_4View.hpp>
@@ -77,6 +99,8 @@
 #include <gui/configuracao_7_screen/Configuracao_7Presenter.hpp>
 #include <gui/tela_preta_screen/TELA_PRETAView.hpp>
 #include <gui/tela_preta_screen/TELA_PRETAPresenter.hpp>
+#include <gui/monitormodbusscreen_screen/MonitorModbusScreenView.hpp>
+#include <gui/monitormodbusscreen_screen/MonitorModbusScreenPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -368,17 +392,160 @@ void FrontendApplicationBase::gotoReceitas_3ScreenNoTransitionImpl()
     touchgfx::makeTransition<Receitas_3View, Receitas_3Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// Receitas_X_EDIT
+// Receitas_1_EDIT
 
-void FrontendApplicationBase::gotoReceitas_X_EDITScreenNoTransition()
+void FrontendApplicationBase::gotoReceitas_1_EDITScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_X_EDITScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_1_EDITScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoReceitas_X_EDITScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoReceitas_1_EDITScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<Receitas_X_EDITView, Receitas_X_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Receitas_1_EDITView, Receitas_1_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_2_EDIT
+
+void FrontendApplicationBase::gotoReceitas_2_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_2_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_2_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_2_EDITView, Receitas_2_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_3_EDIT
+
+void FrontendApplicationBase::gotoReceitas_3_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_3_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_3_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_3_EDITView, Receitas_3_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_4_EDIT
+
+void FrontendApplicationBase::gotoReceitas_4_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_4_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_4_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_4_EDITView, Receitas_4_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_5_EDIT
+
+void FrontendApplicationBase::gotoReceitas_5_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_5_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_5_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_5_EDITView, Receitas_5_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_6_EDIT
+
+void FrontendApplicationBase::gotoReceitas_6_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_6_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_6_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_6_EDITView, Receitas_6_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_7_EDIT
+
+void FrontendApplicationBase::gotoReceitas_7_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_7_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_7_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_7_EDITView, Receitas_7_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_8_EDIT
+
+void FrontendApplicationBase::gotoReceitas_8_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_8_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_8_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_8_EDITView, Receitas_8_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_9_EDIT
+
+void FrontendApplicationBase::gotoReceitas_9_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_9_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_9_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_9_EDITView, Receitas_9_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_10_EDIT
+
+void FrontendApplicationBase::gotoReceitas_10_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_10_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_10_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_10_EDITView, Receitas_10_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_11_EDIT
+
+void FrontendApplicationBase::gotoReceitas_11_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_11_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_11_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_11_EDITView, Receitas_11_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receitas_12_EDIT
+
+void FrontendApplicationBase::gotoReceitas_12_EDITScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceitas_12_EDITScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceitas_12_EDITScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receitas_12_EDITView, Receitas_12_EDITPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Receita_confirm
@@ -407,6 +574,32 @@ void FrontendApplicationBase::gotoConfiguracao_4ScreenNoTransitionImpl()
     touchgfx::makeTransition<Configuracao_4View, Configuracao_4Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// refine_senha_secreto
+
+void FrontendApplicationBase::gotorefine_senha_secretoScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotorefine_senha_secretoScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotorefine_senha_secretoScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<refine_senha_secretoView, refine_senha_secretoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Alarme_externo
+
+void FrontendApplicationBase::gotoAlarme_externoScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoAlarme_externoScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoAlarme_externoScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Alarme_externoView, Alarme_externoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
 // Configuracao_5
 
 void FrontendApplicationBase::gotoConfiguracao_5ScreenNoTransition()
@@ -418,6 +611,19 @@ void FrontendApplicationBase::gotoConfiguracao_5ScreenNoTransition()
 void FrontendApplicationBase::gotoConfiguracao_5ScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Configuracao_5View, Configuracao_5Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Receita_Temperatura
+
+void FrontendApplicationBase::gotoReceita_TemperaturaScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoReceita_TemperaturaScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoReceita_TemperaturaScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<Receita_TemperaturaView, Receita_TemperaturaPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Configuracao_6
@@ -483,4 +689,17 @@ void FrontendApplicationBase::gotoConfiguracao_7ScreenNoTransition()
 void FrontendApplicationBase::gotoConfiguracao_7ScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Configuracao_7View, Configuracao_7Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// TELA_PRETA
+
+void FrontendApplicationBase::gotoTELA_PRETAScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoTELA_PRETAScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoTELA_PRETAScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<TELA_PRETAView, TELA_PRETAPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

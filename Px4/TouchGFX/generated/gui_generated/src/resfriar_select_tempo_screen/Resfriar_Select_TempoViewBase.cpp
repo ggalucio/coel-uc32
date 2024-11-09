@@ -7,7 +7,13 @@
 #include "BitmapDatabase.hpp"
 
 Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase() :
-    buttonCallback(this, &Resfriar_Select_TempoViewBase::buttonCallbackHandler)
+    buttonCallback(this, &Resfriar_Select_TempoViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Resfriar_Select_TempoViewBase::flexButtonCallbackHandler),
+    numKeyboardContainer1OutOfRangeCallback(this, &Resfriar_Select_TempoViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
+    numKeyboardContainer1ValidRangeCallback(this, &Resfriar_Select_TempoViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &Resfriar_Select_TempoViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler),
+    numKeyboardContainer1EnterCallback(this, &Resfriar_Select_TempoViewBase::numKeyboardContainer1EnterCallbackHandler),
+    timerCycle1sTickCallback(this, &Resfriar_Select_TempoViewBase::timerCycle1sTickCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -70,18 +76,25 @@ Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase() :
     buttonResfriar.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonResfriar.setAction(buttonCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+    flexButtonTempo.setBoxWithBorderPosition(0, 0, 166, 54);
+    flexButtonTempo.setBorderSize(5);
+    flexButtonTempo.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonTempo.setPosition(123, 128, 166, 54);
+    flexButtonTempo.setAlpha(0);
+    flexButtonTempo.setAction(flexButtonCallback);
 
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4126).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4125));
+    numKeyboardContainer1.setXY(0, 0);
+    numKeyboardContainer1.setVisible(false);
+    numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
+    numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
+    numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
+    numKeyboardContainer1.setEnterCallback(numKeyboardContainer1EnterCallback);
+
+    background1.setXY(0, 0);
+
+    timerCycle1s.setXY(0, 0);
+    timerCycle1s.setVisible(false);
+    timerCycle1s.setTickCallback(timerCycle1sTickCallback);
 
     add(__background);
     add(boxFundo);
@@ -96,28 +109,30 @@ Resfriar_Select_TempoViewBase::Resfriar_Select_TempoViewBase() :
     add(textAreaTempoZero);
     add(buttonFlagCongelarTempo);
     add(buttonResfriar);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(flexButtonTempo);
+    add(numKeyboardContainer1);
+    add(background1);
+    add(timerCycle1s);
 }
 
 void Resfriar_Select_TempoViewBase::setupScreen()
 {
-
+    numKeyboardContainer1.initialize();
+    background1.initialize();
+    timerCycle1s.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 12;
-    
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    WriteModbus485(10282, 1);
+    WriteModbus485(10242, 1);
+    WriteModbus485(645, 1);
     
     Update(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, Timer_SP_MINUTOS_Resfriar, _INT_, 0);
     Update(&toggleButtonFlagResfriarHardSoft, flag_Resfriar_HARD_SOFT);
-    
     VisibilityTextArea(&textAreaTempoZero, false);
-    countCycleBlink = 0;
+    
+    timerCycle1s.setWaitTime(1000);
+    timerCycle1s.start();
 
 }
 
@@ -130,28 +145,45 @@ void Resfriar_Select_TempoViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
-void Resfriar_Select_TempoViewBase::handleTickEvent()
+void Resfriar_Select_TempoViewBase::numKeyboardContainer1OutOfRangeCallbackHandler()
 {
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
+    //OutOfRangeFIred
+    //When numKeyboardContainer1 OutOfRange call OutOfRangeMsg on numKeyboardContainer1
+    //Call OutOfRangeMsg
+    numKeyboardContainer1.OutOfRangeMsg();
+}
+
+void Resfriar_Select_TempoViewBase::numKeyboardContainer1ValidRangeCallbackHandler()
+{
+    //InsideRangeFired
+    //When numKeyboardContainer1 ValidRange call InputValidRange on numKeyboardContainer1
+    //Call InputValidRange
+    numKeyboardContainer1.InputValidRange();
+}
+
+void Resfriar_Select_TempoViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler()
+{
+    //HideNumKeyboard
+    //When numKeyboardContainer1 HideKeypadTrigger execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-    
-    if (countCycleBlink > 1000)
-    {
-    	countCycleBlink = 0;
-    
-    	if (flag_alarm_receita_vazia)
-    		VisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());
-    }
-    
-    countCycleBlink += 16;
+    ContainerVisibility(&numKeyboardContainer1, false);
+    SoundBuzzerOn(25);
+}
+
+void Resfriar_Select_TempoViewBase::numKeyboardContainer1EnterCallbackHandler(double value)
+{
+    //EnterKeyboard
+    //When numKeyboardContainer1 Enter execute C++ code
+    //Execute C++ code
+    Timer_SP_MINUTOS_Resfriar = value;
+}
+
+void Resfriar_Select_TempoViewBase::timerCycle1sTickCallbackHandler()
+{
+    //Cycle_1s
+    //When timerCycle1s tick execute C++ code
+    //Execute C++ code
+    VisibilityTextArea(&textAreaTempoZero, flag_alarm_receita_vazia && !textAreaTempoZero.isVisible());
 }
 
 void Resfriar_Select_TempoViewBase::tearDownScreen()
@@ -160,15 +192,6 @@ void Resfriar_Select_TempoViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void Resfriar_Select_TempoViewBase::Resfriar_TEMPO()
-{
-    //ResfriarTEMPO
-    //When Resfriar_TEMPO is called change screen to Resfriar_TEMPO
-    //Go to Resfriar_TEMPO with no screen transition
-    application().gotoResfriar_TEMPOScreenNoTransition();
 }
 
 void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -204,64 +227,7 @@ void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //Avancar
         //When buttonFlagCongelarTempo clicked execute C++ code
         //Execute C++ code
-        if (Timer_SP_MINUTOS_Resfriar == 0)
-        {
-        	flag_alarm_receita_vazia = 1;						// flag alarm de timer em valor 0
-        
-        	isZeroValue = true;
-        	SoundBuzzerOn(25);
-        }
-        else
-        {
-        	if (flag_Resfriar_HARD_SOFT == 0)		// if SOFT
-        	{
-        		UpdateModbus485("10242", SP_SONDA_RESF_CAMARA, _INT_);
-        		WriteModbus485("10242", 1);
-        		Wait(50);
-        		
-        		SP_Resf_Hard_Interno_display = SP_Resfriar_Tempo_SOFT;
-        
-        		UpdateModbus485("10282", Diferencial_Resfriar_Tempo, _INT_);	// Diferencial rd
-        		WriteModbus485("10282", 1);
-        		Wait(50);
-        	}
-        	else	// if HARD
-        	{
-        		Hard_Resf_fase_numero = 1;						// Resfriamento por etapas - Etapa = 1
-        
-        		Dif_Resf_Hard_F1 = Diferencial_Resfriar_Tempo;
-        		Dif_Resf_Hard_F2 = Dif_Resf_Hard_F1;
-        
-        		UpdateModbus485("242", SP_Resf_Interno_F1, _INT_);
-        		WriteModbus485("242", 1);
-        		Wait(50);
-        
-        		UpdateModbus485("10282", Dif_Resf_Hard_F1, _INT_);		// Diferencial de controle para modo Delicado Sonda
-        		WriteModbus485("10282", 1);
-        		Wait(50);
-        
-        		SP_Resf_Hard_Interno_display = SP_Resf_Interno_F1;
-        						
-        		Preset_Resf_Tempo_F1 = Timer_SP_MINUTOS_Resfriar * 6;		// transforma Sp minutos em seg*10
-        		Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 * Porc_Resf_preset_tempo_F1F2;
-        		Preset_Resf_Tempo_F1 = Preset_Resf_Tempo_F1 / 10;
-        
-        		Preset_Resf_Tempo_F2 = Timer_SP_MINUTOS_Resfriar * 6 - Preset_Resf_Tempo_F1;
-        
-        		SP_Resf_Interno_F2 = SP_SONDA_RESF_CAMARA;
-        		xBeep_once = false;
-        	}
-        
-        	Timer_Congelar_DECORRIDO_SP = Timer_SP_MINUTOS_Resfriar * 6;	// TRansforma SP minutos em seg10
-        	UpdateModbus485("645", 1, _INT_);						//  Controlador em modo COntrole
-        	WriteModbus485("645", 1);
-        	Wait(50);
-        
-        	Timer_Congelar_DECORRIDO_ON = 1;						// START Timer TEmpo_COngelar_DECORRIDO_ON
-        	flag_Processo_ANDAMENTO = 1;						// Flag PRocesso_ANDAMENTO = TRUE
-        	
-        	Resfriar_TEMPO();								// tela de Resfriar TEMPO
-        }
+        flag_congelar_Tempo = true;
     }
     else if (&src == &buttonResfriar)
     {
@@ -269,5 +235,23 @@ void Resfriar_Select_TempoViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //When buttonResfriar clicked change screen to Resfriar
         //Go to Resfriar with no screen transition
         application().gotoResfriarScreenNoTransition();
+    }
+}
+
+void Resfriar_Select_TempoViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButtonTempo)
+    {
+        //DigitarTempo
+        //When flexButtonTempo clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaTimerSpMinutosResfriar, textAreaTimerSpMinutosResfriarBuffer, 0, 9999, _INT_, 0, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchDigitarTempoKeyboard
+        //When DigitarTempo completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
 }

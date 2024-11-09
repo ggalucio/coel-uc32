@@ -8,7 +8,6 @@
 #include <mvp/View.hpp>
 #include <gui/inicializacao_screen/InicializacaoPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/ScalableImage.hpp>
 
 class InicializacaoViewBase : public touchgfx::View<InicializacaoPresenter>
 {
@@ -20,26 +19,23 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void inicialScreen();
-    virtual void initialize();
-    virtual void writeModbus(char const* address, double value);
+    virtual void handleTickEvent();
     virtual void afterTransition();
 
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
     }
-
-    /*
-     * Member Declarations
-     */
     touchgfx::Box __background;
-    touchgfx::Box boxFundo;
-    touchgfx::ScalableImage scalableImageLogo;
 
 private:
+
+    /*
+     * Delay Variable Declarations
+     */
+    static const uint16_t AGUARDAR_DURATION = 300;
+    uint16_t aguardarCounter;
 
 };
 

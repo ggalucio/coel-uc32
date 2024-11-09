@@ -140,6 +140,7 @@ BYTE HowManyDataToWrite(void){
 	}
 
 	return countDatatoWrite;
+	//return 1;
 }
 
 /**
@@ -397,8 +398,9 @@ void ModbusEnableToWrite(){
 	// in order to be sure to have updated all write commands.
 	if(TimeOutElapsed(pModbusClient->ackTimer, 100)){
 		pModbusClient->reqType = REQ_WRITE;
-		BYTE regToWriteNum = HowManyDataToWrite();
-		BOOLEAN sentReqRes = regToWriteNum > 1 ?  SendMultipleWriteRequest() : SendSingleWriteRequest();
+		//BYTE regToWriteNum = HowManyDataToWrite();
+		//BOOLEAN sentReqRes = regToWriteNum > 1 ?  SendMultipleWriteRequest() : SendSingleWriteRequest();
+		BOOLEAN sentReqRes = SendSingleWriteRequest();
 		pModbusClient->exchDataState = sentReqRes ? MM_SENDING_REQ : MM_ERROR;
 	}
 }

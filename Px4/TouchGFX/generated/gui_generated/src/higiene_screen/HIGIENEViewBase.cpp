@@ -54,12 +54,11 @@ HIGIENEViewBase::HIGIENEViewBase() :
     textAreaTimerHigieneMin.setWildcard(textAreaTimerHigieneMinBuffer);
     textAreaTimerHigieneMin.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3969));
 
-    textAreaStatusHigiene.setXY(360, 14);
+    textAreaStatusHigiene.setPosition(322, 14, 151, 25);
     textAreaStatusHigiene.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textAreaStatusHigiene.setLinespacing(0);
     Unicode::snprintf(textAreaStatusHigieneBuffer, TEXTAREASTATUSHIGIENE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4181).getText());
     textAreaStatusHigiene.setWildcard(textAreaStatusHigieneBuffer);
-    textAreaStatusHigiene.resizeToCurrentText();
     textAreaStatusHigiene.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3973));
 
     textAreaTimerCongelarDecorridoCount.setPosition(328, 97, 56, 18);
@@ -86,6 +85,8 @@ HIGIENEViewBase::HIGIENEViewBase() :
     finalizar_higiene1.setVisible(false);
     finalizar_higiene1.setCancelar_higieneCallback(finalizar_higiene1Cancelar_higieneCallback);
 
+    background1.setXY(0, 0);
+
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
@@ -101,36 +102,19 @@ HIGIENEViewBase::HIGIENEViewBase() :
     add(imageStatusPorta);
     add(textAreaStatusPorta);
     add(finalizar_higiene1);
+    add(background1);
 }
 
 void HIGIENEViewBase::setupScreen()
 {
     finalizar_higiene1.initialize();
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    
-    
-    AddbackgroundContainer(this); 
-    
-    W_HDW5000 = 45;
-    
-    Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    UpdateModbus485("10242", 999, _INT_);
-    WriteModbus485("10242", 1);
-    
-    UpdateModbus485("645", 1, _INT_);
-    WriteModbus485("645", 1);
-    
-    UpdateModbus485("10322", 11, _INT_);
-    WriteModbus485("10322", 1);
-    
-    timer_higiene_ON = true;
-    
-    status_higiene = true;
+    WriteModbus485(10322, 1);
+    WriteModbus485(10242, 1);
+    WriteModbus485(645, 1);
     
     Update(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, "OPERANDO...", 20);
 
@@ -147,25 +131,10 @@ void HIGIENEViewBase::afterTransition()
 
 void HIGIENEViewBase::finalizar_higiene1Cancelar_higieneCallbackHandler()
 {
-    //cancelar_higiene
+    //CancelarHigiene
     //When finalizar_higiene1 cancelar_higiene execute C++ code
     //Execute C++ code
-    Clear();
-    SoundBuzzerOn(25);
-    
-    UpdateModbus485("10242", 999, _INT_); 
-    WriteModbus485("10242", 2);
-    
-    UpdateModbus485("645", 0, _INT_);
-    WriteModbus485("645", 1);
-    
-    UpdateModbus485("10322", 3, _INT_);
-    WriteModbus485("10322", 1);
-    
-    status_higiene = false;
-    
-    Timer_higiene_MIN = 0;
-    Timer_higiene_COUNT = 0;
+    cancela_higiene = true;
 }
 
 void HIGIENEViewBase::handleTickEvent()
@@ -173,28 +142,11 @@ void HIGIENEViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    
-    W_1_4553 = imageStatusPorta.isVisible();
+    VisibilityTextArea(&textAreaStatusHigiene, !status_higiene || GetStateBlink());
+    Update(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, status_higiene ? (char*)"OPERANDO..." : (char*)"Finalizado!", 20);
     
     Update(&textAreaTimerHigieneMin, textAreaTimerHigieneMinBuffer, Timer_higiene_MIN, _INT_, 0);
     Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_higiene_COUNT, _INT_, 0);
-    
-    if (countCycleBlink > 1000)
-    {
-    	countCycleBlink = 0;
-    	
-    	if (status_higiene)
-    		VisibilityTextArea(&textAreaStatusHigiene, textAreaStatusHigiene.isVisible());
-    	else
-    		Update(&textAreaStatusHigiene, textAreaStatusHigieneBuffer, "Finalizado!", 20);
-    }
-    countCycleBlink += 16;
 }
 
 void HIGIENEViewBase::tearDownScreen()
@@ -203,7 +155,6 @@ void HIGIENEViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
 }
 
 void HIGIENEViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)

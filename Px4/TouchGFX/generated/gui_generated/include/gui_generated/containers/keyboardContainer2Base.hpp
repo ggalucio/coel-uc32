@@ -28,6 +28,10 @@ public:
     {
         this->HideKeyboardCallback = &callback;
     }
+    void setEnterCallback(touchgfx::GenericCallback<>& callback)
+    {
+        this->EnterCallback = &callback;
+    }
 
     /*
      * Custom Actions
@@ -60,6 +64,13 @@ protected:
         if (HideKeyboardCallback && HideKeyboardCallback->isValid())
         {
             this->HideKeyboardCallback->execute();
+        }
+    }
+    virtual void emitEnterCallback()
+    {
+        if (EnterCallback && EnterCallback->isValid())
+        {
+            this->EnterCallback->execute();
         }
     }
 
@@ -125,6 +136,7 @@ private:
      * Custom Trigger Callback Declarations
      */
     touchgfx::GenericCallback<>* HideKeyboardCallback;
+    touchgfx::GenericCallback<>* EnterCallback;
 
     /*
      * Callback Handler Declarations

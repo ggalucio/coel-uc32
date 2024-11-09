@@ -9,8 +9,12 @@
 Congelar_TEMPOViewBase::Congelar_TEMPOViewBase() :
     buttonCallback(this, &Congelar_TEMPOViewBase::buttonCallbackHandler),
     cANCELAR_PROCESSO1CancelarProcessoCallback(this, &Congelar_TEMPOViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler),
-    cANCELAR_PROCESSO1NaoCallback(this, &Congelar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler)
+    cANCELAR_PROCESSO1NaoCallback(this, &Congelar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler),
+    timerCycle1sTickCallback(this, &Congelar_TEMPOViewBase::timerCycle1sTickCallbackHandler),
+    timerCycle10TickCallback(this, &Congelar_TEMPOViewBase::timerCycle10TickCallbackHandler)
 {
+
+    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -23,6 +27,10 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase() :
 
     boxFundoAzul.setPosition(0, 0, 480, 53);
     boxFundoAzul.setColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
+
+    boxFlagProcessoAndamento.setPosition(5, 64, 392, 196);
+    boxFlagProcessoAndamento.setVisible(false);
+    boxFlagProcessoAndamento.setColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
 
     boxWithBorderBox3.setPosition(66, 133, 324, 57);
     boxWithBorderBox3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -69,6 +77,18 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase() :
     toggleButtonFlagConservarSN.setXY(405, 208);
     toggleButtonFlagConservarSN.setBitmaps(touchgfx::Bitmap(BITMAP_CSVOFF_ID), touchgfx::Bitmap(BITMAP_CSVON_ID));
     toggleButtonFlagConservarSN.setAction(buttonCallback);
+
+    lineProgressTimerCongelar.setXY(180, 172);
+    lineProgressTimerCongelar.setProgressIndicatorPosition(0, 0, 104, 14);
+    lineProgressTimerCongelar.setRange(0, 100);
+    lineProgressTimerCongelar.setBackground(touchgfx::Bitmap(BITMAP_BLUE_PROGRESSINDICATORS_BG_SMALL_PROGRESS_INDICATOR_BG_ROUND_0_DEGREES_ID));
+    lineProgressTimerCongelarPainter.setColor(touchgfx::Color::getColorFromRGB(26, 100, 160));
+    lineProgressTimerCongelar.setPainter(lineProgressTimerCongelarPainter);
+    lineProgressTimerCongelar.setStart(7, 7);
+    lineProgressTimerCongelar.setEnd(97, 7);
+    lineProgressTimerCongelar.setLineWidth(10);
+    lineProgressTimerCongelar.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+    lineProgressTimerCongelar.setValue(60);
 
     imageVazio.setXY(406, 136);
     imageVazio.setBitmap(touchgfx::Bitmap(BITMAP_VAZIO_ID));
@@ -144,23 +164,21 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase() :
     cANCELAR_PROCESSO1.setCancelarProcessoCallback(cANCELAR_PROCESSO1CancelarProcessoCallback);
     cANCELAR_PROCESSO1.setNaoCallback(cANCELAR_PROCESSO1NaoCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+    background1.setXY(0, 0);
 
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4110).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4109));
+    timerCycle1s.setXY(0, 0);
+    timerCycle1s.setVisible(false);
+    timerCycle1s.setTickCallback(timerCycle1sTickCallback);
+
+    timerCycle10.setXY(0, 0);
+    timerCycle10.setVisible(false);
+    timerCycle10.setTickCallback(timerCycle10TickCallback);
 
     add(__background);
     add(boxFundo);
     add(boxProcessOff);
     add(boxFundoAzul);
+    add(boxFlagProcessoAndamento);
     add(boxWithBorderBox3);
     add(boxWithBorderBox2);
     add(boxWithBorderBox1);
@@ -171,6 +189,7 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase() :
     add(textAreaTitle);
     add(buttonCancelarProcesso);
     add(toggleButtonFlagConservarSN);
+    add(lineProgressTimerCongelar);
     add(imageVazio);
     add(image1);
     add(image2);
@@ -185,36 +204,36 @@ Congelar_TEMPOViewBase::Congelar_TEMPOViewBase() :
     add(textArea14512);
     add(textArea1410242);
     add(cANCELAR_PROCESSO1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
+    add(timerCycle1s);
+    add(timerCycle10);
 }
 
 void Congelar_TEMPOViewBase::setupScreen()
 {
     cANCELAR_PROCESSO1.initialize();
+    background1.initialize();
+    timerCycle1s.initialize();
+    timerCycle10.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 3;
+    flag_recuperar_leitura_begin = false;
     
-    // Clear();
+    ReadWriteModbus485(512, 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(10242, 1, _DOUBLE_, REPEAT);
+    ReadWriteModbus485(515, 1, _DOUBLE_, REPEAT);
     
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    ReadWriteModbus485(&textArea1410242, textArea1410242Buffer, "10242", 1, _DOUBLE_, REPEAT);
-    ReadWriteModbus485(&textArea14512, textArea14512Buffer, "512", 1, _DOUBLE_, REPEAT);
-    
-    //Update(&textArea14512, textArea14512Buffer, 0, _DOUBLE_, 1);
-    //Update(&textArea1410242, textArea1410242Buffer, 0, _DOUBLE_, 1);
-    
-    Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, 0, _INT_, 0);
-    Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, 0, _INT_, 0);
-    
-    Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);
-    
+    Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, Timer_SP_MINUTOS, _INT_, 0);
     Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, "OPERANDO...", 20);
-    countCycleBlink = 0;
+    Update(&toggleButtonFlagConservarSN, flag_Conservar_S_N);
+    SetRangeLineProgress(&lineProgressTimerCongelar, (int)xbar_zero, (int)Timer_Congelar_DECORRIDO_SP);
+    
+    timerCycle1s.setWaitTime(1000);
+    timerCycle1s.start();
+    
+    timerCycle10.setWaitTime(100);
+    timerCycle10.start();
 
 }
 
@@ -229,10 +248,10 @@ void Congelar_TEMPOViewBase::afterTransition()
 
 void Congelar_TEMPOViewBase::cANCELAR_PROCESSO1CancelarProcessoCallbackHandler()
 {
-    //CancelarProcesso
-    //When cANCELAR_PROCESSO1 cancelarProcesso change screen to Congelar
-    //Go to Congelar with no screen transition
-    application().gotoCongelarScreenNoTransition();
+    //CancelarProcessoSim
+    //When cANCELAR_PROCESSO1 cancelarProcesso execute C++ code
+    //Execute C++ code
+    cancelar_processo_SIM = true;
 }
 
 void Congelar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
@@ -244,26 +263,44 @@ void Congelar_TEMPOViewBase::cANCELAR_PROCESSO1NaoCallbackHandler()
     SoundBuzzerOn(25);
 }
 
-void Congelar_TEMPOViewBase::handleTickEvent()
+void Congelar_TEMPOViewBase::timerCycle1sTickCallbackHandler()
 {
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
+    //Cycle_1s
+    //When timerCycle1s tick execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-    
-    if (countCycleBlink > 1000)
+    VisibilityTextArea(&textAreaFlagProcessoAndamento, !flag_Processo_ANDAMENTO || !textAreaFlagProcessoAndamento.isVisible());
+}
+
+void Congelar_TEMPOViewBase::timerCycle10TickCallbackHandler()
+{
+    //Cycle_100ms
+    //When timerCycle10 tick execute C++ code
+    //Execute C++ code
+    if (flag_recuperar_leitura_begin)
     {
-    	countCycleBlink = 0;
-    	VisibilityTextArea(&textAreaFlagProcessoAndamento, !textAreaFlagProcessoAndamento.isVisible());
+    	ReadWriteModbus485(512, 1, _DOUBLE_, REPEAT);
+    	ReadWriteModbus485(10242, 1, _DOUBLE_, REPEAT);
+    	ReadWriteModbus485(515, 1, _DOUBLE_, REPEAT);
+    	Wait(50);
+    	
+    	flag_recuperar_leitura_begin = false;
     }
+    else
+    {
+    	VisibilityBox(&boxFlagProcessoAndamento, flag_Processo_ANDAMENTO);
     
-    countCycleBlink += 16;
+    	Update(&textAreaFlagProcessoAndamento, textAreaFlagProcessoAndamentoBuffer, flag_Processo_ANDAMENTO ? (char*)"OPERANDO..." : (char*)"Finalizado!", 20);
+    	Update(&textAreaTimerCountMinutos, textAreaTimerCountMinutosBuffer, Timer_COUNT_MINUTOS, _INT_, 0);
+    	Update(&textAreaTimerCongelarDecorridoCount, textAreaTimerCongelarDecorridoCountBuffer, Timer_Congelar_DECORRIDO_COUNT, _INT_, 0);
+    	Update(&lineProgressTimerCongelar, (int)Timer_Congelar_DECORRIDO_COUNT);
+    
+    	W_1_4512   = 10.0 * ReadBufferModbus485(512);		// Temperatura interna.
+    	W_1_4515   = 10.0 * ReadBufferModbus485(515);		// Temperatura de produto.
+    	W_1_410242 = 10.0 * ReadBufferModbus485(10242);	// Setpoint do X34.
+    
+    	Update(&textArea14512, textArea14512Buffer, W_1_4512 / 10.0, _DOUBLE_, 1);
+    	Update(&textArea1410242, textArea1410242Buffer, W_1_410242 / 10.0, _DOUBLE_, 1);
+    }
 }
 
 void Congelar_TEMPOViewBase::tearDownScreen()
@@ -272,8 +309,6 @@ void Congelar_TEMPOViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-    ContainerClear(&cANCELAR_PROCESSO1);
 }
 
 void Congelar_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -291,6 +326,7 @@ void Congelar_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButto
         //CSV
         //When toggleButtonFlagConservarSN clicked execute C++ code
         //Execute C++ code
+        flag_Conservar_S_N = toggleButtonFlagConservarSN.getState();
         SoundBuzzerOn(25);
     }
 }

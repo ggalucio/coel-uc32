@@ -14,6 +14,11 @@ extern "C" {
 	#include <Module/module.h>
 }
 
+extern void ClearOthers(void);
+extern void UpdateJobsOthers(void);
+
+bool enableSoundBuzzer = true;
+
 void DecreaseDouble(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, double step, double minVal, double maxVal, uint8_t decimal);
 void IncreaseDouble(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, double step, double minVal, double maxVal, uint8_t decimal);
 void DecreaseInt(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, int step, int minVal, int maxVal, DataType dataType);
@@ -23,6 +28,8 @@ int waitCount = 0;
 
 void Clear()
 {
+	ClearOthers();
+
 	waitCount = 0;
 
 	if(pClearItems)
@@ -838,6 +845,11 @@ void WriteModbus485(char const* address, uint8_t length){
 		(*pAddModbusRS485WriteItem)(addr, 0, length);
 }
 
+void WriteModbus485(uint16_t address, uint8_t length){
+	if (pAddModbusRS485WriteItem)
+		(*pAddModbusRS485WriteItem)(address, 0, length);
+}
+
 void ReadWriteModbus485(char const* address, ReadMode readMode){
 	int addr = 0, bit = 0;
 	if(pFromCharToAddress)
@@ -846,6 +858,34 @@ void ReadWriteModbus485(char const* address, ReadMode readMode){
 		(*pAddModbusRS485ReadItem)(addr, 0, readMode, 1);
 	if(pAddModbusRS485WriteItem)
 		(*pAddModbusRS485WriteItem)(addr, 0, 1);
+}
+
+void ReadWriteModbus485(uint16_t address, ReadMode readMode){
+	if(pAddModbusRS485ReadItem)
+		(*pAddModbusRS485ReadItem)(address, 0, readMode, 1);
+	if(pAddModbusRS485WriteItem)
+		(*pAddModbusRS485WriteItem)(address, 0, 1);
+}
+
+void ReadWriteModbus485(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, uint16_t address, uint8_t decimal, DataType dataType, ReadMode readMode){
+	uint8_t len = 0;
+
+	switch(dataType){
+		case _FP_32BIT_:
+			len = 2;
+			//addr++;
+			break;
+		default:
+			len = 1;
+			break;
+	}
+
+	if(pAddItem)
+		(*pAddItem)(textArea, buffer, address, dataType, decimal, MB_RS485);
+	if(pAddModbusRS485ReadItem)
+		(*pAddModbusRS485ReadItem)(address, decimal, readMode, len);
+	if(pAddModbusRS485WriteItem)
+		(*pAddModbusRS485WriteItem)(address, decimal, len);
 }
 
 void ReadWriteModbus485(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, char const* address, uint8_t decimal, DataType dataType, ReadMode readMode){
@@ -970,7 +1010,8 @@ void UpdateModbus485(uint16_t address, double value, DataType dataType){
 	if(pUpdateModbusRS485)
 		(*pUpdateModbusRS485)(address, value, (uint8_t)dataType);
 
-	Wait(50);
+	// Wait(50);
+	Wait(170);
 }
 
 void UpdateModbus485(char const* address, double value, DataType dataType){
@@ -980,7 +1021,8 @@ void UpdateModbus485(char const* address, double value, DataType dataType){
 	if(pUpdateModbusRS485)
 		(*pUpdateModbusRS485)(addr, value, (uint8_t)dataType);
 
-	Wait(50);
+	// Wait(50);
+	Wait(170);
 }
 
 void SetBitModbusRS485(char const* address, uint8_t value){
@@ -1413,6 +1455,11 @@ void CheckPwd(touchgfx::GenericCallback<>* successClbk, touchgfx::GenericCallbac
 	}
 }
 
+void SetKeyAccessPwdNumKeyboard(uint16_t key){
+	if (pSetAccessKey)
+		(*pSetAccessKey)(key);
+}
+
 /*****************************************************************************************************************************/
 
 
@@ -1490,12 +1537,20 @@ void VisibilityTextArea(touchgfx::TextArea* textArea, bool visibility){
 /*********************************************** BUZZER **********************************************************************/
 
 void SoundBuzzerOn(uint32_t ms){
-	if(pSwitchBuzzerOn)
-		(*pSwitchBuzzerOn)();
-	if(pWaitFor)
+	if (enableSoundBuzzer){
+		if(pSwitchBuzzerOn)
+			(*pSwitchBuzzerOn)();
+		if(pWaitFor)
+			(*pWaitFor)(ms);
+		if(pSwitchBuzzerOff)
+			(*pSwitchBuzzerOff)();
+	}
+	else if(pWaitFor)
 		(*pWaitFor)(ms);
-	if(pSwitchBuzzerOff)
-		(*pSwitchBuzzerOff)();
+}
+
+void EnableSoundBuzzer(bool enable){
+	enableSoundBuzzer = enable;
 }
 
 /*****************************************************************************************************************************/
@@ -1532,6 +1587,11 @@ void UpdateJobs(){
 
 	if(pUpdateJobsFlag)
 		(*pUpdateJobsFlag)();
+
+	if(pWaitFor)
+		(*pWaitFor)(50);
+
+	UpdateJobsOthers();
 }
 
 void SelectJobChosen(){
@@ -1564,6 +1624,12 @@ void ReadJobName(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* b
 		(*pReadJobName)(str);
 		touchgfx::Unicode::strncpy(buffer, str, buffSize);
 		textArea->invalidate();
+	}
+}
+
+void ReadJobName(char* dst){
+	if(pReadJobName){
+		(*pReadJobName)(dst);
 	}
 }
 

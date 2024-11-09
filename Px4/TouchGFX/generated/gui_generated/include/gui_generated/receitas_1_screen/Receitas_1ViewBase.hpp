@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/Background.hpp>
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class Receitas_1ViewBase : public touchgfx::View<Receitas_1Presenter>
@@ -26,10 +27,7 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void Receita_X_EDIT();
-    virtual void Receita_confirm();
     virtual void afterTransition();
 
 protected:
@@ -61,8 +59,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaReceita2Desc;
     touchgfx::TextAreaWithOneWildcard textAreaReceita3Desc;
     touchgfx::TextAreaWithOneWildcard textAreaReceita4Desc;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
     touchgfx::RadioButtonGroup<4> radioButtonGroup1;
 
     /*
@@ -76,8 +73,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaReceita3DescBuffer[TEXTAREARECEITA3DESC_SIZE];
     static const uint16_t TEXTAREARECEITA4DESC_SIZE = 20;
     touchgfx::Unicode::UnicodeChar textAreaReceita4DescBuffer[TEXTAREARECEITA4DESC_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

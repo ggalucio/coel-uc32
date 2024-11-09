@@ -14,6 +14,7 @@
 #include <touchgfx/containers/Container.hpp>
 #include <AT_module.hpp>
 #include <AT_module_ext.hpp>
+#include <gui/global/var.hpp>
 
 class Receita_Info_resumoBase : public touchgfx::Container
 {
@@ -33,7 +34,7 @@ public:
     /*
      * Custom Actions
      */
-    virtual void init();
+    virtual void start();
 
 protected:
     FrontendApplication& application() {

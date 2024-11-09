@@ -11,7 +11,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/Background.hpp>
 
 class Degelo_ConfirmarViewBase : public touchgfx::View<Degelo_ConfirmarPresenter>
 {
@@ -40,17 +40,11 @@ protected:
     touchgfx::Box boxFundoAzul;
     touchgfx::TextArea textAreaTitle;
     touchgfx::Image image1;
-    touchgfx::TextArea textArea1;
+    touchgfx::TextArea textAreaAbrirPorta;
+    touchgfx::TextArea textAreaPortaAbertaOK;
     touchgfx::ButtonWithLabel buttonWithLabelTelaInicial;
     touchgfx::ButtonWithLabel buttonWithLabelFlagInicioDegelo;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
-
-    /*
-     * Wildcard Buffers
-     */
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
+    Background background1;
 
 private:
 

@@ -10,10 +10,12 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <gui/containers/Background.hpp>
 
 class Configuracao_4ViewBase : public touchgfx::View<Configuracao_4Presenter>
 {
@@ -25,7 +27,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void afterTransition();
 
@@ -41,6 +42,13 @@ protected:
     touchgfx::Box boxFundo;
     touchgfx::BoxWithBorder boxWithBorder1;
     touchgfx::BoxWithBorder boxWithBorder2;
+    touchgfx::TextArea textAreaSubTitulo_1;
+    touchgfx::Line line1;
+    touchgfx::PainterRGB565 line1Painter;
+    touchgfx::TextArea textAreaSubTitulo_1_1;
+    touchgfx::TextArea textAreaSubTitulo_1_2;
+    touchgfx::TextArea textAreaSubTitulo_1_1_1;
+    touchgfx::TextArea textAreaSubTitulo_1_1_1_1;
     touchgfx::TextArea textAreaLabel2;
     touchgfx::TextArea textAreaLabel1;
     touchgfx::Button buttonTelaInicial;
@@ -53,8 +61,7 @@ protected:
     touchgfx::ButtonWithLabel buttonWithLabelLogicaEntradaDigital1Normal;
     touchgfx::TextAreaWithOneWildcard textAreaLogicaEntradaDigital2;
     touchgfx::TextAreaWithOneWildcard textAreaLogicaEntradaDigital1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
 
     /*
      * Wildcard Buffers
@@ -63,8 +70,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaLogicaEntradaDigital2Buffer[TEXTAREALOGICAENTRADADIGITAL2_SIZE];
     static const uint16_t TEXTAREALOGICAENTRADADIGITAL1_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaLogicaEntradaDigital1Buffer[TEXTAREALOGICAENTRADADIGITAL1_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -78,6 +83,11 @@ private:
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 7200;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // CONFIGURACAO_4VIEWBASE_HPP

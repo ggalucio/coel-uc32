@@ -201,14 +201,6 @@ public:
         return container.getHeight();
     }
 
-    /*
-     *
-     * */
-    void addDrawable(Drawable& d)
-    {
-    	add(d);
-    }
-
 protected:
     /**
      * Determines whether to use JSMOC or painter's algorithm for drawing.

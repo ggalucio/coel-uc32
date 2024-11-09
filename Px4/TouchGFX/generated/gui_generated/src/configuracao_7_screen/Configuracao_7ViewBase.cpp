@@ -93,7 +93,7 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
     textAreaSpSondaResfCamara.setPosition(66, 117, 78, 29);
     textAreaSpSondaResfCamara.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textAreaSpSondaResfCamara.setLinespacing(0);
-    Unicode::snprintf(textAreaSpSondaResfCamaraBuffer, TEXTAREASPSONDARESFCAMARA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3775).getText());
+    Unicode::snprintf(textAreaSpSondaResfCamaraBuffer, TEXTAREASPSONDARESFCAMARA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID5440).getText());
     textAreaSpSondaResfCamara.setWildcard(textAreaSpSondaResfCamaraBuffer);
     textAreaSpSondaResfCamara.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3774));
 
@@ -166,18 +166,7 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
     numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
     numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4164).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4163));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -208,28 +197,22 @@ Configuracao_7ViewBase::Configuracao_7ViewBase() :
     add(flexButtonSpResfInternoF1);
     add(flexButtonSpResfEspetoF1);
     add(numKeyboardContainer1);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void Configuracao_7ViewBase::setupScreen()
 {
     numKeyboardContainer1.initialize();
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    W_HDW5000 = 47;
-    
-    Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    Update(&textAreaSpResfEspetoF1, textAreaSpResfEspetoF1Buffer, SP_Resf_Espeto_F1 / 10, _FP_32BIT_, 1);
-    Update(&textAreaSpResfInternoF1, textAreaSpResfInternoF1Buffer, SP_Resf_Interno_F1 / 10, _FP_32BIT_, 1);
-    Update(&textAreaSpResfriarSonda, textAreaSpResfriarSondaBuffer, SP_Resfriar_Sonda / 10, _FP_32BIT_, 1);
-    Update(&textAreaSpSondaResfCamara, textAreaSpSondaResfCamaraBuffer, SP_SONDA_RESF_CAMARA / 10, _FP_32BIT_, 1);
-    Update(&textAreaDiferencialResfriarTempo, textAreaDiferencialResfriarTempoBuffer, Diferencial_Resfriar_Tempo / 10, _FP_32BIT_, 1);
-    Update(&textAreaPorcResfPresetTempoF1F2, textAreaPorcResfPresetTempoF1F2Buffer, Porc_Resf_preset_tempo_F1F2, _FP_32BIT_, 0);
+    Update(&textAreaSpResfEspetoF1,			textAreaSpResfEspetoF1Buffer,		SP_Resf_Espeto_F1 / 10,		_FP_32BIT_, 1);
+    Update(&textAreaSpResfInternoF1,			textAreaSpResfInternoF1Buffer,		SP_Resf_Interno_F1 / 10,		_FP_32BIT_, 1);
+    Update(&textAreaSpResfriarSonda,			textAreaSpResfriarSondaBuffer,		SP_Resfriar_Sonda / 10,		_FP_32BIT_, 1);
+    Update(&textAreaSpSondaResfCamara,		textAreaSpSondaResfCamaraBuffer,		SP_SONDA_RESF_CAMARA / 10,		_FP_32BIT_, 1);
+    Update(&textAreaDiferencialResfriarTempo,	textAreaDiferencialResfriarTempoBuffer,	Diferencial_Resfriar_Tempo / 10,	_FP_32BIT_, 1);
+    Update(&textAreaPorcResfPresetTempoF1F2,	textAreaPorcResfPresetTempoF1F2Buffer,	Porc_Resf_preset_tempo_F1F2,	_FP_32BIT_, 0);
 
 }
 
@@ -267,35 +250,19 @@ void Configuracao_7ViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandl
     SoundBuzzerOn(25);
 }
 
-void Configuracao_7ViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-}
-
 void Configuracao_7ViewBase::tearDownScreen()
 {
     //TearDownScreen
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
-    SP_Resf_Espeto_F1 = 10 * GetNumberTextArea(textAreaSpResfEspetoF1Buffer);
-    SP_Resf_Interno_F1 = 10 * GetNumberTextArea(textAreaSpResfInternoF1Buffer);
-    SP_Resfriar_Sonda = 10 * GetNumberTextArea(textAreaSpResfriarSondaBuffer);
-    SP_SONDA_RESF_CAMARA = 10 * GetNumberTextArea(textAreaSpSondaResfCamaraBuffer);
-    Diferencial_Resfriar_Tempo = 10 * GetNumberTextArea(textAreaDiferencialResfriarTempoBuffer);
-    Porc_Resf_preset_tempo_F1F2 = GetNumberTextArea(textAreaPorcResfPresetTempoF1F2Buffer);
+    SP_Resf_Espeto_F1			= 10 * GetNumberTextArea(textAreaSpResfEspetoF1Buffer);
+    SP_Resf_Interno_F1			= 10 * GetNumberTextArea(textAreaSpResfInternoF1Buffer);
+    SP_Resfriar_Sonda			= 10 * GetNumberTextArea(textAreaSpResfriarSondaBuffer);
+    SP_SONDA_RESF_CAMARA		= 10 * GetNumberTextArea(textAreaSpSondaResfCamaraBuffer);
+    Diferencial_Resfriar_Tempo		= 10 * GetNumberTextArea(textAreaDiferencialResfriarTempoBuffer);
+    Porc_Resf_preset_tempo_F1F2	= GetNumberTextArea(textAreaPorcResfPresetTempoF1F2Buffer);
     
     Clear();
-    ClearOthers();
-    ContainerClear(&numKeyboardContainer1);
 }
 
 void Configuracao_7ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)

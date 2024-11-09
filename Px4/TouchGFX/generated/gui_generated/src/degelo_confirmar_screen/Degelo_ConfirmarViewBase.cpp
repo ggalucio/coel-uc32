@@ -27,10 +27,17 @@ Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase() :
     image1.setXY(8, 4);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_GOTA_ID));
 
-    textArea1.setXY(89, 99);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3796));
+    textAreaAbrirPorta.setXY(89, 93);
+    textAreaAbrirPorta.setVisible(false);
+    textAreaAbrirPorta.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    textAreaAbrirPorta.setLinespacing(0);
+    textAreaAbrirPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3796));
+
+    textAreaPortaAbertaOK.setXY(89, 68);
+    textAreaPortaAbertaOK.setVisible(false);
+    textAreaPortaAbertaOK.setColor(touchgfx::Color::getColorFromRGB(0, 255, 0));
+    textAreaPortaAbertaOK.setLinespacing(0);
+    textAreaPortaAbertaOK.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4223));
 
     buttonWithLabelTelaInicial.setXY(69, 174);
     buttonWithLabelTelaInicial.setBitmaps(touchgfx::Bitmap(BITMAP_BTN1_ID), touchgfx::Bitmap(BITMAP_BTN1_ID));
@@ -46,43 +53,27 @@ Degelo_ConfirmarViewBase::Degelo_ConfirmarViewBase() :
     buttonWithLabelFlagInicioDegelo.setLabelColorPressed(touchgfx::Color::getColorFromRGB(0, 0, 0));
     buttonWithLabelFlagInicioDegelo.setAction(buttonCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4132).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4131));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
     add(boxFundoAzul);
     add(textAreaTitle);
     add(image1);
-    add(textArea1);
+    add(textAreaAbrirPorta);
+    add(textAreaPortaAbertaOK);
     add(buttonWithLabelTelaInicial);
     add(buttonWithLabelFlagInicioDegelo);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
 }
 
 void Degelo_ConfirmarViewBase::setupScreen()
 {
-
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 15;
-    
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
+    //
 
 }
 
@@ -100,15 +91,8 @@ void Degelo_ConfirmarViewBase::handleTickEvent()
     //HandleTickEvent
     //When handleTickEvent is called execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    	textArea1.setVisible(false);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    	textArea1.setVisible(true);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
+    VisibilityTextArea(&textAreaAbrirPorta, Status_Porta == 0 ? true : false);
+    VisibilityTextArea(&textAreaPortaAbertaOK, Status_Porta == 1 ? true : false);
 }
 
 void Degelo_ConfirmarViewBase::tearDownScreen()
@@ -117,7 +101,6 @@ void Degelo_ConfirmarViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
 }
 
 void Degelo_ConfirmarViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -132,8 +115,8 @@ void Degelo_ConfirmarViewBase::buttonCallbackHandler(const touchgfx::AbstractBut
     else if (&src == &buttonWithLabelFlagInicioDegelo)
     {
         //Degelo
-        //When buttonWithLabelFlagInicioDegelo clicked change screen to Degelo
-        //Go to Degelo with no screen transition
-        application().gotoDegeloScreenNoTransition();
+        //When buttonWithLabelFlagInicioDegelo clicked execute C++ code
+        //Execute C++ code
+        flag_inicio_degelo = true;
     }
 }

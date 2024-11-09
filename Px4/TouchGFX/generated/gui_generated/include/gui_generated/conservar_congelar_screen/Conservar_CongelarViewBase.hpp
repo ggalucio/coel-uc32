@@ -14,6 +14,8 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <gui/containers/CANCELAR_PROCESSO.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class Conservar_CongelarViewBase : public touchgfx::View<Conservar_CongelarPresenter>
 {
@@ -27,7 +29,6 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -62,8 +63,9 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea14512;
     touchgfx::TextAreaWithOneWildcard textArea1410242;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
+    Timer timerCycle1s;
+    Timer timerCycle10;
 
     /*
      * Wildcard Buffers
@@ -76,8 +78,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea14512Buffer[TEXTAREA14512_SIZE];
     static const uint16_t TEXTAREA1410242_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410242Buffer[TEXTAREA1410242_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

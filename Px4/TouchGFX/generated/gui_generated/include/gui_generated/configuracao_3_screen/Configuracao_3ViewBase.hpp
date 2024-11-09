@@ -10,12 +10,14 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <gui/containers/Background.hpp>
 
 class Configuracao_3ViewBase : public touchgfx::View<Configuracao_3Presenter>
 {
@@ -27,7 +29,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void afterTransition();
 
@@ -46,6 +47,21 @@ protected:
     touchgfx::Box boxVerde3;
     touchgfx::Box boxVerde2;
     touchgfx::Box boxVerde;
+    touchgfx::TextArea textAreaSubTitulo;
+    touchgfx::Line line1;
+    touchgfx::PainterRGB565 line1Painter;
+    touchgfx::Line line1_1;
+    touchgfx::PainterRGB565 line1_1Painter;
+    touchgfx::TextArea textAreaSubTitulo_1;
+    touchgfx::Line line1_2;
+    touchgfx::PainterRGB565 line1_2Painter;
+    touchgfx::Line line1_1_1;
+    touchgfx::PainterRGB565 line1_1_1Painter;
+    touchgfx::TextArea textAreaSubTitulo_2;
+    touchgfx::Line line1_3;
+    touchgfx::PainterRGB565 line1_3Painter;
+    touchgfx::Line line1_1_2;
+    touchgfx::PainterRGB565 line1_1_2Painter;
     touchgfx::TextArea textAreaLabel1;
     touchgfx::TextArea textAreaLabel2;
     touchgfx::TextArea textAreaLabel3;
@@ -61,14 +77,13 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea1410249;
     touchgfx::TextAreaWithOneWildcard textArea1410248;
     touchgfx::TextAreaWithOneWildcard textArea1410291;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410275;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonSenha;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410250;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410249;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410248;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButton1410291;
     numKeyboardContainer numKeyboardContainer1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
 
     /*
      * Wildcard Buffers
@@ -83,8 +98,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1410248Buffer[TEXTAREA1410248_SIZE];
     static const uint16_t TEXTAREA1410291_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410291Buffer[TEXTAREA1410291_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -96,7 +109,6 @@ private:
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1OutOfRangeCallback;
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1ValidRangeCallback;
     touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1HideKeypadTriggerCallback;
-    touchgfx::Callback<Configuracao_3ViewBase> numKeyboardContainer1EnterCallback;
 
     /*
      * Callback Handler Declarations
@@ -106,8 +118,12 @@ private:
     void numKeyboardContainer1OutOfRangeCallbackHandler();
     void numKeyboardContainer1ValidRangeCallbackHandler();
     void numKeyboardContainer1HideKeypadTriggerCallbackHandler();
-    void numKeyboardContainer1EnterCallbackHandler();
 
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 7200;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // CONFIGURACAO_3VIEWBASE_HPP

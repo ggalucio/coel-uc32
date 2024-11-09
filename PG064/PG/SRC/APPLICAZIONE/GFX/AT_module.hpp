@@ -39,7 +39,10 @@ void Modbus485ErrCommContainerVisibility(touchgfx::Container* container, uint16_
 void SetModbus485As(uint8_t mode, uint32_t baud);
 void SetModbus485ErrCommReadByUser();
 void WriteModbus485(char const* address, uint8_t length);
+void WriteModbus485(uint16_t address, uint8_t length);
 void ReadWriteModbus485(char const* address, ReadMode readMode);
+void ReadWriteModbus485(uint16_t address, ReadMode readMode);
+void ReadWriteModbus485(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, uint16_t address, uint8_t decimal, DataType dataType, ReadMode readMode);
 void ReadWriteModbus485(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, char const* address, uint8_t decimal, DataType dataType, ReadMode readMode);
 void ReadModbus485(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, char const* address, uint8_t decimal, DataType dataType, ReadMode readMode);
 void ButtonPressedDlyRS485(touchgfx::Button* button, char const* address, int16_t value, uint16_t dly, uint16_t dataType);
@@ -168,6 +171,8 @@ void KeyboardDltPressed(void);
 void KeyboardShfPressed(void);
 void KeyboardNumPressed(void);
 
+void SetKeyAccessPwdNumKeyboard(uint16_t key);
+
 // TEXT AREA MANAGE
 void Decrease(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, double step, double minVal, double maxVal, DataType dataType, uint8_t decimal);
 void Increase(touchgfx::TextArea* textArea, touchgfx::Unicode::UnicodeChar* buffer, double step, double minVal, double maxVal, DataType dataType, uint8_t decimal);
@@ -193,9 +198,11 @@ void ButtonPressedDly(touchgfx::Button* button, uint16_t dly, touchgfx::GenericC
 
 // BUZZER
 void SoundBuzzerOn(uint32_t ms);
+void EnableSoundBuzzer(bool enable);
 
 // JOB
 void AddJob(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int idx, DataType dataType, uint8_t decimal);
+void AddJob(int idx, DataType dataType, uint8_t decimal);
 void AddJob(touchgfx::Image *image, uint16_t bitmapOn, uint16_t bitmapOff, int idx, uint8_t bit);
 void SelectJob(int idx);
 void SelectJobChosen();
@@ -205,7 +212,9 @@ void DecreaseJob(int minIdx, int maxIdx);
 void DeleteJob();
 void ToggleJob(int idx, uint8_t bit);
 void ReadJobName(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int buffSize);
+void ReadJobName(char* dst);
 double ReadJobData(uint8_t idx, DataType dataType);
+double ReadJob(int idx);
 void ContainerJobVisibility(touchgfx::Container* container, char const* address, uint8_t condition);
 
 // TICK

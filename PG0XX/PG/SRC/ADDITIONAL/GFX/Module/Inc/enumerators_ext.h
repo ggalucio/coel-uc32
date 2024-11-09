@@ -20,5 +20,11 @@ typedef enum{
 	_PAUSE_
 }ControlState;
 
+typedef enum{
+	MB_READ,
+	MB_WRITE,
+	MB_READWRITE,
+}ModbusMode;
+
 
 #endif /* GFX_MODULE_INC_ENUMERATORS_EXT_H_ */

@@ -137,13 +137,25 @@ void RefreshDouble(touchgfx::Unicode::UnicodeChar* buffer, double value, const c
 	touchgfx::Unicode::snprintfFloat(buffer, BUFF_SIZE, format, value);
 }
 
+int FormatToInt(uint32_t value){
+	if (value & 0x8000){
+		int ivalue = ((~value) & 0x0000FFFF) + 1;
+		ivalue *= -1;
+		return ivalue;
+	}
+
+	return value;
+}
+
+
 void RefreshDouble(touchgfx::Unicode::UnicodeChar* buffer, uint32_t value, const uint8_t decimal){
 	const char* format = 0;//GetDecimalFormat(decimal);
 
 	if(pGetDecimalFormat)
 		format = pGetDecimalFormat(decimal);
 
-	double doubleValue = ((double)value) / pow(10, decimal);
+	//double doubleValue = ((double)value) / pow(10, decimal);
+	double doubleValue = ((double)(FormatToInt(value))) / pow(10, decimal);
 	RefreshDouble(buffer, doubleValue, format);
 }
 
@@ -156,12 +168,14 @@ void RefreshInt2(touchgfx::Unicode::UnicodeChar* buffer, uint32_t  value){
 }
 
 void RefreshString(touchgfx::TextArea *textArea, int address, uint32_t value){
-	textArea->setTypedText(touchgfx::TypedText(getTexts(address, value)));
+	if (textArea != NULL)
+		textArea->setTypedText(touchgfx::TypedText(getTexts(address, value)));
 }
 
 void RefreshString(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, char* str){
 	touchgfx::Unicode::strncpy(buffer, str, BUFF_SIZE);
-	textArea->invalidate();
+	if (textArea != NULL)
+		textArea->invalidate();
 }
 
 void RefreshFP32BitFloat(touchgfx::Unicode::UnicodeChar* buffer, uint32_t value, uint8_t decimal){
@@ -696,12 +710,20 @@ void UpdateTextItem(uint16_t address, uint32_t value, Protocol protocol){
 
 	int i = 0;
 	for(i = 0; i < nItems; i++){
+		/*
 		if(items[i].Address == address && items[i].TextArea != NULL && items[i].ProtocolType == protocol){
 			if(items[i].TextArea){
 				items[i].Value = value;
 				RefreshData(items[i].TextArea, items[i].Buffer, items[i].Address, items[i].Value, items[i].Type, items[i].Decimal);
 				items[i].TextArea->invalidate();
 			}
+		}
+		*/
+		if (items[i].Address == address && items[i].ProtocolType == protocol){
+			items[i].Value = value;
+			RefreshData(items[i].TextArea, items[i].Buffer, items[i].Address, items[i].Value, items[i].Type, items[i].Decimal);
+			if (items[i].TextArea != NULL)
+				items[i].TextArea->invalidate();
 		}
 	}
 }
@@ -767,10 +789,15 @@ void RefreshRTC(){
 	int i;
 	for(i = 0; i < nRTCItems; i++) {
 		uint8_t item = GetRTCItem(rtcItems[i].Type);
+		/*
 		if(rtcItems[i].TextArea){
 			RefreshData(rtcItems[i].TextArea, rtcItems[i].Buffer, 0, item, _INT2_, 0);
 			rtcItems[i].TextArea->invalidate();
 		}
+		*/
+		RefreshData(rtcItems[i].TextArea, rtcItems[i].Buffer, 0, item, _INT2_, 0);
+		if (rtcItems[i].TextArea != NULL)
+			rtcItems[i].TextArea->invalidate();
 	}
 }
 
@@ -1478,7 +1505,8 @@ void RefreshJobValues(){
 			{
 				/* Refresh displayed job data */
 				RefreshData(jobItems[i].TextArea, jobItems[i].Buffer, 0, val2Disp, isIndxValue ? _INT_ : jobItems[i].Type, jobItems[i].Decimal);
-				jobItems[i].TextArea->invalidate();
+				if (jobItems[i].TextArea != NULL)
+					jobItems[i].TextArea->invalidate();
 				jobItems[i].Value = rawValue;
 			}
 		}

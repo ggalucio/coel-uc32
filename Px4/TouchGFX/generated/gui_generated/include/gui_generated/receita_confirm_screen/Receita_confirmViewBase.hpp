@@ -13,7 +13,7 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <gui/containers/Receita_Info_resumo.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <gui/containers/Background.hpp>
 
 class Receita_confirmViewBase : public touchgfx::View<Receita_confirmPresenter>
 {
@@ -27,8 +27,6 @@ public:
      */
     virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void Congelar_TEMPO();
-    virtual void Resfriar_TEMPO();
     virtual void afterTransition();
 
 protected:
@@ -48,16 +46,13 @@ protected:
     touchgfx::ButtonWithLabel buttonWithLabelRecitas1;
     touchgfx::TextArea textAreaFlagAlarmReceitaVazia;
     Receita_Info_resumo receita_Info_resumo1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREANUMERORECEITA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaNumeroReceitaBuffer[TEXTAREANUMERORECEITA_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

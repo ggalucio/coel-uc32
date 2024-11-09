@@ -10,8 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <AT_module.hpp>
+#include <gui/containers/Background.hpp>
 
 class HIGIENE_CONFIRMARViewBase : public touchgfx::View<HIGIENE_CONFIRMARPresenter>
 {
@@ -43,13 +42,7 @@ protected:
     touchgfx::TextArea textAreaStatusPortaAberta;
     touchgfx::Button buttonStartHigiene;
     touchgfx::Button buttonTelaInicial;
-    touchgfx::TextAreaWithOneWildcard status_porta;
-
-    /*
-     * Wildcard Buffers
-     */
-    static const uint16_t STATUS_PORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar status_portaBuffer[STATUS_PORTA_SIZE];
+    Background background1;
 
 private:
 

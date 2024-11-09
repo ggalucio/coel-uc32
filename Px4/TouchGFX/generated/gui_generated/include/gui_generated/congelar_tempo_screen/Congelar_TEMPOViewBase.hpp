@@ -12,9 +12,13 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/containers/progress_indicators/LineProgress.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <gui/containers/CANCELAR_PROCESSO.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class Congelar_TEMPOViewBase : public touchgfx::View<Congelar_TEMPOPresenter>
 {
@@ -26,7 +30,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void afterTransition();
 
@@ -42,6 +45,7 @@ protected:
     touchgfx::Box boxFundo;
     touchgfx::Box boxProcessOff;
     touchgfx::Box boxFundoAzul;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::BoxWithBorder boxWithBorderBox3;
     touchgfx::BoxWithBorder boxWithBorderBox2;
     touchgfx::BoxWithBorder boxWithBorderBox1;
@@ -52,6 +56,8 @@ protected:
     touchgfx::TextArea textAreaTitle;
     touchgfx::Button buttonCancelarProcesso;
     touchgfx::ToggleButton toggleButtonFlagConservarSN;
+    touchgfx::LineProgress lineProgressTimerCongelar;
+    touchgfx::PainterRGB565 lineProgressTimerCongelarPainter;
     touchgfx::Image imageVazio;
     touchgfx::Image image1;
     touchgfx::Image image2;
@@ -66,8 +72,9 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea14512;
     touchgfx::TextAreaWithOneWildcard textArea1410242;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
+    Timer timerCycle1s;
+    Timer timerCycle10;
 
     /*
      * Wildcard Buffers
@@ -84,8 +91,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea14512Buffer[TEXTAREA14512_SIZE];
     static const uint16_t TEXTAREA1410242_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410242Buffer[TEXTAREA1410242_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -95,6 +100,8 @@ private:
     touchgfx::Callback<Congelar_TEMPOViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Congelar_TEMPOViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
     touchgfx::Callback<Congelar_TEMPOViewBase> cANCELAR_PROCESSO1NaoCallback;
+    touchgfx::Callback<Congelar_TEMPOViewBase> timerCycle1sTickCallback;
+    touchgfx::Callback<Congelar_TEMPOViewBase> timerCycle10TickCallback;
 
     /*
      * Callback Handler Declarations
@@ -102,7 +109,14 @@ private:
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
     void cANCELAR_PROCESSO1NaoCallbackHandler();
+    void timerCycle1sTickCallbackHandler();
+    void timerCycle10TickCallbackHandler();
 
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 7200;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // CONGELAR_TEMPOVIEWBASE_HPP

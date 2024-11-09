@@ -16,7 +16,7 @@
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <gui/containers/keyboardContainer2.hpp>
 #include <gui/containers/numKeyboardContainer.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <gui/containers/Background.hpp>
 
 class Configuracao_5ViewBase : public touchgfx::View<Configuracao_5Presenter>
 {
@@ -28,7 +28,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void afterTransition();
 
@@ -42,6 +41,7 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box boxFundo;
+    touchgfx::BoxWithBorder boxWithBorder5;
     touchgfx::BoxWithBorder boxWithBorder1;
     touchgfx::BoxWithBorder boxWithBorder4;
     touchgfx::BoxWithBorder boxWithBorder3;
@@ -64,8 +64,7 @@ protected:
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > flexButtonTimerAlarmeExternoSpMinutos;
     keyboardContainer2 keyboardContainer21;
     numKeyboardContainer numKeyboardContainer1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
 
     /*
      * Wildcard Buffers
@@ -78,8 +77,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaHAW8214Buffer[TEXTAREAHAW8214_SIZE];
     static const uint16_t TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerAlarmeExternoSpMinutosBuffer[TEXTAREATIMERALARMEEXTERNOSPMINUTOS_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

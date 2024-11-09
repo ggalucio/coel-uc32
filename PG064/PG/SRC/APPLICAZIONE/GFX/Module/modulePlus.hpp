@@ -87,6 +87,8 @@ void 		(*pLogin)(uint8_t);
 void 		(*pLogout)(void);
 uint8_t		(*pIsLogged)(void);
 
+void		(*pSetAccessKey)(uint16_t key);
+
 // IMAGE
 void 		(*pToggleImage)(touchgfx::Image*, uint16_t, uint16_t);
 

@@ -11,7 +11,7 @@
 #include <touchgfx/widgets/AnimatedImage.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <gui/containers/Background.hpp>
 
 class Alarme_externoViewBase : public touchgfx::View<Alarme_externoPresenter>
 {
@@ -42,8 +42,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaHAW8235;
     touchgfx::TextAreaWithOneWildcard textAreaTimerAlarmeExternoCount;
     touchgfx::TextArea textAreaFlagAlarmeExternoAndamento;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
 
     /*
      * Wildcard Buffers
@@ -54,8 +53,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textAreaHAW8235Buffer[TEXTAREAHAW8235_SIZE];
     static const uint16_t TEXTAREATIMERALARMEEXTERNOCOUNT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerAlarmeExternoCountBuffer[TEXTAREATIMERALARMEEXTERNOCOUNT_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 

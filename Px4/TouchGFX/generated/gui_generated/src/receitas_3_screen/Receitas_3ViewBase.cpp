@@ -112,18 +112,7 @@ Receitas_3ViewBase::Receitas_3ViewBase() :
     textAreaReceita12Desc.setWildcard(textAreaReceita12DescBuffer);
     textAreaReceita12Desc.setTypedText(touchgfx::TypedText(T_SINGLEUSEID3908));
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
-
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4142).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4141));
+    background1.setXY(0, 0);
 
     add(__background);
     add(boxFundo);
@@ -146,8 +135,7 @@ Receitas_3ViewBase::Receitas_3ViewBase() :
     add(textAreaReceita10Desc);
     add(textAreaReceita11Desc);
     add(textAreaReceita12Desc);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(background1);
     radioButtonGroup1.add(radioButtonMuneroReceita9);
     radioButtonGroup1.add(radioButtonMuneroReceita10);
     radioButtonGroup1.add(radioButtonMuneroReceita11);
@@ -157,49 +145,19 @@ Receitas_3ViewBase::Receitas_3ViewBase() :
 
 void Receitas_3ViewBase::setupScreen()
 {
-
+    background1.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 21;
+    Update(&textAreaReceita9Desc, textAreaReceita9DescBuffer, Receita_9_desc, 20);
+    Update(&textAreaReceita10Desc, textAreaReceita10DescBuffer, Receita_10_desc, 20);
+    Update(&textAreaReceita11Desc, textAreaReceita11DescBuffer, Receita_11_desc, 20);
+    Update(&textAreaReceita12Desc, textAreaReceita12DescBuffer, Receita_12_desc, 20);
     
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    SelectJob(8);
-    ReadJobName(&textAreaReceita9Desc, textAreaReceita9DescBuffer, 20);
-    
-    SelectJob(9);
-    ReadJobName(&textAreaReceita10Desc, textAreaReceita10DescBuffer, 20);
-    
-    SelectJob(10);
-    ReadJobName(&textAreaReceita11Desc, textAreaReceita11DescBuffer, 20);
-    
-    SelectJob(11);
-    ReadJobName(&textAreaReceita12Desc, textAreaReceita12DescBuffer, 20);
-    
-    
-    if (selectedRecipeItem == 9){
-    	Update(&radioButtonMuneroReceita9, true);
-    	SelectJob(selectedRecipeItem - 1);
-    }
-    
-    if (selectedRecipeItem == 10){
-    	Update(&radioButtonMuneroReceita10, true);
-    	SelectJob(selectedRecipeItem - 1);
-    }
-    
-    if (selectedRecipeItem == 11){
-    	Update(&radioButtonMuneroReceita11, true);
-    	SelectJob(selectedRecipeItem - 1);
-    }
-    
-    if (selectedRecipeItem == 12){
-    	Update(&radioButtonMuneroReceita12, true);
-    	SelectJob(selectedRecipeItem - 1);
-    }
+    if (numero_receita == 9) Update(&radioButtonMuneroReceita9, true);
+    if (numero_receita == 10) Update(&radioButtonMuneroReceita10, true);
+    if (numero_receita == 11) Update(&radioButtonMuneroReceita11, true);
+    if (numero_receita == 12) Update(&radioButtonMuneroReceita12, true);
 
 }
 
@@ -209,22 +167,7 @@ void Receitas_3ViewBase::afterTransition()
     //ScreenTransitionEnds
     //When screen transition ends execute C++ code
     //Execute C++ code
-    if (!(selectedRecipeItem >= 9 && selectedRecipeItem <= 12))
-    	SoundBuzzerOn(25);
-}
-
-void Receitas_3ViewBase::handleTickEvent()
-{
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
-    //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
+    if (numero_receita < 9 || numero_receita > 12) SoundBuzzerOn(25);
 }
 
 void Receitas_3ViewBase::tearDownScreen()
@@ -233,23 +176,6 @@ void Receitas_3ViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void Receitas_3ViewBase::Receita_X_EDIT()
-{
-    //ReceitaXEDIT
-    //When Receita_X_EDIT is called change screen to Receitas_X_EDIT
-    //Go to Receitas_X_EDIT with no screen transition
-    application().gotoReceitas_X_EDITScreenNoTransition();
-}
-
-void Receitas_3ViewBase::Receita_confirm()
-{
-    //ReceitaConfirm
-    //When Receita_confirm is called change screen to Receita_confirm
-    //Go to Receita_confirm with no screen transition
-    application().gotoReceita_confirmScreenNoTransition();
 }
 
 void Receitas_3ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -259,15 +185,7 @@ void Receitas_3ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& s
         //Avancar
         //When buttonFlagReceita1Interm clicked execute C++ code
         //Execute C++ code
-        if (	radioButtonMuneroReceita9.getSelected() || 
-        	radioButtonMuneroReceita10.getSelected() || 
-        	radioButtonMuneroReceita11.getSelected() || 
-        	radioButtonMuneroReceita12.getSelected()){
-        	SelectJob(selectedRecipeItem - 1);
-        	Receita_confirm();
-        }
-        else
-        	SoundBuzzerOn(25);
+        flag_Receita3_interm = true;
     }
     else if (&src == &buttonTelaInicial)
     {
@@ -281,18 +199,8 @@ void Receitas_3ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& s
         //FlagEditReceita
         //When buttonFlagEditReceita clicked execute C++ code
         //Execute C++ code
-        if (	radioButtonMuneroReceita9.getSelected() || 
-        	radioButtonMuneroReceita10.getSelected() || 
-        	radioButtonMuneroReceita11.getSelected() || 
-        	radioButtonMuneroReceita12.getSelected())
-        {
-        	SelectJob(selectedRecipeItem - 1);
-        	Receita_X_EDIT();
-        }
-        else
-        	SoundBuzzerOn(25);
-        
-        selectedRecipeListPage = 3;
+        flag_edit_receita = true;
+        SoundBuzzerOn(25);
     }
     else if (&src == &buttonReceita2)
     {
@@ -310,7 +218,9 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R9
         //When radioButtonMuneroReceita9 selected execute C++ code
         //Execute C++ code
-        selectedRecipeItem = 9;
+        numero_receita = 9;
+        
+        SelectJob(8);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita10)
@@ -318,7 +228,9 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R10
         //When radioButtonMuneroReceita10 selected execute C++ code
         //Execute C++ code
-        selectedRecipeItem = 10;
+        numero_receita = 10;
+        
+        SelectJob(9);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita11)
@@ -326,7 +238,9 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R11
         //When radioButtonMuneroReceita11 selected execute C++ code
         //Execute C++ code
-        selectedRecipeItem = 11;
+        numero_receita = 11;
+        
+        SelectJob(10);
         SoundBuzzerOn(25);
     }
     else if (&src == &radioButtonMuneroReceita12)
@@ -334,7 +248,9 @@ void Receitas_3ViewBase::radioButtonSelectedCallbackHandler(const touchgfx::Abst
         //R12
         //When radioButtonMuneroReceita12 selected execute C++ code
         //Execute C++ code
-        selectedRecipeItem = 12;
+        numero_receita = 12;
+        
+        SelectJob(11);
         SoundBuzzerOn(25);
     }
 }

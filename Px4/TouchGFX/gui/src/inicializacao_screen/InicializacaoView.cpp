@@ -14,4 +14,3 @@ void InicializacaoView::tearDownScreen()
 {
     InicializacaoViewBase::tearDownScreen();
 }
-

@@ -11,8 +11,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
-#include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <gui/containers/Background.hpp>
 
 class RESET_FABRICAViewBase : public touchgfx::View<RESET_FABRICAPresenter>
 {
@@ -24,9 +23,7 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -42,14 +39,7 @@ protected:
     touchgfx::TextArea textAreaLabel;
     touchgfx::Button buttonConfiguracao;
     touchgfx::ButtonWithLabel buttonWithLabelResetFabrica;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
-
-    /*
-     * Wildcard Buffers
-     */
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
+    Background background1;
 
 private:
 

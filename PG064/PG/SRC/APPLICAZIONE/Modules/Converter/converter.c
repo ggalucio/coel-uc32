@@ -127,6 +127,9 @@ void ConvertData(BYTE dataType, double value, BYTE decimal, DWORD *intValue, BYT
 		(*nWords) = 2;
 	}
 	else{
+
+		if (value < 0) value *= -1;	//<<===
+
 		(*intValue) = (DWORD)(value * pow(10, decimal));
 		(*nWords) = 1;
 	}

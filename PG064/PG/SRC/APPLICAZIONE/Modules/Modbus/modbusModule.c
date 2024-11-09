@@ -182,7 +182,10 @@ void UpdateModbusClient(InterfaceData* pModbusWrite, int wLength, uint16_t addre
 			DWORD intValue = 0;
 			BYTE  nWords = 0;
 			ConvertData(dataType, value, pModbusWrite[i].decimal, &intValue, &nWords);
-			pModbusWrite[i].value = intValue;
+
+			pModbusWrite[i].value = value < 0 ? (DWORD)(intValue * -1) : intValue;
+			//pModbusWrite[i].value = intValue;
+
 			AT_SET_BIT(pModbusWrite[i].command, WRITE_INVALIDATE_BIT);
 			AT_SET_BIT(pModbusWrite[i].command, WRITE_BY_USER_BIT);
 			//pModbusRS485Write[i].command |= (nWords << 6);

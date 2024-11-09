@@ -15,7 +15,9 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <gui/containers/CANCELAR_PROCESSO.hpp>
+#include <gui/containers/Finalizar_Degelo.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class DegeloViewBase : public touchgfx::View<DegeloPresenter>
 {
@@ -27,7 +29,6 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
     virtual void afterTransition();
 
@@ -43,6 +44,7 @@ protected:
     touchgfx::Box boxFundo;
     touchgfx::Box boxFundoAzul;
     touchgfx::Box boxProcessOff;
+    touchgfx::Box boxFlagProcessoAndamento;
     touchgfx::BoxWithBorder boxWithBorder1;
     touchgfx::BoxWithBorder boxWithBorder1_1;
     touchgfx::Box boxFundoAzul2;
@@ -60,11 +62,14 @@ protected:
     touchgfx::TextAreaWithOneWildcard textAreaFlagProcessoAndamento;
     touchgfx::TextAreaWithOneWildcard textArea14513;
     touchgfx::TextAreaWithOneWildcard textArea1410272;
+    touchgfx::TextAreaWithOneWildcard textAreaTimerDegeloCount;
     touchgfx::TextAreaWithOneWildcard textAreaTimerDegeloCountMinutos;
     touchgfx::TextAreaWithOneWildcard textArea1410270;
-    CANCELAR_PROCESSO cANCELAR_PROCESSO1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Finalizar_Degelo finalizar_Degelo1;
+    Background background1;
+    Timer timer1;
+    Timer timerCycle1s;
+    Timer timerCycle10;
 
     /*
      * Wildcard Buffers
@@ -75,12 +80,12 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea14513Buffer[TEXTAREA14513_SIZE];
     static const uint16_t TEXTAREA1410272_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410272Buffer[TEXTAREA1410272_SIZE];
+    static const uint16_t TEXTAREATIMERDEGELOCOUNT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textAreaTimerDegeloCountBuffer[TEXTAREATIMERDEGELOCOUNT_SIZE];
     static const uint16_t TEXTAREATIMERDEGELOCOUNTMINUTOS_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textAreaTimerDegeloCountMinutosBuffer[TEXTAREATIMERDEGELOCOUNTMINUTOS_SIZE];
     static const uint16_t TEXTAREA1410270_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410270Buffer[TEXTAREA1410270_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -88,15 +93,23 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<DegeloViewBase, const touchgfx::AbstractButton&> buttonCallback;
-    touchgfx::Callback<DegeloViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
-    touchgfx::Callback<DegeloViewBase> cANCELAR_PROCESSO1NaoCallback;
+    touchgfx::Callback<DegeloViewBase> finalizar_Degelo1CancelarProcessoCallback;
+    touchgfx::Callback<DegeloViewBase> finalizar_Degelo1NaoCallback;
+    touchgfx::Callback<DegeloViewBase> timer1BeginCallback;
+    touchgfx::Callback<DegeloViewBase> timer1TickCallback;
+    touchgfx::Callback<DegeloViewBase> timerCycle1sTickCallback;
+    touchgfx::Callback<DegeloViewBase> timerCycle10TickCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
-    void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
-    void cANCELAR_PROCESSO1NaoCallbackHandler();
+    void finalizar_Degelo1CancelarProcessoCallbackHandler();
+    void finalizar_Degelo1NaoCallbackHandler();
+    void timer1BeginCallbackHandler();
+    void timer1TickCallbackHandler();
+    void timerCycle1sTickCallbackHandler();
+    void timerCycle10TickCallbackHandler();
 
 };
 

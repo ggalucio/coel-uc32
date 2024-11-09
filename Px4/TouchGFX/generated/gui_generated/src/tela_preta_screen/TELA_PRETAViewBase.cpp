@@ -20,11 +20,6 @@ TELA_PRETAViewBase::TELA_PRETAViewBase()
 void TELA_PRETAViewBase::setupScreen()
 {
 
-    //ScreenTransitionBegins
-    //When screen transition begins execute C++ code
-    //Execute C++ code
-    W_HDW5000 = 999;
-
 }
 
 //Called when the screen transition ends
@@ -47,5 +42,4 @@ void TELA_PRETAViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
 }

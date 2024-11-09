@@ -82,6 +82,8 @@ extern void 		(*pKeyboardNumPressed)(void);
 extern void 		(*pClearJobsValue)(void);
 extern void 		(*pRefreshRun)(void);
 
+extern void			(*pSetAccessKey)(uint16_t key);
+
 // JOB
 extern void 		(*pAddReadJobNameItem)(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, uint16_t address, uint8_t length, Protocol protocol);
 extern void			(*pAddJobItem)(touchgfx::TextArea *textArea, touchgfx::Unicode::UnicodeChar* buffer, int idx, DataType dataType, uint8_t decimal);
@@ -160,6 +162,8 @@ void InitGraphicModulePtr(void){
 	pKeyboardDltPressed					= keyboardDltPressed;
 	pKeyboardShfPressed					= keyboardShfPressed;
 	pKeyboardNumPressed					= keyboardNumPressed;
+
+	pSetAccessKey						= SetAccessKey;
 
 	// JOB
 	pAddReadJobNameItem				= AddReadJobName;

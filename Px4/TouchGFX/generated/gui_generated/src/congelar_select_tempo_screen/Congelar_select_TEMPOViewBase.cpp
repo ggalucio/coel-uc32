@@ -7,7 +7,13 @@
 #include "BitmapDatabase.hpp"
 
 Congelar_select_TEMPOViewBase::Congelar_select_TEMPOViewBase() :
-    buttonCallback(this, &Congelar_select_TEMPOViewBase::buttonCallbackHandler)
+    buttonCallback(this, &Congelar_select_TEMPOViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &Congelar_select_TEMPOViewBase::flexButtonCallbackHandler),
+    numKeyboardContainer1OutOfRangeCallback(this, &Congelar_select_TEMPOViewBase::numKeyboardContainer1OutOfRangeCallbackHandler),
+    numKeyboardContainer1ValidRangeCallback(this, &Congelar_select_TEMPOViewBase::numKeyboardContainer1ValidRangeCallbackHandler),
+    numKeyboardContainer1HideKeypadTriggerCallback(this, &Congelar_select_TEMPOViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler),
+    numKeyboardContainer1EnterCallback(this, &Congelar_select_TEMPOViewBase::numKeyboardContainer1EnterCallbackHandler),
+    timerCycle1sTickCallback(this, &Congelar_select_TEMPOViewBase::timerCycle1sTickCallbackHandler)
 {
 
     __background.setPosition(0, 0, 480, 272);
@@ -66,18 +72,25 @@ Congelar_select_TEMPOViewBase::Congelar_select_TEMPOViewBase() :
     buttonVoltar.setBitmaps(touchgfx::Bitmap(BITMAP_VOLTAR_ID), touchgfx::Bitmap(BITMAP_VOLTAR_ID));
     buttonVoltar.setAction(buttonCallback);
 
-    imageStatusPorta.setXY(200, 0);
-    imageStatusPorta.setVisible(false);
-    imageStatusPorta.setBitmap(touchgfx::Bitmap(BITMAP_PORTA_ID));
+    flexButtonTempo.setBoxWithBorderPosition(0, 0, 166, 54);
+    flexButtonTempo.setBorderSize(5);
+    flexButtonTempo.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButtonTempo.setPosition(123, 128, 166, 54);
+    flexButtonTempo.setAlpha(0);
+    flexButtonTempo.setAction(flexButtonCallback);
 
-    textAreaStatusPorta.setXY(98, 13);
-    textAreaStatusPorta.setVisible(false);
-    textAreaStatusPorta.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textAreaStatusPorta.setLinespacing(0);
-    Unicode::snprintf(textAreaStatusPortaBuffer, TEXTAREASTATUSPORTA_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID4112).getText());
-    textAreaStatusPorta.setWildcard(textAreaStatusPortaBuffer);
-    textAreaStatusPorta.resizeToCurrentText();
-    textAreaStatusPorta.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4111));
+    numKeyboardContainer1.setXY(0, 0);
+    numKeyboardContainer1.setVisible(false);
+    numKeyboardContainer1.setOutOfRangeCallback(numKeyboardContainer1OutOfRangeCallback);
+    numKeyboardContainer1.setValidRangeCallback(numKeyboardContainer1ValidRangeCallback);
+    numKeyboardContainer1.setHideKeypadTriggerCallback(numKeyboardContainer1HideKeypadTriggerCallback);
+    numKeyboardContainer1.setEnterCallback(numKeyboardContainer1EnterCallback);
+
+    background1.setXY(0, 0);
+
+    timerCycle1s.setXY(0, 0);
+    timerCycle1s.setVisible(false);
+    timerCycle1s.setTickCallback(timerCycle1sTickCallback);
 
     add(__background);
     add(boxFundo);
@@ -91,27 +104,29 @@ Congelar_select_TEMPOViewBase::Congelar_select_TEMPOViewBase() :
     add(textAreaTempoZero);
     add(buttonAvancar);
     add(buttonVoltar);
-    add(imageStatusPorta);
-    add(textAreaStatusPorta);
+    add(flexButtonTempo);
+    add(numKeyboardContainer1);
+    add(background1);
+    add(timerCycle1s);
 }
 
 void Congelar_select_TEMPOViewBase::setupScreen()
 {
-
+    numKeyboardContainer1.initialize();
+    background1.initialize();
+    timerCycle1s.initialize();
     //ScreenTransitionBegins
     //When screen transition begins execute C++ code
     //Execute C++ code
-    AddbackgroundContainer(this);
-    W_HDW5000 = 4;
+    WriteModbus485(10282, 1);
+    WriteModbus485(10242, 1);
+    WriteModbus485(645, 1);
     
-    // Clear();
-    
-    ReadWriteModbus485(&textAreaStatusPorta, textAreaStatusPortaBuffer, "553", 0, _INT_, REPEAT);
-    
-    Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, _INT_, 0);
+    Update(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, Timer_SP_MINUTOS, _INT_, 0);
     VisibilityTextArea(&textAreaTempoZero, false);
-    countCycleBlink = 0;
-    isZeroValue = false;
+    
+    timerCycle1s.setWaitTime(1000);
+    timerCycle1s.start();
 
 }
 
@@ -124,27 +139,45 @@ void Congelar_select_TEMPOViewBase::afterTransition()
     SoundBuzzerOn(25);
 }
 
-void Congelar_select_TEMPOViewBase::handleTickEvent()
+void Congelar_select_TEMPOViewBase::numKeyboardContainer1OutOfRangeCallbackHandler()
 {
-    //HandleTickEvent
-    //When handleTickEvent is called execute C++ code
+    //OutOfRangeFIred
+    //When numKeyboardContainer1 OutOfRange call OutOfRangeMsg on numKeyboardContainer1
+    //Call OutOfRangeMsg
+    numKeyboardContainer1.OutOfRangeMsg();
+}
+
+void Congelar_select_TEMPOViewBase::numKeyboardContainer1ValidRangeCallbackHandler()
+{
+    //InsideRangeFired
+    //When numKeyboardContainer1 ValidRange call InputValidRange on numKeyboardContainer1
+    //Call InputValidRange
+    numKeyboardContainer1.InputValidRange();
+}
+
+void Congelar_select_TEMPOViewBase::numKeyboardContainer1HideKeypadTriggerCallbackHandler()
+{
+    //HideNumKeyboard
+    //When numKeyboardContainer1 HideKeypadTrigger execute C++ code
     //Execute C++ code
-    if ((touchgfx::Unicode::atoi(textAreaStatusPortaBuffer)) == 1){
-    	imageStatusPorta.setVisible(true);
-    }else{
-    	imageStatusPorta.setVisible(false);
-    }
-    invalidate();
-    W_1_4553 = imageStatusPorta.isVisible();
-    
-    if (countCycleBlink > 1000)
-    {
-    	countCycleBlink = 0;
-    	if (isZeroValue)
-    		VisibilityTextArea(&textAreaTempoZero, !textAreaTempoZero.isVisible());
-    }
-    
-    countCycleBlink += 16;
+    ContainerVisibility(&numKeyboardContainer1, false);
+    SoundBuzzerOn(25);
+}
+
+void Congelar_select_TEMPOViewBase::numKeyboardContainer1EnterCallbackHandler(double value)
+{
+    //EnterKeyboard
+    //When numKeyboardContainer1 Enter execute C++ code
+    //Execute C++ code
+    Timer_SP_MINUTOS = value;
+}
+
+void Congelar_select_TEMPOViewBase::timerCycle1sTickCallbackHandler()
+{
+    //Cycle_1s
+    //When timerCycle1s tick execute C++ code
+    //Execute C++ code
+    VisibilityTextArea(&textAreaTempoZero, flag_alarm_receita_vazia && !textAreaTempoZero.isVisible());
 }
 
 void Congelar_select_TEMPOViewBase::tearDownScreen()
@@ -153,15 +186,6 @@ void Congelar_select_TEMPOViewBase::tearDownScreen()
     //When tearDownScreen is called execute C++ code
     //Execute C++ code
     Clear();
-    ClearOthers();
-}
-
-void Congelar_select_TEMPOViewBase::Congelar_TEMPO()
-{
-    //CongelarTEMPO
-    //When Congelar_TEMPO is called change screen to Congelar_TEMPO
-    //Go to Congelar_TEMPO with no screen transition
-    application().gotoCongelar_TEMPOScreenNoTransition();
 }
 
 void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -172,6 +196,7 @@ void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //When buttonWithLabelIncrementar clicked execute C++ code
         //Execute C++ code
         Increase(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 1, 0, 9999, _INT_, 0);
+        Timer_SP_MINUTOS = GetNumberTextArea(textAreaTimerSpMinutosBuffer);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonWithLabelDecrementar)
@@ -180,6 +205,7 @@ void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //When buttonWithLabelDecrementar clicked execute C++ code
         //Execute C++ code
         Decrease(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 1, 0, 9999, _INT_, 0);
+        Timer_SP_MINUTOS = GetNumberTextArea(textAreaTimerSpMinutosBuffer);
         SoundBuzzerOn(25);
     }
     else if (&src == &buttonAvancar)
@@ -187,13 +213,7 @@ void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //Avancar
         //When buttonAvancar clicked execute C++ code
         //Execute C++ code
-        if (GetNumberTextArea(textAreaTimerSpMinutosBuffer) == 0)
-        {
-        	isZeroValue = true;
-        	SoundBuzzerOn(25);
-        }
-        else
-        	Congelar_TEMPO();
+        flag_congelar_Tempo = true;
     }
     else if (&src == &buttonVoltar)
     {
@@ -201,5 +221,23 @@ void Congelar_select_TEMPOViewBase::buttonCallbackHandler(const touchgfx::Abstra
         //When buttonVoltar clicked change screen to Congelar
         //Go to Congelar with no screen transition
         application().gotoCongelarScreenNoTransition();
+    }
+}
+
+void Congelar_select_TEMPOViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButtonTempo)
+    {
+        //DigitarTempo
+        //When flexButtonTempo clicked execute C++ code
+        //Execute C++ code
+        AddNumKeyboardReference(&textAreaTimerSpMinutos, textAreaTimerSpMinutosBuffer, 0, 9999, _INT_, 0, 0);
+        ContainerVisibility(&numKeyboardContainer1, true);
+        SoundBuzzerOn(25);
+
+        //LaunchDigitarTempoKeyboard
+        //When DigitarTempo completed call LaunchNumericalKeyboard on numKeyboardContainer1
+        //Call LaunchNumericalKeyboard
+        numKeyboardContainer1.LaunchNumericalKeyboard();
     }
 }

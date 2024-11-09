@@ -17,6 +17,8 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <gui/containers/CANCELAR_PROCESSO.hpp>
+#include <gui/containers/Background.hpp>
+#include <gui/containers/Timer.hpp>
 
 class Resfriar_TEMPOViewBase : public touchgfx::View<Resfriar_TEMPOPresenter>
 {
@@ -28,9 +30,7 @@ public:
     /*
      * Custom Actions
      */
-    virtual void handleTickEvent();
     virtual void tearDownScreen();
-    virtual void writeModbus(char const* address, double value);
     virtual void afterTransition();
 
 protected:
@@ -73,8 +73,9 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea14512;
     touchgfx::TextAreaWithOneWildcard textArea1410242;
     CANCELAR_PROCESSO cANCELAR_PROCESSO1;
-    touchgfx::Image imageStatusPorta;
-    touchgfx::TextAreaWithOneWildcard textAreaStatusPorta;
+    Background background1;
+    Timer timerCycle1s;
+    Timer timerCycle10;
 
     /*
      * Wildcard Buffers
@@ -91,8 +92,6 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea14512Buffer[TEXTAREA14512_SIZE];
     static const uint16_t TEXTAREA1410242_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea1410242Buffer[TEXTAREA1410242_SIZE];
-    static const uint16_t TEXTAREASTATUSPORTA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textAreaStatusPortaBuffer[TEXTAREASTATUSPORTA_SIZE];
 
 private:
 
@@ -102,6 +101,8 @@ private:
     touchgfx::Callback<Resfriar_TEMPOViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Resfriar_TEMPOViewBase> cANCELAR_PROCESSO1CancelarProcessoCallback;
     touchgfx::Callback<Resfriar_TEMPOViewBase> cANCELAR_PROCESSO1NaoCallback;
+    touchgfx::Callback<Resfriar_TEMPOViewBase> timerCycle1sTickCallback;
+    touchgfx::Callback<Resfriar_TEMPOViewBase> timerCycle10TickCallback;
 
     /*
      * Callback Handler Declarations
@@ -109,6 +110,8 @@ private:
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void cANCELAR_PROCESSO1CancelarProcessoCallbackHandler();
     void cANCELAR_PROCESSO1NaoCallbackHandler();
+    void timerCycle1sTickCallbackHandler();
+    void timerCycle10TickCallbackHandler();
 
     /*
      * Canvas Buffer Size
